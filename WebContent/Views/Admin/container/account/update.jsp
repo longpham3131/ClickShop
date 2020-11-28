@@ -44,17 +44,18 @@
 				<tr>
 					<td align="right">Gender:</td>
 					<td><select name="gender">
-							<%
-								for (int sex = 0; sex < 2; sex++) {
+					<%
+								String[] sex= {"M", "F"};
+								for (int s = 0; s < 2; s++) {
 							%>
-							<option value="<%=sex%>">
+							<option value="<%=sex[s]%>">
 								<%
-									if (sex == 0) {
+									if (s == 0) {
 								%>Male<%
 									}
 								%>
 								<%
-									if (sex == 1) {
+									if (s == 1) {
 								%>Female<%
 									}
 								%>
@@ -62,6 +63,7 @@
 							<%
 								}
 							%>
+						
 					</select></td>
 				<tr>
 					<td>Date of birth:</td>
@@ -71,8 +73,8 @@
 					<td align="right">Role:</td>
 					<td><select name="role">
 							<%
-								String[] Role= {"USER", "SALEPERSON", "ADMINISTRATOR"};
-								for (int role = 0; role < 3; role++) {
+								String[] Role= {"USER", "SALEPERSON", "ADMINISTRATOR", "SHIPPER"};
+								for (int role = 0; role < 4; role++) {
 							%>
 							<option value="<%=Role[role]%>">
 								<%=Role[role]%>
