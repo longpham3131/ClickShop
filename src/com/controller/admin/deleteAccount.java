@@ -54,9 +54,18 @@ public class deleteAccount extends HttpServlet {
 		HttpSession session = request.getSession(false);
 		if(session == null)
 			response.sendRedirect("Views/Admin/login.jsp");
+<<<<<<< HEAD
 		session.setAttribute("thongbao", tb);
 		session.setAttribute("from", "delete");
 		response.sendRedirect("Views/Admin/container/account.jsp");
 	}
 
+=======
+		request.setAttribute("from", "delete");
+		request.setAttribute("thongbao", tb);
+		fillAllAccount a = new fillAllAccount();
+		a.doPost(request, response);
+		// response.sendRedirect("Views/Admin/container/account.jsp");
+	}
+>>>>>>> be5f72e (sua het)
 }

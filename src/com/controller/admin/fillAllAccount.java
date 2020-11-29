@@ -5,6 +5,11 @@ import com.model.Article;
 import java.sql.ResultSet;
 import java.util.ArrayList;
 import java.util.List;
+<<<<<<< HEAD
+=======
+
+import javax.servlet.RequestDispatcher;
+>>>>>>> be5f72e (sua het)
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -41,7 +46,10 @@ public class fillAllAccount extends HttpServlet {
      */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
     	 response.setContentType("text/html;charset=UTF-8");
+<<<<<<< HEAD
     	 System.out.print("aaa");
+=======
+>>>>>>> be5f72e (sua het)
          String txt = request.getParameter("index");
          int index = 0;
          if(txt == null){
@@ -51,10 +59,19 @@ public class fillAllAccount extends HttpServlet {
          }
          queryDAO dao = new queryDAO();
          List<Article> list = dao.paging(index);
+<<<<<<< HEAD
          System.out.print(" xx");
          HttpSession session = request.getSession();
          session.setAttribute("listP", list);
 		 response.sendRedirect("Views/Admin/container/account.jsp");  
+=======
+ 
+        request.setAttribute("listP", list);
+        request.setAttribute("from", request.getAttribute("from"));
+ 		request.setAttribute("thongbao", request.getAttribute("thongbao"));
+        RequestDispatcher rq= request.getRequestDispatcher("Views/Admin/container/account.jsp");
+ 		rq.forward(request, response);
+>>>>>>> be5f72e (sua het)
     }
     
     
@@ -67,6 +84,10 @@ public class fillAllAccount extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		processRequest(request, response);
+<<<<<<< HEAD
+=======
+		
+>>>>>>> be5f72e (sua het)
 //		HttpSession session = request.getSession(false);
 //		String index=  request.getParameter("index");
 //		if(session == null)

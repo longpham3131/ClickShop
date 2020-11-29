@@ -69,8 +69,17 @@ public class insertAccount extends HttpServlet {
 		HttpSession session = request.getSession(false);
 		if(session == null)
 			response.sendRedirect("Views/Admin/login.jsp");
+<<<<<<< HEAD
 		session.setAttribute("thongbao", tb);
 		session.setAttribute("from", "insert");
 		response.sendRedirect("Views/Admin/container/account.jsp");
+=======
+	
+		request.setAttribute("from", "insert");
+		request.setAttribute("thongbao", tb);
+		fillAllAccount a = new fillAllAccount();
+		a.doPost(request, response);
+		
+>>>>>>> be5f72e (sua het)
 	}
 }

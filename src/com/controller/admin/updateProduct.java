@@ -67,9 +67,16 @@ public class updateProduct extends HttpServlet {
 		HttpSession session = request.getSession(false);
 		if(session == null)
 			response.sendRedirect("Views/Admin/login.jsp");
+<<<<<<< HEAD
 		session.setAttribute("thongbao", tb);
 		session.setAttribute("from", "update");
 		response.sendRedirect("Views/Admin/container/product.jsp");
+=======
+		request.setAttribute("from", "update");
+		request.setAttribute("thongbao", tb);
+		fillAllProduct a = new fillAllProduct();
+		a.doPost(request, response);
+>>>>>>> be5f72e (sua het)
 	}
 
 }
