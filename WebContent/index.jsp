@@ -1,11 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-<<<<<<< HEAD
-    pageEncoding="ISO-8859-1"%>
-<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
-=======
-	pageEncoding="ISO-8859-1"%>
+pageEncoding="ISO-8859-1"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
->>>>>>> be5f72e (sua het)
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -42,54 +38,29 @@
 						<!-- Nested Row within Card Body -->
 						<div class="row">
 							<div class="col-lg-6 d-none d-lg-block"
-<<<<<<< HEAD
-								style="background: url(https://cdn.onlinewebfonts.com/svg/img_325788.png); background-position: center; background-size:contain; background-repeat:no-repeat;">
-=======
 								style="background: url(https://cdn.onlinewebfonts.com/svg/img_325788.png); background-position: center; background-size: contain; background-repeat: no-repeat;">
->>>>>>> be5f72e (sua het)
 							</div>
 							<div class="col-lg-6">
 								<div class="p-5">
 									<div class="text-center">
-<<<<<<< HEAD
-										<h1 class="h4 text-gray-900 mb-4">Are you an administrator?</h1>
-									</div>
-									<form class="user"
-										action="${pageContext.request.contextPath}/login-admin"
-										method="post">					
-										<div class="form-group">
-											<input type="submit" class="form-control form-control-user"
-												value="Click here">
-										</div>
-									</form>									
-=======
 										<h1 class="h4 text-gray-900 mb-4">Are you an
 											administrator?</h1>
 									</div>
 
 									<div class="form-group">
-										<form class="user" action="login-admin" method="post">
+										<form class="user" action="admin" method="post">
 											<input type="submit" class="form-control form-control-user"
 												value="Click here!!">
 										</form>
 									</div>
-	
->>>>>>> be5f72e (sua het)
 								</div>
 							</div>
 						</div>
 					</div>
 				</div>
 			</div>
-<<<<<<< HEAD
-		</div>		
-		
-		
-=======
 		</div>
 
-
->>>>>>> be5f72e (sua het)
 		<!-- Shipper -->
 		<div class="row justify-content-center">
 
@@ -100,11 +71,7 @@
 						<!-- Nested Row within Card Body -->
 						<div class="row">
 							<div class="col-lg-6 d-none d-lg-block"
-<<<<<<< HEAD
-								style="background: url(https://mecha4makers.co.nz/wp-content/uploads/2018/07/courier_scooter_icon.png); background-position: center; background-size:contain; background-repeat:no-repeat;">
-=======
 								style="background: url(https://mecha4makers.co.nz/wp-content/uploads/2018/07/courier_scooter_icon.png); background-position: center; background-size: contain; background-repeat: no-repeat;">
->>>>>>> be5f72e (sua het)
 							</div>
 							<div class="col-lg-6">
 								<div class="p-5">
@@ -112,22 +79,13 @@
 										<h1 class="h4 text-gray-900 mb-4">Are you a shipper?</h1>
 									</div>
 									<form class="user"
-<<<<<<< HEAD
-										action="${pageContext.request.contextPath}/shipper"
-										method="get">					
-=======
-										action="login-shipper"
-										method="get">
->>>>>>> be5f72e (sua het)
+										action="shipper"
+										method="post">
 										<div class="form-group">
 											<input type="submit" class="form-control form-control-user"
 												value="Click here">
 										</div>
-<<<<<<< HEAD
-									</form>									
-=======
 									</form>
->>>>>>> be5f72e (sua het)
 								</div>
 							</div>
 						</div>

@@ -15,22 +15,16 @@
 
 <title>Account</title>
 <!-- Custom fonts for this template-->
-<<<<<<< HEAD
-<link href="../vendor/fontawesome-free/css/all.min.css" rel="stylesheet"
-=======
 <link href="<%= request.getContextPath()%>/Views/Admin/vendor/fontawesome-free/css/all.min.css" rel="stylesheet"
->>>>>>> be5f72e (sua het)
+
 	type="text/css">
 <link
 	href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i"
 	rel="stylesheet">
 
 <!-- Custom styles for this template-->
-<<<<<<< HEAD
-<link href="../css/sb-admin-2.min.css" rel="stylesheet">
-=======
+
 <link href="<%= request.getContextPath()%>/Views/Admin/css/sb-admin-2.min.css" rel="stylesheet">
->>>>>>> be5f72e (sua het)
 
 <jsp:useBean id="a" class="DAO.queryDAO" scope="request"></jsp:useBean>
 </head>
@@ -38,15 +32,11 @@
 	<!--  Check authentic --!>
 	<!-- Servlet return true if complete login authentication
 	You can't access this page if you use link-url and not login -->
-<<<<<<< HEAD
-	<c:if test="${check != 'true'}">
-		<c:redirect url="/admin" />
-	</c:if>
-=======
+
 <%--  <c:if test="${check != 'true'}">
 		<c:redirect url="/admin" />
 	</c:if>  --%>
->>>>>>> be5f72e (sua het)
+
 	<!--  Check authentic --!>
 	
 	<!---- nhan thong bao phan hoi ---->
@@ -115,12 +105,7 @@
 	<!-- Page Wrapper -->
 	<div id="wrapper">
 
-<<<<<<< HEAD
-		<c:import url="../commom/sidebar.html" />
-=======
 		<c:import url="../commom/sidebar.jsp" />
->>>>>>> be5f72e (sua het)
-
 
 		<!-- Content Wrapper -->
 		<div id="content-wrapper" class="d-flex flex-column">
@@ -133,11 +118,8 @@
 				<!-- -------------------- MAIN CONTAIN ---------------- -->
 				<form action="${pageContext.request.contextPath}/fill-All-Account"
 					method="post">
-<<<<<<< HEAD
-					<input type="button" value="Refresh data">
-=======
 					<input type="submit" value="Refresh data">
->>>>>>> be5f72e (sua het)
+
 				</form>
 				<!--  TABLEE ----->
 				<div class="card shadow mb-4">
@@ -284,26 +266,6 @@
 				</div>
 			</div>
 			<!-- Bootstrap core JavaScript-->
-<<<<<<< HEAD
-			<script src="../vendor/jquery/jquery.min.js"></script>
-			<script src="../vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
-
-			<!-- Core plugin JavaScript-->
-			<script src="../vendor/jquery-easing/jquery.easing.min.js"></script>
-
-			<!-- Custom scripts for all pages-->
-			<script src="../js/sb-admin-2.min.js"></script>
-
-			<!-- Page level plugins -->
-			<script src="../vendor/chart.js/Chart.min.js"></script>
-			<script src="../vendor/datatables/jquery.dataTables.min.js"></script>
-			<script src="../vendor/datatables/dataTables.bootstrap4.min.js"></script>
-
-			<!-- Page level custom scripts -->
-			<script src="../js/demo/chart-area-demo.js"></script>
-			<script src="../js/demo/datatables-demo.js"></script>
-			<script src="../js/demo/chart-pie-demo.js"></script>
-=======
 			<script src="<%= request.getContextPath()%>/Views/Admin/vendor/jquery/jquery.min.js"></script>
 			<script src="<%= request.getContextPath()%>/Views/Admin/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
 
@@ -322,6 +284,6 @@
 			<script src="<%= request.getContextPath()%>/Views/Admin/js/demo/chart-area-demo.js"></script>
 			<script src="<%= request.getContextPath()%>/Views/Admin/js/demo/datatables-demo.js"></script>
 			<script src="<%= request.getContextPath()%>/Views/Admin/js/demo/chart-pie-demo.js"></script>
->>>>>>> be5f72e (sua het)
+
 </body>
 </html>

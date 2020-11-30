@@ -1,16 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?><project-modules id="moduleCoreId" project-version="1.5.0">
-<<<<<<< HEAD
-    <wb-module deploy-name="CuaHangProduct">
+    <wb-module deploy-name="ClikPill">
         <wb-resource deploy-path="/" source-path="/WebContent" tag="defaultRootSource"/>
         <wb-resource deploy-path="/WEB-INF/classes" source-path="/src"/>
-        <property name="context-root" value="CuaHangProduct"/>
-        <property name="java-output-path" value="/CuaHangProduct/build/classes"/>
-=======
-    <wb-module deploy-name="ClickShop">
-        <wb-resource deploy-path="/" source-path="/WebContent" tag="defaultRootSource"/>
-        <wb-resource deploy-path="/WEB-INF/classes" source-path="/src"/>
-        <property name="context-root" value="ClickShop"/>
-        <property name="java-output-path" value="/ClickShop/build/classes"/>
->>>>>>> be5f72e (sua het)
+        <wb-resource deploy-path="/WEB-INF/classes/" source-path="/ImportedClasses"/>
+        <property name="context-root" value="ClikPill"/>
+        <property name="java-output-path" value="/ClikPill/build/classes"/>
     </wb-module>
 </project-modules>
