@@ -130,7 +130,7 @@
 								<thead>
 									<tr>
 										<th>ID</th>
-										<th >Email</th>
+										<th>Email</th>
 										<th>First Name</th>
 										<th>Last Name</th>
 										<th>Phone</th>
@@ -141,6 +141,7 @@
 
 								<!----------Noi-dung-------- -->
 								<tbody>
+
 									<c:forEach items="${listAccount}" var="listAcc"
 										varStatus="loop">
 										<c:choose>
@@ -155,9 +156,9 @@
 													<td>
 														<!-- POPUP Detail  -->
 														<button type="button" class="btn btn-primary"
-															data-toggle="modal" data-target="#myModal">Detail
+															data-toggle="modal" data-target="#myModal${listAcc.accountId}">Detail
 														</button>
-														<div class="modal" id="myModal">
+														<div class="modal" id="myModal${listAcc.accountId}">
 															<div class="modal-dialog">
 																<div class="modal-content">
 
@@ -169,6 +170,7 @@
 																	</div>
 																	<!-- Modal body -->
 																	<div class="modal-body">
+
 																		<h5>Account ID : ${listAcc.accountId}</h5>
 																		<h5>Email : ${listAcc.email}</h5>
 																		<h5>First Name :${listAcc.firstName}</h5>
@@ -192,9 +194,9 @@
 															</div>
 														</div> <!-- POPUP Edit -->
 														<button type="button" class="btn btn-primary"
-															data-toggle="modal" data-target="#editAccount">Edit
+															data-toggle="modal" data-target="#editAccount${listAcc.accountId}">Edit
 														</button> <!-- The Modal -->
-														<div class="modal" id="editAccount">
+														<div class="modal" id="editAccount${listAcc.accountId}">
 															<div class="modal-dialog">
 																<div class="modal-content">
 

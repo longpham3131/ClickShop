@@ -57,6 +57,7 @@ public class fillAllAccount extends HttpServlet {
 
  
         request.setAttribute("listAccount", list);
+        request.setAttribute("size", list.size());
         request.setAttribute("from", request.getAttribute("from"));
  		request.setAttribute("thongbao", request.getAttribute("thongbao"));
         RequestDispatcher rq= request.getRequestDispatcher("Views/Admin/container/account.jsp");
