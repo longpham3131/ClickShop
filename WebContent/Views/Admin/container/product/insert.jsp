@@ -124,7 +124,7 @@
 					<td><input type="text" name="available"></td>
 				</tr>
 				<td><input type="submit" value="insert"></td>
-				</tr>
+				
 			</table>
 		</form>
 	</div>

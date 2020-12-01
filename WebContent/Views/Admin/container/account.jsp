@@ -1,30 +1,26 @@
 <%@page import="com.model.Article"%>
 <%@page import="java.sql.ResultSet"%>
-<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-	pageEncoding="ISO-8859-1"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+	pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <!DOCTYPE html>
 <html>
 <head>
-<meta charset="utf-8">
-<meta http-equiv="X-UA-Compatible" content="IE=edge">
-<meta name="viewport"
-	content="width=device-width, initial-scale=1, shrink-to-fit=no">
-<meta name="description" content="">
-<meta name="author" content="">
-
-<title>Account</title>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<title>Tài khoản</title>
 <!-- Custom fonts for this template-->
-<link href="<%= request.getContextPath()%>/Views/Admin/vendor/fontawesome-free/css/all.min.css" rel="stylesheet"
-
-	type="text/css">
+<link
+	href="<%=request.getContextPath()%>/Views/Admin/vendor/fontawesome-free/css/all.min.css"
+	rel="stylesheet" type="text/css">
 <link
 	href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i"
 	rel="stylesheet">
 
 <!-- Custom styles for this template-->
 
-<link href="<%= request.getContextPath()%>/Views/Admin/css/sb-admin-2.min.css" rel="stylesheet">
+<link
+	href="<%=request.getContextPath()%>/Views/Admin/css/sb-admin-2.min.css"
+	rel="stylesheet">
 
 <jsp:useBean id="a" class="DAO.queryDAO" scope="request"></jsp:useBean>
 </head>
@@ -33,7 +29,7 @@
 	<!-- Servlet return true if complete login authentication
 	You can't access this page if you use link-url and not login -->
 
-<%--  <c:if test="${check != 'true'}">
+	<%--  <c:if test="${check != 'true'}">
 		<c:redirect url="/admin" />
 	</c:if>  --%>
 
@@ -134,52 +130,160 @@
 								<thead>
 									<tr>
 										<th>ID</th>
-										<th>Email</th>
-
-										<th>Image</th>
+										<th >Email</th>
 										<th>First Name</th>
 										<th>Last Name</th>
 										<th>Phone</th>
-										<th>Address</th>
-										<th>Gender</th>
-										<th>Day of Birth</th>
-										<th>Created Day</th>
 										<th>Status</th>
+										<th>Actions</th>
 									</tr>
 								</thead>
 
 								<!----------Noi-dung-------- -->
 								<tbody>
-									<c:forEach items="${listP}" var="o">
+									<c:forEach items="${listAccount}" var="listAcc"
+										varStatus="loop">
 										<c:choose>
-											<c:when test="${o.isAvailable ==1}">
+											<c:when test="${listAcc.isAvailable ==1}">
 												<tr>
-													<td>${o.accountId}</td>
-													<td>${o.email}</td>
-													<td>${o.imageLink}</td>
-													<td>${o.firstName}</td>
-													<td>${o.lastName}</td>
-													<td>${o.phone}</td>
-													<td>${o.address}</td>
-													<td>${o.gender}</td>
-													<td>${o.dayofBirth}</td>
-													<td>${o.createdDay}</td>
-													<td>${o.isAvailable}</td>
+													<td>${listAcc.accountId}</td>
+													<td>${listAcc.email}</td>
+													<td>${listAcc.firstName}</td>
+													<td>${listAcc.lastName}</td>
+													<td>${listAcc.phone}</td>
+													<td>${listAcc.isAvailable}</td>
+													<td>
+														<!-- POPUP Detail  -->
+														<button type="button" class="btn btn-primary"
+															data-toggle="modal" data-target="#myModal">Detail
+														</button>
+														<div class="modal" id="myModal">
+															<div class="modal-dialog">
+																<div class="modal-content">
+
+																	<!-- Modal Header -->
+																	<div class="modal-header">
+																		<h4 class="modal-title">Profile</h4>
+																		<button type="button" class="close"
+																			data-dismiss="modal">&times;</button>
+																	</div>
+																	<!-- Modal body -->
+																	<div class="modal-body">
+																		<h5>Account ID : ${listAcc.accountId}</h5>
+																		<h5>Email : ${listAcc.email}</h5>
+																		<h5>First Name :${listAcc.firstName}</h5>
+																		<h5>Last Name : ${listAcc.lastName}</h5>
+																		<h5>Phone : ${listAcc.phone}</h5>
+																		<h5>Address : ${listAcc.address}</h5>
+																		<h5>Gender : ${listAcc.gender}</h5>
+																		<h5>Day Of Birth : ${listAcc.dayofBirth}</h5>
+																		<h5>Created Date : ${listAcc.createdDay}</h5>
+																		<h5>Status : ${listAcc.isAvailable}</h5>
+																	</div>
+																	<!-- Modal footer -->
+																	<div class="modal-footer">
+																		<button type="button" class="btn btn-primary"
+																			data-toggle="modal" data-target="#editAccount">Edit
+																		</button>
+																		<button type="button" class="btn btn-danger"
+																			data-dismiss="modal">Close</button>
+																	</div>
+																</div>
+															</div>
+														</div> <!-- POPUP Edit -->
+														<button type="button" class="btn btn-primary"
+															data-toggle="modal" data-target="#editAccount">Edit
+														</button> <!-- The Modal -->
+														<div class="modal" id="editAccount">
+															<div class="modal-dialog">
+																<div class="modal-content">
+
+																	<!-- Modal Header -->
+																	<div class="modal-header">
+																		<h4 class="modal-title">Modal Heading</h4>
+																		<button type="button" class="close"
+																			data-dismiss="modal">&times;</button>
+																	</div>
+
+																	<!-- Modal body -->
+																	<div class="modal-body">
+																		<div class="form-group">
+																			<labelfor"inpEmail">Email :</label> <input
+																				type="email" id="inpEmail" class="form-control"
+																				value="${listAcc.email}">
+																		</div>
+																		<div class="form-group">
+																			<labelfor"inpFname">First name :</label> <input
+																				type="text" id="inpFName" class="form-control"
+																				value="${listAcc.firstName}">
+																		</div>
+																		<div class="form-group">
+																			<labelfor"inpLName">Last name :</label> <input
+																				type="text" id="inpLName" class="form-control"
+																				value=" ${listAcc.lastName}">
+																		</div>
+																		<div class="form-group">
+																			<labelfor"inpPhone">Phone :</label> <input
+																				type="tel" id="inpPhone" class="form-control"
+																				value="${listAcc.phone}">
+																		</div>
+																		<div class="form-group">
+																			<labelfor"inpAddress">Address :</label> <input
+																				type="text" id="inpPhone" class="form-control"
+																				value="${listAcc.address}">
+																		</div>
+																		<div class="form-group">
+																			<labelfor"inpGender">Gender :</label> <input
+																				id="inpGender" class="form-control"
+																				value="${listAcc.gender}">
+																		</div>
+																		<div class="form-group">
+																			<labelfor"inpDOfB">Day of birth :</label> <input
+																				type="datetime" class="form-control" id="inpDOfB"
+																				value="${listAcc.dayofBirth}">
+																		</div>
+																		<%-- <div class="form-group">
+																			<label for"inpEmail">Email :</label>
+																			<input id="inpRole" value="${listAcc.email}">
+																		</div> --%>
+
+																		<%-- <h5>Email : ${listAcc.email}</h5>
+																		<h5>First Name :${listAcc.firstName}</h5>
+																		<h5>Last Name : ${listAcc.lastName}</h5>
+																		<h5>Phone : ${listAcc.phone}</h5>
+																		<h5>Address : ${listAcc.address}</h5>
+																		<h5>Gender : ${listAcc.gender}</h5>
+																		<h5>Day Of Birth : ${listAcc.dayofBirth}</h5>
+																		<h5>Created Date : ${listAcc.createdDay}</h5>
+																		<h5>Status : ${listAcc.isAvailable}</h5> --%>
+																	</div>
+
+																	<!-- Modal footer -->
+																	<div class="modal-footer">
+																		<button type="button" class="btn btn-success">Update</button>
+																		<button type="button" class="btn btn-danger"
+																			data-dismiss="modal">Close</button>
+
+																	</div>
+
+																</div>
+															</div>
+														</div>
+														<button type="button" class="btn btn-primary">Reset
+															Password</button>
+														<button type="button" class="btn btn-primary">Block
+														</button>
+													</td>
 												</tr>
 											</c:when>
 											<c:otherwise>
 												<tr style="background-color: black;">
-													<td>${o.accountId}</td>
-													<td>${o.email}</td>
-													<td>${o.imageLink}</td>
-													<td>${o.firstName}</td>
-													<td>${o.lastName}</td>
-													<td>${o.phone}</td>
-													<td>${o.address}</td>
-													<td>${o.gender}</td>
-													<td>${o.dayofBirth}</td>
-													<td>${o.createdDay}</td>
-													<td>${o.isAvailable}</td>
+													<td>${listAcc.accountId}</td>
+													<td>${listAcc.email}</td>
+													<td>${listAcc.firstName}</td>
+													<td>${listAcc.lastName}</td>
+													<td>${listAcc.phone}</td>
+													<td>${listAcc.isAvailable}</td>
 												</tr>
 											</c:otherwise>
 										</c:choose>
@@ -190,7 +294,9 @@
 							</table>
 						</div>
 					</div>
+
 				</div>
+
 				<!-- ---- END Of TABLE -- -->
 
 				<!-------------- Them xoa sua !!! Can Design lai !! ------------ -->
@@ -252,7 +358,7 @@
 								Leave?</h5>
 							<button class="close" type="button" data-dismiss="modal"
 								aria-label="Close">
-								<span aria-hidden="true">�</span>
+								<span aria-hidden="true">×</span>
 							</button>
 						</div>
 						<div class="modal-body">Select "Logout" below if you are
@@ -266,24 +372,33 @@
 				</div>
 			</div>
 			<!-- Bootstrap core JavaScript-->
-			<script src="<%= request.getContextPath()%>/Views/Admin/vendor/jquery/jquery.min.js"></script>
-			<script src="<%= request.getContextPath()%>/Views/Admin/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+			<script
+				src="<%=request.getContextPath()%>/Views/Admin/vendor/jquery/jquery.min.js"></script>
+			<script
+				src="<%=request.getContextPath()%>/Views/Admin/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
 
 			<!-- Core plugin JavaScript-->
-			<script src="<%= request.getContextPath()%>/Views/Admin/vendor/jquery-easing/jquery.easing.min.js"></script>
+			<script
+				src="<%=request.getContextPath()%>/Views/Admin/vendor/jquery-easing/jquery.easing.min.js"></script>
 
 			<!-- Custom scripts for all pages-->
-			<script src="<%= request.getContextPath()%>/Views/Admin/js/sb-admin-2.min.js"></script>
+			<script
+				src="<%=request.getContextPath()%>/Views/Admin/js/sb-admin-2.min.js"></script>
 
 			<!-- Page level plugins -->
-			<script src="<%= request.getContextPath()%>/Views/Admin/vendor/chart.js/Chart.min.js"></script>
-			<script src="<%= request.getContextPath()%>/Views/Admin/vendor/datatables/jquery.dataTables.min.js"></script>
-			<script src="<%= request.getContextPath()%>/Views/Admin/vendor/datatables/dataTables.bootstrap4.min.js"></script>
+			<script
+				src="<%=request.getContextPath()%>/Views/Admin/vendor/chart.js/Chart.min.js"></script>
+			<script
+				src="<%=request.getContextPath()%>/Views/Admin/vendor/datatables/jquery.dataTables.min.js"></script>
+			<script
+				src="<%=request.getContextPath()%>/Views/Admin/vendor/datatables/dataTables.bootstrap4.min.js"></script>
 
 			<!-- Page level custom scripts -->
-			<script src="<%= request.getContextPath()%>/Views/Admin/js/demo/chart-area-demo.js"></script>
-			<script src="<%= request.getContextPath()%>/Views/Admin/js/demo/datatables-demo.js"></script>
-			<script src="<%= request.getContextPath()%>/Views/Admin/js/demo/chart-pie-demo.js"></script>
-
+			<script
+				src="<%=request.getContextPath()%>/Views/Admin/js/demo/chart-area-demo.js"></script>
+			<script
+				src="<%=request.getContextPath()%>/Views/Admin/js/demo/datatables-demo.js"></script>
+			<script
+				src="<%=request.getContextPath()%>/Views/Admin/js/demo/chart-pie-demo.js"></script>
 </body>
 </html>

@@ -1,12 +1,11 @@
 <%@page import="com.model.Article"%>
 <%@page import="java.sql.ResultSet"%>
-<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-	pageEncoding="ISO-8859-1"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+	pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <!DOCTYPE html>
 <html>
 <head>
-<meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport"
 	content="width=device-width, initial-scale=1, shrink-to-fit=no">
@@ -34,9 +33,9 @@
 	<!--  Check authentic --!>
 	<!-- Servlet return true if complete login authentication
 	You can't access this page if you use link-url and not login -->
-	<c:if test="${check != 'true'}">
+<%-- 	<c:if test="${check != 'true'}">
 		<c:redirect url="/admin" />
-	</c:if>
+	</c:if> --%>
 	<!--  Check authentic --!>
 	
 	<!---- nhan thong bao phan hoi ---->
@@ -239,7 +238,7 @@
 								Leave?</h5>
 							<button class="close" type="button" data-dismiss="modal"
 								aria-label="Close">
-								<span aria-hidden="true">�</span>
+								<span aria-hidden="true">ï¿½</span>
 							</button>
 						</div>
 						<div class="modal-body">Select "Logout" below if you are

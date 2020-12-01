@@ -1,10 +1,10 @@
-<meta http-equiv="Content-Type" content="text/html;charset=utf-8">
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+	pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <!DOCTYPE html>
 <html>
 <head>
-<meta charset="utf-8">
-<meta http-equiv="Content-Type" content="text/html;charset=utf-8">
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 </head>
 <body>
 	<ul
@@ -19,7 +19,7 @@
 				<i class="fas fa-laugh-wink"></i>
 			</div>
 			<div class="sidebar-brand-text mx-3">
-				dsadasd<sup>2</sup>
+				Quản Lý
 			</div>
 		</a>
 
@@ -41,14 +41,14 @@
 		<li class="nav-item"><a class="nav-link collapsed" href="#"
 			data-toggle="collapse" data-target="#collapseTwo"
 			aria-expanded="true" aria-controls="collapseTwo"> <i
-				class="fas fa-fw fa-cog"></i> <span>Quan ly</span>
+				class="fas fa-fw fa-cog"></i> <span>Quản lý</span>
 		</a>
 			<div id="collapseTwo" class="collapse" aria-labelledby="headingTwo"
 				data-parent="#accordionSidebar">
 				<div class="bg-white py-2 collapse-inner rounded">
 					<h6 class="collapse-header">Custom Components:</h6>
-					<a class="collapse-item" href="<%= request.getContextPath()%>/fill-All-Account">Nhan vien</a> <a
-						class="collapse-item" href="<%= request.getContextPath()%>/fill-All-Product">Hang hoa</a>		
+					<a class="collapse-item" href="<%= request.getContextPath()%>/fill-All-Account">Nhân viên</a> <a
+						class="collapse-item" href="<%= request.getContextPath()%>/fill-All-Product">Hàng hóa</a>		
 				</div>
 			</div></li>
 
@@ -80,12 +80,12 @@
 
 		<!-- Nav Item - Charts -->
 		<li class="nav-item"><a class="nav-link" href="charts.html">
-				<i class="fas fa-fw fa-chart-area"></i> <span>chuc nang a</span>
+				<i class="fas fa-fw fa-chart-area"></i> <span>Chức năng A</span>
 		</a></li>
 
 		<!-- Nav Item - Tables -->
 		<li class="nav-item"><a class="nav-link" href="tables.html">
-				<i class="fas fa-fw fa-table"></i> <span>chuc nang b</span>
+				<i class="fas fa-fw fa-table"></i> <span>Chức năng B</span>
 		</a></li>
 
 		<!-- Divider -->
