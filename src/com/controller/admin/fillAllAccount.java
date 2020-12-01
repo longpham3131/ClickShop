@@ -56,7 +56,7 @@ public class fillAllAccount extends HttpServlet {
          List<Article> list = dao.paging(index);
 
  
-        request.setAttribute("listP", list);
+        request.setAttribute("listAccount", list);
         request.setAttribute("from", request.getAttribute("from"));
  		request.setAttribute("thongbao", request.getAttribute("thongbao"));
         RequestDispatcher rq= request.getRequestDispatcher("Views/Admin/container/account.jsp");
