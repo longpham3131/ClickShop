@@ -34,9 +34,9 @@
 	<!--  Check authentic --!>
 	<!-- Servlet return true if complete login authentication
 	You can't access this page if you use link-url and not login -->
-	<c:if test="${check != 'true'}">
+<%-- 	<c:if test="${check != 'true'}">
 		<c:redirect url="/admin" />
-	</c:if>
+	</c:if> --%>
 	<!--  Check authentic --!>
 	
 	<!---- nhan thong bao phan hoi ---->
