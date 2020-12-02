@@ -22,7 +22,7 @@ public class goAdmin extends HttpServlet {
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
-		RequestDispatcher rq= request.getRequestDispatcher("Views/Admin/login.jsp");
+		RequestDispatcher rq= request.getRequestDispatcher("Views/Admin/loginMain.jsp");
 		rq.forward(request, response);
 	}
 

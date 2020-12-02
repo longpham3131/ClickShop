@@ -8,6 +8,7 @@
         </element>
       </element>
       <element id="javaee-facet-resources" facet="ClickShop/web/Web" />
+      <element id="javaee-facet-resources" facet="ClickShop/web/Web2" />
     </root>
   </artifact>
 </component>

@@ -38,7 +38,7 @@ public class login extends HttpServlet {
 		
 		String id = request.getParameter("id");
 		String password = request.getParameter("password");
-		String url = "Views/Admin/login.jsp";
+		String url = "Views/Admin/loginMain.jsp";
 		HttpSession session1 = request.getSession();
 		session1.invalidate();  // khi vao login thi xoa het trc do
 		request.setAttribute("email", id);

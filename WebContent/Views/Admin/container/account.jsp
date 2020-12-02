@@ -115,13 +115,115 @@
 				<form action="${pageContext.request.contextPath}/fill-All-Account"
 					method="post">
 					<input type="submit" value="Refresh data">
-
 				</form>
+
 				<!--  TABLEE ----->
 				<div class="card shadow mb-4">
 					<div class="card-header py-3">
 						<h6 class="m-0 font-weight-bold text-primary">DataTables
 							Example</h6>
+					</div>
+					<!-- Button to Open the Modal -->
+					<button type="button" class="btn btn-success" style="width: 15%; margin-left: auto" data-toggle="modal" data-target="#addUser">
+						<i class="fa fa-plus mr-2"></i> Add user
+					</button>
+					<!-- The Modal -->
+					<div class="modal" id="addUser">
+						<div class="modal-dialog">
+							<div class="modal-content">
+
+								<!-- Modal Header -->
+								<div class="modal-header">
+									<h4 class="modal-title">Add user</h4>
+									<button type="button" class="close" data-dismiss="modal">&times;</button>
+								</div>
+
+								<!-- Modal body -->
+								<div class="modal-body">
+									<form action="${pageContext.request.contextPath}/insert-account" id="formAdd"
+										  method="post">
+										<div class="form-group">
+											<label for="addEmail">Email :</label> <input
+												type="email" id="addEmail" class="form-control"
+												>
+										</div>
+										<div class="form-group">
+											<label for="addFname">First name :</label> <input
+												type="text" id="addFname" class="form-control"
+												>
+										</div>
+										<div class="form-group">
+											<label for="addLname">Last name :</label> <input
+												type="text" id="addLname" class="form-control"
+												>
+										</div>
+										<div class="form-group">
+											<label for="addPhone">Phone :</label> <input
+												type="tel" id="addPhone" class="form-control"
+												>
+										</div>
+										<div class="form-group">
+											<label for="addAddress">Address :</label> <input
+												type="text" id="addAddress" class="form-control"
+												>
+										</div>
+										<div class="form-group">
+											<label for="addGender">Gender :</label>
+											<select name="gender" id="addGender" class="form-control">
+												<%
+													String[] sex= {"M", "F"};
+													for (int s = 0; s < 2; s++) {
+												%>
+												<option value="<%=sex[s]%>">
+													<%
+														if (s == 0) {
+													%>Male<%
+													}
+												%>
+													<%
+														if (s == 1) {
+													%>Female<%
+													}
+												%>
+												</option>
+												<%
+													}
+												%>
+
+											</select>
+										</div>
+										<div class="form-group">
+											<label for="addDOfB">Day of birth :</label> <input
+												type="datetime" class="form-control" id="addDOfB"
+												>
+										</div>
+										<div class="form-group">
+											<label for="addRole">Day of birth :</label>
+											<select name="role" id="addRole" class="form-control">
+												<%
+													String[] Role= {"USER", "SALEPERSON", "ADMINISTRATOR", "SHIPPER"};
+													for (int role = 0; role < 4; role++) {
+												%>
+												<option value="<%=Role[role]%>">
+													<%=Role[role]%>
+												</option>
+												<%
+													}
+												%>
+											</select>
+										</div>
+
+									</form>
+								</div>
+
+								<!-- Modal footer -->
+								<div class="modal-footer">
+									<button type="submit" form="formAdd" class="btn btn-success" >Add</button>
+									<button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+								</div>
+
+							</div>
+						</div>
 					</div>
 					<div class="card-body">
 						<div class="table-responsive">
@@ -155,8 +257,8 @@
 													<td>${listAcc.isAvailable}</td>
 													<td>
 														<!-- POPUP Detail  -->
-														<button type="button" class="btn btn-primary"
-															data-toggle="modal" data-target="#myModal${listAcc.accountId}">Detail
+														<button type="button" class="btn btn-info" title="Detail"
+															data-toggle="modal" data-target="#myModal${listAcc.accountId}"><i class="fa fa-address-book"></i>
 														</button>
 														<div class="modal" id="myModal${listAcc.accountId}">
 															<div class="modal-dialog">
@@ -171,21 +273,70 @@
 																	<!-- Modal body -->
 																	<div class="modal-body">
 
-																		<h5>Account ID : ${listAcc.accountId}</h5>
-																		<h5>Email : ${listAcc.email}</h5>
-																		<h5>First Name :${listAcc.firstName}</h5>
-																		<h5>Last Name : ${listAcc.lastName}</h5>
-																		<h5>Phone : ${listAcc.phone}</h5>
-																		<h5>Address : ${listAcc.address}</h5>
-																		<h5>Gender : ${listAcc.gender}</h5>
-																		<h5>Day Of Birth : ${listAcc.dayofBirth}</h5>
-																		<h5>Created Date : ${listAcc.createdDay}</h5>
-																		<h5>Status : ${listAcc.isAvailable}</h5>
+
+
+																		<div class="form-group row">
+																			<label for="staticID" class="col-sm-4 col-form-label">Account ID :</label>
+																			<div class="col-sm-8">
+																				<input type="text" readonly class="form-control-plaintext" id="staticID" value="${listAcc.accountId}">
+																			</div>
+																		</div>
+																		<div class="form-group row">
+																			<label for="staticEmail" class="col-sm-4 col-form-label">Email :</label>
+																			<div class="col-sm-8">
+																				<input type="text" readonly class="form-control-plaintext" id="staticEmail" value="${listAcc.email}">
+																			</div>
+																		</div>
+																		<div class="form-group row">
+																			<label for="staticName" class="col-sm-4 col-form-label">Name :</label>
+																			<div class="col-sm-8">
+																				<input type="text" readonly class="form-control-plaintext" id="staticName" value="${listAcc.firstName} ${listAcc.lastName}">
+																			</div>
+																		</div>
+																		<div class="form-group row">
+																			<label for="staticPhone" class="col-sm-4 col-form-label">Phone :</label>
+																			<div class="col-sm-8">
+																				<input type="text" readonly class="form-control-plaintext" id="staticPhone" value="${listAcc.phone}">
+																			</div>
+																		</div>
+																		<div class="form-group row">
+																			<label for="staticAddress" class="col-sm-4 col-form-label">Address :</label>
+																			<div class="col-sm-8">
+																				<input type="text" readonly class="form-control-plaintext" id="staticAddress" value="${listAcc.address}">
+																			</div>
+																		</div>
+																		<div class="form-group row">
+																			<label for="staticGender" class="col-sm-4 col-form-label">Gender :</label>
+																			<div class="col-sm-8">
+																				<input type="text" readonly class="form-control-plaintext" id="staticGender" value="${listAcc.gender}">
+																			</div>
+																		</div>
+																		<div class="form-group row">
+																			<label for="staticDOfB" class="col-sm-4 col-form-label">Date of birth :</label>
+																			<div class="col-sm-8">
+																				<input type="text" readonly class="form-control-plaintext" id="staticDOfB" value="${listAcc.dayofBirth}">
+																			</div>
+																		</div>
+																		<div class="form-group row">
+																			<label for="staticCreated" class="col-sm-4 col-form-label">Created date :</label>
+																			<div class="col-sm-8">
+																				<input type="text" readonly class="form-control-plaintext" id="staticCreated" value="${listAcc.createdDay}">
+																			</div>
+																		</div>
+																		<div class="form-group row">
+																			<label for="staticStatus" class="col-sm-4 col-form-label">Status :</label>
+																			<div class="col-sm-8">
+																				<input type="text" readonly class="form-control-plaintext" id="staticStatus" value="${listAcc.isAvailable}">
+																			</div>
+																		</div>
+
+
+
 																	</div>
 																	<!-- Modal footer -->
 																	<div class="modal-footer">
 																		<button type="button" class="btn btn-primary"
-																			data-toggle="modal" data-target="#editAccount">Edit
+																				data-toggle="modal" data-target="#editAccount${listAcc.accountId}">Edit
 																		</button>
 																		<button type="button" class="btn btn-danger"
 																			data-dismiss="modal">Close</button>
@@ -193,8 +344,8 @@
 																</div>
 															</div>
 														</div> <!-- POPUP Edit -->
-														<button type="button" class="btn btn-primary"
-															data-toggle="modal" data-target="#editAccount${listAcc.accountId}">Edit
+														<button type="button" class="btn btn-primary" title="Edit"
+															data-toggle="modal" data-target="#editAccount${listAcc.accountId}"><i class="fa fa-edit"></i>
 														</button> <!-- The Modal -->
 														<div class="modal" id="editAccount${listAcc.accountId}">
 															<div class="modal-dialog">
@@ -209,55 +360,66 @@
 
 																	<!-- Modal body -->
 																	<div class="modal-body">
-																		<div class="form-group">
-																			<labelfor"inpEmail">Email :</label> <input
-																				type="email" id="inpEmail" class="form-control"
-																				value="${listAcc.email}">
-																		</div>
-																		<div class="form-group">
-																			<labelfor"inpFname">First name :</label> <input
-																				type="text" id="inpFName" class="form-control"
-																				value="${listAcc.firstName}">
-																		</div>
-																		<div class="form-group">
-																			<labelfor"inpLName">Last name :</label> <input
-																				type="text" id="inpLName" class="form-control"
-																				value=" ${listAcc.lastName}">
-																		</div>
-																		<div class="form-group">
-																			<labelfor"inpPhone">Phone :</label> <input
-																				type="tel" id="inpPhone" class="form-control"
-																				value="${listAcc.phone}">
-																		</div>
-																		<div class="form-group">
-																			<labelfor"inpAddress">Address :</label> <input
-																				type="text" id="inpPhone" class="form-control"
-																				value="${listAcc.address}">
-																		</div>
-																		<div class="form-group">
-																			<labelfor"inpGender">Gender :</label> <input
-																				id="inpGender" class="form-control"
-																				value="${listAcc.gender}">
-																		</div>
-																		<div class="form-group">
-																			<labelfor"inpDOfB">Day of birth :</label> <input
-																				type="datetime" class="form-control" id="inpDOfB"
-																				value="${listAcc.dayofBirth}">
-																		</div>
-																		<%-- <div class="form-group">
-																			<label for"inpEmail">Email :</label>
-																			<input id="inpRole" value="${listAcc.email}">
-																		</div> --%>
+																		<form action="${pageContext.request.contextPath}/update-account"
+																			  method="post" id="formEdit">
 
-																		<%-- <h5>Email : ${listAcc.email}</h5>
-																		<h5>First Name :${listAcc.firstName}</h5>
-																		<h5>Last Name : ${listAcc.lastName}</h5>
-																		<h5>Phone : ${listAcc.phone}</h5>
-																		<h5>Address : ${listAcc.address}</h5>
-																		<h5>Gender : ${listAcc.gender}</h5>
-																		<h5>Day Of Birth : ${listAcc.dayofBirth}</h5>
-																		<h5>Created Date : ${listAcc.createdDay}</h5>
-																		<h5>Status : ${listAcc.isAvailable}</h5> --%>
+																			<div class="form-group">
+																				<label for="inpEmail">Email :</label> <input
+																					type="email" id="inpEmail" class="form-control"
+																					value="${listAcc.email}">
+																			</div>
+																			<div class="form-group">
+																				<label for="inpFName">First name :</label> <input
+																					type="text" id="inpFName" class="form-control"
+																					value="${listAcc.firstName}">
+																			</div>
+																			<div class="form-group">
+																				<label for="inpLName">Last name :</label> <input
+																					type="text" id="inpLName" class="form-control"
+																					value=" ${listAcc.lastName}">
+																			</div>
+																			<div class="form-group">
+																				<label for="inpPhone">Phone :</label> <input
+																					type="tel" id="inpPhone" class="form-control"
+																					value="${listAcc.phone}">
+																			</div>
+																			<div class="form-group">
+																				<label for="inpAddress">Address :</label> <input
+																					type="text" id="inpAddress" class="form-control"
+																					value="${listAcc.address}">
+																			</div>
+																			<div class="form-group">
+																				<label for="editGender">Gender :</label> <select id="editGender" class="form-control" name="gender">
+																				<%
+																					String[] genderUser = {"M", "F"};
+																					for (int s = 0; s < 2; s++) {
+																				%>
+																				<option value="<%=genderUser[s]%>">
+																					<%
+																						if (s == 0) {
+																					%>Male<%
+																					}
+																				%>
+																					<%
+																						if (s == 1) {
+																					%>Female<%
+																					}
+																				%>
+																				</option>
+																				<%
+																					}
+																				%>
+
+																			</select>
+																			</div>
+																			<div class="form-group">
+																				<label for="inpDOfB">Day of birth :</label> <input
+																					type="datetime" class="form-control" id="inpDOfB"
+																					value="${listAcc.dayofBirth}">
+																			</div>
+
+																		</form>
+
 																	</div>
 
 																	<!-- Modal footer -->
@@ -271,9 +433,8 @@
 																</div>
 															</div>
 														</div>
-														<button type="button" class="btn btn-primary">Reset
-															Password</button>
-														<button type="button" class="btn btn-primary">Block
+														<button type="button" title="Reset password" class="btn btn-warning"><i class="fa fa-redo-alt"></i></button>
+														<button type="button" title="Block account" class="btn btn-dark"><i class="fa fa-lock"></i>
 														</button>
 													</td>
 												</tr>
@@ -301,41 +462,10 @@
 
 				<!-- ---- END Of TABLE -- -->
 
-				<!-------------- Them xoa sua !!! Can Design lai !! ------------ -->
-
-				<ul class="nav nav-tabs" id="myTab" role="tablist">
-					<li class="nav-item"><a class="nav-link active" id="home-tab"
-						data-toggle="tab" href="#insert" role="tab" aria-controls="home"
-						aria-selected="true">Insert</a></li>
-
-					<li class="nav-item"><a class="nav-link" id="profile-tab"
-						data-toggle="tab" href="#update" role="tab"
-						aria-controls="profile" aria-selected="false">Update</a></li>
-
-					<li class="nav-item"><a class="nav-link" id="contact-tab"
-						data-toggle="tab" href="#delete" role="tab"
-						aria-controls="contact" aria-selected="false">Delete</a></li>
-				</ul>
-
-				<div class="tab-content" id="myTabContent">
-					<div class="tab-pane fade show active" id="insert" role="tabpanel"
-						aria-labelledby="home-tab">
-						<c:import url="account/insert.jsp"></c:import>
-					</div>
-					<div class="tab-pane fade" id="update" role="tabpanel"
-						aria-labelledby="profile-tab">
-						<c:import url="account/update.jsp"></c:import>
-					</div>
-					<div class="tab-pane fade" id="delete" role="tabpanel"
-						aria-labelledby="contact-tab">
-						<c:import url="account/delete.jsp"></c:import>
-					</div>
-
-					<!--------------END Them xoa sua  ------------ -->
 
 
 					<!-- Footer -->
-					<c:import url="../commom/footer.html" />
+				<c:import url="../commom/footer.html" />
 					<!-- End of Footer -->
 				</div>
 				<!-- End of Content Wrapper -->
