@@ -6,11 +6,10 @@ import java.sql.ResultSet;
 import java.util.ArrayList;
 import java.util.List;
 
-import com.model.Account;
-
 import DB.MyDB;
 import com.model.Article;
 import com.model.Article1;
+import com.model.OrderList;
 
 public class queryDAO {
 
@@ -182,7 +181,7 @@ public class queryDAO {
 	
 	// ------------------ END ACCOUNT ---------------//
 	
-	// ------------------ END PRODUCT ---------------//
+	// ------------------ START PRODUCT ---------------//
 	
 	public List<Article1> sanpham(int index) {
 		String query = "SELECT * FROM  Product";
@@ -316,6 +315,27 @@ public class queryDAO {
 		return false;
 	}
 	// ------------------ END PRODUCT ---------------//
+
+	// ------------------ START ORDER ---------------//
+	public List<OrderList> donhang(int index) {
+		String query = "SELECT P.PurchaseOrderId, P.CreatedDate , A.Email, P.SubTotal, P.Address, P.Phone FROM PurchaseOrder P, Account A WHERE A.AccountId = P.AccountId";
+		List<OrderList> listDon = new ArrayList<OrderList>();
+		try {
+
+			conn = new MyDB().getConnection();
+			ps = conn.prepareStatement(query);
+			// ps.setInt(1, (index * 20 - 20));
+			rs = ps.executeQuery();
+			while (rs.next()) {
+				listDon.add(new OrderList(rs.getString(1), rs.getString(2), rs.getString(3), rs.getString(4),
+						rs.getString(5), rs.getString(6)));
+			}
+			return listDon;
+		} catch (Exception e) {
+		}
+		return null;
+	}
+
 	 // ----------------- DASH BOARD ---------------- //
 	 public int countEmployee() {
 		 String query = "Select * From CountNV";
@@ -408,7 +428,7 @@ public class queryDAO {
 				return pie;
 			}
 			catch (Exception e) {
-				 System.out.println  ("   mâmmam    t  ");
+				 System.out.println  ("   mï¿½mmam    t  ");
 				System.out.println(e);			
 			}
 			return null;
