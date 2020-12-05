@@ -48,6 +48,7 @@ public class login extends HttpServlet {
 				HttpSession session = request.getSession();
 				session.setAttribute("check", "true");
 				session.setAttribute("email", id);
+				System.out.println("~~~ dang nhap thanh cog ~~~~  ");
 				url = "Views/Admin/container/home.jsp";
 
 			} else
@@ -65,7 +66,7 @@ public class login extends HttpServlet {
 	public boolean isAdmin(String email) {
 		System.out.println("~~~ 2.1 ~~~~  ");
 		LoginDAO loginDAO = new LoginDAO();
-		System.out.println("~~~ 2.2 ~~~~  ");
+
 		if(loginDAO.checkRole(email, "administrator"))
 			return true;
 		System.out.print("Not administrator");

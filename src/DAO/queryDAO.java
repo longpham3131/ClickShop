@@ -10,6 +10,10 @@ import DB.MyDB;
 import com.model.Article;
 import com.model.Article1;
 import com.model.OrderList;
+import com.model.OrtherNoShipper;
+import com.model.PickingUp;
+import com.model.Shipper;
+import com.model.Shipping;
 
 public class queryDAO {
 
@@ -338,7 +342,8 @@ public class queryDAO {
 
 	 // ----------------- DASH BOARD ---------------- //
 	 public int countEmployee() {
-		 String query = "Select * From CountNV";
+		// String query = "Select * From CountNV()";
+		 String query = "select count(*) as SoluongNV from AccountRole where Role= 'Shipper' OR Role ='Saler'";
 			try {
 				conn = new MyDB().getConnection();
 				ps = conn.prepareStatement(query);
@@ -434,4 +439,156 @@ public class queryDAO {
 			return null;
 	 }
 	// -----------------END DASH BOARD ---------------- //
+	// ----------- Ship in Admin ---------------------//
+	public int countNeedShipper() {
+		String query = "select Count(PurchaseOrderId) from PurchaseOrder Where Status='init'";
+		try {
+			conn = new MyDB().getConnection();
+			ps = conn.prepareStatement(query);
+			rs = ps.executeQuery();
+			while(rs.next()){
+				int total = rs.getInt(1);
+				return total;
+			}
+		}
+		catch (Exception e) {
+			System.out.println(e);
+		}
+		return 0;
+	}
+	public int countInShipping() {
+		String query = "select Count(PurchaseOrderId) from Shipper Where Status='Shipping'";
+		try {
+			conn = new MyDB().getConnection();
+			ps = conn.prepareStatement(query);
+			rs = ps.executeQuery();
+			while(rs.next()){
+				int total = rs.getInt(1);
+				return total;
+			}
+		}
+		catch (Exception e) {
+			System.out.println(e);
+		}
+		return 0;
+	}
+	public int countPickingUP() {
+		String query = "select count(*) from Shipper WHERE (Status='Picking')";
+		try {
+			conn = new MyDB().getConnection();
+			ps = conn.prepareStatement(query);
+			rs = ps.executeQuery();
+			while(rs.next()){
+				int total = rs.getInt(1);
+				return total;
+			}
+		}
+		catch (Exception e) {
+			System.out.println(e);
+		}
+		return 0;
+	}
+	public int countShipper() {
+		String query = "select count(*) from AccountRole WHERE (Role='shipper')";
+		try {
+			conn = new MyDB().getConnection();
+			ps = conn.prepareStatement(query);
+			rs = ps.executeQuery();
+			while(rs.next()){
+				int total = rs.getInt(1);
+				return total;
+			}
+		}
+		catch (Exception e) {
+			System.out.println(e);
+		}
+		return 0;
+	}
+
+	public List<Shipper> shipperList() {
+		// return ---- accountId,  email,  firstName,  phone,   ortherCarring
+		String query = "SELECT A.AccountId, A.Email, A.FirstName, A.Phone, Count(*) as Carrying\r\n"
+				+ "	FROM Shipper S, Account A, AccountRole AR\r\n"
+				+ "	WHERE A.Email=AR.Email AND AR.Role='shipper' AND A.AccountId = S.ShipperId AND S.Status='shipping'\r\n"
+				+ "	GROUP BY A.AccountId, A.Email, A.FirstName, A.Phone";
+		List<Shipper> list = new ArrayList<Shipper>();
+		try {
+
+			conn = new MyDB().getConnection();
+			ps = conn.prepareStatement(query);
+			rs = ps.executeQuery();
+			while (rs.next()) {
+				list.add(new Shipper(rs.getString(1), rs.getString(2), rs.getString(3), rs.getString(4),
+						rs.getString(5)));
+			}
+			return list;
+		} catch (Exception e) {
+		}
+		return null;
+	}
+
+	public List<OrtherNoShipper> initOrderList() {
+		// return ---- accountId,  email,  firstName,  phone,   ortherCarring
+		String query = "SELECT P.PurchaseOrderId, A.Email, P.SubTotal, P.Address, P.Phone, P.Status\r\n"
+				+ "	FROM Account A, PurchaseOrder P\r\n"
+				+ "	WHERE A.AccountId= P.AccountId AND P.Status ='init'";
+		List<OrtherNoShipper> list = new ArrayList<OrtherNoShipper>();
+		try {
+
+			conn = new MyDB().getConnection();
+			ps = conn.prepareStatement(query);
+			rs = ps.executeQuery();
+			while (rs.next()) {
+				list.add(new OrtherNoShipper(rs.getString(1), rs.getString(2), rs.getString(3), rs.getString(4),
+						rs.getString(5), rs.getString(6)));
+			}
+			return list;
+		} catch (Exception e) {
+		}
+		return null;
+	}
+
+	public List<Shipping> shippingList() {
+		// return ---- accountId,  email,  firstName,  phone,   ortherCarring
+		String query = "	SELECT S.PurchaseOrderId, S.ShipperId, A.Email, P.SubTotal, P.Address, P.Phone, S.Status\r\n"
+				+ "	FROM Account A, PurchaseOrder P, Shipper S\r\n"
+				+ "	WHERE A.AccountId= P.AccountId  AND S.PurchaseOrderId = P.PurchaseOrderId AND S.Status='shipping'\r\n"
+				+ "";
+		List<Shipping> list = new ArrayList<Shipping>();
+		try {
+
+			conn = new MyDB().getConnection();
+			ps = conn.prepareStatement(query);
+			rs = ps.executeQuery();
+			while (rs.next()) {
+				list.add(new Shipping(rs.getString(1), rs.getString(2), rs.getString(3), rs.getString(4),
+						rs.getString(5), rs.getString(6), rs.getString(7)));
+			}
+			return list;
+		} catch (Exception e) {
+		}
+		return null;
+	}
+
+	public List<PickingUp> pickupList() {
+		// return ---- accountId,  email,  firstName,  phone,   ortherCarring
+		String query = "	SELECT S.PurchaseOrderId, S.ShipperId, A.Email, P.SubTotal, P.Address, P.Phone, S.Status\r\n"
+				+ "	FROM Account A, PurchaseOrder P, Shipper S\r\n"
+				+ "	WHERE A.AccountId= P.AccountId  AND S.PurchaseOrderId = P.PurchaseOrderId AND S.Status='Picking'";
+		List<PickingUp> list = new ArrayList<PickingUp>();
+		try {
+
+			conn = new MyDB().getConnection();
+			ps = conn.prepareStatement(query);
+			rs = ps.executeQuery();
+			while (rs.next()) {
+				list.add(new PickingUp(rs.getString(1), rs.getString(2), rs.getString(3), rs.getString(4),
+						rs.getString(5), rs.getString(6), rs.getString(7)));
+			}
+			return list;
+		} catch (Exception e) {
+		}
+		return null;
+	}
+	// ----------- End ship Admin -------------------//
 }

@@ -234,11 +234,11 @@
 										<span class="mr-2"> <i
 											class="fas fa-circle text-secondary"></i> Accessory
 										</span> <span class="mr-2"> <i
-											class="fas fa-circle text-primary"></i> Dress
+											class="fas fa-circle text-primary"></i> Tee
 										</span>  <span class="mr-2"> <i
-											class="fas fa-circle text-success"></i> Pants
+											class="fas fa-circle text-success"></i> Women Shoes
 										</span>  <span class="mr-2"> <i
-											class="fas fa-circle text-danger"></i> Shirt
+											class="fas fa-circle text-danger"></i> Men Shoes
 										</span>
 									</div>
 								</div>
@@ -318,7 +318,7 @@
 	var myPieChart = new Chart(ctx, {
 		type: 'doughnut',
 		data: {
-			labels: ["Shirt", "Dress", "Pants", "Accessory"],
+			labels: ["Men Shoes", "Tee ", "Women Shoes", "Accessory"],
 			datasets: [{
 				data: ['<%=pie[0]%>', '<%=pie[1]%>', '<%=pie[2]%>', '<%=pie[3]%>'],
 				backgroundColor: ['#d9534f', '#0275d8', '#5cb85c', '#686f73'],
