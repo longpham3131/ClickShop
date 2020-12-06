@@ -1,0 +1,9 @@
+# Default ignored files
+/workspace.xml
+/.ideal
+/.ideal/misc.xml
+/.ideal/modules.xml
+/.ideal/vcs.xml
+/.ideal/libraries/lib.xml
+/.ideal/libraries/lib1.xml
+/.ideal/libraries/lib2.xml
