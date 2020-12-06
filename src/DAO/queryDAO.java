@@ -338,7 +338,7 @@ public class queryDAO {
 
 	 // ----------------- DASH BOARD ---------------- //
 	 public int countEmployee() {
-		 String query = "Select * From CountNV";
+		 String query = "Select * From CountNV()";
 			try {
 				conn = new MyDB().getConnection();
 				ps = conn.prepareStatement(query);
@@ -424,11 +424,11 @@ public class queryDAO {
 				 int[] pie = new int[pies.length];
 				   for (int i = 0; i < pies.length; i++) {
 					   pie[i] = Integer.parseInt(pies[i]);
-				   }		
+				   }
 				return pie;
 			}
 			catch (Exception e) {
-				 System.out.println  ("   m�mmam    t  ");
+				 System.out.println  ("  bug  ");
 				System.out.println(e);			
 			}
 			return null;

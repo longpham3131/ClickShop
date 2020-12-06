@@ -144,27 +144,32 @@
 										  method="post">
 										<div class="form-group">
 											<label for="addEmail">Email :</label> <input
-												type="email" id="addEmail" class="form-control"
+												type="email" id="addEmail" class="form-control" name="email"
 												>
 										</div>
 										<div class="form-group">
+											<label for="addPass">Password</label> <input
+												type="password" id="addPass" class="form-control" name="pass"
+										>
+										</div>
+										<div class="form-group">
 											<label for="addFname">First name :</label> <input
-												type="text" id="addFname" class="form-control"
+												type="text" id="addFname" class="form-control" name="firstname"
 												>
 										</div>
 										<div class="form-group">
 											<label for="addLname">Last name :</label> <input
-												type="text" id="addLname" class="form-control"
+												type="text" id="addLname" class="form-control" name="lastname"
 												>
 										</div>
 										<div class="form-group">
 											<label for="addPhone">Phone :</label> <input
-												type="tel" id="addPhone" class="form-control"
+												type="tel" id="addPhone" class="form-control" name="phone"
 												>
 										</div>
 										<div class="form-group">
 											<label for="addAddress">Address :</label> <input
-												type="text" id="addAddress" class="form-control"
+												type="text" id="addAddress" class="form-control" name="address"
 												>
 										</div>
 										<div class="form-group">
@@ -213,14 +218,14 @@
 											</select>
 										</div>
 
+											<button type="submit" form="formAdd" class="btn btn-success" >Add</button>
+											<button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+
 									</form>
 								</div>
 
 								<!-- Modal footer -->
-								<div class="modal-footer">
-									<button type="submit" form="formAdd" class="btn btn-success" >Add</button>
-									<button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
-								</div>
+
 
 							</div>
 						</div>
@@ -339,7 +344,7 @@
 																				data-toggle="modal" data-target="#editAccount${listAcc.accountId}">Edit
 																		</button>
 																		<button type="button" class="btn btn-danger"
-																			data-dismiss="modal">Close</button>
+																			data-dismiss="modal">Closeeeee</button>
 																	</div>
 																</div>
 															</div>
@@ -366,27 +371,27 @@
 																			<div class="form-group">
 																				<label for="inpEmail">Email :</label> <input
 																					type="email" id="inpEmail" class="form-control"
-																					value="${listAcc.email}">
+																					value="${listAcc.email}" name="email">
 																			</div>
 																			<div class="form-group">
 																				<label for="inpFName">First name :</label> <input
 																					type="text" id="inpFName" class="form-control"
-																					value="${listAcc.firstName}">
+																					value="${listAcc.firstName}" name="firstname">
 																			</div>
 																			<div class="form-group">
 																				<label for="inpLName">Last name :</label> <input
 																					type="text" id="inpLName" class="form-control"
-																					value=" ${listAcc.lastName}">
+																					value=" ${listAcc.lastName}" name="lastname">
 																			</div>
 																			<div class="form-group">
 																				<label for="inpPhone">Phone :</label> <input
 																					type="tel" id="inpPhone" class="form-control"
-																					value="${listAcc.phone}">
+																					value="${listAcc.phone}" name="phone">
 																			</div>
 																			<div class="form-group">
 																				<label for="inpAddress">Address :</label> <input
 																					type="text" id="inpAddress" class="form-control"
-																					value="${listAcc.address}">
+																					value="${listAcc.address}" name="address">
 																			</div>
 																			<div class="form-group">
 																				<label for="editGender">Gender :</label> <select id="editGender" class="form-control" name="gender">
@@ -417,6 +422,9 @@
 																					type="datetime" class="form-control" id="inpDOfB"
 																					value="${listAcc.dayofBirth}">
 																			</div>
+																			<button type="button" form="formEdit" class="btn btn-success">Update</button>
+																			<button type="button" class="btn btn-danger"
+																					data-dismiss="modal">Close</button>
 
 																		</form>
 
@@ -424,9 +432,6 @@
 
 																	<!-- Modal footer -->
 																	<div class="modal-footer">
-																		<button type="button" class="btn btn-success">Update</button>
-																		<button type="button" class="btn btn-danger"
-																			data-dismiss="modal">Close</button>
 
 																	</div>
 
