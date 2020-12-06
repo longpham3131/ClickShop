@@ -342,12 +342,9 @@ public class queryDAO {
 
 	 // ----------------- DASH BOARD ---------------- //
 	 public int countEmployee() {
-<<<<<<< HEAD
-		 String query = "Select * From CountNV()";
-=======
+
 		// String query = "Select * From CountNV()";
 		 String query = "select count(*) as SoluongNV from AccountRole where Role= 'Shipper' OR Role ='Saler'";
->>>>>>> 4287a170f7f70447378f8bbcccb55459d0b07a6e
 			try {
 				conn = new MyDB().getConnection();
 				ps = conn.prepareStatement(query);

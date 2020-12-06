@@ -344,7 +344,7 @@
 																				data-toggle="modal" data-target="#editAccount${listAcc.accountId}">Edit
 																		</button>
 																		<button type="button" class="btn btn-danger"
-																			data-dismiss="modal">Closeeeee</button>
+																			data-dismiss="modal">Close</button>
 																	</div>
 																</div>
 															</div>
@@ -422,9 +422,6 @@
 																					type="datetime" class="form-control" id="inpDOfB"
 																					value="${listAcc.dayofBirth}">
 																			</div>
-																			<button type="button" form="formEdit" class="btn btn-success">Update</button>
-																			<button type="button" class="btn btn-danger"
-																					data-dismiss="modal">Close</button>
 
 																		</form>
 
@@ -432,7 +429,8 @@
 
 																	<!-- Modal footer -->
 																	<div class="modal-footer">
-
+																		<button type="submit" form="formEdit" class="btn btn-success">Update</button>
+																		<button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
 																	</div>
 
 																</div>
