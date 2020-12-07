@@ -50,9 +50,7 @@ public class login extends HttpServlet {
 				session.setAttribute("email", id);
 				System.out.println("~~~ dang nhap thanh cog ~~~~  ");
 				url = "Views/Admin/container/home.jsp";
-
 			} else
-			
 			System.out.print(id+password);		
 			RequestDispatcher rq= request.getRequestDispatcher(url);
 			rq.forward(request, response);

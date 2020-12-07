@@ -74,22 +74,44 @@
 	<c:if test="${from == 'delete'}">
 		<c:if test="${(thongbao == 'true') && (from=='delete')}">
 			<script type="text/javascript">
-				alert('DELETE: delete Complete');
+				alert('Block/Unblock completed');
 			</script>
 		</c:if>
 		<c:if test="${(thongbao == 'error') && (from=='delete')}">
 			<script type="text/javascript">
-				alert('DELETE: Error when delete');
+				alert('Block/Unblock: Error');
 			</script>
 		</c:if>
 		<c:if test="${(thongbao == 'input') && (from=='delete')}">
 			<script type="text/javascript">
-				alert('DELETE: input not true');
+				alert('Block/Unblock: Input = null');
 			</script>
 		</c:if>
 		<c:if test="${(thongbao == 'notFound') && (from=='delete')}">
 			<script type="text/javascript">
-				alert('DELETE: Not Found this email');
+				alert('Block/Unblock: Not Found this email');
+			</script>
+		</c:if>
+	</c:if>
+	<c:if test="${from == 'reset'}">
+		<c:if test="${(thongbao == 'true')}">
+			<script type="text/javascript">
+				alert('Reset completed');
+			</script>
+		</c:if>
+		<c:if test="${(thongbao == 'error')}">
+			<script type="text/javascript">
+				alert('Reset error');
+			</script>
+		</c:if>
+		<c:if test="${(thongbao == 'input')}">
+			<script type="text/javascript">
+				alert('Reset Input = null');
+			</script>
+		</c:if>
+		<c:if test="${(thongbao == 'notFound') && (from=='delete')}">
+			<script type="text/javascript">
+				alert('Reset: Not Found this email');
 			</script>
 		</c:if>
 	</c:if>
@@ -143,7 +165,10 @@
 									<form action="${pageContext.request.contextPath}/insert-account" id="formAdd"
 										  method="post">
 										<div class="form-group">
-											<label for="addEmail">Email :</label> <input
+
+											<label for="addEmail">Email :</label>
+											<input
+
 												type="email" id="addEmail" class="form-control" name="email"
 												>
 										</div>
@@ -174,7 +199,7 @@
 										</div>
 										<div class="form-group">
 											<label for="addGender">Gender :</label>
-											<select name="gender" id="addGender" class="form-control">
+											<select name="gender" id="addGender" class="form-control" name="gender">
 												<%
 													String[] sex= {"M", "F"};
 													for (int s = 0; s < 2; s++) {
@@ -204,7 +229,7 @@
 										</div>
 										<div class="form-group">
 											<label for="addRole">Day of birth :</label>
-											<select name="role" id="addRole" class="form-control">
+											<select name="role" id="addRole" class="form-control" name="role">
 												<%
 													String[] Role= {"USER", "SALEPERSON", "ADMINISTRATOR", "SHIPPER"};
 													for (int role = 0; role < 4; role++) {
@@ -223,7 +248,6 @@
 
 									</form>
 								</div>
-
 								<!-- Modal footer -->
 
 
@@ -370,7 +394,9 @@
 
 																			<div class="form-group">
 																				<label for="inpEmail">Email :</label> <input
-																					type="email" id="inpEmail" class="form-control"
+
+																					type="text" id="inpEmail" class="form-control"
+
 																					value="${listAcc.email}" name="email">
 																			</div>
 																			<div class="form-group">
@@ -420,36 +446,67 @@
 																			<div class="form-group">
 																				<label for="inpDOfB">Day of birth :</label> <input
 																					type="datetime" class="form-control" id="inpDOfB"
-																					value="${listAcc.dayofBirth}">
+																					value="${listAcc.dayofBirth}" name="day">
 																			</div>
-
+																			<button type="submit" class="btn btn-success">Update</button>
+																			<button type="button" class="btn btn-danger"
+																					data-dismiss="modal">Close</button>
 																		</form>
 
 																	</div>
 
 																	<!-- Modal footer -->
-																	<div class="modal-footer">
-																		<button type="submit" form="formEdit" class="btn btn-success">Update</button>
-																		<button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
-																	</div>
+
+																	<!-- dm button nam ngoai form sao action dc -->
 
 																</div>
 															</div>
 														</div>
-														<button type="button" title="Reset password" class="btn btn-warning"><i class="fa fa-redo-alt"></i></button>
-														<button type="button" title="Block account" class="btn btn-dark"><i class="fa fa-lock"></i>
-														</button>
+
+															<form action="${pageContext.request.contextPath}/reset-password"  method="post" style="display: inline">
+																<input type="hidden" value="${listAcc.email}" name="email">
+																<button type="submit" title="Reset password" class="btn btn-warning"><i class="fa fa-redo-alt"></i></button>
+															</form>
+
+
+
+														<button type="button" class="btn btn-dark" title="Block"
+																data-toggle="modal" data-target="#blockAccount${listAcc.accountId}"><i class="fa fa-lock"></i>
+														</button> <!-- The Modal -->
+
+														<div class="modal" id="blockAccount${listAcc.accountId}">
+															<div class="modal-dialog">
+																<div class="modal-content">
+																	<div class="modal-body">
+																	<form action="${pageContext.request.contextPath}/delete-account"
+																		  method="post" >
+																		<h4 class="modal-title">Are you sure?  Email:${listAcc.email} </h4>
+																		<input type="hidden" name="email" value="${listAcc.email}"/>
+																		<input type="submit" value="Block!" class="btn btn-warning"/>
+																		<button type="button" class="btn btn-danger"
+																				data-dismiss="modal">Close</button>
+																	</form>
+																	</div>
+																</div>
+															</div>
+														</div>
 													</td>
 												</tr>
 											</c:when>
 											<c:otherwise>
-												<tr style="background-color: black;">
+												<tr style="background-color: #5a6268; ">
 													<td>${listAcc.accountId}</td>
 													<td>${listAcc.email}</td>
 													<td>${listAcc.firstName}</td>
 													<td>${listAcc.lastName}</td>
 													<td>${listAcc.phone}</td>
 													<td>${listAcc.isAvailable}</td>
+													<td><form action="${pageContext.request.contextPath}/unblock-account"  method="post">
+														<input type="hidden" value="${listAcc.email}" name="email">
+														<button type="submit" title="UnBlock" class="btn btn-danger" >
+															<i class="fa fa-unlock"></i>
+														</button>
+													</form></td>
 												</tr>
 											</c:otherwise>
 										</c:choose>

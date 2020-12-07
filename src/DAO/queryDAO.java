@@ -50,19 +50,47 @@ public class queryDAO {
 		return false;
 	}
 
-	public boolean deleteAccount(String email) {
+	public boolean deleteAccount(String email) {  // isAvailable = 0
 		try { // delete Role truoc, vi no co khoa ngoai
-			String query2 = "delete from AccountRole where email='" + email + "'";
+			//String query2 = "delete from AccountRole where email='" + email + "'";
+			String query2 = "update Account set isAvailable='0'  WHERE Email='" + email + "'";
+			System.out.println(query2);
 			conn = new MyDB().getConnection();
 			System.out.println(query2);
 			ps = conn.prepareStatement(query2);
 			ps.executeUpdate();
+			return true;
+		} catch (Exception e) {
+			System.out.println(e);
+		}
+		return false;
+	}
 
-			String query = "delete from Account where email='" + email + "'";
+	public boolean unBlockAccount(String email) {  // isAvailable = 0
+		try { // delete Role truoc, vi no co khoa ngoai
+			//String query2 = "delete from AccountRole where email='" + email + "'";
+			String query2 = "update Account set isAvailable='1'  WHERE Email='" + email + "'";
+			System.out.println(query2);
 			conn = new MyDB().getConnection();
-			ps = conn.prepareStatement(query);
+			System.out.println(query2);
+			ps = conn.prepareStatement(query2);
 			ps.executeUpdate();
+			return true;
+		} catch (Exception e) {
+			System.out.println(e);
+		}
+		return false;
+	}
 
+	public boolean resetPass(String email) {  // isAvailable = 0
+		try { // delete Role truoc, vi no co khoa ngoai
+			//String query2 = "delete from AccountRole where email='" + email + "'";
+			String query2 = "update Account set Password='1'  WHERE Email='" + email + "'";
+			System.out.println(query2);
+			conn = new MyDB().getConnection();
+			System.out.println(query2);
+			ps = conn.prepareStatement(query2);
+			ps.executeUpdate();
 			return true;
 		} catch (Exception e) {
 			System.out.println(e);
@@ -99,11 +127,10 @@ public class queryDAO {
 	}
 
 	public boolean accountExists(String email) {
-		String query = "select * from Account where Email=?";
+		String query = "select * from Account where Email='"+email+"'";
 		try {
 			conn = new MyDB().getConnection();
 			ps = conn.prepareStatement(query);
-			ps.setString(1, email);
 			rs = ps.executeQuery();
 
 			if (rs.next()) {
