@@ -13,12 +13,12 @@ public class Article {
 	private String DayofBirth;
 	private String CreatedDay;
 	private String isAvailable;
-
+	private String Role;
 	public Article() {
 	}
 
 	public Article(String accountId, String email, String password, String imageLink, String firstName, String lastName,
-			String phone, String address, String gender, String dayofBirth, String createdDay, String isAvailable) {
+			String phone, String address, String gender, String dayofBirth, String createdDay, String isAvailable, String role) {
 		AccountId = accountId;
 		Email = email;
 		Password = password;
@@ -31,6 +31,7 @@ public class Article {
 		DayofBirth = dayofBirth;
 		CreatedDay = createdDay;
 		this.isAvailable = isAvailable;
+		Role = role;
 	}
 
 	public String getAccountId() {
@@ -48,6 +49,7 @@ public class Article {
 	public void setEmail(String email) {
 		Email = email;
 	}
+
 
 	public String getPassword() {
 		return Password;
@@ -127,6 +129,14 @@ public class Article {
 
 	public void setIsAvailable(String isAvailable) {
 		this.isAvailable = isAvailable;
+	}
+
+	public String getRole() {
+		return Role;
+	}
+
+	public void setRole(String role) {
+		Role = role;
 	}
 
 }
