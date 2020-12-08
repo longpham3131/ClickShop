@@ -12,6 +12,8 @@ import javax.servlet.http.HttpSession;
 
 import DAO.queryDAO;
 
+
+
 /**
  * Servlet implementation class deleteAccount
  */
@@ -33,6 +35,7 @@ public class deleteAccount extends HttpServlet {
 		String tb = "";
 		String url = "Views/Admin/container/account/account.jsp";
 		String kq = "3";
+		System.out.print("BAN Account: "+ email +"<<");
 		if (email == "")
 			tb = "input";
 		else {

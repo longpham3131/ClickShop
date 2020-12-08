@@ -50,19 +50,47 @@ public class queryDAO {
 		return false;
 	}
 
-	public boolean deleteAccount(String email) {
+	public boolean deleteAccount(String email) {  // isAvailable = 0
 		try { // delete Role truoc, vi no co khoa ngoai
-			String query2 = "delete from AccountRole where email='" + email + "'";
+			//String query2 = "delete from AccountRole where email='" + email + "'";
+			String query2 = "update Account set isAvailable='0'  WHERE Email='" + email + "'";
+			System.out.println(query2);
 			conn = new MyDB().getConnection();
 			System.out.println(query2);
 			ps = conn.prepareStatement(query2);
 			ps.executeUpdate();
+			return true;
+		} catch (Exception e) {
+			System.out.println(e);
+		}
+		return false;
+	}
 
-			String query = "delete from Account where email='" + email + "'";
+	public boolean unBlockAccount(String email) {  // isAvailable = 0
+		try { // delete Role truoc, vi no co khoa ngoai
+			//String query2 = "delete from AccountRole where email='" + email + "'";
+			String query2 = "update Account set isAvailable='1'  WHERE Email='" + email + "'";
+			System.out.println(query2);
 			conn = new MyDB().getConnection();
-			ps = conn.prepareStatement(query);
+			System.out.println(query2);
+			ps = conn.prepareStatement(query2);
 			ps.executeUpdate();
+			return true;
+		} catch (Exception e) {
+			System.out.println(e);
+		}
+		return false;
+	}
 
+	public boolean resetPass(String email) {  // isAvailable = 0
+		try { // delete Role truoc, vi no co khoa ngoai
+			//String query2 = "delete from AccountRole where email='" + email + "'";
+			String query2 = "update Account set Password='1'  WHERE Email='" + email + "'";
+			System.out.println(query2);
+			conn = new MyDB().getConnection();
+			System.out.println(query2);
+			ps = conn.prepareStatement(query2);
+			ps.executeUpdate();
 			return true;
 		} catch (Exception e) {
 			System.out.println(e);
@@ -99,11 +127,10 @@ public class queryDAO {
 	}
 
 	public boolean accountExists(String email) {
-		String query = "select * from Account where Email=?";
+		String query = "select * from Account where Email='"+email+"'";
 		try {
 			conn = new MyDB().getConnection();
 			ps = conn.prepareStatement(query);
-			ps.setString(1, email);
 			rs = ps.executeQuery();
 
 			if (rs.next()) {
@@ -164,7 +191,7 @@ public class queryDAO {
 	}
 
 	public List<Article> paging(int index) {
-		String query = "SELECT * FROM  Account";
+		String query = "SELECT Account.*, AccountRole.Role FROM  Account, AccountRole where Account.Email = AccountRole.Email";
 		List<Article> list = new ArrayList<Article>();
 		try {
 
@@ -175,7 +202,7 @@ public class queryDAO {
 			while (rs.next()) {
 				list.add(new Article(rs.getString(1), rs.getString(2), rs.getString(3), rs.getString(4),
 						rs.getString(5), rs.getString(6), rs.getString(7), rs.getString(8), rs.getString(9),
-						rs.getString(10), rs.getString(11), rs.getString(12)));
+						rs.getString(10), rs.getString(11), rs.getString(12), rs.getString(13)));
 			}
 			return list;
 		} catch (Exception e) {
@@ -342,12 +369,9 @@ public class queryDAO {
 
 	 // ----------------- DASH BOARD ---------------- //
 	 public int countEmployee() {
-<<<<<<< HEAD
-		 String query = "Select * From CountNV()";
-=======
+
 		// String query = "Select * From CountNV()";
 		 String query = "select count(*) as SoluongNV from AccountRole where Role= 'Shipper' OR Role ='Saler'";
->>>>>>> 4287a170f7f70447378f8bbcccb55459d0b07a6e
 			try {
 				conn = new MyDB().getConnection();
 				ps = conn.prepareStatement(query);

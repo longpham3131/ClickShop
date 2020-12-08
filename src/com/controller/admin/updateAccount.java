@@ -70,6 +70,7 @@ public class updateAccount extends HttpServlet {
 				System.out.print(e);
 			}
 		}
+		System.out.print("Vao2 roi62");
 		HttpSession session = request.getSession(false);
 		if(session == null)
 			response.sendRedirect("Views/Admin/login.jsp");
@@ -79,5 +80,4 @@ public class updateAccount extends HttpServlet {
 		fillAllAccount a = new fillAllAccount();
 		a.doPost(request, response);
 	}
-
 }
