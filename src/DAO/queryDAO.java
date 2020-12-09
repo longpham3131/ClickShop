@@ -366,6 +366,50 @@ public class queryDAO {
 		}
 		return null;
 	}
+	public boolean updateOrder(String purchaseorderid, String address, String phone) {
+		Connection conn1 = null, conn2 = null;
+		PreparedStatement ps1 = null, ps2 = null;
+		ResultSet rs = null;
+		try {
+			String query = "update PurchaseOrder" + " set Address='" + address + "', Phone='" + phone
+					+ "'" + " WHERE PurchaseOrderId=" + purchaseorderid + "";
+			System.out.println(query);
+			conn1 = new MyDB().getConnection();
+			ps1 = conn1.prepareStatement(query);
+			ps1.executeUpdate();
+			return true;
+		} catch (Exception e) {
+			System.out.println(e);
+		}
+		return false;
+	}
+
+	public boolean updateOrderDetail(String purchaseorderdetailid, String purchaseorder, String productid, String quantity, String unitprice,
+									 String subtotal ) {
+		Connection conn1 = null, conn2 = null;
+		PreparedStatement ps1 = null, ps2 = null;
+		ResultSet rs = null;
+		try {
+			String query = "update PurchaseOrderDetail" + " set ProductId='" + productid + "', Quantity='" + quantity
+					+ "',UnitPrice='" + unitprice + "',SubTotal='" + subtotal + "'" + " WHERE PurchaseOrder=" + purchaseorder + " AND "
+					+ " PurchaseOrderDetailId=" + purchaseorderdetailid + "";
+			System.out.println(query);
+			conn1 = new MyDB().getConnection();
+			ps1 = conn1.prepareStatement(query);
+			ps1.executeUpdate();
+
+//			String query2 = "update AccountRole set Role='" + role + "'"
+//					+ " Where Email='" + email + "'";
+//			conn2 = new MyDB().getConnection();
+//			System.out.println(query2);
+//			ps2 = conn2.prepareStatement(query2);
+//			ps2.executeUpdate();
+			return true;
+		} catch (Exception e) {
+			System.out.println(e);
+		}
+		return false;
+	}
 
 	 // ----------------- DASH BOARD ---------------- //
 	 public int countEmployee() {
