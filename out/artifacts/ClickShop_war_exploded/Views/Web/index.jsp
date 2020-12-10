@@ -7,25 +7,24 @@
     <title>Document</title>
     <!-- BS4 CSS  -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css"
-        integrity="sha384-TX8t27EcRE3e/ihU7zmQxVncDAy5uIKz4rEkgIXeMed4M0jlfIDPvg6uqKI2xXr2" crossorigin="anonymous">
+          integrity="sha384-TX8t27EcRE3e/ihU7zmQxVncDAy5uIKz4rEkgIXeMed4M0jlfIDPvg6uqKI2xXr2" crossorigin="anonymous">
     <!-- FONT AWESOME  -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.14.0/css/all.min.css"
-        integrity="sha512-1PKOgIY59xJ8Co8+NE6FZ+LOAZKjy+KY8iq0G4B3CyeY6wYHN3yt9PW0XpSriVlkMXe40PTKnXrLnZ9+fkDaog=="
-        crossorigin="anonymous" />
-    <!-- OWL  CSS  -->
-    <link rel="stylesheet" href="css/owl.carousel.min.css">
+    <link rel="stylesheet" type="text/css" href="font/font-awesome-4.7.0/css/font-awesome.min.css">
     <!-- Link Swiper's CSS -->
     <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css">
+    <!-- OWL  CSS  -->
+    <link rel="stylesheet" href="<%=request.getContextPath()%>/Views/Web/css/owl.carousel.min.css">
     <!-- MAIN CSS  -->
-    <link rel="stylesheet" href="./css/main.css">
+    <link rel="stylesheet" href="<%=request.getContextPath()%>/Views/Web/css/main.css">
+
 </head>
 
 <body>
 
     <section class="carousel">
         <div class="owl-carousel owl-theme">
-            <div class="item"><img src="./img/banner__carousel.jpg" alt=""></div>
-            <div class="item"><img src="./img/banner__carousel_2.jpg" alt=""></div>
+            <div class="item"><img src="<%=request.getContextPath()%>/Views/Web/img/banner__carousel.jpg" alt=""></div>
+            <div class="item"><img src="<%=request.getContextPath()%>/Views/Web/img/banner__carousel_2.jpg" alt=""></div>
 
         </div>
     </section>
@@ -37,8 +36,8 @@
         <div class="swiper-container">
             <div class="swiper-wrapper">
                 <div class="swiper-slide">
-                    <img src="./img/Tee02.PNG" alt="">
-                    <!-- <img src="./img/tee1__hover.jpg" alt="" class="img__hover"> -->
+                    <img src="<%=request.getContextPath()%>/Views/Web/img/Tee02.PNG" alt="">
+
                     <h4>
                         THE WOLF BASIC TEE - TAN
                     </h4>
@@ -46,8 +45,8 @@
 
                 </div>
                 <div class="swiper-slide">
-                    <img src="./img/Tee03.jpg" alt="">
-                    <img src="./img/tee2__hover.jpg" alt="" class="img__hover">
+                    <img src="<%=request.getContextPath()%>/Views/Web/img/Tee03.jpg" alt="">
+
 
                     <h4>
                         THE WOLF BASIC TEE - WHITE
@@ -55,15 +54,15 @@
                     <span>280,000₫</span>
                 </div>
                 <div class="swiper-slide">
-                    <img src="./img/Tee01.jpg" alt="">
-                    <img src="./img/tee3__hover.jpg" alt="" class="img__hover">
+                    <img src="<%=request.getContextPath()%>/Views/Web/img/Tee01.jpg" alt="">
+
 
                     <h4> THE WOLF BASIC TEE - BLACK</h4>
                     <span>280,000₫</span>
                 </div>
                 <div class="swiper-slide">
-                    <img src="./img/Tee04.jpg" alt="">
-                    <img src="./img/tee4__hover.jpg" alt="" class="img__hover">
+                    <img src="<%=request.getContextPath()%>/Views/Web/img/Tee04.jpg" alt="">
+
 
                     <h4>
                         THE WOLF SEVEN ELEMENTS TEE - Black
@@ -71,8 +70,8 @@
                     <span>350,000₫</span>
                 </div>
                 <div class="swiper-slide">
-                    <img src="./img/Tee05.PNG   " alt="">
-                    <img src="./img/tee5__hover.jpg" alt="" class="img__hover">
+                    <img src="<%=request.getContextPath()%>/Views/Web/img/Tee05.PNG   " alt="">
+
 
                     <h4>
                         THE WOLF SEVEN ELEMENTS TEE - WHITE
@@ -80,8 +79,8 @@
                     <span>350,000₫</span>
                 </div>
                 <div class="swiper-slide">
-                    <img src="./img/Oxford01.jpg" alt="">
-                    <img src="./img/derby1__hover.jpg" alt="" class="img__hover">
+                    <img src="<%=request.getContextPath()%>/Views/Web/img/Oxford01.jpg" alt="">
+
 
                     <h4>
                         THE BASIC WOLF OXFORD - BLACK
@@ -89,8 +88,8 @@
                     <span>1,500,000₫</span>
                 </div>
                 <div class="swiper-slide">
-                    <img src="./img/Chelsea02.jpg" alt="">
-                    <img src="./img/chelseaboot1__hover.jpg" alt="" class="img__hover">
+                    <img src="<%=request.getContextPath()%>/Views/Web/img/Chelsea02.jpg" alt="">
+
 
                     <h4>
                         THE BASIC WOLF CHELSEA BOOT - TAN
@@ -98,8 +97,8 @@
                     <span>1,600,000₫</span>
                 </div>
                 <div class="swiper-slide">
-                    <img src="./img/Chelsea01.jpg" alt="">
-                    <img src="./img/chelseaboot2__hover.jpg" alt="" class="img__hover">
+                    <img src="<%=request.getContextPath()%>/Views/Web/img/Chelsea01.jpg" alt="">
+
                     <h4>
                         THE BASIC WOLF CHELSEA BOOT - BLACK
                     </h4>
@@ -132,39 +131,39 @@
         <div class="swiper-container">
             <div class="swiper-wrapper">
                 <div class="swiper-slide">
-                    <img src="./img/outfit1.jpg" alt="">
+                    <img src="<%=request.getContextPath()%>/Views/Web/img/outfit1.jpg" alt="">
                     <a href="#" data-toggle="modal" data-target="#exampleModal"><span>SHOP THIS LOOK</span></a>
                 </div>
                 <div class="swiper-slide">
-                    <img src="./img/outfit2.jpg" alt="">
+                    <img src="<%=request.getContextPath()%>/Views/Web/img/outfit2.jpg" alt="">
                     <a href="#" data-toggle="modal" data-target="#exampleModal"><span>SHOP THIS LOOK</span></a>
                 </div>
                 <div class="swiper-slide">
-                    <img src="./img/outfit3.jpg" alt="">
+                    <img src="<%=request.getContextPath()%>/Views/Web/img/outfit3.jpg" alt="">
                     <a href="#" data-toggle="modal" data-target="#exampleModal"><span>SHOP THIS LOOK</span></a>
                 </div>
                 <div class="swiper-slide">
-                    <img src="./img/outfit4.jpg" alt="">
+                    <img src="<%=request.getContextPath()%>/Views/Web/img/outfit4.jpg" alt="">
                     <a href="#" data-toggle="modal" data-target="#exampleModal"><span>SHOP THIS LOOK</span></a>
                 </div>
                 <div class="swiper-slide">
-                    <img src="./img/outfit6.jpg" alt="">
+                    <img src="<%=request.getContextPath()%>/Views/Web/img/outfit6.jpg" alt="">
                     <a href="#" data-toggle="modal" data-target="#exampleModal"><span>SHOP THIS LOOK</span></a>
                 </div>
                 <div class="swiper-slide">
-                    <img src="./img/outfit7.jpg" alt="">
+                    <img src="<%=request.getContextPath()%>/Views/Web/img/outfit7.jpg" alt="">
                     <a href="#" data-toggle="modal" data-target="#exampleModal"><span>SHOP THIS LOOK</span></a>
                 </div>
                 <div class="swiper-slide">
-                    <img src="./img/outfit8.jpg" alt="">
+                    <img src="<%=request.getContextPath()%>/Views/Web/img/outfit8.jpg" alt="">
                     <a href="#" data-toggle="modal" data-target="#exampleModal"><span>SHOP THIS LOOK</span></a>
                 </div>
                 <div class="swiper-slide">
-                    <img src="./img/outfit9.jpg" alt="">
+                    <img src="<%=request.getContextPath()%>/Views/Web/img/outfit9.jpg" alt="">
                     <a href="#" data-toggle="modal" data-target="#exampleModal"><span>SHOP THIS LOOK</span></a>
                 </div>
                 <div class="swiper-slide">
-                    <img src="./img/outfit10.jpg" alt="">
+                    <img src="<%=request.getContextPath()%>/Views/Web/img/outfit10.jpg" alt="">
                     <a href="#" data-toggle="modal" data-target="#exampleModal"><span>SHOP THIS LOOK</span></a>
                 </div>
 
@@ -176,21 +175,21 @@
         </div>
 
     </section>
-   
+
 
 
 
 
     <!-- Thư viện hỗ trợ Jquery -->
     <script src="https://code.jquery.com/jquery-3.5.1.min.js"
-        integrity="sha256-9/aliU8dGd2tb6OSsuzixeV4y/faTqgFtohetphbbj0=" crossorigin="anonymous"></script>
+            integrity="sha256-9/aliU8dGd2tb6OSsuzixeV4y/faTqgFtohetphbbj0=" crossorigin="anonymous"></script>
 
     <!-- BS4 JS  -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.bundle.min.js"
-        integrity="sha384-ho+j7jyWK8fNQe+A12Hb8AhRq26LrZ/JpcUGGOn+Y7RsweNrtN/tE3MoK7ZeZDyx"
-        crossorigin="anonymous"></script>
+            integrity="sha384-ho+j7jyWK8fNQe+A12Hb8AhRq26LrZ/JpcUGGOn+Y7RsweNrtN/tE3MoK7ZeZDyx"
+            crossorigin="anonymous"></script>
     <!-- OWL CAROUSEL JS -->
-    <script src="./js/owl.carousel.min.js"></script>
+    <script src="<%=request.getContextPath()%>/Views/Web/js/owl.carousel.min.js"></script>
     <script>
         $('.owl-carousel').owlCarousel({
             loop: true,
@@ -238,8 +237,8 @@
     <!-- SCROLL TO TOP  -->
 
     <a href="#" class="backToTop cd-top text-replace js-cd-top"></a>
-    <script src="./js/main.js"></script>
-    <script src="./js/util.js"></script>
+    <script src="<%=request.getContextPath()%>/Views/Web/js/main.js"></script>
+    <script src="<%=request.getContextPath()%>/Views/Web/js/util.js"></script>
 
 </body>
 
