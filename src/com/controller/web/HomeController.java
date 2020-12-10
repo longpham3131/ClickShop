@@ -18,7 +18,7 @@ public class HomeController extends HttpServlet {
     }
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		RequestDispatcher rq= request.getRequestDispatcher("Views/Web/login.jsp");
+		RequestDispatcher rq= request.getRequestDispatcher("Views/Web/index.html");
 		rq.forward(request, response);
 	}
 

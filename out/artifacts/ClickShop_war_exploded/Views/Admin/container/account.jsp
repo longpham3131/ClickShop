@@ -455,8 +455,9 @@ You can't access this page if you use link-url and not login -->
                                                                             type="text" id="inpEmail"
                                                                             class="form-control"
 
-                                                                            value="${listAcc.email}" name="email"
-																	disabled>
+                                                                            value="${listAcc.email}"
+                                                                            name="email" readonly
+																	>
                                                                     </div>
                                                                     <div class="form-group">
                                                                         <label for="inpFName">First name :</label>
@@ -657,8 +658,8 @@ You can't access this page if you use link-url and not login -->
                                                 <form action="${pageContext.request.contextPath}/unblock-account"
                                                       method="post">
                                                     <input type="hidden" value="${listAcc.email}" name="email">
-                                                    <button type="submit" title="UnBlock" class="btn btn-danger">
-                                                        <i class="fa fa-unlock"></i>
+                                                    <button type="submit" title="UnBlock" class="btn btn-success">
+                                                        <i class="fa fa-key "></i>
                                                     </button>
                                                 </form>
                                             </td>
