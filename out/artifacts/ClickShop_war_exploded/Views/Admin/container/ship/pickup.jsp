@@ -41,7 +41,14 @@
 								<td>${listPkg.address}</td>
 								<td>${listPkg.phone}</td>
 								<td>${listPkg.init}</td>
-								<td>Button Order Detail & Shipper Detail</td>
+								<td> <button type="button" class="btn btn-info" title="Other Detail"
+											 data-toggle="modal" data-target="#myModal${listSp.accountId}">
+									<i class="fa fa-address-book"></i>
+								</button>
+									<button type="button" class="btn btn-primary" title="Detail"
+											data-toggle="modal" data-target="#myModal${listSp.accountId}">
+										<i class="fa fa-shipping-fast"></i>
+									</button></td>
 							</tr>
 						</c:forEach>
 

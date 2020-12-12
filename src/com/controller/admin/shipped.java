@@ -2,9 +2,7 @@ package com.controller.admin;
 
 import java.io.IOException;
 
-import com.model.Article;
-import com.model.OrtherNoShipper;
-import com.model.PickingUp;
+import com.model.*;
 
 import java.sql.ResultSet;
 import java.util.ArrayList;
@@ -20,8 +18,6 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import DAO.queryDAO;
-import com.model.Shipper;
-import com.model.Shipping;
 
 /**
  * Servlet implementation class fillAllAccount
@@ -53,14 +49,23 @@ public class shipped extends HttpServlet {
          queryDAO dao = new queryDAO();
          List<Shipper> list = dao.shipperList();
          List<OrtherNoShipper> list2 = dao.initOrderList();
+         List<DetailNoShip> list2_1 = dao.OrtherDetailNoShip();
+
+
          List<Shipping> list3 = dao.shippingList();
+       // List<Shipping> list31 = dao.shippingList();
+
          List<PickingUp> list4 = dao.pickupList();
          
          System.out.print(list4.size());
          
         request.setAttribute("listShipper", list);
+
         request.setAttribute("listInitOrder", list2);
+        request.setAttribute("listNoShipDetail", list2_1);
+
         request.setAttribute("listShipping", list3);
+
         request.setAttribute("listPicking", list4);
         
         request.setAttribute("from", request.getAttribute("from"));

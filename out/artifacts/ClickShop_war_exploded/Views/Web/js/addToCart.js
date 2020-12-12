@@ -32,7 +32,7 @@ function layThongTin(){
 function themSPMoi(){
 
     var sanPhamMoi = layThongTin();
-    debugger;
+
     if(sanPhamMoi != null){
         isExist = dssp.mangSP.some(function(item){
             return sanPhamMoi.maSP === item.maSP
@@ -40,15 +40,14 @@ function themSPMoi(){
         if(isExist){
             //Nếu sản phẩm bị trùng
             //Cập nhật giỏ hàng
-            var viTri = 0;
+            var viTri = dssp.timViTri(sanPhamMoi.maSP)
             var soLuongHT = parseInt(dssp.mangSP[viTri].soLuong)
             sanPhamMoi.soLuong = soLuongHT + parseInt(sanPhamMoi.soLuong);
             dssp.capNhat(sanPhamMoi);
         }
         else{
-
+            debugger;
             dssp.themSP(sanPhamMoi);
-            console.log("thêm thành công");
         }
     }
 }

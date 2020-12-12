@@ -4,16 +4,22 @@ public class Shipper {
 	private String AccountId;
 	private String Email;
 	private String FirstName;
+	private String LastName; //
 	private String Phone;
+	private String Address; //
+	private String Gender;  //
 	private String OrtherCarring;
-	
-	public Shipper(String accountId, String email, String firstName, String phone,  String ortherCarring)
+
+	public Shipper(String accountId, String email, String firstName, String phone,  String ortherCarring, String lastName, String address, String gender)
 	{
 		AccountId = accountId;
 		Email = email;
 		FirstName = firstName;
 		OrtherCarring = ortherCarring;
 		Phone = phone;
+		LastName=lastName;
+		Address=address;
+		Gender=gender;
 	}
 	
 	public String getAccountId() {
@@ -46,6 +52,24 @@ public class Shipper {
 	public void setOrtherCarring(String ortherCarring) {
 		OrtherCarring = ortherCarring;
 	}
+	public String getLastName() {
+		return LastName;
+	}
+	public void setLastName(String lastName) {
+		LastName = lastName;
+	}
 
+	public String getAddress() {
+		return Address;
+	}
+	public void setAddress(String address) {
+		Address = address;
+	}
+	public String getGender() {
+		return Gender;
+	}
+	public void setGender(String gender) {
+		Phone = gender;
+	}
 
 }

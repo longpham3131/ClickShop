@@ -46,6 +46,7 @@ function themSPMoi(){
             dssp.capNhat(sanPhamMoi);
         }
         else{
+            debugger;
             dssp.themSP(sanPhamMoi);
         }
     }
