@@ -8,9 +8,9 @@ public class DetailNoShip {
     private String SubTotal;
 
     public DetailNoShip(String orderID, String productID,  String name,  String quanity, String subTotal)
-    {
-        OrderID = orderID;
-        ProductID = productID;
+        {
+            OrderID = orderID;
+            ProductID = productID;
         SubTotal = subTotal;
         Name = name;
         Quanity = quanity;

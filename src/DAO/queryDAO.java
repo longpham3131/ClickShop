@@ -326,13 +326,6 @@ public class queryDAO {
             conn1 = new MyDB().getConnection();
             ps1 = conn1.prepareStatement(query);
             ps1.executeUpdate();
-
-//			String query2 = "update AccountRole set Role='" + role + "'"
-//					+ " Where Email='" + email + "'";
-//			conn2 = new MyDB().getConnection();
-//			System.out.println(query2);
-//			ps2 = conn2.prepareStatement(query2);
-//			ps2.executeUpdate();
             return true;
         } catch (Exception e) {
             System.out.println(e);
@@ -502,7 +495,9 @@ public class queryDAO {
     }
 
     // -----------------END DASH BOARD ---------------- //
-    // ----------- Ship in Admin ---------------------//
+    // -------------------- Ship in Admin -------------------------//
+
+    //----- fill 4 o dau -------//
     public int countNeedShipper() {
         String query = "select Count(PurchaseOrderId) from PurchaseOrder Where Status='init'";
         try {
@@ -566,7 +561,9 @@ public class queryDAO {
         }
         return 0;
     }
+    //----- fill 4 o dau -------//
 
+    //------ Bang so 1 ---------//
     public List<Shipper> shipperList() {
         // return ---- accountId,  email,  firstName,  phone,   ortherCarring
         String query = "SELECT A.AccountId, A.Email, A.FirstName, A.Phone,  Count(*) as Carrying, A.LastName, A.Address, A.Gender\n" +
@@ -588,7 +585,8 @@ public class queryDAO {
         }
         return null;
     }
-    //  <<<<<<  no shipper     <<<<<<<<<<<<<<<<<<<<<<<<<
+
+    // ----- Bang so 2 ---------//
     public List<OrtherNoShipper> initOrderList() {
         // return ---- accountId,  email,  firstName,  phone,   ortherCarring
         String query = "SELECT P.PurchaseOrderId, A.Email, P.SubTotal, P.Address, P.Phone, P.Status\r\n"
@@ -602,7 +600,7 @@ public class queryDAO {
             rs = ps.executeQuery();
             while (rs.next()) {
                 list.add(new OrtherNoShipper(rs.getString(1), rs.getString(2), rs.getString(3), rs.getString(4),
-                        rs.getString(5), rs.getString(6) ));
+                        rs.getString(5), rs.getString(6)));
             }
             return list;
         } catch (Exception e) {
@@ -610,7 +608,47 @@ public class queryDAO {
         return null;
     }
 
-    // dang giao
+    public List<DetailNoShip> OrtherDetailNoShip() {
+        String query = "SELECT  PO.PurchaseOrderId, P.ProductId, Pro.Name, P.Quantity, P.Subtotal\n" +
+                "FROM PurchaseOrderDetail P, Product Pro, PurchaseOrder PO\n" +
+                "WHERE PRO.ProductId = P.ProductId AND PO.Status='init' AND PO.PurchaseOrderId = P.PurchaseOrderId ";
+        List<DetailNoShip> list = new ArrayList<DetailNoShip>();
+        try {
+            conn = new MyDB().getConnection();
+            ps = conn.prepareStatement(query);
+            rs = ps.executeQuery();
+            while (rs.next()) {
+                list.add(new DetailNoShip(rs.getString(1), rs.getString(2), rs.getString(3), rs.getString(4),
+                        rs.getString(5)));
+            }
+            //System.out.println("Contents of list ::" + list);
+            return list;
+        } catch (Exception e) {
+        }
+        return null;
+    }
+
+    // dang lam o day
+    public boolean convertNoShipToPickup(String shipperID, String OrtherID) {
+        //Connection conn1 = null, conn2 = null;
+        //PreparedStatement ps1 = null, ps2 = null;
+        //ResultSet rs = null;
+       // try {
+        //    String query = "update Product" + " set SubCategoryId='" + subcategory + "', Name='" + name
+        //            + "',UnitPrice='" + unitprice + "',Gender='" + gender + "',Description='" + description
+       //             + "' ,Available='" + available + "'" + " WHERE ProductId=" + productid + "";
+        //    System.out.println(query);
+        //    conn1 = new MyDB().getConnection();
+        //    ps1 = conn1.prepareStatement(query);
+        //    ps1.executeUpdate();
+        //    return true;
+       // } catch (Exception e) {
+       //     System.out.println(e);
+     //   }
+        return false;
+    }
+    // ----end Bang so 2 ---------//
+    // ---- Bang so 3 ---------//
     public List<Shipping> shippingList() {
         String query = "SELECT S.PurchaseOrderId, S.ShipperId, A.Email, P.SubTotal, P.Address, P.Phone, S.Status\r\n"
                 + "	FROM Account A, PurchaseOrder P, Shipper S\r\n"
@@ -628,30 +666,10 @@ public class queryDAO {
             return list;
         } catch (Exception e) {
         }
-		return null;
-}
-
-    // Chi tiet don hnag chua co shipper
-    public List<DetailNoShip> OrtherDetailNoShip() {
-        String query = "SELECT  PO.PurchaseOrderId, P.ProductId, Pro.Name, P.Quantity, P.Subtotal\n" +
-                "FROM PurchaseOrderDetail P, Product Pro, PurchaseOrder PO\n" +
-                "WHERE PRO.ProductId = P.ProductId AND PO.Status='init' AND PO.PurchaseOrderId = P.PurchaseOrderId ";
-        List<DetailNoShip> list = new ArrayList<DetailNoShip>();
-        try {
-            conn = new MyDB().getConnection();
-            ps = conn.prepareStatement(query);
-            rs = ps.executeQuery();
-            while (rs.next()) {
-                list.add(new DetailNoShip(rs.getString(1), rs.getString(2), rs.getString(3), rs.getString(4),
-                        rs.getString(5)));
-            }
-           //System.out.println("Contents of list ::" + list);
-            return list;
-        } catch (Exception e) {
-        }
         return null;
     }
 
+    //---- Bang so 4 -----//
     public List<PickingUp> pickupList() {
         // return ---- accountId,  email,  firstName,  phone,   ortherCarring
         String query = "	SELECT S.PurchaseOrderId, S.ShipperId, A.Email, P.SubTotal, P.Address, P.Phone, S.Status\r\n"
