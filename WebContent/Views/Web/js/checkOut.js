@@ -1,166 +1,127 @@
 var dssp = new DanhSachSanPham();
-getLocalStorage();
+
 
 var tbl = document.getElementById("tableOrder");
-var btnAdd = document.querySelectorAll(".value-plus");
-var btnSubTr = document.querySelectorAll(".value-minus");
+
 var txtQuantity = document.querySelectorAll(".quantity-Order");
 
-
-
-var arrayGiaBanDau = [];
-
-function getMyEle(ele){
+getLocalStorage();
+function getMyEle(ele) {
     return document.getElementById(ele);
 }
 
 demSoSanPham()
-layGiaBanDau();
-hienThi();
-function demSoSanPham(){
+
+function demSoSanPham() {
     document.getElementById("soLuongSanPham").innerHTML = tbl.rows.length - 1;
 }
-function layDanhSachSoLuong() {
-    var danhSachSoLuong = [];
-    var arrayQuantity = document.getElementsByClassName("quantity-Order")
-    if (danhSachSoLuong.length > 0) {
-       danhSachSoLuong.splice(0, danhSachSoLuong.length - 1);
-        
-    }
-    for (var i = 0; i < arrayQuantity.length; i++) {
-        var quantity = arrayQuantity[i].innerHTML;
-        danhSachSoLuong.push(parseInt(quantity));
-    }
-    return danhSachSoLuong;
-}
-function layGiaBanDau() {
-    var danhSachSoLuong = layDanhSachSoLuong()
-    if (arrayGiaBanDau.length > 0) {
-        arrayGiaBanDau.splice(0, arrayGiaBanDau.length);
-        console.log("Xóa rồi nè: ");
-        console.log(arrayGiaBanDau);
-    }
-    for (var i = 1; i < tbl.rows.length; i++) {
-        var tien = parseInt(tbl.rows[i].cells[4].innerHTML);
-        arrayGiaBanDau.push(tien);
-    }
-    console.log("Lấy giá ban đầu: " + arrayGiaBanDau);
-}
 
 
-
-function layDanhSachTien() {
-    var danhSachTien = [];
-    var danhSachSoLuong = layDanhSachSoLuong()
-    for (var i = 1; i < tbl.rows.length; i++) {
-        var tien = arrayGiaBanDau[i - 1] * danhSachSoLuong[i - 1];
-        console.log("tien: " + arrayGiaBanDau[i - 1] + " --so luong: " + danhSachSoLuong[i - 1] + " = " + tien + " index=  " + i)
-        danhSachTien.push(tien);
-    }
-    console.log("Danh sách tiền: " + danhSachTien);
-    return danhSachTien;
-}
 
 //Đổi qua định dạng tiền hiện lên web
 
-function doiQuaTienTe() {
-    // var arrayTienTe = [];
+function tinhTongTien1SP() {
+    var tien1SP = [];
+    dssp.mangSP.map(function(item){
+        tien1SP.push(item.soLuong * item.giaSP);
+    })
     for (var i = 1; i < tbl.rows.length; i++) {
-        // arrayTienTe[i-1] = arrayGiaBanDau[i-1] * layDanhSachSoLuong()[i-1]
-        // tbl.rows[i].cells[4].innerHTML = layDanhSachTien()[i - 1];
-        tbl.rows[i].cells[5].innerHTML = new Intl.NumberFormat('vn-VN', { style: 'currency', currency: 'VND' }).format(layDanhSachTien()[i - 1]);;
-        // 
+        tbl.rows[i].cells[3].innerHTML = new Intl.NumberFormat('vn-VN', { style: 'currency', currency: 'VND' }).format(tien1SP[i-1]);;
     }
+    return tien1SP;
 }
 
 //Tính tổng tiền
 
-function tinhTien() {
-    var danhSachTien = layDanhSachTien();
-    var tong = 0;
-    for (var i = 0; i < danhSachTien.length; i++) {
-        tong += danhSachTien[i];
+function tinhTongTienGioHang() {
+    var tien1SP = tinhTongTien1SP();
+    var tienGioHang = 0;
+    for(var i = 0; i < tien1SP.length; i++){
+        tienGioHang += tien1SP[i];
     }
-    document.getElementById("totalPrice").innerHTML = new Intl.NumberFormat('vn-VN', { style: 'currency', currency: 'VND' }).format(tong);
+    document.getElementById("totalPrice").innerHTML = new Intl.NumberFormat('vn-VN', { style: 'currency', currency: 'VND' }).format(tienGioHang);
 }
-function hienThi() {
-    layDanhSachTien();
-    doiQuaTienTe();
-    tinhTien();
-}
-
 //Mỗi lần nhấn + - thì cập nhật số lượng{}
-btnAdd.forEach(function (btn, i) {
-    btn.addEventListener("click", (event) => {
-        txtQuantity[i].innerHTML = parseInt(txtQuantity[i].innerHTML) + 1;
-        hienThi();
-    });
-});
+function tangSoLuong(maSP) {
+    var viTri = dssp.timViTri(maSP)
+    var soLuongHT = parseInt(dssp.mangSP[viTri].soLuong)
+    dssp.mangSP[viTri].soLuong = soLuongHT + 1;
+    console.log(viTri);
+    dssp.capNhat(dssp.mangSP[viTri]);
+    setLocalStorage();
+    getLocalStorage();
+}
+function giamSoLuong(maSP) {
+    var viTri = dssp.timViTri(maSP);
+    var soLuongHT = parseInt(dssp.mangSP[viTri].soLuong)
+    dssp.mangSP[viTri].soLuong = soLuongHT - 1;
+    if(dssp.mangSP[viTri].soLuong < 1){
+        deleteRow(maSP);
+        demSoSanPham();
+    }
+    else{
+        dssp.capNhat(dssp.mangSP[viTri]);
+        setLocalStorage();
+        getLocalStorage();
+    }
 
-btnSubTr.forEach(function (btn, i) {
-    btn.addEventListener("click", (event) => {
-        if (txtQuantity[i].innerHTML > 1) {
-            txtQuantity[i].innerHTML = parseInt(txtQuantity[i].innerHTML) - 1;
-            hienThi();
-        }
-    });
-});
+}
 
-function deleteRow(btn) {
-    var row = btn.parentNode.parentNode;
-    row.parentNode.removeChild(row);
-    console.log("Click Xóa ");
-    demSoSanPham()
-    layGiaBanDau();
-    console.log("Giá ban đầu sau click: ");
-    console.log(arrayGiaBanDau);
-    layDanhSachTien();
-    tinhTien();
-    
 
-} 
-function hienThiDSSP(mangSP){
+
+function deleteRow(maSP) {
+    dssp.xoaSP(maSP);
+    setLocalStorage();
+    getLocalStorage();
+}
+function hienThiDSSP(mangSP) {
     var tbody = getMyEle("tbodySP");
-    var content ="";
+    var content = "";
+    mangSP.map(function (item, index) {
 
-
-    mangSP.map(function(item,index){
-        content +=`
+        content += `
         <tr class="rem1">
-        <td class="invert">1</td>
+  
         <td class="invert-image">
             <a href="productDetail.html">
                 <img src="${item.anhSP}" alt=" " class="img-responsive">
+                <div>${item.tenSP}</div>
             </a>
         </td>
         <td class="invert">
             <div class="quantity">
                 <div class="quantity-select">
-                    <div class="entry value-minus"></div>
+         
+                    <button class ="btn btn-light" onclick="giamSoLuong('${item.maSP}')"><i class="fa fa-minus"></i></button>
                     <div class="entry value">
                         <span class="quantity-Order">${item.soLuong}</span>
                     </div>
-                    <div class="entry value-plus active"></div>
+                    <button class ="btn btn-light" onclick="tangSoLuong('${item.maSP}')"><i class="fa fa-plus"></i></button>
+            
                 </div>
             </div>
         </td>
-        <td class="invert">${item.tenSP}</td>
-
         <td class="invert d-none">${item.giaSP}</td>
         <td></td>
         <td class="invert">
-            <button class="btn__DeleteRow" type="button" onclick="deleteRow(this)"><i class="fa fa-times"></i> </button>
+            <button class="btn__DeleteRow btn btn-danger" type="button" onclick="deleteRow('${item.maSP}')"><i class="fa fa-times"></i> </button>
         </td>
     </tr>
         `;
+
     })
     tbody.innerHTML = content;
+    demSoSanPham()
+    tinhTongTienGioHang()
 }
 //lấy dữ liệu từ localStorage
 
-function getLocalStorage(){
-    if(localStorage.getItem("DSSP") != null){
+function getLocalStorage() {
+    if (localStorage.getItem("DSSP") != null) {
         dssp.mangSP = JSON.parse(localStorage.getItem("DSSP"));
         hienThiDSSP(dssp.mangSP);
     }
+}
+function setLocalStorage() {
+    localStorage.setItem("DSSP", JSON.stringify(dssp.mangSP));
 }

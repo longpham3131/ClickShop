@@ -1,3 +1,5 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+         pageEncoding="UTF-8" %>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -32,96 +34,16 @@
                 <div class="checkout-right">
                     <table class="timetable_sub" id="tableOrder">
                         <thead>
-                            <tr>
-                                <th>SL No.</th>
-                                <th>Sản phẩm</th>
-                                <th>Số lượng</th>
-                                <th>Tên sản phẩm</th>
-                                <th class="d-none">Giá</th>
-                                <th>Giá Real</th>
-                                <th>Xóa</th>
-                            </tr>
+                        <tr>
+                            <th>Sản phẩm</th>
+                            <th>Số lượng</th>
+                            <th class="d-none">Giá</th>
+                            <th>Giá</th>
+                            <th>Xóa</th>
+                        </tr>
                         </thead>
                         <tbody id="tbodySP">
-                            <!-- <tr class="rem1">
-                                <td class="invert">1</td>
-                                <td class="invert-image">
-                                    <a href="productDetail.html">
-                                        <img src="<%=request.getContextPath()%>/Views/Web/img/Chelsea02.jpg" alt=" " class="img-responsive">
-                                    </a>
-                                </td>
-                                <td class="invert">
-                                    <div class="quantity">
-                                        <div class="quantity-select">
-                                            <div class="entry value-minus"></div>
-                                            <div class="entry value">
-                                                <span class="quantity-Order">1</span>
-                                            </div>
-                                            <div class="entry value-plus active"></div>
-                                        </div>
-                                    </div>
-                                </td>
-                                <td class="invert">THE BASIC WOLF CHELSEA BOOT - TAN</td>
 
-                                <td class="invert d-none">1600000</td>
-                                <td></td>
-                                <td class="invert">
-                                    <button class="btn__DeleteRow" type="button" onclick="deleteRow(this)"><i class="fa fa-times"></i> </button>
-                                </td>
-                            </tr>
-                            <tr class="rem2">
-                                <td class="invert">2</td>
-                                <td class="invert-image">
-                                    <a href="single_product.html">
-                                        <img src="<%=request.getContextPath()%>/Views/Web/img/Chelsea01.jpg" alt=" " class="img-responsive">
-                                    </a>
-                                </td>
-                                <td class="invert">
-                                    <div class="quantity">
-                                        <div class="quantity-select">
-                                            <div class="entry value-minus"></div>
-                                            <div class="entry value">
-                                                <span class="quantity-Order">1</span>
-                                            </div>
-                                            <div class="entry value-plus active"></div>
-                                        </div>
-                                    </div>
-                                </td>
-                                <td class="invert">
-                                    THE BASIC WOLF CHELSEA BOOT - BLACK</td>
-
-                                <td class="invert d-none">1700000</td>
-                                <td></td>
-                                <td class="invert">
-                                    <button class="btn__DeleteRow" type="button" onclick="deleteRow(this)"><i class="fa fa-times"></i> </button>
-                                </td>
-                            </tr>
-                            <tr class="rem3">
-                                <td class="invert">3</td>
-                                <td class="invert-image">
-                                    <a href="single_product.html">
-                                        <img src="<%=request.getContextPath()%>/Views/Web/img/Tee02.PNG" alt=" " class="img-responsive">
-                                    </a>
-                                </td>
-                                <td class="invert">
-                                    <div class="quantity">
-                                        <div class="quantity-select">
-                                            <div class="entry value-minus"></div>
-                                            <div class="entry value">
-                                                <span class="quantity-Order">1</span>
-                                            </div>
-                                            <div class="entry value-plus active"></div>
-                                        </div>
-                                    </div>
-                                </td>
-                                <td class="invert">THE WOLF BASIC TEE - TAN</td>
-
-                                <td class="invert d-none">280000</td>
-                                <td></td>
-                                <td class="invert">
-                                    <button class="btn__DeleteRow" type="button" onclick="deleteRow(this)"><i class="fa fa-times"></i> </button>
-                                </td>
-                            </tr> -->
 
                         </tbody>
                     </table>

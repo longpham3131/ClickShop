@@ -1,3 +1,6 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+         pageEncoding="UTF-8" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -16,6 +19,8 @@
 </head>
 
 <body>
+    <c:import url="../commom/header.jsp"> </c:import>
+
 
     <div class="row product-detail-wrapper">
         <div class="col-md-12 col-sm-12 col-xs-12">
@@ -188,7 +193,7 @@
                             data-target="#myModal">
                             HƯỚNG DẪN CHỌN SIZE
                         </a>
-                        <!-- Modal -->
+
                         <div class="selector-actions">
 
                             <div class="quantity-area clearfix">
@@ -198,11 +203,11 @@
                                 <input type="button" value="+" id="btnPlus" class="qty-btn">
                             </div>
                             <div class="wrap-addcart clearfix">
-                                <a href="<%=request.getContextPath()%>/Views/Web/checkOut.html" id="add-to-cart"> <button type="button"
-                                        class="add-to-cartProduct button dark btn-addtocart addtocart-modal"
-                                        name="add">Thêm
-                                        vào
-                                        giỏ</button></a>
+                                <button type="button" id="add-to-cart"
+                                        class="add-to-cartProduct button dark btn-addtocart addtocart-modal" name="add"
+                                        data-toggle="modal" data-target="#myModal">Thêm
+                                    vào
+                                    giỏ</button>
 
                                 <button type="button" id="buy-now"
                                     class="add-to-cartProduct button dark btn-addtocart addtocart-modal hidden d-none"
@@ -304,6 +309,8 @@
             </div>
         </div>
     </div>
+
+    <c:import url="../commom/footer.jsp"> </c:import>
     <!-- BOOSTRAP JS -->
 
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
@@ -315,7 +322,9 @@
         crossorigin="anonymous"></script>
     <script src="<%=request.getContextPath()%>/Views/Web/js/sanPham.js"></script>
     <script src="<%=request.getContextPath()%>/Views/Web/js/DanhSachSanPham.js"></script>
+
     <script src="<%=request.getContextPath()%>/Views/Web/js/addToCart.js"></script>
+    <script src="<%=request.getContextPath()%>/Views/Web/js/checkOut.js"></script>
 
 
 </body>

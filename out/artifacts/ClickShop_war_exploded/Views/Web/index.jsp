@@ -1,3 +1,6 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+         pageEncoding="UTF-8" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -9,7 +12,9 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css"
           integrity="sha384-TX8t27EcRE3e/ihU7zmQxVncDAy5uIKz4rEkgIXeMed4M0jlfIDPvg6uqKI2xXr2" crossorigin="anonymous">
     <!-- FONT AWESOME  -->
-    <link rel="stylesheet" type="text/css" href="font/font-awesome-4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.14.0/css/all.min.css"
+          integrity="sha512-1PKOgIY59xJ8Co8+NE6FZ+LOAZKjy+KY8iq0G4B3CyeY6wYHN3yt9PW0XpSriVlkMXe40PTKnXrLnZ9+fkDaog=="
+          crossorigin="anonymous" />
     <!-- Link Swiper's CSS -->
     <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css">
     <!-- OWL  CSS  -->
@@ -20,6 +25,7 @@
 </head>
 
 <body>
+    <c:import url="./commom/header.jsp"> </c:import>
 
     <section class="carousel">
         <div class="owl-carousel owl-theme">
@@ -176,6 +182,7 @@
 
     </section>
 
+    <c:import url="./commom/footer.jsp"> </c:import>
 
 
 
@@ -239,7 +246,9 @@
     <a href="#" class="backToTop cd-top text-replace js-cd-top"></a>
     <script src="<%=request.getContextPath()%>/Views/Web/js/main.js"></script>
     <script src="<%=request.getContextPath()%>/Views/Web/js/util.js"></script>
-
+    <script src="<%=request.getContextPath()%>/Views/Web/js/sanPham.js"></script>
+    <script src="<%=request.getContextPath()%>/Views/Web/js/DanhSachSanPham.js"></script>
+    <script src="<%=request.getContextPath()%>/Views/Web/js/checkOut.js"></script>
 </body>
 
 </html>

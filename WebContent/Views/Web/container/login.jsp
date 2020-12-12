@@ -1,3 +1,5 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+         pageEncoding="UTF-8" %>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -48,7 +50,7 @@
                             aria-labelledby="pills-home-tab">
                             <div class="logo__brand text-center p-2">
                                 <img src="<%=request.getContextPath()%>/Views/Web/img/logo.png" alt="">
-                                <form>
+
                             </div>
                            
                                 <div class="form-group">
@@ -69,7 +71,6 @@
                            <form action="">
                             <div class="logo__brand text-center p-2">
                                 <img src="<%=request.getContextPath()%>/Views/Web/img/logo.png" alt="">
-                                <form>
                             </div>
                             <div class="form-group">
                                 <div class="col-sm-12">
@@ -96,7 +97,7 @@
                             <div class="form-group">
     
                                 <div class="col-sm-12">
-                                    <input type="password" id="password" placeholder="Nhập lại mật khẩu" class="form-control">
+                                    <input type="password" id="passwordRewrite" placeholder="Nhập lại mật khẩu" class="form-control">
                                 </div>
                             </div>
                             <div class="form-group">

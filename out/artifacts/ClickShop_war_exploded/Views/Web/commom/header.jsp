@@ -1,3 +1,5 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+         pageEncoding="UTF-8" %>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -12,12 +14,9 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.14.0/css/all.min.css"
         integrity="sha512-1PKOgIY59xJ8Co8+NE6FZ+LOAZKjy+KY8iq0G4B3CyeY6wYHN3yt9PW0XpSriVlkMXe40PTKnXrLnZ9+fkDaog=="
         crossorigin="anonymous" />
-    <!-- OWL  CSS  -->
-    <link rel="stylesheet" href="./css/owl.carousel.min.css">
-    <!-- Link Swiper's CSS -->
-    <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css">
+
     <!-- MAIN CSS  -->
-    <link rel="stylesheet" href="./css/main.css">
+    <link rel="stylesheet" href="<%=request.getContextPath()%>/Views/Web/css/main.css">
 </head>
 
 <body>
@@ -25,15 +24,15 @@
         <div class="container ">
             <div class="header__top d-flex align-items-center justify-content-center">
                 <div class="header__logo ">
-                    <a href="index.html">
-                        <img src="./img/logo.png" alt="">
+                    <a href="<%=request.getContextPath()%>/Views/Web/index.jsp">
+                        <img src="<%=request.getContextPath()%>/Views/Web/img/logo.png" alt="">
                     </a>
 
                 </div>
                 <div class="header__icons">
-                    <a href="#" aria-label="Tài khoản" title="Tài khoản"><i class="fa fa-user"></i></a>
+                    <a href="<%=request.getContextPath()%>/Views/Web/container/login.jsp" aria-label="Tài khoản" title="Tài khoản"><i class="fa fa-user"></i></a>
                     <a href="#" aria-label="Tìm kiếm" title="Tìm kiếm"><i class="fa fa-search"></i></a>
-                    <a href="#" aria-label="Giỏ hàng" title="Giỏ hàng"><i class="fa fa-shopping-cart"></i></a>
+                    <a href="#" aria-label="Giỏ hàng" title="Giỏ hàng" data-toggle="modal" data-target="#myModal"><i class="fa fa-shopping-cart"></i></a>
                 </div>
             </div>
 
@@ -66,16 +65,16 @@
                                         <div class="dropdown__image col-10">
                                             <div class="row">
                                                 <div class="col-4">
-                                                    <img src="./img/dropdown__nam_1.png" alt="">
+                                                    <img src="<%=request.getContextPath()%>/Views/Web/img/dropdown__nam_1.png" alt="">
                                                     <span> <a href="#">GIÀY CAO CỔ</a></span>
                                                 </div>
                                                 <div class="col-4">
-                                                    <img src="./img/dropdown__nam_2.png" alt="">
+                                                    <img src="<%=request.getContextPath()%>/Views/Web/img/dropdown__nam_2.png" alt="">
                                                     <span> <a href="#">GIÀY THẤP CỔ</a></span>
 
                                                 </div>
                                                 <div class="col-4">
-                                                    <img src="./img/dropdown__nam_3.png" alt="">
+                                                    <img src="<%=request.getContextPath()%>/Views/Web/img/dropdown__nam_3.png" alt="">
                                                     <span><a href="#">GIÀY TĂNG CHIỀU CAO</a></span>
 
                                                 </div>
@@ -86,7 +85,7 @@
                             </li>
 
                             <li class="nav-item dropdown no__relative">
-                                <a class="nav-link dropdown-toggle" href="#" id="dropdown__giaynam" role="button"
+                                <a class="nav-link dropdown-toggle" href="#" id="dropdown__giaynu" role="button"
                                     data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                     GIÀY NỮ
                                 </a>
@@ -101,17 +100,17 @@
                                         <div class="dropdown__image col-10">
                                             <div class="row">
                                                 <div class="col-4">
-                                                    <img src="./img/dropdown__nu_1.png" alt="Responsive image">
+                                                    <img src="<%=request.getContextPath()%>/Views/Web/img/dropdown__nu_1.png" alt="Responsive image">
                                                     <span> <a href="#">GIÀY CAO CỔ</a></span>
 
                                                 </div>
                                                 <div class="col-4">
-                                                    <img src="./img/dropdown__nu_2.png" alt="Responsive image">
+                                                    <img src="<%=request.getContextPath()%>/Views/Web/img/dropdown__nu_2.png" alt="Responsive image">
                                                     <span> <a href="#">GIÀY THẤP CỔ</a></span>
 
                                                 </div>
                                                 <div class="col-4">
-                                                    <img src="./img/dropdown__nu_3.png" alt="Responsive image">
+                                                    <img src="<%=request.getContextPath()%>/Views/Web/img/dropdown__nu_3.png" alt="Responsive image">
                                                     <span> <a href="#">GIÀY TĂNG CHIỀU CAO</a></span>
 
                                                 </div>
@@ -129,6 +128,7 @@
                                 <div class="dropdown-menu" aria-labelledby="dropdown__Tee">
                                     <a class="dropdown-item" href="#">T-SHIRT</a>
                                     <a class="dropdown-item" href="#">SHIRT</a>
+                                </div>
                             </li>
                             <li class="nav-item dropdown">
                                 <a class="nav-link dropdown-toggle" href="#" id="dropdown__phuKien" role="button"
@@ -142,6 +142,7 @@
                                     <a class="dropdown-item" href="#">BANDANA</a>
                                     <a class="dropdown-item" href="#">NECKLACE</a>
                                     <a class="dropdown-item" href="#">BUKET HAT</a>
+                                </div>
 
                             </li>
                             <li class="nav-item dropdown">
@@ -152,6 +153,7 @@
                                 <div class="dropdown-menu" aria-labelledby="dropdown__newCollection">
                                     <a class="dropdown-item" href="#">THE ALPHA COLLECTION</a>
                                     <a class="dropdown-item" href="#">THE BASIC COLLECTION</a>
+                                </div>
 
 
                             </li>
@@ -166,6 +168,7 @@
                                 <div class="dropdown-menu" aria-labelledby="dropdown__newCollection">
                                     <a class="dropdown-item" href="#">BEAUTIFUL LIFESTYLE</a>
                                     <a class="dropdown-item" href="#">CÁC TIP VỀ THỜI TRANG</a>
+                                </div>
 
                             </li>
                             <li class="nav-item">
@@ -176,6 +179,54 @@
                         </ul>
                     </div>
                 </nav>
+            </div>
+            <!-- Modal giỏ hàng -->
+            <div class="modal fade" id="myModal">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+
+                        <!-- Modal Header -->
+                        <div class="modal-header">
+                            <h4 class="modal-title">Giỏ hàng của bạn</h4>
+                            <button type="button" class="close"
+                                    data-dismiss="modal">&times;</button>
+                        </div>
+
+                        <!-- Modal body -->
+                        <div class="modal-body">
+                            <div class="d-sm-flex justify-content-end mb-4">
+
+                                <h4 class="mt-sm-0 mt-3">Hiện tại có :
+                                    <span id="soLuongSanPham">3 </span> sản phẩm
+                                </h4>
+                            </div>
+                            <table class="timetable_sub" id="tableOrder">
+                                <thead>
+                                <tr>
+                                    <th>Sản phẩm</th>
+                                    <th>Số lượng</th>
+                                    <th class="d-none">Giá</th>
+                                    <th>Giá</th>
+                                    <th>Xóa</th>
+                                </tr>
+                                </thead>
+                                <tbody id="tbodySP">
+
+                                </tbody>
+                            </table>
+                            <div class="text-right pt-3">
+                                <h3>Tổng tiền: <span id="totalPrice">0đ</span> </h3>
+                            </div>
+                        </div>
+                        <!-- Modal footer -->
+                        <div class="modal-footer">
+                            <a href="<%=request.getContextPath()%>/Views/Web/container/checkOut.jsp"> <button type="button"
+                                                               class="btn btn-success">Thanh
+                                Toán</button></a>
+
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
     </header>
