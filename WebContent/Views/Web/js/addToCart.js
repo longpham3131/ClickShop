@@ -1,5 +1,5 @@
 
-var dssp = new DanhSachSanPham();
+var dssp  = new DanhSachSanPham();
 
 function getMyEle(ele){
     return document.getElementById(ele);
@@ -30,7 +30,6 @@ function layThongTin(){
 }
 
 function themSPMoi(){
-    debugger;
     var sanPhamMoi = layThongTin();
 
     if(sanPhamMoi != null){
@@ -46,7 +45,6 @@ function themSPMoi(){
             dssp.capNhat(sanPhamMoi);
         }
         else{
-            debugger;
             dssp.themSP(sanPhamMoi);
         }
     }
