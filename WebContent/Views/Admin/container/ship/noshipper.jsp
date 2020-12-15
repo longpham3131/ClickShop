@@ -44,7 +44,7 @@
                         <td>${listIO.init}</td>
                         <td>
                             <button type="button" class="btn btn-info" title="Other Detail"
-                                    data-toggle="modal" data-target="#myModal${listIO.orderID}">
+                                    data-toggle="modal" data-target="#myNoShipDetail${listIO.orderID}">
                                 <i class="fa fa-address-book"></i>
                             </button>
 
@@ -53,7 +53,7 @@
                                 <i class="fa fa-shipping-fast"></i>
                             </button>
 
-                            <div class="modal" id="myModal${listIO.orderID}">
+                            <div class="modal" id="myNoShipDetail${listIO.orderID}">
                                 <div class="modal-dialog">
                                     <div class="modal-content">
 
@@ -151,13 +151,21 @@
                                             </thead>
                                             <!----------Noi-dung-------- -->
                                             <tbody>
+
                                             <c:forEach items="${listShipper}" var="listSp" varStatus="loop">
                                                     <tr>
                                                         <td>${listSp.getAccountId()}</td>
                                                         <td>${listSp.firstName }</td>
                                                         <td>${listSp.phone}</td>
                                                         <td>${listSp.ortherCarring}</td>
-                                                        <td> <input type="submit" value="Choose" style="background-color: #357ebd; color: white"></td>
+                                                        <td>
+                                                            <form action="<%=request.getContextPath()%>/chooseShipper" method="post">
+                                                                <input type="hidden" value="chonShipper" name="chooseShipper"/>
+                                                                <input type="hidden" value="${listSp.getAccountId()}" name="shipperID"/>
+                                                                <input type="hidden" value="${listIO.orderID}" name="OrtherID"/>
+                                                                <input type="submit" value="Choose" style="background-color: #357ebd; color: white">
+                                                            </form>
+                                                        </td>
                                                     </tr>
                                             </c:forEach>
                                             </tbody>

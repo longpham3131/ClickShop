@@ -151,6 +151,7 @@
 					<!------------  TABLEE ----->
 					<c:import url="ship/shipper.jsp" />
 					<hr>
+					<% request.setAttribute("chooseShipper", null); %>
 					<c:import url="ship/noshipper.jsp" />
 					<hr>
 					<c:import url="ship/shipping.jsp" />
