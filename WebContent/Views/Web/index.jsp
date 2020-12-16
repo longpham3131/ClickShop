@@ -44,28 +44,22 @@
                 <c:forEach items="${listSanpham}" var="row">
                     <c:if test="${row.getProductId()  < 7 }">
                 <div class="swiper-slide">
+                    <form action="<%=request.getContextPath()%>/chooseProduct" method="post">
+                                <button type="submit" style="    background: transparent; border: none;">
+                                    <input type="hidden" value="${row.productId}" name="ProductId"/>
+                                    <input type="hidden" value="${row.name}" name="Name"/>
+                                    <input type="hidden" value="${row.imagePath}" name="ImagePath"/>
+                                    <input type="hidden" value="${row.getUnitPrice()}" name="UnitPrice"/>
+                                    <img src="<%=request.getContextPath()%>/Views/Web${row.getImagePath()}" alt="">
+                                    <h4>
+                                        <td>${row.name}</td>
+                                    </h4>
 
-                            <tr>
-
-                                <img src="<%=request.getContextPath()%>/Views/Web${row.getImagePath()}" alt="">
-<%--                                <td>----<%=request.getContextPath()%>/View/Web${row.getImagePath()}</td>--%>
-
-                                <h4>
-                                    <form action="<%=request.getContextPath()%>/chooseProduct" method="post">
-                                        <input type="hidden" value="${row.productId}" name="ProductId"/>
-                                        <input type="hidden" value="${row.name}" name="Name"/>
-                                        <input type="hidden" value="${row.imagePath}" name="ImagePath"/>
-                                        <input type="hidden" value="${row.getUnitPrice()}" name="UnitPrice"/>
-                                        <input type="submit" value="${row.name}">
-                                    </form>
-<%--                                    <td>${row.name}</td>--%>
-                                </h4>
-
-                                <span>
+                                    <span>
                                     <td>${row.getUnitPrice()}</td>
                                 </span>
-
-                            </tr>
+                                </button>
+                    </form>
 
                 </div>
                     </c:if>
