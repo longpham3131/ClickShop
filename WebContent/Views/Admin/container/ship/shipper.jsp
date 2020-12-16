@@ -19,7 +19,6 @@
 					<thead>
 						<tr>
 							<th>ID</th>
-							<th>Email</th>
 							<th>Name</th>
 							<th>Phone</th>
 							<th>Order are carrying</th>
@@ -32,7 +31,6 @@
 						<c:forEach items="${listShipper}" var="listSp" varStatus="loop">
 							<tr>
 								<td>${listSp.getAccountId()}</td>
-								<td>${listSp.email}</td>
 								<td>${listSp.firstName}</td>
 								<td>${listSp.phone}</td>
 								<td>${listSp.ortherCarring}</td>

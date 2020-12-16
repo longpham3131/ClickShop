@@ -50,9 +50,11 @@ public class shipped extends HttpServlet {
          List<Shipper> list = dao.shipperList();
 
          List<OrtherNoShipper> list2 = dao.initOrderList();
-         List<DetailNoShip> list2_1 = dao.OrtherDetailNoShip();
+         List<DetailOrder> list2_1 = dao.OrtherDetailNoShip();
 
          List<Shipping> list3 = dao.shippingList();
+         List<DetailOrder> list3_1 = dao.OrtherDetailPicking();
+
          List<PickingUp> list4 = dao.pickupList();
 
         request.setAttribute("listShipper", list);
@@ -61,6 +63,7 @@ public class shipped extends HttpServlet {
         request.setAttribute("listNoShipDetail", list2_1);
 
         request.setAttribute("listShipping", list3);
+        request.setAttribute("listPickDetail", list3_1);
 
         request.setAttribute("listPicking", list4);
         
