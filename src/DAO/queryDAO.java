@@ -500,7 +500,7 @@ public boolean insertAccount( String email, String firstName, String lastName,
     }
 
     public int countInShipping() {
-        String query = "select Count(PurchaseOrderId) from Shipper Where Status='Shipping'";
+        String query = "select Count(S.PurchaseOrderId) from Shipper S Where (S.Status='shipping' OR S.Status='Cancel' OR S.Status='Completed')";
         try {
             conn = new MyDB().getConnection();
             ps = conn.prepareStatement(query);
@@ -677,7 +677,6 @@ public boolean insertAccount( String email, String firstName, String lastName,
         }
         return null;
     }
-
     public boolean Shipperpicked(String OrtherID) {      // can them transaction here <<<<<<<<<<
         Connection conn1 = null;
         PreparedStatement ps1 = null;
@@ -700,7 +699,7 @@ public boolean insertAccount( String email, String firstName, String lastName,
     public List<Shipping> shippingList() {
         String query = "SELECT S.PurchaseOrderId, S.ShipperId, A.Email, P.SubTotal, P.Address, P.Phone, S.Status\r\n"
                 + "	FROM Account A, PurchaseOrder P, Shipper S\r\n"
-                + "	WHERE A.AccountId= P.AccountId  AND S.PurchaseOrderId = P.PurchaseOrderId AND S.Status='shipping'\r\n";
+                + "	WHERE A.AccountId= P.AccountId  AND S.PurchaseOrderId = P.PurchaseOrderId AND (S.Status='shipping' OR S.Status='Cancel' OR S.Status='Completed')\r\n";
         List<Shipping> list = new ArrayList<Shipping>();
         try {
 
@@ -716,7 +715,6 @@ public boolean insertAccount( String email, String firstName, String lastName,
         }
         return null;
     }
-    /// dang lam o day
     public List<DetailOrder> OrtherDetailShipping() {
         String query = "SELECT  PO.PurchaseOrderId, P.ProductId, Pro.Name, P.Quantity, P.Subtotal\n" +
                 "FROM PurchaseOrderDetail P, Product Pro, PurchaseOrder PO, Shipper SP \n" +
@@ -735,6 +733,27 @@ public boolean insertAccount( String email, String firstName, String lastName,
         } catch (Exception e) {
         }
         return null;
+    }
+    public boolean endOrder(String OrtherID, String Status) {
+        Connection conn1 = null, conn2 = null;
+        PreparedStatement ps1 = null, ps2 = null;
+        ResultSet rs = null;
+        try {
+            String query = "update PurchaseOrder set Status='"+Status+"' WHERE PurchaseOrderId='" + OrtherID + "'";
+            String query2 = "delete from Shipper WHERE PurchaseOrderId='" + OrtherID + "'";
+            conn1 = new MyDB().getConnection();
+            conn2 = new MyDB().getConnection();
+
+            ps1 = conn1.prepareStatement(query);
+            ps1.executeUpdate();
+
+            ps2 = conn2.prepareStatement(query2);
+            ps2.executeUpdate();
+            return true;
+        } catch (Exception e) {
+            System.out.println(e);
+        }
+        return false;
     }
     // ----------- End ship Admin -------------------//
 }

@@ -358,10 +358,11 @@
                             </li>
                         </ul>
                     </div>
-
+                    
                     <div class="filter__product text-right pb-5">
                         <!-- <h3>Tất cả sản phẩm (chỗ này thay đổi theo sidebar)</h3> -->
                         <span class="custom-dropdown custom-dropdown--grey pr-3">
+
                                 <select class="sort-by custom-dropdown__select ">
 
                                     <option value="price-ascending" data-filter="&amp;sortby=(price:product=asc)">Giá:
