@@ -17,7 +17,7 @@ import DAO.queryDAO;
  * Servlet implementation class updateAccount
  */
 @WebServlet("/update-account")
-public class updateAccount extends HttpServlet {
+public class 	updateAccount extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
@@ -41,28 +41,24 @@ public class updateAccount extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		String email = request.getParameter("email");
-		String pass = request.getParameter("pass");
+
 		String firstname = request.getParameter("firstname");
 		String lastname = request.getParameter("lastname");
 		String phone = request.getParameter("phone");
 		String address = request.getParameter("address");
 		String gender = request.getParameter("gender");
-		String role = request.getParameter("role");
-		String Bday = "1993-10-06 09:45:47.000"; // thay bang timePicker
-		LocalDateTime myDateObj = LocalDateTime.now(); // ngay tao acc
-		DateTimeFormatter myFormatObj = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
-		String DateTimeNow = myDateObj.format(myFormatObj);
-		// System.out.println(DateTimeNow);
+		String Bday = request.getParameter("Bday");
+
 		String tb = "";  // thong bao
-		if (email == "" || pass == "" || firstname == "" || lastname == "" || phone == "" || address == "")
+		if (email == ""  || firstname == "" || lastname == "" || phone == "" || address == "")
 			tb = "input";
 		String url = "Views/Admin/container/account.jsp";
 		String kq="1";
 		if (tb == "") {
 			queryDAO qD = new queryDAO();
 			try {
-				if (qD.updateAccount(role, email, pass, "link to IMG", firstname, lastname, phone, address, gender,
-						Bday, DateTimeNow, true))
+				if (qD.updateAccount(email, firstname, lastname, phone, address, gender,
+						Bday))
 					tb = "true";
 				else
 					tb = "error";			
