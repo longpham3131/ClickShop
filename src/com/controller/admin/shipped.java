@@ -45,26 +45,25 @@ public class shipped extends HttpServlet {
      */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
     	 response.setContentType("text/html;charset=UTF-8");
+        queryDAO dao = new queryDAO();
 
-         queryDAO dao = new queryDAO();
          List<Shipper> list = dao.shipperList();
-         List<OrtherNoShipper> list2 = dao.initOrderList();
-         List<DetailNoShip> list2_1 = dao.OrtherDetailNoShip();
 
+         List<OrtherNoShipper> list2 = dao.initOrderList();
+         List<DetailOrder> list2_1 = dao.OrtherDetailNoShip();
 
          List<Shipping> list3 = dao.shippingList();
-       // List<Shipping> list31 = dao.shippingList();
+         List<DetailOrder> list3_1 = dao.OrtherDetailPicking();
 
          List<PickingUp> list4 = dao.pickupList();
-         
-         System.out.print(list4.size());
-         
+
         request.setAttribute("listShipper", list);
 
         request.setAttribute("listInitOrder", list2);
         request.setAttribute("listNoShipDetail", list2_1);
 
         request.setAttribute("listShipping", list3);
+        request.setAttribute("listPickDetail", list3_1);
 
         request.setAttribute("listPicking", list4);
         

@@ -4,7 +4,6 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import com.model.Account;
-
 import DB.MyDB;
 
 // // query here <

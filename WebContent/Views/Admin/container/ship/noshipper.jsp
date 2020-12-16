@@ -20,11 +20,8 @@
                 <thead>
                 <tr>
                     <th>Orther ID</th>
-                    <th>Email</th>
                     <th>Sub Total</th>
                     <th>Address</th>
-                    <th>Phone</th>
-                    <th>Status</th>
                     <th>Actions</th>
                 </tr>
                 </thead>
@@ -37,14 +34,11 @@
 
                     <tr>
                         <td>${listIO.orderID}</td>
-                        <td>${listIO.email}</td>
                         <td>${listIO.subTotal}</td>
                         <td>${listIO.address}</td>
-                        <td>${listIO.phone}</td>
-                        <td>${listIO.init}</td>
                         <td>
                             <button type="button" class="btn btn-info" title="Other Detail"
-                                    data-toggle="modal" data-target="#myModal${listIO.orderID}">
+                                    data-toggle="modal" data-target="#myNoShipDetail${listIO.orderID}">
                                 <i class="fa fa-address-book"></i>
                             </button>
 
@@ -53,7 +47,7 @@
                                 <i class="fa fa-shipping-fast"></i>
                             </button>
 
-                            <div class="modal" id="myModal${listIO.orderID}">
+                            <div class="modal" id="myNoShipDetail${listIO.orderID}">
                                 <div class="modal-dialog">
                                     <div class="modal-content">
 
@@ -77,6 +71,7 @@
                                                            value="${listIO.orderID}">
                                                 </div>
                                             </div>
+
                                             <div class="form-group row">
                                                 <label for="staticEmail"
                                                        class="col-sm-4 col-form-label">Email
@@ -86,6 +81,28 @@
                                                            class="form-control-plaintext"
                                                            id="staticEmail"
                                                            value="${listIO.email}">
+                                                </div>
+                                            </div>
+
+                                            <div class="form-group row">
+                                                <label for="staticEmail"
+                                                       class="col-sm-4 col-form-label">Address
+                                                    :</label>
+                                                <div class="col-sm-8">
+                                                    <input type="text" readonly
+                                                           class="form-control-plaintext"
+                                                           value="${listIO.address}">
+                                                </div>
+                                            </div>
+
+                                            <div class="form-group row">
+                                                <label for="staticEmail"
+                                                       class="col-sm-4 col-form-label">Phone
+                                                    :</label>
+                                                <div class="col-sm-8">
+                                                    <input type="text" readonly
+                                                           class="form-control-plaintext"
+                                                           value="${listIO.phone}">
                                                 </div>
                                             </div>
                                         </div>
@@ -102,7 +119,7 @@
                                             </thead>
                                             <!----------Noi-dung-------- -->
                                             <tbody>
-
+                                            <c:set var="sum" value="0"/>
                                             <c:forEach items="${listNoShipDetail}" var="listSpg" varStatus="loop">
                                                 <c:if test="${listSpg.orderID == listIO.orderID}">
                                                     <tr>
@@ -117,7 +134,6 @@
                                             </c:forEach>
                                             </tbody>
                                         </table>
-
                                         SubTolal:  ${sum}
                                         <!-- Modal footer -->
                                         <div class="modal-footer">
@@ -125,6 +141,7 @@
                                                     data-dismiss="modal">Close
                                             </button>
                                         </div>
+
                                     </div>
                                 </div>
                             </div>
@@ -151,13 +168,21 @@
                                             </thead>
                                             <!----------Noi-dung-------- -->
                                             <tbody>
+
                                             <c:forEach items="${listShipper}" var="listSp" varStatus="loop">
                                                     <tr>
                                                         <td>${listSp.getAccountId()}</td>
                                                         <td>${listSp.firstName }</td>
                                                         <td>${listSp.phone}</td>
                                                         <td>${listSp.ortherCarring}</td>
-                                                        <td> <input type="submit" value="Choose" style="background-color: #357ebd; color: white"></td>
+                                                        <td>
+                                                            <form action="<%=request.getContextPath()%>/chooseShipper" method="post">
+                                                                <input type="hidden" value="chonShipper" name="chooseShipper"/>
+                                                                <input type="hidden" value="${listSp.getAccountId()}" name="shipperID"/>
+                                                                <input type="hidden" value="${listIO.orderID}" name="OrtherID"/>
+                                                                <input type="submit" value="Choose" style="background-color: #357ebd; color: white">
+                                                            </form>
+                                                        </td>
                                                     </tr>
                                             </c:forEach>
                                             </tbody>
