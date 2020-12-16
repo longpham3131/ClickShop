@@ -645,6 +645,7 @@ public boolean insertAccount( String email, String firstName, String lastName,
         List<PickingUp> list = new ArrayList<PickingUp>();
         try {
 
+
             conn = new MyDB().getConnection();
             ps = conn.prepareStatement(query);
             rs = ps.executeQuery();
