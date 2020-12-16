@@ -478,6 +478,7 @@ public boolean insertAccount( String email, String firstName, String lastName,
     }
 
     // -----------------END DASH BOARD ---------------- //
+
     // -------------------- Ship in Admin -------------------------//
 
     //----- fill 4 o dau -------//
@@ -549,12 +550,16 @@ public boolean insertAccount( String email, String firstName, String lastName,
     //------ Bang so 1 ---------//
     public List<Shipper> shipperList() {
         // return ---- accountId,  email,  firstName,  phone,   ortherCarring
-        String query = "SELECT * FROM SV_shipperList";
+        String query = "SELECT A.AccountId, A.Email, A.FirstName, A.Phone,  Count(*) as Carrying, A.LastName, A.Address, A.Gender\n" +
+                "FROM Shipper S, Account A, AccountRole AR\n" +
+                "WHERE A.Email=AR.Email AND AR.Role='shipper' AND A.AccountId = S.ShipperId AND S.Status='shipping'\n" +
+                "GROUP BY A.AccountId, A.Email, A.FirstName, A.Phone, A.LastName, A.Address, A.Gender";
         List<Shipper> list = new ArrayList<Shipper>();
         try {
+
             conn = new MyDB().getConnection();
-            stmt = conn.createStatement();
-            rs = stmt.executeQuery(query);
+            ps = conn.prepareStatement(query);
+            rs = ps.executeQuery();
             while (rs.next()) {
                 list.add(new Shipper(rs.getString(1), rs.getString(2), rs.getString(3), rs.getString(4),
                         rs.getString(5), rs.getString(6), rs.getString(7), rs.getString(8)));
@@ -568,13 +573,15 @@ public boolean insertAccount( String email, String firstName, String lastName,
     // ----- Bang so 2 ---------//
     public List<OrtherNoShipper> initOrderList() {
         // return ---- accountId,  email,  firstName,  phone,   ortherCarring
-        String query = "SELECT  * FROM SV_initOrderList";
+        String query = "SELECT P.PurchaseOrderId, A.Email, P.SubTotal, P.Address, P.Phone, P.Status\r\n"
+                + "	FROM Account A, PurchaseOrder P\r\n"
+                + "	WHERE A.AccountId= P.AccountId AND P.Status ='init'";
         List<OrtherNoShipper> list = new ArrayList<OrtherNoShipper>();
         try {
 
             conn = new MyDB().getConnection();
-            stmt = conn.createStatement();
-            rs = stmt.executeQuery(query);
+            ps = conn.prepareStatement(query);
+            rs = ps.executeQuery();
             while (rs.next()) {
                 list.add(new OrtherNoShipper(rs.getString(1), rs.getString(2), rs.getString(3), rs.getString(4),
                         rs.getString(5), rs.getString(6)));
@@ -585,21 +592,15 @@ public boolean insertAccount( String email, String firstName, String lastName,
         return null;
     }
 
-<<<<<<< HEAD
-    public List<DetailNoShip> OrtherDetailNoShip() {
-        String query = "SELECT * FROM SV_OrtherDetailNoShip";
-        List<DetailNoShip> list = new ArrayList<DetailNoShip>();
-=======
     public List<DetailOrder> OrtherDetailNoShip() {
         String query = "SELECT  PO.PurchaseOrderId, P.ProductId, Pro.Name, P.Quantity, P.Subtotal\n" +
                 "FROM PurchaseOrderDetail P, Product Pro, PurchaseOrder PO\n" +
                 "WHERE PRO.ProductId = P.ProductId AND PO.Status='init' AND PO.PurchaseOrderId = P.PurchaseOrderId ";
         List<DetailOrder> list = new ArrayList<DetailOrder>();
->>>>>>> 9d5805415625048400ec95074480fdfabb7d72d4
         try {
             conn = new MyDB().getConnection();
-            stmt = conn.createStatement();
-            rs = stmt.executeQuery(query);
+            ps = conn.prepareStatement(query);
+            rs = ps.executeQuery();
             while (rs.next()) {
                 list.add(new DetailOrder(rs.getString(1), rs.getString(2), rs.getString(3), rs.getString(4),
                         rs.getString(5)));
@@ -620,17 +621,17 @@ public boolean insertAccount( String email, String firstName, String lastName,
         try {
             String query = "update PurchaseOrder set Status='Processing' WHERE PurchaseOrderId='" + OrtherID + "'";
             String query2 = "insert into Shipper  values('"+OrtherID+"', '"+shipperID+"', 'Picking')";
-           conn1 = new MyDB().getConnection();
-           conn2 = new MyDB().getConnection();
+            conn1 = new MyDB().getConnection();
+            conn2 = new MyDB().getConnection();
 
-           ps1 = conn1.prepareStatement(query);
-           ps1.executeUpdate();
+            ps1 = conn1.prepareStatement(query);
+            ps1.executeUpdate();
 
-           ps2 = conn2.prepareStatement(query2);
-           ps2.executeUpdate();
-           return true;
+            ps2 = conn2.prepareStatement(query2);
+            ps2.executeUpdate();
+            return true;
         } catch (Exception e) {
-           System.out.println(e);
+            System.out.println(e);
         }
         return false;
     }
@@ -696,12 +697,15 @@ public boolean insertAccount( String email, String firstName, String lastName,
     // ---End Bang 3 ---//
     //---- Bang so 4 -----//
     public List<Shipping> shippingList() {
-        String query = "SELECT  * FROM SV_shippingList";
+        String query = "SELECT S.PurchaseOrderId, S.ShipperId, A.Email, P.SubTotal, P.Address, P.Phone, S.Status\r\n"
+                + "	FROM Account A, PurchaseOrder P, Shipper S\r\n"
+                + "	WHERE A.AccountId= P.AccountId  AND S.PurchaseOrderId = P.PurchaseOrderId AND S.Status='shipping'\r\n";
         List<Shipping> list = new ArrayList<Shipping>();
         try {
+
             conn = new MyDB().getConnection();
-            stmt = conn.createStatement();
-            rs = stmt.executeQuery(query);
+            ps = conn.prepareStatement(query);
+            rs = ps.executeQuery();
             while (rs.next()) {
                 list.add(new Shipping(rs.getString(1), rs.getString(2), rs.getString(3), rs.getString(4),
                         rs.getString(5), rs.getString(6), rs.getString(7)));
@@ -711,25 +715,16 @@ public boolean insertAccount( String email, String firstName, String lastName,
         }
         return null;
     }
-<<<<<<< HEAD
-
-    //---- Bang so 4 -----//
-    public List<PickingUp> pickupList() {
-        // return ---- accountId,  email,  firstName,  phone,   ortherCarring
-        String query = "SELECT * FROM SV_pickupList";
-        List<PickingUp> list = new ArrayList<PickingUp>();
-=======
     /// dang lam o day
     public List<DetailOrder> OrtherDetailShipping() {
         String query = "SELECT  PO.PurchaseOrderId, P.ProductId, Pro.Name, P.Quantity, P.Subtotal\n" +
                 "FROM PurchaseOrderDetail P, Product Pro, PurchaseOrder PO, Shipper SP \n" +
                 "WHERE PRO.ProductId = P.ProductId AND SP.Status='Shipping' AND PO.PurchaseOrderId = P.PurchaseOrderId AND SP.PurchaseOrderId=P.PurchaseOrderId";
         List<DetailOrder> list = new ArrayList<DetailOrder>();
->>>>>>> 9d5805415625048400ec95074480fdfabb7d72d4
         try {
             conn = new MyDB().getConnection();
-            stmt = conn.createStatement();
-            rs = stmt.executeQuery(query);
+            ps = conn.prepareStatement(query);
+            rs = ps.executeQuery();
             while (rs.next()) {
                 list.add(new DetailOrder(rs.getString(1), rs.getString(2), rs.getString(3), rs.getString(4),
                         rs.getString(5)));
