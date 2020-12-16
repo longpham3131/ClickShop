@@ -1,0 +1,652 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ArtifactsWorkspaceSettings">
+    <artifacts-to-build>
+      <artifact name="ClickShop:war exploded" />
+    </artifacts-to-build>
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="38ebcc6b-bc53-4fc6-bf79-ad9144be68ed" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/WebContent/Views/Web/container/product.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/WebContent/Views/Web/container/product.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/WebContent/Views/Web/img/Bandana01.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/WebContent/Views/Web/image_product/Bandana01.jpg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/WebContent/Views/Web/img/Bandana02.PNG" beforeDir="false" afterPath="$PROJECT_DIR$/WebContent/Views/Web/image_product/Bandana02.PNG" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/WebContent/Views/Web/img/Bandana03.PNG" beforeDir="false" afterPath="$PROJECT_DIR$/WebContent/Views/Web/image_product/Bandana03.PNG" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/WebContent/Views/Web/img/Bandana04.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/WebContent/Views/Web/image_product/Bandana04.jpg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/WebContent/Views/Web/img/Bandana05.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/WebContent/Views/Web/image_product/Bandana05.jpg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/WebContent/Views/Web/img/Bandana06.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/WebContent/Views/Web/image_product/Bandana06.jpg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/WebContent/Views/Web/img/Belt01.PNG" beforeDir="false" afterPath="$PROJECT_DIR$/WebContent/Views/Web/image_product/Belt01.PNG" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/WebContent/Views/Web/img/Belt02.PNG" beforeDir="false" afterPath="$PROJECT_DIR$/WebContent/Views/Web/image_product/Belt02.PNG" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/WebContent/Views/Web/img/Bracelet01.PNG" beforeDir="false" afterPath="$PROJECT_DIR$/WebContent/Views/Web/image_product/Bracelet01.PNG" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/WebContent/Views/Web/img/Bracelet02.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/WebContent/Views/Web/image_product/Bracelet02.jpg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/WebContent/Views/Web/img/Bucket01.PNG" beforeDir="false" afterPath="$PROJECT_DIR$/WebContent/Views/Web/image_product/Bucket01.PNG" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/WebContent/Views/Web/img/Bucket02.PNG" beforeDir="false" afterPath="$PROJECT_DIR$/WebContent/Views/Web/image_product/Bucket02.PNG" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/WebContent/Views/Web/img/Bucket03.PNG" beforeDir="false" afterPath="$PROJECT_DIR$/WebContent/Views/Web/image_product/Bucket03.PNG" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/WebContent/Views/Web/img/Chain01.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/WebContent/Views/Web/image_product/Chain01.jpg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/WebContent/Views/Web/img/Chelsea01.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/WebContent/Views/Web/image_product/Chelsea01.jpg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/WebContent/Views/Web/img/Chelsea02.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/WebContent/Views/Web/image_product/Chelsea02.jpg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/WebContent/Views/Web/img/Chelsea03.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/WebContent/Views/Web/image_product/Chelsea03.jpg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/WebContent/Views/Web/img/Chelsea04.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/WebContent/Views/Web/image_product/Chelsea04.jpg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/WebContent/Views/Web/img/Chelsea05.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/WebContent/Views/Web/image_product/Chelsea05.jpg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/WebContent/Views/Web/img/Chelsea06.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/WebContent/Views/Web/image_product/Chelsea06.jpg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/WebContent/Views/Web/img/Chelsea07.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/WebContent/Views/Web/image_product/Chelsea07.jpg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/WebContent/Views/Web/img/Chelsea08.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/WebContent/Views/Web/image_product/Chelsea08.jpg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/WebContent/Views/Web/img/Chelsea09.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/WebContent/Views/Web/image_product/Chelsea09.jpg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/WebContent/Views/Web/img/Chelsea10.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/WebContent/Views/Web/image_product/Chelsea10.jpg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/WebContent/Views/Web/img/Chelsea11.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/WebContent/Views/Web/image_product/Chelsea11.jpg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/WebContent/Views/Web/img/Chelsea_Women01.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/WebContent/Views/Web/image_product/Chelsea_Women01.jpg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/WebContent/Views/Web/img/Chelsea_Women02.PNG" beforeDir="false" afterPath="$PROJECT_DIR$/WebContent/Views/Web/image_product/Chelsea_Women02.PNG" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/WebContent/Views/Web/img/Combat01.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/WebContent/Views/Web/image_product/Combat01.jpg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/WebContent/Views/Web/img/Combat02.PNG" beforeDir="false" afterPath="$PROJECT_DIR$/WebContent/Views/Web/image_product/Combat02.PNG" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/WebContent/Views/Web/img/Combat_Women01.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/WebContent/Views/Web/image_product/Combat_Women01.jpg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/WebContent/Views/Web/img/Combat_Women02.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/WebContent/Views/Web/image_product/Combat_Women02.jpg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/WebContent/Views/Web/img/Derby01.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/WebContent/Views/Web/image_product/Derby01.jpg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/WebContent/Views/Web/img/Derby02.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/WebContent/Views/Web/image_product/Derby02.jpg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/WebContent/Views/Web/img/Derby03.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/WebContent/Views/Web/image_product/Derby03.jpg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/WebContent/Views/Web/img/Derby04.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/WebContent/Views/Web/image_product/Derby04.jpg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/WebContent/Views/Web/img/Derby05.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/WebContent/Views/Web/image_product/Derby05.jpg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/WebContent/Views/Web/img/Harness01.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/WebContent/Views/Web/image_product/Harness01.jpg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/WebContent/Views/Web/img/Harness02.PNG" beforeDir="false" afterPath="$PROJECT_DIR$/WebContent/Views/Web/image_product/Harness02.PNG" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/WebContent/Views/Web/img/Harness03.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/WebContent/Views/Web/image_product/Harness03.jpg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/WebContent/Views/Web/img/Necklace01.PNG" beforeDir="false" afterPath="$PROJECT_DIR$/WebContent/Views/Web/image_product/Necklace01.PNG" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/WebContent/Views/Web/img/Oxford01.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/WebContent/Views/Web/image_product/Oxford01.jpg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/WebContent/Views/Web/img/Oxford02.PNG" beforeDir="false" afterPath="$PROJECT_DIR$/WebContent/Views/Web/image_product/Oxford02.PNG" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/WebContent/Views/Web/img/Shirt01.PNG" beforeDir="false" afterPath="$PROJECT_DIR$/WebContent/Views/Web/image_product/Shirt01.PNG" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/WebContent/Views/Web/img/Shirt02.PNG" beforeDir="false" afterPath="$PROJECT_DIR$/WebContent/Views/Web/image_product/Shirt02.PNG" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/WebContent/Views/Web/img/Tee01.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/WebContent/Views/Web/image_product/Tee01.jpg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/WebContent/Views/Web/img/Tee02.PNG" beforeDir="false" afterPath="$PROJECT_DIR$/WebContent/Views/Web/image_product/Tee02.PNG" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/WebContent/Views/Web/img/Tee03.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/WebContent/Views/Web/image_product/Tee03.jpg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/WebContent/Views/Web/img/Tee04.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/WebContent/Views/Web/image_product/Tee04.jpg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/WebContent/Views/Web/img/Tee05.PNG" beforeDir="false" afterPath="$PROJECT_DIR$/WebContent/Views/Web/image_product/Tee05.PNG" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/WebContent/Views/Web/img/Zip01.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/WebContent/Views/Web/image_product/Zip01.jpg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/WebContent/Views/Web/img/arrowup.png" beforeDir="false" afterPath="$PROJECT_DIR$/WebContent/Views/Web/image_product/arrowup.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/WebContent/Views/Web/img/banner__carousel.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/WebContent/Views/Web/image_product/banner__carousel.jpg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/WebContent/Views/Web/img/banner__carousel_2.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/WebContent/Views/Web/image_product/banner__carousel_2.jpg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/WebContent/Views/Web/img/banner__carousel_3.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/WebContent/Views/Web/image_product/banner__carousel_3.jpg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/WebContent/Views/Web/img/bannertrangchu.png" beforeDir="false" afterPath="$PROJECT_DIR$/WebContent/Views/Web/image_product/bannertrangchu.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/WebContent/Views/Web/img/close_1.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/WebContent/Views/Web/image_product/close_1.jpg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/WebContent/Views/Web/img/dropdown__nam_1.png" beforeDir="false" afterPath="$PROJECT_DIR$/WebContent/Views/Web/image_product/dropdown__nam_1.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/WebContent/Views/Web/img/dropdown__nam_2.png" beforeDir="false" afterPath="$PROJECT_DIR$/WebContent/Views/Web/image_product/dropdown__nam_2.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/WebContent/Views/Web/img/dropdown__nam_3.png" beforeDir="false" afterPath="$PROJECT_DIR$/WebContent/Views/Web/image_product/dropdown__nam_3.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/WebContent/Views/Web/img/dropdown__nu_1.png" beforeDir="false" afterPath="$PROJECT_DIR$/WebContent/Views/Web/image_product/dropdown__nu_1.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/WebContent/Views/Web/img/dropdown__nu_2.png" beforeDir="false" afterPath="$PROJECT_DIR$/WebContent/Views/Web/image_product/dropdown__nu_2.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/WebContent/Views/Web/img/dropdown__nu_3.png" beforeDir="false" afterPath="$PROJECT_DIR$/WebContent/Views/Web/image_product/dropdown__nu_3.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/WebContent/Views/Web/img/img-01.png" beforeDir="false" afterPath="$PROJECT_DIR$/WebContent/Views/Web/image_product/img-01.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/WebContent/Views/Web/img/logo.png" beforeDir="false" afterPath="$PROJECT_DIR$/WebContent/Views/Web/image_product/logo.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/WebContent/Views/Web/img/outfit1.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/WebContent/Views/Web/image_product/outfit1.jpg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/WebContent/Views/Web/img/outfit10.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/WebContent/Views/Web/image_product/outfit10.jpg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/WebContent/Views/Web/img/outfit2.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/WebContent/Views/Web/image_product/outfit2.jpg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/WebContent/Views/Web/img/outfit3.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/WebContent/Views/Web/image_product/outfit3.jpg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/WebContent/Views/Web/img/outfit4.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/WebContent/Views/Web/image_product/outfit4.jpg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/WebContent/Views/Web/img/outfit5.png" beforeDir="false" afterPath="$PROJECT_DIR$/WebContent/Views/Web/image_product/outfit5.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/WebContent/Views/Web/img/outfit6.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/WebContent/Views/Web/image_product/outfit6.jpg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/WebContent/Views/Web/img/outfit7.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/WebContent/Views/Web/image_product/outfit7.jpg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/WebContent/Views/Web/img/outfit8.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/WebContent/Views/Web/image_product/outfit8.jpg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/WebContent/Views/Web/img/outfit9.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/WebContent/Views/Web/image_product/outfit9.jpg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/WebContent/Views/Web/index.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/WebContent/Views/Web/index.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/DAO/LoginDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/DAO/LoginDAO.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/DAO/queryDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/DAO/queryDAO.java" afterDir="false" />
+    </list>
+    <ignored path="$PROJECT_DIR$/out/" />
+    <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="DefaultGradleProjectSettings">
+    <option name="testRunner" value="GRADLE" />
+    <option name="delegatedBuild" value="true" />
+  </component>
+  <component name="FileEditorManager">
+    <leaf>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/DAO/queryDAO.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="75">
+              <caret line="202" column="9" lean-forward="true" selection-start-line="202" selection-start-column="9" selection-end-line="202" selection-end-column="9" />
+              <folding>
+                <element signature="e#8201#8210#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/com/controller/admin/fillAllDisplay.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="105">
+              <caret line="18" column="30" selection-start-line="18" selection-start-column="14" selection-end-line="18" selection-end-column="30" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/com/model/Display.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="210">
+              <caret line="14" column="30" selection-start-line="14" selection-start-column="18" selection-end-line="14" selection-end-column="30" />
+              <folding>
+                <element signature="e#801#802#0" expanded="true" />
+                <element signature="e#824#825#0" expanded="true" />
+                <element signature="e#871#872#0" expanded="true" />
+                <element signature="e#899#900#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/WebContent/Views/Web/index.jsp">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="369">
+              <caret line="32" column="93" selection-start-line="32" selection-start-column="93" selection-end-line="32" selection-end-column="93" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+    </leaf>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="IdeDocumentHistory">
+    <option name="CHANGED_PATHS">
+      <list>
+        <option value="$PROJECT_DIR$/src/DB/MyDB.java" />
+        <option value="$PROJECT_DIR$/src/DAO/LoginDAO.java" />
+        <option value="$PROJECT_DIR$/src/com/model/Display.java" />
+        <option value="$PROJECT_DIR$/src/DAO/queryDAO.java" />
+        <option value="$PROJECT_DIR$/WebContent/Views/Web/container/product.jsp" />
+        <option value="$PROJECT_DIR$/src/com/controller/admin/fillAllDisplay.java" />
+        <option value="$PROJECT_DIR$/WebContent/Views/Web/index.jsp" />
+      </list>
+    </option>
+  </component>
+  <component name="LogFilters">
+    <option name="FILTER_ERRORS" value="false" />
+    <option name="FILTER_WARNINGS" value="false" />
+    <option name="FILTER_INFO" value="true" />
+    <option name="FILTER_DEBUG" value="true" />
+    <option name="CUSTOM_FILTER" />
+  </component>
+  <component name="ProjectFrameBounds" fullScreen="true">
+    <option name="width" value="1680" />
+    <option name="height" value="1050" />
+  </component>
+  <component name="ProjectLevelVcsManager">
+    <ConfirmationsSetting value="1" id="Add" />
+  </component>
+  <component name="ProjectView">
+    <navigator proportions="" version="1">
+      <foldersAlwaysOnTop value="true" />
+    </navigator>
+    <panes>
+      <pane id="ProjectPane">
+        <subPane>
+          <expand>
+            <path>
+              <item name="ClickShop" type="b2602c69:ProjectViewProjectNode" />
+              <item name="ClickShop" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="ClickShop" type="b2602c69:ProjectViewProjectNode" />
+              <item name="ClickShop" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="ClickShop" type="b2602c69:ProjectViewProjectNode" />
+              <item name="ClickShop" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="com" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="ClickShop" type="b2602c69:ProjectViewProjectNode" />
+              <item name="ClickShop" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="com" type="462c0819:PsiDirectoryNode" />
+              <item name="controller" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="ClickShop" type="b2602c69:ProjectViewProjectNode" />
+              <item name="ClickShop" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="com" type="462c0819:PsiDirectoryNode" />
+              <item name="controller" type="462c0819:PsiDirectoryNode" />
+              <item name="admin" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="ClickShop" type="b2602c69:ProjectViewProjectNode" />
+              <item name="ClickShop" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="com" type="462c0819:PsiDirectoryNode" />
+              <item name="model" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="ClickShop" type="b2602c69:ProjectViewProjectNode" />
+              <item name="ClickShop" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="DAO" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="ClickShop" type="b2602c69:ProjectViewProjectNode" />
+              <item name="ClickShop" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="DB" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="ClickShop" type="b2602c69:ProjectViewProjectNode" />
+              <item name="ClickShop" type="462c0819:PsiDirectoryNode" />
+              <item name="WebContent" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="ClickShop" type="b2602c69:ProjectViewProjectNode" />
+              <item name="ClickShop" type="462c0819:PsiDirectoryNode" />
+              <item name="WebContent" type="462c0819:PsiDirectoryNode" />
+              <item name="Views" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="ClickShop" type="b2602c69:ProjectViewProjectNode" />
+              <item name="ClickShop" type="462c0819:PsiDirectoryNode" />
+              <item name="WebContent" type="462c0819:PsiDirectoryNode" />
+              <item name="Views" type="462c0819:PsiDirectoryNode" />
+              <item name="Admin" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="ClickShop" type="b2602c69:ProjectViewProjectNode" />
+              <item name="ClickShop" type="462c0819:PsiDirectoryNode" />
+              <item name="WebContent" type="462c0819:PsiDirectoryNode" />
+              <item name="Views" type="462c0819:PsiDirectoryNode" />
+              <item name="Web" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="ClickShop" type="b2602c69:ProjectViewProjectNode" />
+              <item name="ClickShop" type="462c0819:PsiDirectoryNode" />
+              <item name="WebContent" type="462c0819:PsiDirectoryNode" />
+              <item name="Views" type="462c0819:PsiDirectoryNode" />
+              <item name="Web" type="462c0819:PsiDirectoryNode" />
+              <item name="container" type="462c0819:PsiDirectoryNode" />
+            </path>
+          </expand>
+          <select />
+        </subPane>
+      </pane>
+      <pane id="PackagesPane" />
+      <pane id="Scope" />
+    </panes>
+  </component>
+  <component name="PropertiesComponent">
+    <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="aspect.path.notification.shown" value="true" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/src/DB" />
+    <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
+    <property name="nodejs_npm_path_reset_for_default_project" value="true" />
+    <property name="project.structure.last.edited" value="Modules" />
+    <property name="project.structure.proportion" value="0.15" />
+    <property name="project.structure.side.proportion" value="0.2" />
+  </component>
+  <component name="RecentsManager">
+    <key name="CopyClassDialog.RECENTS_KEY">
+      <recent name="com.controller.admin" />
+      <recent name="com.model" />
+    </key>
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/src/DB" />
+    </key>
+  </component>
+  <component name="RunDashboard">
+    <option name="ruleStates">
+      <list>
+        <RuleState>
+          <option name="name" value="ConfigurationTypeDashboardGroupingRule" />
+        </RuleState>
+        <RuleState>
+          <option name="name" value="StatusDashboardGroupingRule" />
+        </RuleState>
+      </list>
+    </option>
+  </component>
+  <component name="RunManager">
+    <configuration name="Tomcat 8.5.58" type="#com.intellij.j2ee.web.tomcat.TomcatRunConfigurationFactory" factoryName="Local" APPLICATION_SERVER_NAME="Tomcat 8.5.58" ALTERNATIVE_JRE_ENABLED="false" nameIsGenerated="true">
+      <option name="OPEN_IN_BROWSER_URL" value="http://localhost:9999/ClickShop_war_exploded/" />
+      <option name="UPDATING_POLICY" value="restart-server" />
+      <deployment>
+        <artifact name="ClickShop:war exploded">
+          <settings>
+            <option name="CONTEXT_PATH" value="/ClickShop_war_exploded" />
+          </settings>
+        </artifact>
+      </deployment>
+      <server-settings>
+        <option name="BASE_DIRECTORY_NAME" value="Unnamed_ClickShop_8" />
+      </server-settings>
+      <predefined_log_file enabled="true" id="Tomcat" />
+      <predefined_log_file enabled="true" id="Tomcat Catalina" />
+      <predefined_log_file id="Tomcat Manager" />
+      <predefined_log_file id="Tomcat Host Manager" />
+      <predefined_log_file id="Tomcat Localhost Access" />
+      <RunnerSettings RunnerId="Debug">
+        <option name="DEBUG_PORT" value="58574" />
+      </RunnerSettings>
+      <ConfigurationWrapper VM_VAR="JAVA_OPTS" RunnerId="Cover">
+        <option name="USE_ENV_VARIABLES" value="true" />
+        <STARTUP>
+          <option name="USE_DEFAULT" value="true" />
+          <option name="SCRIPT" value="" />
+          <option name="VM_PARAMETERS" value="" />
+          <option name="PROGRAM_PARAMETERS" value="" />
+        </STARTUP>
+        <SHUTDOWN>
+          <option name="USE_DEFAULT" value="true" />
+          <option name="SCRIPT" value="" />
+          <option name="VM_PARAMETERS" value="" />
+          <option name="PROGRAM_PARAMETERS" value="" />
+        </SHUTDOWN>
+      </ConfigurationWrapper>
+      <ConfigurationWrapper VM_VAR="JAVA_OPTS" RunnerId="Debug">
+        <option name="USE_ENV_VARIABLES" value="true" />
+        <STARTUP>
+          <option name="USE_DEFAULT" value="true" />
+          <option name="SCRIPT" value="" />
+          <option name="VM_PARAMETERS" value="" />
+          <option name="PROGRAM_PARAMETERS" value="" />
+        </STARTUP>
+        <SHUTDOWN>
+          <option name="USE_DEFAULT" value="true" />
+          <option name="SCRIPT" value="" />
+          <option name="VM_PARAMETERS" value="" />
+          <option name="PROGRAM_PARAMETERS" value="" />
+        </SHUTDOWN>
+      </ConfigurationWrapper>
+      <ConfigurationWrapper VM_VAR="JAVA_OPTS" RunnerId="Run">
+        <option name="USE_ENV_VARIABLES" value="true" />
+        <STARTUP>
+          <option name="USE_DEFAULT" value="true" />
+          <option name="SCRIPT" value="" />
+          <option name="VM_PARAMETERS" value="" />
+          <option name="PROGRAM_PARAMETERS" value="" />
+        </STARTUP>
+        <SHUTDOWN>
+          <option name="USE_DEFAULT" value="true" />
+          <option name="SCRIPT" value="" />
+          <option name="VM_PARAMETERS" value="" />
+          <option name="PROGRAM_PARAMETERS" value="" />
+        </SHUTDOWN>
+      </ConfigurationWrapper>
+      <method v="2">
+        <option name="Make" enabled="true" />
+        <option name="BuildArtifacts" enabled="true">
+          <artifact name="ClickShop:war exploded" />
+        </option>
+      </method>
+    </configuration>
+  </component>
+  <component name="SvnConfiguration">
+    <configuration />
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="38ebcc6b-bc53-4fc6-bf79-ad9144be68ed" name="Default Changelist" comment="" />
+      <created>1608100792666</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1608100792666</updated>
+      <workItem from="1608100794132" duration="5872000" />
+    </task>
+    <servers />
+  </component>
+  <component name="TimeTrackingManager">
+    <option name="totallyTimeSpent" value="5872000" />
+  </component>
+  <component name="ToolWindowManager">
+    <frame x="0" y="0" width="1680" height="1050" extended-state="0" />
+    <editor active="true" />
+    <layout>
+      <window_info id="Designer" />
+      <window_info id="Image Layers" />
+      <window_info id="UI Designer" />
+      <window_info id="Favorites" side_tool="true" />
+      <window_info id="Capture Tool" />
+      <window_info id="Learn" />
+      <window_info id="Web" side_tool="true" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.24969475" />
+      <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
+      <window_info anchor="bottom" id="Application Servers" weight="0.32959184" />
+      <window_info anchor="bottom" id="Terminal" />
+      <window_info anchor="bottom" id="Event Log" side_tool="true" />
+      <window_info anchor="bottom" id="Messages" weight="0.32959184" />
+      <window_info anchor="bottom" id="Java Enterprise" />
+      <window_info anchor="bottom" id="Database Changes" />
+      <window_info anchor="bottom" id="Version Control" />
+      <window_info anchor="bottom" id="Docker" show_stripe_button="false" />
+      <window_info anchor="bottom" id="Message" order="0" />
+      <window_info anchor="bottom" id="Find" order="1" />
+      <window_info anchor="bottom" id="Run" order="2" visible="true" weight="0.32959184" />
+      <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
+      <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
+      <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
+      <window_info anchor="bottom" id="TODO" order="6" />
+      <window_info anchor="right" id="Maven" />
+      <window_info anchor="right" id="Palette" />
+      <window_info anchor="right" id="Capture Analysis" />
+      <window_info anchor="right" id="Database" />
+      <window_info anchor="right" id="Palette&#9;" />
+      <window_info anchor="right" id="Theme Preview" />
+      <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
+      <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
+      <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
+    </layout>
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="1" />
+  </component>
+  <component name="editorHistoryManager">
+    <entry file="file://$PROJECT_DIR$/src/DB/MyDB.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="60">
+          <caret line="5" column="13" selection-start-line="5" selection-start-column="13" selection-end-line="5" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/WebContent/Views/Admin/loginMain.jsp">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/DAO/LoginDAO.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="120">
+          <caret line="8" column="18" lean-forward="true" selection-start-line="8" selection-start-column="18" selection-end-line="8" selection-end-column="18" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/controller/admin/login.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="189">
+          <caret line="24" column="16" lean-forward="true" selection-start-line="24" selection-start-column="16" selection-end-line="24" selection-end-column="16" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/WebContent/Views/Admin/container/account.jsp">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/model/Article1.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="30">
+          <caret line="2" column="13" selection-start-line="2" selection-start-column="13" selection-end-line="2" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/controller/admin/fillAllProduct.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="240">
+          <caret line="40" column="6" lean-forward="true" selection-start-line="40" selection-start-column="6" selection-end-line="40" selection-end-column="6" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/controller/admin/fillDashBoard.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="120">
+          <caret line="23" column="13" selection-start-line="23" selection-start-column="13" selection-end-line="23" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar:///Library/Java/JavaVirtualMachines/jdk1.8.0_271.jdk/Contents/Home/src.zip!/java/sql/ResultSet.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="210">
+          <caret line="236" column="11" selection-start-line="236" selection-start-column="11" selection-end-line="236" selection-end-column="11" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/WebContent/Views/Web/container/login.jsp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-1531" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/WebContent/Views/Admin/container/product.jsp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="397">
+          <caret line="160" column="48" lean-forward="true" selection-start-line="149" selection-start-column="36" selection-end-line="160" selection-end-column="48" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/WebContent/Views/Web/container/product.jsp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="458">
+          <caret line="403" lean-forward="true" selection-start-line="403" selection-end-line="403" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/controller/admin/fillAllDisplay.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="105">
+          <caret line="18" column="30" selection-start-line="18" selection-start-column="14" selection-end-line="18" selection-end-column="30" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/DAO/queryDAO.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="75">
+          <caret line="202" column="9" lean-forward="true" selection-start-line="202" selection-start-column="9" selection-end-line="202" selection-end-column="9" />
+          <folding>
+            <element signature="e#8201#8210#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/model/Display.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="210">
+          <caret line="14" column="30" selection-start-line="14" selection-start-column="18" selection-end-line="14" selection-end-column="30" />
+          <folding>
+            <element signature="e#801#802#0" expanded="true" />
+            <element signature="e#824#825#0" expanded="true" />
+            <element signature="e#871#872#0" expanded="true" />
+            <element signature="e#899#900#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/WebContent/Views/Web/image_product/Chelsea06.jpg">
+      <provider selected="true" editor-type-id="images" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/WebContent/Views/Web/index.jsp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="369">
+          <caret line="32" column="93" selection-start-line="32" selection-start-column="93" selection-end-line="32" selection-end-column="93" />
+        </state>
+      </provider>
+    </entry>
+  </component>
+  <component name="masterDetails">
+    <states>
+      <state key="ArtifactsStructureConfigurable.UI">
+        <settings>
+          <artifact-editor />
+          <last-edited>ClickShop:war exploded</last-edited>
+          <splitter-proportions>
+            <option name="proportions">
+              <list>
+                <option value="0.2" />
+                <option value="0.5" />
+              </list>
+            </option>
+          </splitter-proportions>
+        </settings>
+      </state>
+      <state key="FacetStructureConfigurable.UI">
+        <settings>
+          <splitter-proportions>
+            <option name="proportions">
+              <list>
+                <option value="0.2" />
+              </list>
+            </option>
+          </splitter-proportions>
+        </settings>
+      </state>
+      <state key="GlobalLibrariesConfigurable.UI">
+        <settings>
+          <splitter-proportions>
+            <option name="proportions">
+              <list>
+                <option value="0.2" />
+              </list>
+            </option>
+          </splitter-proportions>
+        </settings>
+      </state>
+      <state key="JdkListConfigurable.UI">
+        <settings>
+          <splitter-proportions>
+            <option name="proportions">
+              <list>
+                <option value="0.2" />
+              </list>
+            </option>
+          </splitter-proportions>
+        </settings>
+      </state>
+      <state key="ModuleStructureConfigurable.UI">
+        <settings>
+          <last-edited>ClickShop</last-edited>
+          <splitter-proportions>
+            <option name="proportions">
+              <list>
+                <option value="0.2" />
+                <option value="0.6" />
+              </list>
+            </option>
+          </splitter-proportions>
+        </settings>
+      </state>
+      <state key="ProjectJDKs.UI">
+        <settings>
+          <last-edited>1.8</last-edited>
+          <splitter-proportions>
+            <option name="proportions">
+              <list>
+                <option value="0.2" />
+              </list>
+            </option>
+          </splitter-proportions>
+        </settings>
+      </state>
+      <state key="ProjectLibrariesConfigurable.UI">
+        <settings>
+          <splitter-proportions>
+            <option name="proportions">
+              <list>
+                <option value="0.2" />
+              </list>
+            </option>
+          </splitter-proportions>
+        </settings>
+      </state>
+    </states>
+  </component>
+</project>

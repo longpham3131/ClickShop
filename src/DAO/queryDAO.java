@@ -205,6 +205,26 @@ public class queryDAO {
     }
 
     // ------------------ END ACCOUNT ---------------//
+    // ------------------ START DISPLAY ---------------//
+
+    public List<Display> hienthi(int index) {
+        String query = "SELECT Product.ProductId, Product.Name,Product.UnitPrice , Image.ImagePath FROM dbo.Product ,dbo.[Image] WHERE Product.ProductId = Image.ProductId";
+        List<Display> listSanpham = new ArrayList<Display>();
+        try {
+
+            conn = new MyDB().getConnection();
+            ps = conn.prepareStatement(query);
+            rs = ps.executeQuery();
+            while (rs.next()) {
+                listSanpham.add(new Display(rs.getString(1), rs.getString(2), rs.getString(3), rs.getString(4)));
+            }
+            return listSanpham;
+        } catch (Exception e) {
+        }
+        return null;
+    }
+
+    // ------------------ END DISPLAY ---------------//
 
     // ------------------ START PRODUCT ---------------//
 

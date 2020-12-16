@@ -1,0 +1,13 @@
+<component name="ArtifactManager">
+  <artifact type="exploded-war" name="ClickShop:war exploded">
+    <output-path>$PROJECT_DIR$/out/artifacts/ClickShop_war_exploded</output-path>
+    <root id="root">
+      <element id="directory" name="WEB-INF">
+        <element id="directory" name="classes">
+          <element id="module-output" name="ClickShop" />
+        </element>
+      </element>
+      <element id="javaee-facet-resources" facet="ClickShop/web/Web" />
+    </root>
+  </artifact>
+</component>
