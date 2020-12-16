@@ -29,8 +29,8 @@
 
     <section class="carousel">
         <div class="owl-carousel owl-theme">
-            <div class="item"><img src="<%=request.getContextPath()%>/Views/Web/img/banner__carousel.jpg" alt=""></div>
-            <div class="item"><img src="<%=request.getContextPath()%>/Views/Web/img/banner__carousel_2.jpg" alt=""></div>
+            <div class="item"><img src="<%=request.getContextPath()%>/Views/Web/image_product/banner__carousel.jpg" alt=""></div>
+            <div class="item"><img src="<%=request.getContextPath()%>/Views/Web/image_product/banner__carousel_2.jpg" alt=""></div>
 
         </div>
     </section>
@@ -41,75 +41,28 @@
         <!-- Swiper -->
         <div class="swiper-container">
             <div class="swiper-wrapper">
+                <c:forEach items="${listSanpham}" var="row">
+                    <c:if test="${row.getProductId()  < 7 }">
                 <div class="swiper-slide">
-                    <img src="<%=request.getContextPath()%>/Views/Web/img/Tee02.PNG" alt="">
 
-                    <h4>
-                        THE WOLF BASIC TEE - TAN
-                    </h4>
-                    <span>280,000₫</span>
+                            <tr>
+
+                                <img src="<%=request.getContextPath()%>/Views/Web${row.getImagePath()}" alt="">
+<%--                                <td>----<%=request.getContextPath()%>/View/Web${row.getImagePath()}</td>--%>
+
+                                <h4>
+                                    <td>${row.name}</td>
+                                </h4>
+
+                                <span>
+                                    <td>${row.getUnitPrice()}</td>
+                                </span>
+
+                            </tr>
 
                 </div>
-                <div class="swiper-slide">
-                    <img src="<%=request.getContextPath()%>/Views/Web/img/Tee03.jpg" alt="">
-
-
-                    <h4>
-                        THE WOLF BASIC TEE - WHITE
-                    </h4>
-                    <span>280,000₫</span>
-                </div>
-                <div class="swiper-slide">
-                    <img src="<%=request.getContextPath()%>/Views/Web/img/Tee01.jpg" alt="">
-
-
-                    <h4> THE WOLF BASIC TEE - BLACK</h4>
-                    <span>280,000₫</span>
-                </div>
-                <div class="swiper-slide">
-                    <img src="<%=request.getContextPath()%>/Views/Web/img/Tee04.jpg" alt="">
-
-
-                    <h4>
-                        THE WOLF SEVEN ELEMENTS TEE - Black
-                    </h4>
-                    <span>350,000₫</span>
-                </div>
-                <div class="swiper-slide">
-                    <img src="<%=request.getContextPath()%>/Views/Web/img/Tee05.PNG   " alt="">
-
-
-                    <h4>
-                        THE WOLF SEVEN ELEMENTS TEE - WHITE
-                    </h4>
-                    <span>350,000₫</span>
-                </div>
-                <div class="swiper-slide">
-                    <img src="<%=request.getContextPath()%>/Views/Web/img/Oxford01.jpg" alt="">
-
-
-                    <h4>
-                        THE BASIC WOLF OXFORD - BLACK
-                    </h4>
-                    <span>1,500,000₫</span>
-                </div>
-                <div class="swiper-slide">
-                    <img src="<%=request.getContextPath()%>/Views/Web/img/Chelsea02.jpg" alt="">
-
-
-                    <h4>
-                        THE BASIC WOLF CHELSEA BOOT - TAN
-                    </h4>
-                    <span>1,600,000₫</span>
-                </div>
-                <div class="swiper-slide">
-                    <img src="<%=request.getContextPath()%>/Views/Web/img/Chelsea01.jpg" alt="">
-
-                    <h4>
-                        THE BASIC WOLF CHELSEA BOOT - BLACK
-                    </h4>
-                    <span>1,600,000₫</span>
-                </div>
+                    </c:if>
+                </c:forEach>
 
             </div>
             <!-- Add Arrows -->

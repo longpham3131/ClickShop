@@ -383,50 +383,69 @@
                             </span>
 
                         </div>
+-------------
+<%--                        <div class="row">--%>
+<%--                            <div class="col- 12 col-md-6 col-lg-4 col-xl-3 product__item">--%>
 
-                        <div class="row">
-                            <div class="col- 12 col-md-6 col-lg-4 col-xl-3 product__item">
-                                <img src="<%=request.getContextPath()%>/Views/Web/img/Tee02.PNG" alt="">
+<%--                                <c:forEach items="${listSanpham}" var="row">--%>
+<%--                                    <tr>--%>
 
-                                <h4>
-                                    THE WOLF BASIC TEE - TAN
-                                </h4>
-                                <span>280,000₫</span>
-                            </div>
-                            <div class="col- 12 col-md-6 col-lg-4 col-xl-3 product__item">
-                                <img src="<%=request.getContextPath()%>/Views/Web/img/Tee03.jpg" alt="">
+<%--                                        <img src="<%=request.getContextPath()%>${row.getImagePath()}" alt="">--%>
+<%--                                        <h4>--%>
+<%--                                            <td>${row.name}</td>--%>
+<%--                                        </h4>--%>
+<%--                                        <span>--%>
+<%--                                            <td>${row.getUnitPrice()}</td>--%>
+<%--                                        </span>--%>
+<%--                                    </tr>--%>
+<%--                                </c:forEach>--%>
 
+<%--                            </div>--%>
 
-                                <h4>
-                                    THE WOLF BASIC TEE - WHITE
-                                </h4>
-                                <span>280,000₫</span>
-                            </div>
-                            <div class="col- 12 col-md-6 col-lg-4 col-xl-3 product__item">
-                                <img src="<%=request.getContextPath()%>/Views/Web/img/Tee01.jpg" alt="">
+<%--                            <div class="col- 12 col-md-6 col-lg-4 col-xl-3 product__item">--%>
+<%--                                <img src="<%=request.getContextPath()%>/Views/Web/img/Tee02.PNG" alt="">--%>
 
-
-                                <h4> THE WOLF BASIC TEE - BLACK</h4>
-                                <span>280,000₫</span>
-                            </div>
-                            <div class="col- 12 col-md-6 col-lg-4 col-xl-3 product__item">
-                                <img src="<%=request.getContextPath()%>/Views/Web/img/Tee05.PNG" alt="">
+<%--                                <h4>--%>
+<%--                                    THE WOLF BASIC TEE - TAN--%>
+<%--                                </h4>--%>
+<%--                                <span>280,000₫</span>--%>
+<%--                            </div>--%>
 
 
-                                <h4>
-                                    THE WOLF SEVEN ELEMENTS TEE - WHITE
-                                </h4>
-                                <span>350,000₫</span>
-                            </div>
-                            <div class="col- 12 col-md-6 col-lg-4 col-xl-3 product__item">
-                                <img src="<%=request.getContextPath()%>/Views/Web/img/Oxford02.PNG" alt="">
-                                <img src="<%=request.getContextPath()%>/Views/Web/img/derby1__hover.jpg" alt="" class="img__hover">
+<%--                            <div class="col- 12 col-md-6 col-lg-4 col-xl-3 product__item">--%>
+<%--                                <img src="<%=request.getContextPath()%>/Views/Web/img/Tee03.jpg" alt="">--%>
 
-                                <h4>
-                                    THE BASIC WOLF OXFORD - BLACK
-                                </h4>
-                                <span>1,500,000₫</span>
-                            </div>
+
+<%--                                <h4>--%>
+<%--                                    THE WOLF BASIC TEE - WHITE--%>
+<%--                                </h4>--%>
+<%--                                <span>280,000₫</span>--%>
+<%--                            </div>--%>
+<%--                            <div class="col- 12 col-md-6 col-lg-4 col-xl-3 product__item">--%>
+<%--                                <img src="<%=request.getContextPath()%>/Views/Web/img/Tee01.jpg" alt="">--%>
+
+
+<%--                                <h4> THE WOLF BASIC TEE - BLACK</h4>--%>
+<%--                                <span>280,000₫</span>--%>
+<%--                            </div>--%>
+<%--                            <div class="col- 12 col-md-6 col-lg-4 col-xl-3 product__item">--%>
+<%--                                <img src="<%=request.getContextPath()%>/Views/Web/img/Tee05.PNG" alt="">--%>
+
+
+<%--                                <h4>--%>
+<%--                                    THE WOLF SEVEN ELEMENTS TEE - WHITE--%>
+<%--                                </h4>--%>
+<%--                                <span>350,000₫</span>--%>
+<%--                            </div>--%>
+<%--                            <div class="col- 12 col-md-6 col-lg-4 col-xl-3 product__item">--%>
+<%--                                <img src="<%=request.getContextPath()%>/Views/Web/img/Oxford02.PNG" alt="">--%>
+<%--                                <img src="<%=request.getContextPath()%>/Views/Web/img/derby1__hover.jpg" alt="" class="img__hover">--%>
+
+<%--                                <h4>--%>
+<%--                                    THE BASIC WOLF OXFORD - BLACK--%>
+<%--                                </h4>--%>
+<%--                                <span>1,500,000₫</span>--%>
+<%--                            </div>--%>
                         </div>
                     </div>
                 </div>

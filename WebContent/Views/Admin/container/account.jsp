@@ -44,7 +44,7 @@ You can't access this page if you use link-url and not login -->
     </c:if>
     <c:if test="${(thongbao == 'error') && (from=='insert')}">
         <script type="text/javascript">
-            alert('INSERT: Error when insert');
+            alert('INSERT FAILURE : Tuổi của nhân viên phải lớn hơn 18');
         </script>
     </c:if>
     <c:if test="${(thongbao == 'input') && (from=='insert')}">
@@ -61,7 +61,7 @@ You can't access this page if you use link-url and not login -->
     </c:if>
     <c:if test="${(thongbao == 'error') }">
         <script type="text/javascript">
-            alert('update: Error when update');
+            alert('UPDATE FAILURE: Tuổi nhân viên phải lớn hơn 18');
         </script>
     </c:if>
     <c:if test="${(thongbao == 'input')}">
@@ -175,11 +175,6 @@ You can't access this page if you use link-url and not login -->
                                         >
                                     </div>
                                     <div class="form-group">
-                                        <label for="addPass">Password</label> <input
-                                            type="password" id="addPass" class="form-control" name="pass"
-                                    >
-                                    </div>
-                                    <div class="form-group">
                                         <label for="addFname">First name :</label> <input
                                             type="text" id="addFname" class="form-control" name="firstname"
                                     >
@@ -226,14 +221,14 @@ You can't access this page if you use link-url and not login -->
                                     </div>
                                     <div class="form-group">
                                         <label for="addDOfB">Day of birth :</label> <input
-                                            type="datetime" class="form-control" id="addDOfB"
+                                            type="date" class="form-control" id="addDOfB" name="Bday"
                                     >
                                     </div>
                                     <div class="form-group">
                                         <label for="addRole">Day of birth :</label>
                                         <select name="role" id="addRole" class="form-control" name="role">
                                             <%
-                                                String[] Role = {"USER", "SALEPERSON", "ADMINISTRATOR", "SHIPPER"};
+                                                String[] Role = {"USER", "SALER", "ADMINISTRATOR", "SHIPPER"};
                                                 for (int role = 0; role < 4; role++) {
                                             %>
                                             <option value="<%=Role[role]%>">
@@ -515,79 +510,12 @@ You can't access this page if you use link-url and not login -->
                                                                     <div class="form-group">
                                                                         <label for="inpDOfB">Day of birth :</label>
                                                                         <input
-                                                                                type="datetime" class="form-control"
+                                                                                type="date" class="form-control"
                                                                                 id="inpDOfB"
                                                                                 value="${listAcc.dayofBirth}"
-                                                                                name="day">
+                                                                                name="Bday">
                                                                     </div>
-                                                                    <div class="form-group">
-                                                                        <label for="editRole">Role :</label>
-                                                                        <select name="role" id="editRole"
-                                                                                class="form-control">
-                                                                            // String[] Role = {"USER", "SALEPERSON",
-                                                                            "ADMINISTRATOR", "SHIPPER"};
-                                                                            <c:choose>
-                                                                                <c:when test="${listAcc.role eq 'USER'}">
-                                                                                    <option value="USER"
-                                                                                            selected>
-                                                                                        USER
-                                                                                    </option>
-                                                                                    <option value="SALER">
-                                                                                        SALER
-                                                                                    </option>
-                                                                                    <option value="SHIPPER">
-                                                                                        SHIPPER
-                                                                                    </option>
-                                                                                    <option value="ADMINISTRATOR">
-                                                                                        ADMINISTRATOR
-                                                                                    </option>
-                                                                                </c:when>
-                                                                                <c:when test="${listAcc.role eq 'SALER'}">
-                                                                                    <option value="User">
-                                                                                        USER
-                                                                                    </option>
-                                                                                    <option value="SALER" selected>
-                                                                                        SALER
-                                                                                    </option>
-                                                                                    <option value="SHIPPER">
-                                                                                        SHIPPER
-                                                                                    </option>
-                                                                                    <option value="ADMINISTRATOR">
-                                                                                        ADMINISTRATOR
-                                                                                    </option>
-                                                                                </c:when>
-                                                                                <c:when test="${listAcc.role eq 'SHIPPER'}">
-                                                                                    <option value="User">
-                                                                                        USER
-                                                                                    </option>
-                                                                                    <option value="SALER">
-                                                                                        SALER
-                                                                                    </option>
-                                                                                    <option value="SHIPPER" selected>
-                                                                                        SHIPPER
-                                                                                    </option>
-                                                                                    <option value="ADMINISTRATOR">
-                                                                                        ADMINISTRATOR
-                                                                                    </option>
-                                                                                </c:when>
-                                                                                <c:otherwise>
-                                                                                    <option value="User">
-                                                                                        USER
-                                                                                    </option>
-                                                                                    <option value="SALER">
-                                                                                        SALER
-                                                                                    </option>
-                                                                                    <option value="SHIPPER">
-                                                                                        SHIPPER
-                                                                                    </option>
-                                                                                    <option value="ADMINISTRATOR"
-                                                                                            selected>
-                                                                                        ADMINISTRATOR
-                                                                                    </option>
-                                                                                </c:otherwise>
-                                                                            </c:choose>
-                                                                        </select>
-                                                                    </div>
+
                                                                     <button type="submit" class="btn btn-success">
                                                                         Update
                                                                     </button>
@@ -599,8 +527,6 @@ You can't access this page if you use link-url and not login -->
                                                             </div>
 
                                                             <!-- Modal footer -->
-
-                                                            <!-- dm button nam ngoai form sao action dc -->
 
                                                         </div>
                                                     </div>

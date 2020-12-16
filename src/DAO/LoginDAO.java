@@ -4,7 +4,6 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import com.model.Account;
-
 import DB.MyDB;
 
 // // query here <
@@ -17,18 +16,23 @@ public class LoginDAO {
 	{
 		try {
 			System.out.println("~~~ 2.31 ~~~~  ");
-			String query= "select * from AccountRole where Email='"+email+"' and Role='"+role+"'";		
+			String query= "select * from AccountRole where Email='"+email+"' and Role='"+role+"'";
+			System.out.println(query);
+			System.out.println(email + role);
 			conn = new  MyDB().getConnection(); 
 			System.out.println("~~~ After db ~~~~  ");
 			ps = conn.prepareStatement(query);			
 			rs = ps.executeQuery();	
 			System.out.println("~~~ After db ~~~~  ");
+			System.out.println(rs);
 			while(rs.next())
 			{
 				return true;
 			}
+			System.out.println("Return Truee");
 			} catch (Exception e) { System.out.println(e); System.out.println("~~~ 2.3 ~~~~  ");
 		}
+
 		return false;
 	}
 	public Account checkLogin(String email, String pass)
