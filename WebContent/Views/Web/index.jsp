@@ -51,7 +51,14 @@
 <%--                                <td>----<%=request.getContextPath()%>/View/Web${row.getImagePath()}</td>--%>
 
                                 <h4>
-                                    <td>${row.name}</td>
+                                    <form action="<%=request.getContextPath()%>/chooseProduct" method="post">
+                                        <input type="hidden" value="${row.productId}" name="ProductId"/>
+                                        <input type="hidden" value="${row.name}" name="Name"/>
+                                        <input type="hidden" value="${row.imagePath}" name="ImagePath"/>
+                                        <input type="hidden" value="${row.getUnitPrice()}" name="UnitPrice"/>
+                                        <input type="submit" value="${row.name}">
+                                    </form>
+<%--                                    <td>${row.name}</td>--%>
                                 </h4>
 
                                 <span>
@@ -90,39 +97,39 @@
         <div class="swiper-container">
             <div class="swiper-wrapper">
                 <div class="swiper-slide">
-                    <img src="<%=request.getContextPath()%>/Views/Web/img/outfit1.jpg" alt="">
+                    <img src="<%=request.getContextPath()%>/Views/Web/image_product/outfit1.jpg" alt="">
                     <a href="#" data-toggle="modal" data-target="#exampleModal"><span>SHOP THIS LOOK</span></a>
                 </div>
                 <div class="swiper-slide">
-                    <img src="<%=request.getContextPath()%>/Views/Web/img/outfit2.jpg" alt="">
+                    <img src="<%=request.getContextPath()%>/Views/Web/image_product/outfit2.jpg" alt="">
                     <a href="#" data-toggle="modal" data-target="#exampleModal"><span>SHOP THIS LOOK</span></a>
                 </div>
                 <div class="swiper-slide">
-                    <img src="<%=request.getContextPath()%>/Views/Web/img/outfit3.jpg" alt="">
+                    <img src="<%=request.getContextPath()%>/Views/Web/image_product/outfit3.jpg" alt="">
                     <a href="#" data-toggle="modal" data-target="#exampleModal"><span>SHOP THIS LOOK</span></a>
                 </div>
                 <div class="swiper-slide">
-                    <img src="<%=request.getContextPath()%>/Views/Web/img/outfit4.jpg" alt="">
+                    <img src="<%=request.getContextPath()%>/Views/Web/image_product/outfit4.jpg" alt="">
                     <a href="#" data-toggle="modal" data-target="#exampleModal"><span>SHOP THIS LOOK</span></a>
                 </div>
                 <div class="swiper-slide">
-                    <img src="<%=request.getContextPath()%>/Views/Web/img/outfit6.jpg" alt="">
+                    <img src="<%=request.getContextPath()%>/Views/Web/image_product/outfit6.jpg" alt="">
                     <a href="#" data-toggle="modal" data-target="#exampleModal"><span>SHOP THIS LOOK</span></a>
                 </div>
                 <div class="swiper-slide">
-                    <img src="<%=request.getContextPath()%>/Views/Web/img/outfit7.jpg" alt="">
+                    <img src="<%=request.getContextPath()%>/Views/Web/image_product/outfit7.jpg" alt="">
                     <a href="#" data-toggle="modal" data-target="#exampleModal"><span>SHOP THIS LOOK</span></a>
                 </div>
                 <div class="swiper-slide">
-                    <img src="<%=request.getContextPath()%>/Views/Web/img/outfit8.jpg" alt="">
+                    <img src="<%=request.getContextPath()%>/Views/Web/image_product/outfit8.jpg" alt="">
                     <a href="#" data-toggle="modal" data-target="#exampleModal"><span>SHOP THIS LOOK</span></a>
                 </div>
                 <div class="swiper-slide">
-                    <img src="<%=request.getContextPath()%>/Views/Web/img/outfit9.jpg" alt="">
+                    <img src="<%=request.getContextPath()%>/Views/Web/image_product/outfit9.jpg" alt="">
                     <a href="#" data-toggle="modal" data-target="#exampleModal"><span>SHOP THIS LOOK</span></a>
                 </div>
                 <div class="swiper-slide">
-                    <img src="<%=request.getContextPath()%>/Views/Web/img/outfit10.jpg" alt="">
+                    <img src="<%=request.getContextPath()%>/Views/Web/image_product/outfit10.jpg" alt="">
                     <a href="#" data-toggle="modal" data-target="#exampleModal"><span>SHOP THIS LOOK</span></a>
                 </div>
 
