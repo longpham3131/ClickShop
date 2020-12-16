@@ -1,13 +1,13 @@
 package com.model;
 
-public class DetailNoShip {
+public class DetailOrder {
     private String OrderID;
     private String ProductID;
     private String Name;
     private String Quanity;
     private String SubTotal;
 
-    public DetailNoShip(String orderID, String productID,  String name,  String quanity, String subTotal)
+    public DetailOrder(String orderID, String productID,  String name,  String quanity, String subTotal)
         {
             OrderID = orderID;
             ProductID = productID;
