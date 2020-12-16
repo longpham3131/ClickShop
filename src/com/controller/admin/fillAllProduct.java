@@ -18,6 +18,7 @@ import javax.servlet.http.HttpSession;
 
 import DAO.queryDAO;
 import com.model.Article;
+import com.model.Category;
 
 /**
  * Servlet implementation class fillAllAccount
@@ -56,8 +57,9 @@ public class fillAllProduct extends HttpServlet {
 		}
 		queryDAO dao = new queryDAO();
 		List<Article1> list1 = dao.sanpham(index);
+		List<Category> listcate = dao.listcategory(index);
 		System.out.print(" xx");
-
+		request.setAttribute("listCategory", listcate);
 		request.setAttribute("listProduct", list1);
 		request.setAttribute("from", request.getAttribute("from"));
 		request.setAttribute("thongbao", request.getAttribute("thongbao"));

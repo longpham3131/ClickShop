@@ -62,10 +62,40 @@ public boolean insertAccount( String email, String firstName, String lastName,
         return false;
     }
 
+    public boolean blockProduct(String id) {  // isAvailable = 0
+        try { // delete Role truoc, vi no co khoa ngoai
+            //String query2 = "delete from AccountRole where email='" + email + "'";
+            String query2 = "update Product set Available='0'  WHERE ProductId='" + id + "'";
+            System.out.println(query2);
+            conn = new MyDB().getConnection();
+            System.out.println(query2);
+            ps = conn.prepareStatement(query2);
+            ps.executeUpdate();
+            return true;
+        } catch (Exception e) {
+            System.out.println(e);
+        }
+        return false;
+    }
     public boolean unBlockAccount(String email) {  // isAvailable = 0
         try {
 
             String query2 = "update Account set isAvailable='1'  WHERE Email='" + email + "'";
+            System.out.println(query2);
+            conn = new MyDB().getConnection();
+            System.out.println(query2);
+            ps = conn.prepareStatement(query2);
+            ps.executeUpdate();
+            return true;
+        } catch (Exception e) {
+            System.out.println(e);
+        }
+        return false;
+    }
+
+    public boolean unBlockProduct(String id) {  // isAvailable = 0
+        try {
+            String query2 = "update Product set Available='1'  WHERE ProductId='" + id + "'";
             System.out.println(query2);
             conn = new MyDB().getConnection();
             System.out.println(query2);
@@ -143,7 +173,23 @@ public boolean insertAccount( String email, String firstName, String lastName,
         return false;
     }
 
+    public boolean productIDExists(String id) {
+        String query = "select * from Product where ProductId='"+id+"'";
+        try {
+            conn = new MyDB().getConnection();
+            ps = conn.prepareStatement(query);
+            rs = ps.executeQuery();
 
+            if (rs.next())
+            {
+                return true; // co ton tai email nay trong dbo.Account
+            }
+            return false;
+        } catch (Exception e) {
+            System.out.println(e);
+        }
+        return false;
+    }
 
 
     public List<Article> paging(int index) {
@@ -218,15 +264,40 @@ public boolean insertAccount( String email, String firstName, String lastName,
         }
         return null;
     }
+    public List<Category> listcategory(int index) {
+        String query = "SELECT * FROM  Category";
+        List<Category> list = new ArrayList<Category>();
+        System.out.print("category");
+        try {
 
+            conn = new MyDB().getConnection();
+            ps = conn.prepareStatement(query);
+            // ps.setInt(1, (index * 20 - 20));
+            rs = ps.executeQuery();
+            while (rs.next()) {
+                list.add(new Category(rs.getString(1), rs.getString(2)));
+
+                // user = new User(rs.getString("productId"),
+                // rs.getString("subcategoryId"),
+                // rs.getString("name"),
+                // rs.getString("unitprice"),
+                // rs.getString("like"),
+                // rs.getString("gender"),
+                // rs.getString("description"),
+                // rs.getString("available"));
+            }
+            return list;
+        } catch (Exception e) {
+        }
+        return null;
+    }
     public boolean insertProduct(String productid, String subcategory, String name, String unitprice, String like,
-                                 String gender, String description, String available) {
+                                 String gender, String description, String available, String img) {
         Connection conn1 = null, conn2 = null;
         PreparedStatement ps1 = null, ps2 = null;
         ResultSet rs = null;
         try {
-            String query = "insert into Product values('" + subcategory + "','" + name + "','" + unitprice + "','"
-                    + like + "','" + gender + "' ,'" + description + "' ,'" + available + "')";
+            String query = "EXEC dbo.PSP_ThemSP "+subcategory+","+ name+","+img+","+unitprice+","+0+","+gender+","+description;
             System.out.println(query);
             conn1 = new MyDB().getConnection();
             ps1 = conn1.prepareStatement(query);
@@ -243,8 +314,10 @@ public boolean insertAccount( String email, String firstName, String lastName,
         } catch (Exception e) {
             System.out.println(e);
         }
+
         return false;
     }
+
 
     public boolean productExists(String productid) {
         String query = "select * from Product where ProductId=?";

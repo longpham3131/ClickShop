@@ -44,19 +44,20 @@ public class insertProduct extends HttpServlet {
 		String gender = request.getParameter("gender");
 		String description = request.getParameter("description");
 		String available = request.getParameter("available");
+		String img = request.getParameter("img");
 		// System.out.println(DateTimeNow);
 		String tb = "";  // thong bao
-		if (subcategory == "" || name == "" || unitprice == "" || description == "" || gender == "" || available == "")
+		if (subcategory == "" || name == "" || unitprice == "" || description == "" || gender == "" || available == ""|| img == "")
 			tb = "input";
 		String url = "Views/Admin/container/product.jsp";
 		String kq="1";
 		if (tb == "") {
 			queryDAO qD = new queryDAO();
 			try {
-				if (qD.insertProduct(productid, subcategory, name, unitprice, like, gender, description, available))
+				if (qD.insertProduct(productid, subcategory, name, unitprice, like, gender, description, available,img))
 					tb = "true";
 				else
-					tb = "error";			
+					tb = "error";
 			} catch (Exception e) {
 				System.out.print(e);
 			}
