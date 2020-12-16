@@ -249,7 +249,30 @@
                                         </div>
                                         <!-- body -->
                                         <div class="modal-body">
-                                            <form action="">
+                                            <div class="form-group row">
+                                                <label for="staticID"
+                                                       class="col-sm-4 col-form-label">Orther ID
+                                                    :</label>
+                                                <div class="col-sm-8">
+                                                    <input type="text" Quantity readonly
+                                                           class="form-control-plaintext"
+                                                           id="staticID"
+                                                           value="${listPkg.orderID}">
+                                                </div>
+                                            </div>
+                                            <div class="form-group row">
+                                                <label for="staticID"
+                                                       class="col-sm-4 col-form-label">Shipper ID
+                                                    :</label>
+                                                <div class="col-sm-8">
+                                                    <input type="text" Quantity readonly
+                                                           class="form-control-plaintext"
+                                                           id="staticID"
+                                                           value="${listPkg.shipperID}">
+                                                </div>
+                                            </div>
+                                            <form action="<%=request.getContextPath()%>/shippicked" method="post">
+                                                <input type="hidden" value="${listPkg.orderID}" name="OrtherID"/>
                                                 <input type="submit" value="Dong y"
                                                        style="background-color: #357ebd; color: white">
                                             </form>

@@ -56,6 +56,7 @@ public class shipped extends HttpServlet {
          List<DetailOrder> list3_1 = dao.OrtherDetailPicking();
 
          List<PickingUp> list4 = dao.pickupList();
+        List<DetailOrder> list4_1 = dao.OrtherDetailShipping();
 
         request.setAttribute("listShipper", list);
 
@@ -66,6 +67,7 @@ public class shipped extends HttpServlet {
         request.setAttribute("listPickDetail", list3_1);
 
         request.setAttribute("listPicking", list4);
+        request.setAttribute("listShippingDetail", list4_1);
         
         request.setAttribute("from", request.getAttribute("from"));
  		request.setAttribute("thongbao", request.getAttribute("thongbao"));

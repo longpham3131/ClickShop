@@ -692,6 +692,24 @@ public class queryDAO {
         }
         return null;
     }
+
+    public boolean Shipperpicked(String OrtherID) {      // can them transaction here <<<<<<<<<<
+        Connection conn1 = null;
+        PreparedStatement ps1 = null;
+        ResultSet rs = null;
+        try {
+            String query = "update Shipper set Status='Shipping' WHERE PurchaseOrderId='" + OrtherID + "'";
+            conn1 = new MyDB().getConnection();
+
+            ps1 = conn1.prepareStatement(query);
+            ps1.executeUpdate();
+
+            return true;
+        } catch (Exception e) {
+            System.out.println(e);
+        }
+        return false;
+    }
     // ---End Bang 3 ---//
     //---- Bang so 4 -----//
     public List<Shipping> shippingList() {
@@ -716,8 +734,8 @@ public class queryDAO {
     /// dang lam o day
     public List<DetailOrder> OrtherDetailShipping() {
         String query = "SELECT  PO.PurchaseOrderId, P.ProductId, Pro.Name, P.Quantity, P.Subtotal\n" +
-                "FROM PurchaseOrderDetail P, Product Pro, PurchaseOrder PO\n" +
-                "WHERE PRO.ProductId = P.ProductId AND PO.Status='init' AND PO.PurchaseOrderId = P.PurchaseOrderId ";
+                "FROM PurchaseOrderDetail P, Product Pro, PurchaseOrder PO, Shipper SP \n" +
+                "WHERE PRO.ProductId = P.ProductId AND SP.Status='Shipping' AND PO.PurchaseOrderId = P.PurchaseOrderId AND SP.PurchaseOrderId=P.PurchaseOrderId";
         List<DetailOrder> list = new ArrayList<DetailOrder>();
         try {
             conn = new MyDB().getConnection();
