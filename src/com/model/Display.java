@@ -6,11 +6,11 @@ public class Display {
 	private String UnitPrice;
 	private String ImagePath;
 	public Display(){}
-	public Display(String productId, String name, String unitprice, String imagepath) {
+	public Display(String productId, String name, String unitprice, String imagePath) {
 		ProductId = productId;
 		Name = name;
 		UnitPrice = unitprice;
-		ImagePath = imagepath;
+		ImagePath = imagePath;
 	}
 	public String getProductId() {
 		return ProductId;

@@ -1,7 +1,6 @@
-package com.controller.admin;
+package com.controller.web;
 
 import DAO.queryDAO;
-import com.model.Article1;
 import com.model.Display;
 
 import javax.servlet.RequestDispatcher;

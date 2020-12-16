@@ -28,20 +28,19 @@
                 <div class="col-md-8 col-sm-12 col-xs-12">
 
                     <div class="product--description text-center">
-                        <img id="pro-image" src="<%=request.getContextPath()%>/Views/Web/img/Chelsea01.jpg" alt="" style="width: 80%;">
+                        <img id="pro-image" src="<%=request.getContextPath()%>/Views/Web${imagepath}" alt="" style="width: 80%;">
                     </div>
                 </div>
                 <div class="col-md-4 col-sm-12 col-xs-12 product-content-desc" id="detail-product">
                     <div class="product-title">
-                        <h1 id="pro-name">THE BASIC WOLF CHELSEA BOOT - BLACK</h1>
+                        <h1 id="pro-name">${name}</h1>
 
-                        <span id="pro_sku">SKU: MWCBB-1</span>
-
+                        <span id="pro_sku">${productId}</span>
 
                     </div>
                     <div class="product-price" id="price-preview">
                         <span class="pro-price" id="price-view"></span>
-                        <input type="number" value="1700000" id="price-value">
+                        <input type="number" value="${unitprice}" id="price-value">
                     </div>
 
 
@@ -85,113 +84,113 @@
 
                             </select>
                         </div>
-                        <div class="select-swatch clearfix">
-                            <div id="variant-swatch-0" class="swatch clearfix" data-option="option1"
-                                data-option-index="0">
-                                <div class="header hide">Màu sắc:</div>
+<%--                        <div class="select-swatch clearfix">--%>
+<%--                            <div id="variant-swatch-0" class="swatch clearfix" data-option="option1"--%>
+<%--                                data-option-index="0">--%>
+<%--                                <div class="header hide">Màu sắc:</div>--%>
 
-                                <div class="header"><span>BLACK</span></div>
+<%--                                <div class="header"><span>BLACK</span></div>--%>
 
-                                <div class="select-swap">
-                                    <div data-value="BLACK" class="n-sd swatch-element color black ">
-                                        <input class="variant-0" id="swatch-0-black" type="radio" name="option1"
-                                            value="BLACK" data-vhandle="black" checked="">
-
-
-                                        <label class="black sd" for="swatch-0-black">
-                                            <span>BLACK</span>
-                                        </label>
-
-                                    </div>
-                                </div>
-                            </div>
-                            <div id="variant-swatch-1" class="swatch clearfix" data-option="option2"
-                                data-option-index="1">
-                                <div class="header hide">Kích thước:</div>
-
-                                <div class="select-swap">
-                                    <div data-value="38 EU" class="n-sd swatch-element 38-eu">
-                                        <input class="variant-1" id="swatch-1-38-eu" type="radio" name="option2"
-                                            value="38 EU" data-vhandle="38-eu" checked="">
-
-                                        <label for="swatch-1-38-eu" class="sd">
-                                            <span>38 EU</span>
-                                        </label>
-
-                                    </div>
-                                    <div data-value="39 EU" class="n-sd swatch-element 39-eu">
-                                        <input class="variant-1" id="swatch-1-39-eu" type="radio" name="option2"
-                                            value="39 EU" data-vhandle="39-eu">
-
-                                        <label for="swatch-1-39-eu" class="">
-                                            <span>39 EU</span>
-                                        </label>
-
-                                    </div>
-                                    <div data-value="40 EU" class="n-sd swatch-element 40-eu">
-                                        <input class="variant-1" id="swatch-1-40-eu" type="radio" name="option2"
-                                            value="40 EU" data-vhandle="40-eu">
-
-                                        <label for="swatch-1-40-eu">
-                                            <span>40 EU</span>
-                                        </label>
-
-                                    </div>
-                                    <div data-value="41 EU" class="n-sd swatch-element 41-eu">
-                                        <input class="variant-1" id="swatch-1-41-eu" type="radio" name="option2"
-                                            value="41 EU" data-vhandle="41-eu">
-
-                                        <label for="swatch-1-41-eu">
-                                            <span>41 EU</span>
-                                        </label>
-
-                                    </div>
-                                    <div data-value="42 EU" class="n-sd swatch-element 42-eu">
-                                        <input class="variant-1" id="swatch-1-42-eu" type="radio" name="option2"
-                                            value="42 EU" data-vhandle="42-eu">
-
-                                        <label for="swatch-1-42-eu">
-                                            <span>42 EU</span>
-                                        </label>
-
-                                    </div>
-                                    <div data-value="43 EU" class="n-sd swatch-element 43-eu">
-                                        <input class="variant-1" id="swatch-1-43-eu" type="radio" name="option2"
-                                            value="43 EU" data-vhandle="43-eu">
-
-                                        <label for="swatch-1-43-eu" class="">
-                                            <span>43 EU</span>
-                                        </label>
-
-                                    </div>
-                                    <div data-value="44 EU" class="n-sd swatch-element 44-eu">
-                                        <input class="variant-1" id="swatch-1-44-eu" type="radio" name="option2"
-                                            value="44 EU" data-vhandle="44-eu">
-
-                                        <label for="swatch-1-44-eu">
-                                            <span>44 EU</span>
-                                        </label>
-
-                                    </div>
-
-                                    <div data-value="45 EU" class="n-sd swatch-element 45-eu">
-                                        <input class="variant-1" id="swatch-1-45-eu" type="radio" name="option2"
-                                            value="45 EU" data-vhandle="45-eu">
-
-                                        <label for="swatch-1-45-eu">
-                                            <span>45 EU</span>
-                                        </label>
-
-                                    </div>
+<%--                                <div class="select-swap">--%>
+<%--                                    <div data-value="BLACK" class="n-sd swatch-element color black ">--%>
+<%--                                        <input class="variant-0" id="swatch-0-black" type="radio" name="option1"--%>
+<%--                                            value="BLACK" data-vhandle="black" checked="">--%>
 
 
-                                </div>
-                            </div>
-                        </div>
+<%--                                        <label class="black sd" for="swatch-0-black">--%>
+<%--                                            <span>BLACK</span>--%>
+<%--                                        </label>--%>
+
+<%--                                    </div>--%>
+<%--                                </div>--%>
+<%--                            </div>--%>
+<%--&lt;%&ndash;                            <div id="variant-swatch-1" class="swatch clearfix" data-option="option2"&ndash;%&gt;--%>
+<%--&lt;%&ndash;                                data-option-index="1">&ndash;%&gt;--%>
+<%--&lt;%&ndash;                                <div class="header hide">Kích thước:</div>&ndash;%&gt;--%>
+
+<%--&lt;%&ndash;                                <div class="select-swap">&ndash;%&gt;--%>
+<%--&lt;%&ndash;                                    <div data-value="38 EU" class="n-sd swatch-element 38-eu">&ndash;%&gt;--%>
+<%--&lt;%&ndash;                                        <input class="variant-1" id="swatch-1-38-eu" type="radio" name="option2"&ndash;%&gt;--%>
+<%--&lt;%&ndash;                                            value="38 EU" data-vhandle="38-eu" checked="">&ndash;%&gt;--%>
+
+<%--&lt;%&ndash;                                        <label for="swatch-1-38-eu" class="sd">&ndash;%&gt;--%>
+<%--&lt;%&ndash;                                            <span>38 EU</span>&ndash;%&gt;--%>
+<%--&lt;%&ndash;                                        </label>&ndash;%&gt;--%>
+
+<%--&lt;%&ndash;                                    </div>&ndash;%&gt;--%>
+<%--&lt;%&ndash;                                    <div data-value="39 EU" class="n-sd swatch-element 39-eu">&ndash;%&gt;--%>
+<%--&lt;%&ndash;                                        <input class="variant-1" id="swatch-1-39-eu" type="radio" name="option2"&ndash;%&gt;--%>
+<%--&lt;%&ndash;                                            value="39 EU" data-vhandle="39-eu">&ndash;%&gt;--%>
+
+<%--&lt;%&ndash;                                        <label for="swatch-1-39-eu" class="">&ndash;%&gt;--%>
+<%--&lt;%&ndash;                                            <span>39 EU</span>&ndash;%&gt;--%>
+<%--&lt;%&ndash;                                        </label>&ndash;%&gt;--%>
+
+<%--&lt;%&ndash;                                    </div>&ndash;%&gt;--%>
+<%--&lt;%&ndash;                                    <div data-value="40 EU" class="n-sd swatch-element 40-eu">&ndash;%&gt;--%>
+<%--&lt;%&ndash;                                        <input class="variant-1" id="swatch-1-40-eu" type="radio" name="option2"&ndash;%&gt;--%>
+<%--&lt;%&ndash;                                            value="40 EU" data-vhandle="40-eu">&ndash;%&gt;--%>
+
+<%--&lt;%&ndash;                                        <label for="swatch-1-40-eu">&ndash;%&gt;--%>
+<%--&lt;%&ndash;                                            <span>40 EU</span>&ndash;%&gt;--%>
+<%--&lt;%&ndash;                                        </label>&ndash;%&gt;--%>
+
+<%--&lt;%&ndash;                                    </div>&ndash;%&gt;--%>
+<%--&lt;%&ndash;                                    <div data-value="41 EU" class="n-sd swatch-element 41-eu">&ndash;%&gt;--%>
+<%--&lt;%&ndash;                                        <input class="variant-1" id="swatch-1-41-eu" type="radio" name="option2"&ndash;%&gt;--%>
+<%--&lt;%&ndash;                                            value="41 EU" data-vhandle="41-eu">&ndash;%&gt;--%>
+
+<%--&lt;%&ndash;                                        <label for="swatch-1-41-eu">&ndash;%&gt;--%>
+<%--&lt;%&ndash;                                            <span>41 EU</span>&ndash;%&gt;--%>
+<%--&lt;%&ndash;                                        </label>&ndash;%&gt;--%>
+
+<%--&lt;%&ndash;                                    </div>&ndash;%&gt;--%>
+<%--&lt;%&ndash;                                    <div data-value="42 EU" class="n-sd swatch-element 42-eu">&ndash;%&gt;--%>
+<%--&lt;%&ndash;                                        <input class="variant-1" id="swatch-1-42-eu" type="radio" name="option2"&ndash;%&gt;--%>
+<%--&lt;%&ndash;                                            value="42 EU" data-vhandle="42-eu">&ndash;%&gt;--%>
+
+<%--&lt;%&ndash;                                        <label for="swatch-1-42-eu">&ndash;%&gt;--%>
+<%--&lt;%&ndash;                                            <span>42 EU</span>&ndash;%&gt;--%>
+<%--&lt;%&ndash;                                        </label>&ndash;%&gt;--%>
+
+<%--&lt;%&ndash;                                    </div>&ndash;%&gt;--%>
+<%--&lt;%&ndash;                                    <div data-value="43 EU" class="n-sd swatch-element 43-eu">&ndash;%&gt;--%>
+<%--&lt;%&ndash;                                        <input class="variant-1" id="swatch-1-43-eu" type="radio" name="option2"&ndash;%&gt;--%>
+<%--&lt;%&ndash;                                            value="43 EU" data-vhandle="43-eu">&ndash;%&gt;--%>
+
+<%--&lt;%&ndash;                                        <label for="swatch-1-43-eu" class="">&ndash;%&gt;--%>
+<%--&lt;%&ndash;                                            <span>43 EU</span>&ndash;%&gt;--%>
+<%--&lt;%&ndash;                                        </label>&ndash;%&gt;--%>
+
+<%--&lt;%&ndash;                                    </div>&ndash;%&gt;--%>
+<%--&lt;%&ndash;                                    <div data-value="44 EU" class="n-sd swatch-element 44-eu">&ndash;%&gt;--%>
+<%--&lt;%&ndash;                                        <input class="variant-1" id="swatch-1-44-eu" type="radio" name="option2"&ndash;%&gt;--%>
+<%--&lt;%&ndash;                                            value="44 EU" data-vhandle="44-eu">&ndash;%&gt;--%>
+
+<%--&lt;%&ndash;                                        <label for="swatch-1-44-eu">&ndash;%&gt;--%>
+<%--&lt;%&ndash;                                            <span>44 EU</span>&ndash;%&gt;--%>
+<%--&lt;%&ndash;                                        </label>&ndash;%&gt;--%>
+
+<%--&lt;%&ndash;                                    </div>&ndash;%&gt;--%>
+
+<%--&lt;%&ndash;                                    <div data-value="45 EU" class="n-sd swatch-element 45-eu">&ndash;%&gt;--%>
+<%--&lt;%&ndash;                                        <input class="variant-1" id="swatch-1-45-eu" type="radio" name="option2"&ndash;%&gt;--%>
+<%--&lt;%&ndash;                                            value="45 EU" data-vhandle="45-eu">&ndash;%&gt;--%>
+
+<%--&lt;%&ndash;                                        <label for="swatch-1-45-eu">&ndash;%&gt;--%>
+<%--&lt;%&ndash;                                            <span>45 EU</span>&ndash;%&gt;--%>
+<%--&lt;%&ndash;                                        </label>&ndash;%&gt;--%>
+
+<%--&lt;%&ndash;                                    </div>&ndash;%&gt;--%>
+
+
+<%--&lt;%&ndash;                                </div>&ndash;%&gt;--%>
+<%--&lt;%&ndash;                            </div>&ndash;%&gt;--%>
+<%--                        </div>--%>
                         <!-- Button trigger modal -->
                         <a style="display:block;margin:10px 0" href="javascript:void(0)" class="" data-toggle="modal"
                             data-target="#myModal">
-                            HƯỚNG DẪN CHỌN SIZE
+<%--                            HƯỚNG DẪN CHỌN SIZE--%>
                         </a>
 
                         <div class="selector-actions">

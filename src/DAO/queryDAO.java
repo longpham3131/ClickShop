@@ -186,6 +186,7 @@ public boolean insertAccount( String email, String firstName, String lastName,
         return null;
     }
 
+
     // ------------------ END DISPLAY ---------------//
 
     // ------------------ START PRODUCT ---------------//
