@@ -1,4 +1,4 @@
 
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
-<c:redirect  url="/login-admin"/>
+<c:redirect  url="/login-all"/>
 

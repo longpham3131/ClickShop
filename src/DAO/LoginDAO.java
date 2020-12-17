@@ -55,5 +55,25 @@ public class LoginDAO {
 		}
 		return null;
 	}
+
+    public String login(String email, String pass)
+    {
+        try {
+            String query= "SELECT [dbo].[KienTraDangNhap] ('"+email+"','"+pass+"')";
+
+            conn = new  MyDB().getConnection();
+            ps = conn.prepareStatement(query);
+          //  ps.setString(1, email);
+          //  ps.setString(2, pass);
+            rs = ps.executeQuery();
+
+            while(rs.next())
+            {
+                return rs.getString(1);
+            }
+        } catch (Exception e) { System.out.println(e);
+        }
+        return null;
+    }
 	
 }
