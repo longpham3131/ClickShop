@@ -27,10 +27,10 @@
             <div class="row">
                 <div class="d-none d-lg-block d-xl-block col-lg-6">
                     <div class="owl-carousel owl-theme">
-                        <div class="item"><img src="<%=request.getContextPath()%>/Views/Web/img/outfit9.jpg" alt=""></div>
-                        <div class="item"><img src="<%=request.getContextPath()%>/Views/Web/img/outfit6.jpg" alt=""></div>
-                        <div class="item"><img src="<%=request.getContextPath()%>/Views/Web/img/outfit7.jpg" alt=""></div>
-                        <div class="item"><img src="<%=request.getContextPath()%>/Views/Web/img/outfit8.jpg" alt=""></div>
+                        <div class="item"><img src="<%=request.getContextPath()%>/Views/Web/image_product/outfit9.jpg" alt=""></div>
+                        <div class="item"><img src="<%=request.getContextPath()%>/Views/Web/image_product/outfit6.jpg" alt=""></div>
+                        <div class="item"><img src="<%=request.getContextPath()%>/Views/Web/image_product/outfit7.jpg" alt=""></div>
+                        <div class="item"><img src="<%=request.getContextPath()%>/Views/Web/image_product/outfit8.jpg" alt=""></div>
                     </div>
                 </div>
                 <div class="col-12 col-lg-6">
@@ -49,7 +49,7 @@
                         <div class="tab-pane fade show active" id="formLogin" role="tabpanel"
                             aria-labelledby="pills-home-tab">
                             <div class="logo__brand text-center p-2">
-                                <img src="<%=request.getContextPath()%>/Views/Web/img/logo.png" alt="">
+                                <img src="<%=request.getContextPath()%>/Views/Web/image_product/logo.png" alt="">
 
                             </div>
                            
@@ -70,7 +70,7 @@
                         <div class="tab-pane fade" id="formRegister" role="tabpanel" aria-labelledby="pills-profile-tab">
                            <form action="">
                             <div class="logo__brand text-center p-2">
-                                <img src="<%=request.getContextPath()%>/Views/Web/img/logo.png" alt="">
+                                <img src="<%=request.getContextPath()%>/Views/Web/image_product/logo.png" alt="">
                             </div>
                             <div class="form-group">
                                 <div class="col-sm-12">
