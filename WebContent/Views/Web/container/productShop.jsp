@@ -1,6 +1,9 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
          pageEncoding="UTF-8" %>
-<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+
+
+
+<%--<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>--%>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -23,13 +26,8 @@
 </head>
 
 <body>
-<c:import url="../commom/header.jsp"> </c:import>
+<%--<c:import url="../commom/header.jsp"> </c:import>--%>
 <section class="product">
-    <!-- <div class="product__head d-flex bg-light">
-        <p>Trang chủ /</p>
-        <p>Danh mục /</p>
-        <p>Tất cả sản phẩm (Chỗ này thay đổi theo SideBar)</p>
-    </div> -->
     <div class="product__main pt-5">
         <div class="row">
             <div class="d-none d-lg-block d-xl-block col-lg-2 pl-4">
@@ -38,9 +36,9 @@
                     <nav id="sidebar">
                         <ul class="list-unstyled components">
                             <li class="active">
-                                <a href="#male" data-toggle="collapse" aria-expanded="false"
+                                <a href="#maleXL" data-toggle="collapse" aria-expanded="false"
                                    class="dropdown-toggle product__catagory">GIÀY NAM</a>
-                                <ul class="collapse list-unstyled" id="male">
+                                <ul class="collapse list-unstyled" id="maleXL">
                                     <li>
                                         <a href="#">CHELSEA BOOT</a>
                                     </li>
@@ -66,9 +64,9 @@
                             </li>
 
                             <li>
-                                <a href="#female" data-toggle="collapse" aria-expanded="false"
+                                <a href="#femaleXL" data-toggle="collapse" aria-expanded="false"
                                    class="dropdown-toggle product__catagory">GIÀY NỮ</a>
-                                <ul class="collapse list-unstyled" id="female">
+                                <ul class="collapse list-unstyled" id="femaleXL">
                                     <li>
                                         <a href="#">CHELSEA BOOT</a>
                                     </li>
@@ -81,9 +79,9 @@
                                 </ul>
                             </li>
                             <li>
-                                <a href="#tee" data-toggle="collapse" aria-expanded="false"
+                                <a href="#teeXL" data-toggle="collapse" aria-expanded="false"
                                    class="dropdown-toggle product__catagory">TEE (UNISEX)</a>
-                                <ul class="collapse list-unstyled" id="tee">
+                                <ul class="collapse list-unstyled" id="teeXL">
                                     <li>
                                         <a href="#">T-SHIRT</a>
                                     </li>
@@ -96,7 +94,7 @@
                             <li>
                                 <a href="#accessory" data-toggle="collapse" aria-expanded="false"
                                    class="dropdown-toggle product__catagory">PHỤ KIỆN</a>
-                                <ul class="collapse list-unstyled" id="accessory">
+                                <ul class="collapse list-unstyled" id="accessoryXL">
                                     <li>
                                         <a href="#">BELT</a>
                                     </li>
@@ -156,42 +154,42 @@
                                 <ul class="collapse list-unstyled" id="filterColor">
                                     <li class="active">
                                         <input type="checkbox" id="data-color-p1" value="TOBACCO"
-                                               name="color-filter" data-color="(variant:product**TOBACCO)">
+                                               name="color-filter" >
                                         <label for="data-color-p1" style="background-color: #b77543"></label>
                                     </li>
                                     <li class="">
                                         <input type="checkbox" id="data-color-p2" value="TAN" name="color-filter"
-                                               data-color="(variant:product**TAN)">
+                                               >
                                         <label for="data-color-p2" style="background-color: #e1b382"></label>
                                     </li>
                                     <li class="">
                                         <input type="checkbox" id="data-color-p3" value="NÂU ĐẤT"
-                                               name="color-filter" data-color="(variant:product**NÂU ĐẤT)">
+                                               name="color-filter" >
                                         <label for="data-color-p3" style="background-color: #5b3d32"></label>
                                     </li>
                                     <li class="">
                                         <input type="checkbox" id="data-color-p4" value="XÁM CHUỘT"
-                                               name="color-filter" data-color="(variant:product**XÁM CHUỘT)">
+                                               name="color-filter" >
                                         <label for="data-color-p4" style="background-color: #787775"></label>
                                     </li>
                                     <li class="">
                                         <input type="checkbox" id="data-color-p5" value="FOREST BLUE"
-                                               name="color-filter" data-color="(variant:product**FOREST BLUE)">
+                                               name="color-filter">
                                         <label for="data-color-p5" style="background-color: #363e6f"></label>
                                     </li>
                                     <li>
                                         <input type="checkbox" id="data-color-p6" value="NAVY BLUE"
-                                               name="color-filter" data-color="(variant:product**NAVY BLUE)">
+                                               name="color-filter" >
                                         <label for="data-color-p6" style="background-color: #393357"></label>
                                     </li>
                                     <li>
                                         <input type="checkbox" id="data-color-p7" value="BROWN" name="color-filter"
-                                               data-color="(variant:product**BROWN)">
+                                               >
                                         <label for="data-color-p7" style="background-color: #6e4a4a"></label>
                                     </li>
                                     <li>
                                         <input type="checkbox" id="data-color-p8" value="BLACK" name="color-filter"
-                                               data-color="(variant:product**BLACK)">
+                                               >
                                         <label for="data-color-p8" style="background-color: #000000"></label>
                                     </li>
                                 </ul>
@@ -358,26 +356,25 @@
                             </li>
                         </ul>
                     </div>
-                    
+
                     <div class="filter__product text-right pb-5">
                         <!-- <h3>Tất cả sản phẩm (chỗ này thay đổi theo sidebar)</h3> -->
                         <span class="custom-dropdown custom-dropdown--grey pr-3">
-
                                 <select class="sort-by custom-dropdown__select ">
 
-                                    <option value="price-ascending" data-filter="&amp;sortby=(price:product=asc)">Giá:
+                                    <option value="price-ascending" >Giá:
                                         Tăng dần</option>
-                                    <option value="price-descending" data-filter="&amp;sortby=(price:product=desc)">Giá:
+                                    <option value="price-descending" >Giá:
                                         Giảm dần</option>
-                                    <option value="title-ascending" data-filter="&amp;sortby=(title:product=asc)">Tên:
+                                    <option value="title-ascending" >Tên:
                                         A-Z</option>
-                                    <option value="title-descending" data-filter="&amp;sortby=(price:product=desc)">Tên:
+                                    <option value="title-descending" >Tên:
                                         Z-A</option>
                                     <option value="created-ascending"
-                                            data-filter="&amp;sortby=(updated_at:product=desc)">Cũ nhất</option>
+                                           >Cũ nhất</option>
                                     <option value="created-descending"
-                                            data-filter="&amp;sortby=(updated_at:product=asc)">Mới nhất</option>
-                                    <option value="best-selling" data-filter="&amp;sortby=(sold_quantity:product=desc)">
+                                            >Mới nhất</option>
+                                    <option value="best-selling" >
                                         Bán chạy nhất</option>
                                     <option value="quantity-descending">Tồn kho: Giảm dần</option>
                                 </select>
@@ -387,7 +384,7 @@
 
                     <div class="row">
                         <div class="col- 12 col-md-6 col-lg-4 col-xl-3 product__item">
-                            <img src="<%=request.getContextPath()%>/Views/Web/img/Tee02.PNG" alt="">
+                            <img src="<%=request.getContextPath()%>/Views/Web/image_product/Tee02.PNG" alt="">
 
                             <h4>
                                 THE WOLF BASIC TEE - TAN
@@ -395,8 +392,7 @@
                             <span>280,000₫</span>
                         </div>
                         <div class="col- 12 col-md-6 col-lg-4 col-xl-3 product__item">
-                            <img src="<%=request.getContextPath()%>/Views/Web/img/Tee03.jpg" alt="">
-
+                            <img src="<%=request.getContextPath()%>/Views/Web/image_product/Tee03.jpg" alt="">
 
                             <h4>
                                 THE WOLF BASIC TEE - WHITE
@@ -404,14 +400,14 @@
                             <span>280,000₫</span>
                         </div>
                         <div class="col- 12 col-md-6 col-lg-4 col-xl-3 product__item">
-                            <img src="<%=request.getContextPath()%>/Views/Web/img/Tee01.jpg" alt="">
+                            <img src="<%=request.getContextPath()%>/Views/Web/image_product/Tee01.jpg" alt="">
 
 
                             <h4> THE WOLF BASIC TEE - BLACK</h4>
                             <span>280,000₫</span>
                         </div>
                         <div class="col- 12 col-md-6 col-lg-4 col-xl-3 product__item">
-                            <img src="<%=request.getContextPath()%>/Views/Web/img/Tee05.PNG" alt="">
+                            <img src="<%=request.getContextPath()%>/Views/Web/image_product/Tee05.PNG" alt="">
 
 
                             <h4>
@@ -420,8 +416,7 @@
                             <span>350,000₫</span>
                         </div>
                         <div class="col- 12 col-md-6 col-lg-4 col-xl-3 product__item">
-                            <img src="<%=request.getContextPath()%>/Views/Web/img/Oxford02.PNG" alt="">
-                            <img src="<%=request.getContextPath()%>/Views/Web/img/derby1__hover.jpg" alt="" class="img__hover">
+                            <img src="<%=request.getContextPath()%>/Views/Web/image_product/Oxford02.PNG" alt="">
 
                             <h4>
                                 THE BASIC WOLF OXFORD - BLACK
@@ -435,7 +430,7 @@
 
     </div>
 </section>
-<c:import url="../commom/footer.jsp"> </c:import>
+<%--<c:import url="../commom/footer.jsp"> </c:import>--%>
 
 <!-- Thư viện hỗ trợ Jquery -->
 <script src="https://code.jquery.com/jquery-3.5.1.min.js"
@@ -449,7 +444,7 @@
 <script src="<%=request.getContextPath()%>/Views/Web/js/main.js"></script>
 <script src="<%=request.getContextPath()%>/Views/Web/js/util.js"></script>
 
-<script src="<%=request.getContextPath()%>/Views/Web/js/checkOut.js"></script>
+<%--<script src="<%=request.getContextPath()%>/Views/Web/js/checkOut.js"></script>--%>
 </body>
 
 </html>
