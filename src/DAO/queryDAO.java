@@ -15,37 +15,38 @@ public class queryDAO {
     CallableStatement clmt = null;
     ResultSet rs = null;
 
-public boolean insertAccount( String email, String firstName, String lastName,
-                             String phone, String address, String gender, String dateBirth, String role) {
+    public boolean insertAccount(String email, String firstName, String lastName,
+                                 String phone, String address, String gender, String dateBirth, String role) {
 
-    try {
+        try {
 
 //        String sqlBgTran =  "BEGIN TRANSACTION SAVE TRANSACTION Tran_InsertUpdateAccountRole ";
-        String sqlExec = "{ Call USP_TaoUser (?,?,?, ?, ?, ?, ?, ?) }";
+            String sqlExec = "{ Call USP_TaoUser (?,?,?, ?, ?, ?, ?, ?) }";
 //        String sqlCommit = " COMMIT";
 
 
-        conn = new MyDB().getConnection();
+            conn = new MyDB().getConnection();
 
-        conn.setAutoCommit(false);
+            conn.setAutoCommit(false);
 
-        clmt = conn.prepareCall(sqlExec);
-        clmt.setString(1, email);
-        clmt.setString(2,firstName);
-        clmt.setString(3,lastName);
-        clmt.setString(4,phone);
-        clmt.setString(5,address);
-        clmt.setString(6,gender);
-        clmt.setString(7,dateBirth);
-        clmt.setString(8,role);
-        clmt.execute();
-        conn.commit();
-        return true;
-    } catch (Exception e) {
-        System.out.println(e);
+            clmt = conn.prepareCall(sqlExec);
+            clmt.setString(1, email);
+            clmt.setString(2, firstName);
+            clmt.setString(3, lastName);
+            clmt.setString(4, phone);
+            clmt.setString(5, address);
+            clmt.setString(6, gender);
+            clmt.setString(7, dateBirth);
+            clmt.setString(8, role);
+            clmt.execute();
+            conn.commit();
+            return true;
+        } catch (Exception e) {
+            System.out.println(e);
+        }
+        return false;
     }
-    return false;
-}
+
     public boolean deleteAccount(String email) {  // isAvailable = 0
         try {
 
@@ -77,6 +78,7 @@ public boolean insertAccount( String email, String firstName, String lastName,
         }
         return false;
     }
+
     public boolean unBlockAccount(String email) {  // isAvailable = 0
         try {
 
@@ -124,7 +126,7 @@ public boolean insertAccount( String email, String firstName, String lastName,
         return false;
     }
 
-    public boolean updateAccount( String email, String firstName, String lastName,
+    public boolean updateAccount(String email, String firstName, String lastName,
                                  String phone, String address, String gender, String dateBirth) {
         Connection conn1 = null;
         CallableStatement cs = null;
@@ -133,13 +135,13 @@ public boolean insertAccount( String email, String firstName, String lastName,
 
             conn1 = new MyDB().getConnection();
             cs = conn1.prepareCall(query);
-            cs.setString(1,email);
-            cs.setString(2,firstName);
-            cs.setString(3,lastName);
-            cs.setString(4,phone);
-            cs.setString(5,address);
-            cs.setString(6,gender);
-            cs.setString(7,dateBirth);
+            cs.setString(1, email);
+            cs.setString(2, firstName);
+            cs.setString(3, lastName);
+            cs.setString(4, phone);
+            cs.setString(5, address);
+            cs.setString(6, gender);
+            cs.setString(7, dateBirth);
             cs.execute();
             return true;
 
@@ -161,10 +163,9 @@ public boolean insertAccount( String email, String firstName, String lastName,
 
             int result = clmt.getInt(1);
 
-            if(result == 1){
-                return  true;
-            }
-            else {
+            if (result == 1) {
+                return true;
+            } else {
                 return false;
             }
         } catch (Exception e) {
@@ -174,14 +175,13 @@ public boolean insertAccount( String email, String firstName, String lastName,
     }
 
     public boolean productIDExists(String id) {
-        String query = "select * from Product where ProductId='"+id+"'";
+        String query = "select * from Product where ProductId='" + id + "'";
         try {
             conn = new MyDB().getConnection();
             ps = conn.prepareStatement(query);
             rs = ps.executeQuery();
 
-            if (rs.next())
-            {
+            if (rs.next()) {
                 return true; // co ton tai email nay trong dbo.Account
             }
             return false;
@@ -264,6 +264,7 @@ public boolean insertAccount( String email, String firstName, String lastName,
         }
         return null;
     }
+
     public List<Category> listcategory(int index) {
         String query = "SELECT * FROM  Category";
         List<Category> list = new ArrayList<Category>();
@@ -291,13 +292,14 @@ public boolean insertAccount( String email, String firstName, String lastName,
         }
         return null;
     }
+
     public boolean insertProduct(String productid, String subcategory, String name, String unitprice, String like,
                                  String gender, String description, String available, String img) {
         Connection conn1 = null, conn2 = null;
         PreparedStatement ps1 = null, ps2 = null;
         ResultSet rs = null;
         try {
-            String query = "EXEC dbo.PSP_ThemSP "+subcategory+","+ name+","+img+","+unitprice+","+0+","+gender+","+description;
+            String query = "EXEC dbo.PSP_ThemSP " + subcategory + "," + name + "," + img + "," + unitprice + "," + 0 + "," + gender + "," + description;
             System.out.println(query);
             conn1 = new MyDB().getConnection();
             ps1 = conn1.prepareStatement(query);
@@ -410,9 +412,9 @@ public boolean insertAccount( String email, String firstName, String lastName,
         return null;
     }
 
-    public boolean updateOrder( String  purchaseorderid, String address, String phone) {
+    public boolean updateOrder(String purchaseorderid, String address, String phone) {
         Connection conn1 = null;
-        CallableStatement clsm= null;
+        CallableStatement clsm = null;
         ResultSet rs = null;
         try {
             String query = "{ Call OSP_CapNhanDonHang(?,?,?)}";
@@ -420,9 +422,9 @@ public boolean insertAccount( String email, String firstName, String lastName,
             conn1 = new MyDB().getConnection();
             clsm = conn1.prepareCall(query);
 
-            clsm.setString(1,purchaseorderid);
-            clsm.setString(2,address);
-            clsm.setString(3,phone);
+            clsm.setString(1, purchaseorderid);
+            clsm.setString(2, address);
+            clsm.setString(3, phone);
             clsm.execute();
             return true;
         } catch (Exception e) {
@@ -442,12 +444,12 @@ public boolean insertAccount( String email, String firstName, String lastName,
             System.out.println(query);
             conn1 = new MyDB().getConnection();
             clmst = conn1.prepareCall(query);
-            clmst.setString(1,purchaseorderdetailid);
-            clmst.setString(2,purchaseorder);
-            clmst.setString(3,productid);
-            clmst.setString(4,quantity);
-            clmst.setString(5,unitprice);
-            clmst.setString(6,subtotal);
+            clmst.setString(1, purchaseorderdetailid);
+            clmst.setString(2, purchaseorder);
+            clmst.setString(3, productid);
+            clmst.setString(4, quantity);
+            clmst.setString(5, unitprice);
+            clmst.setString(6, subtotal);
             clmst.execute();
             return true;
         } catch (Exception e) {
@@ -622,24 +624,46 @@ public boolean insertAccount( String email, String firstName, String lastName,
     //----- fill 4 o dau -------//
 
     //------ Bang so 1 ---------//
-    public List<Shipper> shipperList() {
+    public List<Shipper> shipperList() {         // rs2.next() can then undo trong truong hop co testcase nhieu shipper
         // return ---- accountId,  email,  firstName,  phone,   ortherCarring
-        String query = "SELECT A.AccountId, A.Email, A.FirstName, A.Phone,  Count(*) as Carrying, A.LastName, A.Address, A.Gender\n" +
-                "FROM Shipper S, Account A, AccountRole AR\n" +
-                "WHERE A.Email=AR.Email AND AR.Role='shipper' AND A.AccountId = S.ShipperId AND S.Status='shipping'\n" +
+        String query = "SELECT A.AccountId, A.Email, A.FirstName, A.Phone, A.LastName, A.Address, A.Gender\n" +
+                " FROM Shipper S, Account A, AccountRole AR\n" +
+                "WHERE A.Email=AR.Email AND AR.Role='shipper' AND A.AccountId = S.ShipperId \n" +
                 "GROUP BY A.AccountId, A.Email, A.FirstName, A.Phone, A.LastName, A.Address, A.Gender";
+
+        String query2 = "SELECT S.ShipperId ,COUNT(*) as carrying\n" +
+                "\tFROM  Shipper S\n" +
+                "\tWHERE S.Status='shipping'\n" +
+                "\tGROUP BY S.ShipperId";
         List<Shipper> list = new ArrayList<Shipper>();
         try {
-
             conn = new MyDB().getConnection();
             ps = conn.prepareStatement(query);
             rs = ps.executeQuery();
+            System.out.print("////////");
+
+            Connection conn2 = null;
+            PreparedStatement ps2 = null;
+            ResultSet rs2 = null;
+            conn2 = new MyDB().getConnection();
+            ps2 = conn2.prepareStatement(query2);
+            rs2 = ps2.executeQuery();
+            //    rs.next();
+            //    rs2.next();
+            //    System.out.print("```"+rs.getString(1)+"```"+rs2.getString(1));
             while (rs.next()) {
-                list.add(new Shipper(rs.getString(1), rs.getString(2), rs.getString(3), rs.getString(4),
-                        rs.getString(5), rs.getString(6), rs.getString(7), rs.getString(8)));
+                //   System.out.print("```"+rs.getString(1)+"```"+rs2.getString(1));
+                if (rs2.next()==true && rs.getString(1).equals(rs2.getString(1))) {
+                    list.add(new Shipper(rs.getString(1), rs.getString(2), rs.getString(3), rs.getString(4),
+                            rs2.getString(2), rs.getString(5), rs.getString(6), rs.getString(7)));
+                    System.out.print("```"+rs.getString(1)+"```"+rs2.getString(1));
+                } else
+                    list.add(new Shipper(rs.getString(1), rs.getString(2), rs.getString(3), rs.getString(4),
+                            "0", rs.getString(5), rs.getString(6), rs.getString(7)));
             }
             return list;
         } catch (Exception e) {
+            System.out.print(e);
         }
         return null;
     }
@@ -694,7 +718,7 @@ public boolean insertAccount( String email, String firstName, String lastName,
         ResultSet rs = null;
         try {
             String query = "update PurchaseOrder set Status='Processing' WHERE PurchaseOrderId='" + OrtherID + "'";
-            String query2 = "insert into Shipper  values('"+OrtherID+"', '"+shipperID+"', 'Picking')";
+            String query2 = "insert into Shipper  values('" + OrtherID + "', '" + shipperID + "', 'Picking')";
             conn1 = new MyDB().getConnection();
             conn2 = new MyDB().getConnection();
 
@@ -709,6 +733,7 @@ public boolean insertAccount( String email, String firstName, String lastName,
         }
         return false;
     }
+
     // ----end Bang so 2 ---------//
     // ---- Bang so 3 ---------//
     public List<PickingUp> pickupList() {
@@ -732,6 +757,7 @@ public boolean insertAccount( String email, String firstName, String lastName,
         }
         return null;
     }
+
     public List<DetailOrder> OrtherDetailPicking() {
         String query = "SELECT  PO.PurchaseOrderId, P.ProductId, Pro.Name, P.Quantity, P.Subtotal\n" +
                 "FROM PurchaseOrderDetail P, Product Pro, PurchaseOrder PO, Shipper SP \n" +
@@ -751,6 +777,7 @@ public boolean insertAccount( String email, String firstName, String lastName,
         }
         return null;
     }
+
     public boolean Shipperpicked(String OrtherID) {      // can them transaction here <<<<<<<<<<
         Connection conn1 = null;
         PreparedStatement ps1 = null;
@@ -768,6 +795,7 @@ public boolean insertAccount( String email, String firstName, String lastName,
         }
         return false;
     }
+
     // ---End Bang 3 ---//
     //---- Bang so 4 -----//
     public List<Shipping> shippingList() {
@@ -789,6 +817,7 @@ public boolean insertAccount( String email, String firstName, String lastName,
         }
         return null;
     }
+
     public List<DetailOrder> OrtherDetailShipping() {
         String query = "SELECT  PO.PurchaseOrderId, P.ProductId, Pro.Name, P.Quantity, P.Subtotal\n" +
                 "FROM PurchaseOrderDetail P, Product Pro, PurchaseOrder PO, Shipper SP \n" +
@@ -808,12 +837,13 @@ public boolean insertAccount( String email, String firstName, String lastName,
         }
         return null;
     }
+
     public boolean endOrder(String OrtherID, String Status) {
         Connection conn1 = null, conn2 = null;
         PreparedStatement ps1 = null, ps2 = null;
         ResultSet rs = null;
         try {
-            String query = "update PurchaseOrder set Status='"+Status+"' WHERE PurchaseOrderId='" + OrtherID + "'";
+            String query = "update PurchaseOrder set Status='" + Status + "' WHERE PurchaseOrderId='" + OrtherID + "'";
             String query2 = "delete from Shipper WHERE PurchaseOrderId='" + OrtherID + "'";
             conn1 = new MyDB().getConnection();
             conn2 = new MyDB().getConnection();
