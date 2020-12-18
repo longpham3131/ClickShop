@@ -5,12 +5,14 @@ public class Display {
 	private String Name;
 	private String UnitPrice;
 	private String ImagePath;
+	private String Description;
 	public Display(){}
-	public Display(String productId, String name, String unitprice, String imagePath) {
+	public Display(String productId, String name, String unitprice, String imagePath, String description) {
 		ProductId = productId;
 		Name = name;
 		UnitPrice = unitprice;
 		ImagePath = imagePath;
+		Description = description;
 	}
 	public String getProductId() {
 		return ProductId;
@@ -37,5 +39,13 @@ public class Display {
 
 	public void setImagePath(String imagePath) {
 		ImagePath = imagePath;
+	}
+
+	public String getDescription() {
+		return Description;
+	}
+
+	public void setDescription(String description) {
+		Description = description;
 	}
 }

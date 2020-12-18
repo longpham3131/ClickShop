@@ -15,15 +15,15 @@ import java.util.List;
 /**
  * Servlet implementation class fillAllAccount
  */
-@WebServlet("/fill-All-Display")
-public class fillAllDisplay extends HttpServlet {
+@WebServlet("/fill-All-Sanpham")
+public class fillSanpham extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
 
 	/**
 	 * @see HttpServlet#HttpServlet()
 	 */
-	public fillAllDisplay() {
+	public fillSanpham() {
 		super();
 		// TODO Auto-generated constructor stub
 	}
@@ -53,8 +53,8 @@ public class fillAllDisplay extends HttpServlet {
 		request.setAttribute("listSanpham", listSanpham);
 		request.setAttribute("from", request.getAttribute("from"));
 		request.setAttribute("thongbao", request.getAttribute("thongbao"));
-		RequestDispatcher rq = request.getRequestDispatcher("Views/Web/index.jsp");
-//		RequestDispatcher rq = request.getRequestDispatcher("Views/Web/container/productShop.jsp");
+//		RequestDispatcher rq = request.getRequestDispatcher("Views/Web/index.jsp");
+		RequestDispatcher rq = request.getRequestDispatcher("Views/Web/container/productShop.jsp");
 		rq.forward(request, response);
 	}
 
