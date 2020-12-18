@@ -1,7 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
          pageEncoding="UTF-8" %>
 
-<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 
 
 <!DOCTYPE html>
@@ -155,30 +155,31 @@
                                                name="color-filter">
                                         <label for="data-color-p1" style="background-color: #b77543"></label>
                                     </li>
-                                    <li >
+                                    <li>
                                         <input type="checkbox" id="data-color-p2" value="TAN" name="color-filter"
                                         >
                                         <label for="data-color-p2" style="background-color: #e1b382"></label>
                                     </li>
-                                    <li >
+                                    <li>
                                         <input type="checkbox" id="data-color-p3" value="NÂU ĐẤT"
                                                name="color-filter">
                                         <label for="data-color-p3" style="background-color: #5b3d32"></label>
                                     </li>
-                                    <li >
+                                    <li>
                                         <input type="checkbox" id="data-color-p4" value="XÁM CHUỘT"
                                                name="color-filter">
                                         <label for="data-color-p4" style="background-color: #787775"></label>
                                     </li>
-                                    <li >
+                                    <li>
                                         <input type="checkbox" id="data-color-p5" value="FOREST BLUE"
                                                name="color-filter">
                                         <label for="data-color-p5" style="background-color: #363e6f"></label>
-                                    </li>//
+                                    </li>
+                                    //
                                     <li>
 
                                         <input type="checkbox" id="data-color-p6" value="NAVY BLUE"
-                                               name="color-filter" >
+                                               name="color-filter">
 
                                         <label for="data-color-p6" style="background-color: #393357"></label>
                                     </li>
@@ -375,7 +376,7 @@
                                     <option value="created-descending"
                                     >Mới nhất</option>
 
-                                    <option value="best-selling" >
+                                    <option value="best-selling">
 
                                         Bán chạy nhất</option>
                                     <option value="quantity-descending">Tồn kho: Giảm dần</option>
@@ -384,30 +385,41 @@
 
                     </div>
                     <div class="row">
-                        <div class="col- 12 col-md-6 col-lg-4 col-xl-3 product__item">
-                            <img src="<%=request.getContextPath()%>/Views/Web/image_product/Tee02.PNG" alt="">
+                        <c:forEach items="${listSanpham}" var="row">
+                            <div class="col- 12 col-md-6 col-lg-4 col-xl-3 product__item">
+                                <form action="<%=request.getContextPath()%>/chooseProduct" method="post">
+                                    <button type="submit" style="    background: transparent; border: none;">
+                                        <input type="hidden" value="${row.productId}" name="ProductId"/>
+                                        <input type="hidden" value="${row.name}" name="Name"/>
+                                        <input type="hidden" value="${row.imagePath}" name="ImagePath"/>
+                                        <input type="hidden" value="${row.description}" name="Description"/>
+                                        <input type="hidden" value="${row.getUnitPrice()}" name="UnitPrice"/>
+                                        <img src="<%=request.getContextPath()%>/Views/Web${row.getImagePath()}" alt="">
 
-                            <h4>
-                                THE WOLF BASIC TEE - TAN
-                            </h4>
-                            <span>280,000₫</span>
-                        </div>
-                        <div class="col- 12 col-md-6 col-lg-4 col-xl-3 product__item">
+                                        <h4>
+                                                ${row.name}
+                                        </h4>
+                                        <span>${row.getUnitPrice()}</span>
+                                    </button>
+                                </form>
+                            </div>
+                        </c:forEach>
+                        <%--                        <div class="col- 12 col-md-6 col-lg-4 col-xl-3 product__item">--%>
 
-                            <img src="<%=request.getContextPath()%>/Views/Web/image_product/Tee03.jpg" alt="">
+                        <%--                            <img src="<%=request.getContextPath()%>/Views/Web/image_product/Tee03.jpg" alt="">--%>
 
-                            <h4>
-                                THE WOLF BASIC TEE - WHITE
-                            </h4>
-                            <span>280,000₫</span>
-                        </div>
-                        <div class="col- 12 col-md-6 col-lg-4 col-xl-3 product__item">
-                            <img src="<%=request.getContextPath()%>/Views/Web/image_product/Tee01.jpg" alt="">
+                        <%--                            <h4>--%>
+                        <%--                                THE WOLF BASIC TEE - WHITE--%>
+                        <%--                            </h4>--%>
+                        <%--                            <span>280,000₫</span>--%>
+                        <%--                        </div>--%>
+                        <%--                        <div class="col- 12 col-md-6 col-lg-4 col-xl-3 product__item">--%>
+                        <%--                            <img src="<%=request.getContextPath()%>/Views/Web/image_product/Tee01.jpg" alt="">--%>
 
 
-                            <h4> THE WOLF BASIC TEE - BLACK</h4>
-                            <span>280,000₫</span>
-                        </div>
+                        <%--                            <h4> THE WOLF BASIC TEE - BLACK</h4>--%>
+                        <%--                            <span>280,000₫</span>--%>
+                        <%--                        </div>--%>
                     </div>
                 </div>
             </div>
