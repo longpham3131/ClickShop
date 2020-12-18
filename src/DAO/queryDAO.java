@@ -47,6 +47,35 @@ public class queryDAO {
         return false;
     }
 
+    public boolean registed(String email, String pass, String firstName, String lastName,
+                                 String phone, String address, String gender, String dateBirth) {
+
+        try {
+
+            String sqlExec = "{ Call USP_DangKy (?,?,?, ?, ?, ?, ?, ?) }";
+
+            conn = new MyDB().getConnection();
+
+            conn.setAutoCommit(false);
+
+            clmt = conn.prepareCall(sqlExec);
+            clmt.setString(1, email);
+            clmt.setString(2, pass);
+            clmt.setString(3, firstName);
+            clmt.setString(4, lastName);
+            clmt.setString(5, phone);
+            clmt.setString(6, address);
+            clmt.setString(7, gender);
+            clmt.setString(8, dateBirth);
+            clmt.execute();
+            conn.commit();
+            return true;
+        } catch (Exception e) {
+            System.out.println(e);
+        }
+        return false;
+    }
+
     public boolean deleteAccount(String email) {  // isAvailable = 0
         try {
 

@@ -1,9 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
          pageEncoding="UTF-8" %>
-
-
-
-<%--<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>--%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -26,7 +23,7 @@
 </head>
 
 <body>
-<%--<c:import url="../commom/header.jsp"> </c:import>--%>
+<c:import url="../commom/header.jsp"> </c:import>
 <section class="product">
     <div class="product__main pt-5">
         <div class="row">
@@ -62,7 +59,6 @@
                                     </li>
                                 </ul>
                             </li>
-
                             <li>
                                 <a href="#femaleXL" data-toggle="collapse" aria-expanded="false"
                                    class="dropdown-toggle product__catagory">GIÀY NỮ</a>
@@ -157,39 +153,39 @@
                                                name="color-filter" >
                                         <label for="data-color-p1" style="background-color: #b77543"></label>
                                     </li>
-                                    <li class="">
+                                    <li >
                                         <input type="checkbox" id="data-color-p2" value="TAN" name="color-filter"
-                                               >
+                                        >
                                         <label for="data-color-p2" style="background-color: #e1b382"></label>
                                     </li>
-                                    <li class="">
+                                    <li >
                                         <input type="checkbox" id="data-color-p3" value="NÂU ĐẤT"
                                                name="color-filter" >
                                         <label for="data-color-p3" style="background-color: #5b3d32"></label>
                                     </li>
-                                    <li class="">
+                                    <li >
                                         <input type="checkbox" id="data-color-p4" value="XÁM CHUỘT"
                                                name="color-filter" >
                                         <label for="data-color-p4" style="background-color: #787775"></label>
                                     </li>
-                                    <li class="">
-                                        <input type="checkbox" id="data-color-p5" value="FOREST BLUE"
+                                    <li >
+                                        <input type="checkbox" id="data-color-p5" value="FOREST BLUE"
                                                name="color-filter">
                                         <label for="data-color-p5" style="background-color: #363e6f"></label>
-                                    </li>
+                                    </li>//
                                     <li>
-                                        <input type="checkbox" id="data-color-p6" value="NAVY BLUE"
+                                        <input type="checkbox" id="data-color-p6" value="NAVY BLUE"
                                                name="color-filter" >
                                         <label for="data-color-p6" style="background-color: #393357"></label>
                                     </li>
                                     <li>
                                         <input type="checkbox" id="data-color-p7" value="BROWN" name="color-filter"
-                                               >
+                                        >
                                         <label for="data-color-p7" style="background-color: #6e4a4a"></label>
                                     </li>
                                     <li>
                                         <input type="checkbox" id="data-color-p8" value="BLACK" name="color-filter"
-                                               >
+                                        >
                                         <label for="data-color-p8" style="background-color: #000000"></label>
                                     </li>
                                 </ul>
@@ -331,13 +327,13 @@
                                        style="background-color: #787775"></label>
                             </li>
                             <li class="col-3 ">
-                                <input type="checkbox" id="data-color-md-p5" value="FOREST BLUE"
+                                <input type="checkbox" id="data-color-md-p5" value="FOREST BLUE"
                                        name="color-filter">
                                 <label for="data-color-md-p5"
                                        style="background-color: #363e6f"></label>
                             </li>
                             <li class="col-3 ">
-                                <input type="checkbox" id="data-color-md-p6" value="NAVY BLUE"
+                                <input type="checkbox" id="data-color-md-p6" value="NAVY BLUE"
                                        name="color-filter">
                                 <label for="data-color-md-p6"
                                        style="background-color: #393357"></label>
@@ -371,9 +367,9 @@
                                     <option value="title-descending" >Tên:
                                         Z-A</option>
                                     <option value="created-ascending"
-                                           >Cũ nhất</option>
+                                    >Cũ nhất</option>
                                     <option value="created-descending"
-                                            >Mới nhất</option>
+                                    >Mới nhất</option>
                                     <option value="best-selling" >
                                         Bán chạy nhất</option>
                                     <option value="quantity-descending">Tồn kho: Giảm dần</option>
@@ -430,7 +426,7 @@
 
     </div>
 </section>
-<%--<c:import url="../commom/footer.jsp"> </c:import>--%>
+<c:import url="../commom/footer.jsp"> </c:import>
 
 <!-- Thư viện hỗ trợ Jquery -->
 <script src="https://code.jquery.com/jquery-3.5.1.min.js"

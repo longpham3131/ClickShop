@@ -49,15 +49,15 @@ public class fillAllDisplay extends HttpServlet {
 		}
 		queryDAO dao = new queryDAO();
 		List<Display> listSanpham = dao.hienthi(index);
-		System.out.print(listSanpham);
 		request.setAttribute("listSanpham", listSanpham);
 		request.setAttribute("from", request.getAttribute("from"));
 		request.setAttribute("thongbao", request.getAttribute("thongbao"));
+		System.out.print("9999 ");
 		RequestDispatcher rq = request.getRequestDispatcher("Views/Web/index.jsp");
 		rq.forward(request, response);
 	}
 
-	protected void doGet(HttpServletRequest request, HttpServletResponse response)
+	public void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		processRequest(request, response);
 	}
@@ -66,7 +66,7 @@ public class fillAllDisplay extends HttpServlet {
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse
 	 *      response)
 	 */
-	protected void doPost(HttpServletRequest request, HttpServletResponse response)
+	public void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 
 		processRequest(request, response);
