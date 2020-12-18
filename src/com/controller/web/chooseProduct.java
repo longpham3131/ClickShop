@@ -44,10 +44,12 @@ public class chooseProduct extends HttpServlet {
         String name  = (String) request.getParameter("Name");
         String unitprice  = (String) request.getParameter("UnitPrice");
         String imagePath  = (String) request.getParameter("ImagePath");
+        String description  = (String) request.getParameter("Description");
         request.setAttribute("productId", productId);
         request.setAttribute("name", name);
         request.setAttribute("unitprice", unitprice);
         request.setAttribute("imagepath", imagePath);
+        request.setAttribute("description", description);
         RequestDispatcher rq = request.getRequestDispatcher("Views/Web/container/productDetail.jsp");
         rq.forward(request, response);
     }

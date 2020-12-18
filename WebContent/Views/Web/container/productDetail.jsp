@@ -240,11 +240,7 @@
                         <div class="collapse list-unstyled" id="thongTinSP">
                             <div class="main_details">
                                 <ul>
-                                    <li><span style="font-size:12px">Màu sắc: Đen láng</span></li>
-                                    <li><span style="font-size:12px">Chất liệu da: Da bò nhập khẩu</span></li>
-                                    <li><span style="font-size:12px">Chất liệu đế giày: Cao su cao cấp</span></li>
-                                    <li><span style="font-size:12px">Lót Trong: Vải canvas cao cấp, da dê</span></li>
-                                    <li><span style="font-size:12px">Độ cao gót: 3,5 cm</span></li>
+                                    <li><span style="font-size:12px">${description}</span></li>
                                 </ul>
                             </div>
 

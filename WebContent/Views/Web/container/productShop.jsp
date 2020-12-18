@@ -1,6 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
          pageEncoding="UTF-8" %>
+
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+
 
 <!DOCTYPE html>
 <html lang="en">
@@ -16,7 +18,7 @@
     <!-- FONT AWESOME  -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.14.0/css/all.min.css"
           integrity="sha512-1PKOgIY59xJ8Co8+NE6FZ+LOAZKjy+KY8iq0G4B3CyeY6wYHN3yt9PW0XpSriVlkMXe40PTKnXrLnZ9+fkDaog=="
-          crossorigin="anonymous" />
+          crossorigin="anonymous"/>
 
     <!-- MAIN CSS  -->
     <link rel="stylesheet" href="<%=request.getContextPath()%>/Views/Web/css/main.css">
@@ -150,7 +152,7 @@
                                 <ul class="collapse list-unstyled" id="filterColor">
                                     <li class="active">
                                         <input type="checkbox" id="data-color-p1" value="TOBACCO"
-                                               name="color-filter" >
+                                               name="color-filter">
                                         <label for="data-color-p1" style="background-color: #b77543"></label>
                                     </li>
                                     <li >
@@ -160,12 +162,12 @@
                                     </li>
                                     <li >
                                         <input type="checkbox" id="data-color-p3" value="NÂU ĐẤT"
-                                               name="color-filter" >
+                                               name="color-filter">
                                         <label for="data-color-p3" style="background-color: #5b3d32"></label>
                                     </li>
                                     <li >
                                         <input type="checkbox" id="data-color-p4" value="XÁM CHUỘT"
-                                               name="color-filter" >
+                                               name="color-filter">
                                         <label for="data-color-p4" style="background-color: #787775"></label>
                                     </li>
                                     <li >
@@ -174,8 +176,10 @@
                                         <label for="data-color-p5" style="background-color: #363e6f"></label>
                                     </li>//
                                     <li>
+
                                         <input type="checkbox" id="data-color-p6" value="NAVY BLUE"
                                                name="color-filter" >
+
                                         <label for="data-color-p6" style="background-color: #393357"></label>
                                     </li>
                                     <li>
@@ -358,26 +362,27 @@
                         <span class="custom-dropdown custom-dropdown--grey pr-3">
                                 <select class="sort-by custom-dropdown__select ">
 
-                                    <option value="price-ascending" >Giá:
+                                    <option value="price-ascending">Giá:
                                         Tăng dần</option>
-                                    <option value="price-descending" >Giá:
+                                    <option value="price-descending">Giá:
                                         Giảm dần</option>
-                                    <option value="title-ascending" >Tên:
+                                    <option value="title-ascending">Tên:
                                         A-Z</option>
-                                    <option value="title-descending" >Tên:
+                                    <option value="title-descending">Tên:
                                         Z-A</option>
                                     <option value="created-ascending"
                                     >Cũ nhất</option>
                                     <option value="created-descending"
                                     >Mới nhất</option>
+
                                     <option value="best-selling" >
+
                                         Bán chạy nhất</option>
                                     <option value="quantity-descending">Tồn kho: Giảm dần</option>
                                 </select>
                             </span>
 
                     </div>
-
                     <div class="row">
                         <div class="col- 12 col-md-6 col-lg-4 col-xl-3 product__item">
                             <img src="<%=request.getContextPath()%>/Views/Web/image_product/Tee02.PNG" alt="">
@@ -388,6 +393,7 @@
                             <span>280,000₫</span>
                         </div>
                         <div class="col- 12 col-md-6 col-lg-4 col-xl-3 product__item">
+
                             <img src="<%=request.getContextPath()%>/Views/Web/image_product/Tee03.jpg" alt="">
 
                             <h4>
@@ -401,23 +407,6 @@
 
                             <h4> THE WOLF BASIC TEE - BLACK</h4>
                             <span>280,000₫</span>
-                        </div>
-                        <div class="col- 12 col-md-6 col-lg-4 col-xl-3 product__item">
-                            <img src="<%=request.getContextPath()%>/Views/Web/image_product/Tee05.PNG" alt="">
-
-
-                            <h4>
-                                THE WOLF SEVEN ELEMENTS TEE - WHITE
-                            </h4>
-                            <span>350,000₫</span>
-                        </div>
-                        <div class="col- 12 col-md-6 col-lg-4 col-xl-3 product__item">
-                            <img src="<%=request.getContextPath()%>/Views/Web/image_product/Oxford02.PNG" alt="">
-
-                            <h4>
-                                THE BASIC WOLF OXFORD - BLACK
-                            </h4>
-                            <span>1,500,000₫</span>
                         </div>
                     </div>
                 </div>
