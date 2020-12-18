@@ -15,15 +15,15 @@ import java.util.List;
 /**
  * Servlet implementation class fillAllAccount
  */
-@WebServlet("/fill-All-Sanpham")
-public class fillSanpham extends HttpServlet {
+@WebServlet("/filter-Product")
+public class filterSanpham extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
 
 	/**
 	 * @see HttpServlet#HttpServlet()
 	 */
-	public fillSanpham() {
+	public filterSanpham() {
 		super();
 		// TODO Auto-generated constructor stub
 	}
@@ -40,24 +40,21 @@ public class fillSanpham extends HttpServlet {
 	protected void processRequest(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		response.setContentType("text/html;charset=UTF-8");
-		String txt = request.getParameter("index");
-		int index = 0;
-		if (txt == null) {
-			index = 1;
-		} else {
-			index = Integer.parseInt(txt);
-		}
+		String name  = (String) request.getParameter("Name");
+		System.out.print(name);
 		queryDAO dao = new queryDAO();
-		List<Display> listSanpham = dao.hienthi(index);
-		System.out.print(listSanpham);
-		request.setAttribute("listSanpham", listSanpham);
+		List<Display> danhsachLoc = dao.filterSanpham(name);
+		System.out.print(danhsachLoc);
+		request.setAttribute("listSanpham", danhsachLoc);
 		request.setAttribute("from", request.getAttribute("from"));
 		request.setAttribute("thongbao", request.getAttribute("thongbao"));
+		System.out.print("9999 ");
+//		RequestDispatcher rq = request.getRequestDispatcher("Views/Web/index.jsp");
 		RequestDispatcher rq = request.getRequestDispatcher("Views/Web/container/productShop.jsp");
 		rq.forward(request, response);
 	}
 
-	protected void doGet(HttpServletRequest request, HttpServletResponse response)
+	public void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		processRequest(request, response);
 	}
@@ -66,7 +63,7 @@ public class fillSanpham extends HttpServlet {
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse
 	 *      response)
 	 */
-	protected void doPost(HttpServletRequest request, HttpServletResponse response)
+	public void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 
 		processRequest(request, response);
