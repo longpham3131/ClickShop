@@ -494,7 +494,7 @@ public class queryDAO {
     }
 
     public int countOtherDetail() {
-        String query = "select count(*) from PurchaseOrder WHERE (CancelInvoice='TRUE')";
+        String query = "select count(*) from PurchaseOrder WHERE (CancelInvoice='TRUE' AND Status='Completed')";
         try {
             conn = new MyDB().getConnection();
             ps = conn.prepareStatement(query);
@@ -575,7 +575,7 @@ public class queryDAO {
     }
 
     public int countInShipping() {
-        String query = "select Count(S.PurchaseOrderId) from Shipper S Where (S.Status='shipping' OR S.Status='Cancel' OR S.Status='Completed')";
+        String query = "select Count(S.PurchaseOrderId) from Shipper S, PurchaseOrder PO Where (S.Status='shipping' OR S.Status='Cancel' OR S.Status='Completed') AND PO.PurchaseOrderId = S.PurchaseOrderId AND PO.Status='Processing'";
         try {
             conn = new MyDB().getConnection();
             ps = conn.prepareStatement(query);
@@ -628,7 +628,7 @@ public class queryDAO {
         // return ---- accountId,  email,  firstName,  phone,   ortherCarring
         String query = "SELECT A.AccountId, A.Email, A.FirstName, A.Phone, A.LastName, A.Address, A.Gender\n" +
                 " FROM Shipper S, Account A, AccountRole AR\n" +
-                "WHERE A.Email=AR.Email AND AR.Role='shipper' AND A.AccountId = S.ShipperId \n" +
+                "WHERE A.Email=AR.Email AND AR.Role='shipper'\n" +
                 "GROUP BY A.AccountId, A.Email, A.FirstName, A.Phone, A.LastName, A.Address, A.Gender";
 
         String query2 = "SELECT S.ShipperId ,COUNT(*) as carrying\n" +
@@ -801,7 +801,7 @@ public class queryDAO {
     public List<Shipping> shippingList() {
         String query = "SELECT S.PurchaseOrderId, S.ShipperId, A.Email, P.SubTotal, P.Address, P.Phone, S.Status\r\n"
                 + "	FROM Account A, PurchaseOrder P, Shipper S\r\n"
-                + "	WHERE A.AccountId= P.AccountId  AND S.PurchaseOrderId = P.PurchaseOrderId AND (S.Status='shipping' OR S.Status='Cancel' OR S.Status='Completed')\r\n";
+                + "	WHERE A.AccountId= P.AccountId  AND S.PurchaseOrderId = P.PurchaseOrderId AND P.Status ='Processing' AND (S.Status='shipping' OR S.Status='Cancel' OR S.Status='Completed')\r\n";
         List<Shipping> list = new ArrayList<Shipping>();
         try {
 
@@ -821,7 +821,7 @@ public class queryDAO {
     public List<DetailOrder> OrtherDetailShipping() {
         String query = "SELECT  PO.PurchaseOrderId, P.ProductId, Pro.Name, P.Quantity, P.Subtotal\n" +
                 "FROM PurchaseOrderDetail P, Product Pro, PurchaseOrder PO, Shipper SP \n" +
-                "WHERE PRO.ProductId = P.ProductId AND SP.Status='Shipping' AND PO.PurchaseOrderId = P.PurchaseOrderId AND SP.PurchaseOrderId=P.PurchaseOrderId";
+                "WHERE PRO.ProductId = P.ProductId AND (SP.Status='shipping' OR SP.Status='Cancel' OR SP.Status='Completed') AND PO.PurchaseOrderId = P.PurchaseOrderId AND SP.PurchaseOrderId=P.PurchaseOrderId";
         List<DetailOrder> list = new ArrayList<DetailOrder>();
         try {
             conn = new MyDB().getConnection();
@@ -843,7 +843,10 @@ public class queryDAO {
         PreparedStatement ps1 = null, ps2 = null;
         ResultSet rs = null;
         try {
-            String query = "update PurchaseOrder set Status='" + Status + "' WHERE PurchaseOrderId='" + OrtherID + "'";
+            String query = "update PurchaseOrder set Status='Completed' WHERE PurchaseOrderId='" + OrtherID + "'";
+            if(Status.equals("Cancel"))
+                query = "update PurchaseOrder set  Status='Completed', CancelInvoice='False' WHERE PurchaseOrderId='" + OrtherID + "'";
+
             String query2 = "delete from Shipper WHERE PurchaseOrderId='" + OrtherID + "'";
             conn1 = new MyDB().getConnection();
             conn2 = new MyDB().getConnection();
