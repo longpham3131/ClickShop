@@ -245,7 +245,9 @@ public class queryDAO {
     // ------------------ START DISPLAY ---------------//
 
     public List<Display> hienthi(int index) {
-        String query = "SELECT Product.ProductId, Product.Name,Product.UnitPrice , Image.ImagePath, Product.Description FROM dbo.Product ,dbo.[Image] WHERE Product.ProductId = Image.ProductId";
+        String query = "SELECT Product.ProductId, Product.Name,Product.UnitPrice , Image.ImagePath, Product.Description, Product.SubCategoryId , SubCategory.CategoryId " +
+                "FROM dbo.Product ,dbo.[Image],dbo.SubCategory " +
+                "WHERE Product.ProductId = Image.ProductId AND Product.SubCategoryId = SubCategory.SubCategoryId";
         List<Display> listSanpham = new ArrayList<Display>();
         try {
 
@@ -253,13 +255,52 @@ public class queryDAO {
             ps = conn.prepareStatement(query);
             rs = ps.executeQuery();
             while (rs.next()) {
-                listSanpham.add(new Display(rs.getString(1), rs.getString(2), rs.getString(3), rs.getString(4),rs.getString(5)));
+                listSanpham.add(new Display(rs.getString(1), rs.getString(2), rs.getString(3), rs.getString(4),
+                        rs.getString(5),rs.getString(6),rs.getString(7)));
             }
             return listSanpham;
         } catch (Exception e) {
         }
         return null;
     }
+    public List<Display> filterSanpham(String name) {
+        String query = "SELECT Product.ProductId, Product.Name,Product.UnitPrice , Image.ImagePath, Product.Description, Product.SubCategoryId , SubCategory.CategoryId " +
+                "FROM dbo.Product ,dbo.[Image],dbo.SubCategory " +
+                "WHERE Product.ProductId = Image.ProductId AND Product.SubCategoryId = SubCategory.SubCategoryId AND SubCategory.SubcategoryId ="+name;
+        List<Display> listLoc = new ArrayList<Display>();
+        try {
+
+            conn = new MyDB().getConnection();
+            ps = conn.prepareStatement(query);
+            rs = ps.executeQuery();
+            while (rs.next()) {
+                listLoc.add(new Display(rs.getString(1), rs.getString(2), rs.getString(3), rs.getString(4),
+                        rs.getString(5),rs.getString(6),rs.getString(7)));
+            }
+            return listLoc;
+        } catch (Exception e) {
+        }
+        return null;
+    }
+//    public boolean filter(String productid, String name, String unitprice, String imagepath, String description,
+//                                 String subcategoryid, String categoryid) {
+//        Connection conn1 = null, conn2 = null;
+//        PreparedStatement ps1 = null, ps2 = null;
+//        ResultSet rs = null;
+//        try {
+//            String query = "SELECT Product.ProductId, Product.Name,Product.UnitPrice , Image.ImagePath, Product.Description, Product.SubCategoryId , SubCategory.CategoryId " +
+//                    "FROM dbo.Product ,dbo.[Image],dbo.SubCategory " +
+//                    "WHERE Product.ProductId = Image.ProductId AND Product.SubCategoryId = SubCategory.SubCategoryId AND SubCategory.Name = '?'";
+//            System.out.println(query);
+//            conn1 = new MyDB().getConnection();
+//            ps1 = conn1.prepareStatement(query);
+//            ps1.executeUpdate();
+//            return true;
+//        } catch (Exception e) {
+//            System.out.println(e);
+//        }
+//        return false;
+//    }
 
 
     // ------------------ END DISPLAY ---------------//

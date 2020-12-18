@@ -6,13 +6,17 @@ public class Display {
 	private String UnitPrice;
 	private String ImagePath;
 	private String Description;
+	private String SubCategoryId;
+	private String CategoryId;
 	public Display(){}
-	public Display(String productId, String name, String unitprice, String imagePath, String description) {
+	public Display(String productId, String name, String unitprice, String imagePath, String description, String subCategoryId, String categoryId) {
 		ProductId = productId;
 		Name = name;
 		UnitPrice = unitprice;
 		ImagePath = imagePath;
 		Description = description;
+		SubCategoryId = subCategoryId;
+		CategoryId = categoryId;
 	}
 	public String getProductId() {
 		return ProductId;
@@ -47,5 +51,21 @@ public class Display {
 
 	public void setDescription(String description) {
 		Description = description;
+	}
+
+	public String getSubCategoryId() {
+		return SubCategoryId;
+	}
+
+	public void setSubCategoryId(String subCategoryId) {
+		SubCategoryId = subCategoryId;
+	}
+
+	public String getCategoryId() {
+		return CategoryId;
+	}
+
+	public void setCategoryId(String categoryId) {
+		CategoryId = categoryId;
 	}
 }

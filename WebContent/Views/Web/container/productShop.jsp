@@ -81,7 +81,12 @@
                                    class="dropdown-toggle product__catagory">TEE (UNISEX)</a>
                                 <ul class="collapse list-unstyled" id="teeXL">
                                     <li>
-                                        <a href="#">T-SHIRT</a>
+                                        <form action="<%=request.getContextPath()%>/filter-Product" method="post">
+                                            <button type="submit" style="    background: transparent; border: none;">
+                                                T-SHIRT
+                                            </button>
+                                            <input type="hidden" value="9" name="Name"/>
+                                        </form>
                                     </li>
                                     <li>
                                         <a href="#">SHIRT</a>
