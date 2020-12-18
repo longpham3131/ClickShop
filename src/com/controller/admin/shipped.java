@@ -53,10 +53,10 @@ public class shipped extends HttpServlet {
          List<DetailOrder> list2_1 = dao.OrtherDetailNoShip();
 
          List<Shipping> list3 = dao.shippingList();
-         List<DetailOrder> list3_1 = dao.OrtherDetailPicking();
+          List<DetailOrder> list3_1 = dao.OrtherDetailShipping();
 
          List<PickingUp> list4 = dao.pickupList();
-        List<DetailOrder> list4_1 = dao.OrtherDetailShipping();
+        List<DetailOrder> list4_1 = dao.OrtherDetailPicking();
 
         request.setAttribute("listShipper", list);
 
@@ -64,13 +64,14 @@ public class shipped extends HttpServlet {
         request.setAttribute("listNoShipDetail", list2_1);
 
         request.setAttribute("listShipping", list3);
-        request.setAttribute("listPickDetail", list3_1);
+        request.setAttribute("listShippingDetail", list3_1);
 
         request.setAttribute("listPicking", list4);
-        request.setAttribute("listShippingDetail", list4_1);
+        request.setAttribute("listPickDetail", list4_1);
         
         request.setAttribute("from", request.getAttribute("from"));
  		request.setAttribute("thongbao", request.getAttribute("thongbao"));
+
         RequestDispatcher rq= request.getRequestDispatcher("Views/Admin/container/ship.jsp");
  		rq.forward(request, response);
 

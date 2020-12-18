@@ -53,7 +53,10 @@ public class chooseShipper extends HttpServlet {
         HttpSession session = request.getSession();
         String fixShipper= (String) session.getAttribute("fixShipper");
         System.out.println("Aloo " + chooseS + "   " + OrtherID + " vs " + fixShipper);
-        if ( OrtherID.equals(fixShipper) == false) {
+        if ( OrtherID.equals(fixShipper) == false)
+        // fix a bug, but that make a new bug ( khi cho order quay ve trang thai cu trong database,
+        // sesssion se k nhan ra va bo qua action nay
+        {
             if (dao.convertNoShipToPickup(shipperID, OrtherID))       // thuc hien up date va chuyen table //
             {
                 session.setAttribute("fixShipper", OrtherID);

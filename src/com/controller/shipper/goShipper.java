@@ -1,6 +1,12 @@
 package com.controller.shipper;
 
+import DAO.LoginDAO;
+import DAO.queryDAO;
+import com.model.DetailOrder;
+import com.model.PickingUp;
+
 import java.io.IOException;
+import java.util.List;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -19,11 +25,19 @@ public class goShipper extends HttpServlet {
     }
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		RequestDispatcher rq= request.getRequestDispatcher("Views/Shipper/login.jsp");
+		String url = "Views/Shipper/container/home.jsp";
+		String id = request.getParameter("id");
+		queryDAO dao = new queryDAO();
+		List<PickingUp> list4 = dao.pickupList();
+		request.setAttribute("listPicking", list4);
+		List<DetailOrder> list4_1 = dao.OrtherDetailPicking();
+		request.setAttribute("listPickDetail", list4_1);
+		request.setAttribute("email", id);
+		RequestDispatcher rq= request.getRequestDispatcher(url);
 		rq.forward(request, response);
 	}
 
-	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+	public void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		doGet(request, response);
 	}
 

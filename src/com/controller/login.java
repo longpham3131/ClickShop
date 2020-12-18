@@ -2,6 +2,7 @@ package com.controller;
 
 import DAO.LoginDAO;
 import com.controller.admin.shipped;
+import com.controller.shipper.goShipper;
 import com.controller.web.fillAllDisplay;
 import com.model.Account;
 
@@ -32,6 +33,7 @@ public class login extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         String id = request.getParameter("id");
+        request.setAttribute("id", id);
         String password = request.getParameter("password");
         String url = "Views//loginAll.jsp";
         HttpSession session1 = request.getSession();
@@ -39,7 +41,7 @@ public class login extends HttpServlet {
         request.setAttribute("email", id);
         LoginDAO loginDAO = new LoginDAO();
         String kq = loginDAO.login(id, password);
-        if (kq != null) {
+        if (kq != null) {              // need session.get(email) <<<<<<<<<<<<<<<<<<<<<<<
             HttpSession session = request.getSession();
             session.setAttribute("check", "true");
             session.setAttribute("email", id);
@@ -53,9 +55,9 @@ public class login extends HttpServlet {
                 zx10r.doPost(request, response);
               //  url = "Views/Web/index.jsp";
             } else if (kq.equals("Shipper")) {
-                url = "Views/Shipper/shipper.jsp";
-                RequestDispatcher rq = request.getRequestDispatcher(url);
-                rq.forward(request, response);
+                goShipper s1000rr = new goShipper();
+                s1000rr.doPost(request,response);
+
             }
         } else {
             RequestDispatcher rq = request.getRequestDispatcher(url);
