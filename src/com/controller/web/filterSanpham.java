@@ -45,7 +45,7 @@ public class filterSanpham extends HttpServlet {
 		queryDAO dao = new queryDAO();
 		List<Display> danhsachLoc = dao.filterSanpham(name);
 		System.out.print(danhsachLoc);
-		request.setAttribute("listSanpham", danhsachLoc);
+		request.setAttribute("listPhantrang", danhsachLoc);
 		request.setAttribute("from", request.getAttribute("from"));
 		request.setAttribute("thongbao", request.getAttribute("thongbao"));
 		System.out.print("9999 ");

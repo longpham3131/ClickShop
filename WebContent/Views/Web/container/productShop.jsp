@@ -35,12 +35,12 @@
                     <nav id="sidebar">
                         <ul class="list-unstyled components">
                             <li class="active">
-                                <a href="#allXL"  aria-expanded="false" class="product__catagory">
+                                <a href="#allXL" aria-expanded="false" class="product__catagory">
                                     <form action="<%=request.getContextPath()%>//fill-All-Sanpham" method="post">
                                         <button type="submit" style="    background: transparent; border: none;">
                                             TẤT CẢ SẢN PHẨM
                                         </button>
-<%--                                        <input type="hidden" value="Chealsea Boots - Men" name="Name"/>--%>
+                                        <%--                                        <input type="hidden" value="Chealsea Boots - Men" name="Name"/>--%>
                                     </form>
                                 </a>
                                 <a href="#maleXL" data-toggle="collapse" aria-expanded="false"
@@ -94,14 +94,14 @@
                                             <input type="hidden" value="OXFORD" name="Name"/>
                                         </form>
                                     </li>
-<%--                                    <li>--%>
-<%--                                        <form action="<%=request.getContextPath()%>/filter-Product" method="post">--%>
-<%--                                            <button type="submit" style="    background: transparent; border: none;">--%>
-<%--                                                MONKSTRAP--%>
-<%--                                            </button>--%>
-<%--                                            <input type="hidden" value="OXFORD" name="Name"/>--%>
-<%--                                        </form>--%>
-<%--                                    </li>--%>
+                                    <%--                                    <li>--%>
+                                    <%--                                        <form action="<%=request.getContextPath()%>/filter-Product" method="post">--%>
+                                    <%--                                            <button type="submit" style="    background: transparent; border: none;">--%>
+                                    <%--                                                MONKSTRAP--%>
+                                    <%--                                            </button>--%>
+                                    <%--                                            <input type="hidden" value="OXFORD" name="Name"/>--%>
+                                    <%--                                        </form>--%>
+                                    <%--                                    </li>--%>
                                 </ul>
                             </li>
                             <li>
@@ -124,14 +124,14 @@
                                             <input type="hidden" value="Combat Boots - Women" name="Name"/>
                                         </form>
                                     </li>
-<%--                                    <li>--%>
-<%--                                        <form action="<%=request.getContextPath()%>/filter-Product" method="post">--%>
-<%--                                            <button type="submit" style="    background: transparent; border: none;">--%>
-<%--                                                DERBY--%>
-<%--                                            </button>--%>
-<%--                                            <input type="hidden" value="Combat Boots - Women" name="Name"/>--%>
-<%--                                        </form>--%>
-<%--                                    </li>--%>
+                                    <%--                                    <li>--%>
+                                    <%--                                        <form action="<%=request.getContextPath()%>/filter-Product" method="post">--%>
+                                    <%--                                            <button type="submit" style="    background: transparent; border: none;">--%>
+                                    <%--                                                DERBY--%>
+                                    <%--                                            </button>--%>
+                                    <%--                                            <input type="hidden" value="Combat Boots - Women" name="Name"/>--%>
+                                    <%--                                        </form>--%>
+                                    <%--                                    </li>--%>
                                 </ul>
                             </li>
                             <li>
@@ -212,35 +212,35 @@
 
                                 </ul>
                             </li>
-<%--                            <li>--%>
-<%--                                <a href="#newCollection" data-toggle="collapse" aria-expanded="false"--%>
-<%--                                   class="dropdown-toggle product__catagory">NEW COLLECTION</a>--%>
-<%--                                <ul class="collapse list-unstyled" id="newCollection">--%>
-<%--                                    <li>--%>
-<%--                                        <a href="#">THE ALPHA COLLECTION</a>--%>
-<%--                                    </li>--%>
-<%--                                    <li>--%>
-<%--                                        <a href="#">THE BASIC COLLECTION</a>--%>
-<%--                                    </li>--%>
+                            <%--                            <li>--%>
+                            <%--                                <a href="#newCollection" data-toggle="collapse" aria-expanded="false"--%>
+                            <%--                                   class="dropdown-toggle product__catagory">NEW COLLECTION</a>--%>
+                            <%--                                <ul class="collapse list-unstyled" id="newCollection">--%>
+                            <%--                                    <li>--%>
+                            <%--                                        <a href="#">THE ALPHA COLLECTION</a>--%>
+                            <%--                                    </li>--%>
+                            <%--                                    <li>--%>
+                            <%--                                        <a href="#">THE BASIC COLLECTION</a>--%>
+                            <%--                                    </li>--%>
 
 
-<%--                                </ul>--%>
-<%--                            </li>--%>
-<%--                            <li>--%>
-<%--                                <a href="#" class="product__catagory">WE ARE WOLFER</a>--%>
-<%--                            </li>--%>
-<%--                            <li>--%>
-<%--                                <a href="#niceLife" data-toggle="collapse" aria-expanded="false"--%>
-<%--                                   class="dropdown-toggle product__catagory">LỐI SỐNG ĐẸP</a>--%>
-<%--                                <ul class="collapse list-unstyled" id="niceLife">--%>
-<%--                                    <li>--%>
-<%--                                        <a href="#">BEAUTIFUL LIFESTYLE</a>--%>
-<%--                                    </li>--%>
-<%--                                    <li>--%>
-<%--                                        <a href="#">CÁC TIPS VỀ THỜI TRANG</a>--%>
-<%--                                    </li>--%>
-<%--                                </ul>--%>
-<%--                            </li>--%>
+                            <%--                                </ul>--%>
+                            <%--                            </li>--%>
+                            <%--                            <li>--%>
+                            <%--                                <a href="#" class="product__catagory">WE ARE WOLFER</a>--%>
+                            <%--                            </li>--%>
+                            <%--                            <li>--%>
+                            <%--                                <a href="#niceLife" data-toggle="collapse" aria-expanded="false"--%>
+                            <%--                                   class="dropdown-toggle product__catagory">LỐI SỐNG ĐẸP</a>--%>
+                            <%--                                <ul class="collapse list-unstyled" id="niceLife">--%>
+                            <%--                                    <li>--%>
+                            <%--                                        <a href="#">BEAUTIFUL LIFESTYLE</a>--%>
+                            <%--                                    </li>--%>
+                            <%--                                    <li>--%>
+                            <%--                                        <a href="#">CÁC TIPS VỀ THỜI TRANG</a>--%>
+                            <%--                                    </li>--%>
+                            <%--                                </ul>--%>
+                            <%--                            </li>--%>
                             <li>
                                 <a href="#" class="product__catagory">LIÊN HỆ</a>
                             </li>
@@ -483,7 +483,7 @@
 
                     </div>
                     <div class="row">
-                        <c:forEach items="${listSanpham}" var="row">
+                        <c:forEach items="${listPhantrang}" var="row">
                             <div class="col- 12 col-md-6 col-lg-4 col-xl-3 product__item">
                                 <form action="<%=request.getContextPath()%>/chooseProduct" method="post">
                                     <button type="submit" style="    background: transparent; border: none;">
@@ -502,23 +502,19 @@
                                 </form>
                             </div>
                         </c:forEach>
-                        <%--                        <div class="col- 12 col-md-6 col-lg-4 col-xl-3 product__item">--%>
-
-                        <%--                            <img src="<%=request.getContextPath()%>/Views/Web/image_product/Tee03.jpg" alt="">--%>
-
-                        <%--                            <h4>--%>
-                        <%--                                THE WOLF BASIC TEE - WHITE--%>
-                        <%--                            </h4>--%>
-                        <%--                            <span>280,000₫</span>--%>
-                        <%--                        </div>--%>
-                        <%--                        <div class="col- 12 col-md-6 col-lg-4 col-xl-3 product__item">--%>
-                        <%--                            <img src="<%=request.getContextPath()%>/Views/Web/image_product/Tee01.jpg" alt="">--%>
-
-
-                        <%--                            <h4> THE WOLF BASIC TEE - BLACK</h4>--%>
-                        <%--                            <span>280,000₫</span>--%>
-                        <%--                        </div>--%>
                     </div>
+                    <ul class="pagination pagination-lg">
+                        <c:forEach begin="1" end="${numberPage}" var="i">
+                            <li class="page-item">
+                                <form class="page-link" action="<%=request.getContextPath()%>/fill-All-Sanpham">
+                                    <button type="submit" value="${i}" name="index" style="    background: transparent; border: none;">
+                                        <input type="hidden" value="${i}" name="index"/>
+                                            ${i}
+                                    </button>
+                                </form>
+                            </li>
+                        </c:forEach>
+                    </ul>
                 </div>
             </div>
         </div>
