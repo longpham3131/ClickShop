@@ -40,17 +40,19 @@ public class fillSanpham extends HttpServlet {
 	protected void processRequest(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		response.setContentType("text/html;charset=UTF-8");
-		String txt = request.getParameter("index");
-		int index = 0;
-		if (txt == null) {
-			index = 1;
-		} else {
-			index = Integer.parseInt(txt);
+		String index = request.getParameter("index");
+		System.out.print(index);
+		if (index ==null)
+		{
+			index ="1";
 		}
+		int	 indexPage = Integer.parseInt(index);
 		queryDAO dao = new queryDAO();
-		List<Display> listSanpham = dao.hienthi(index);
-		System.out.print(listSanpham);
-		request.setAttribute("listSanpham", listSanpham);
+		int numberPage = dao.getNumberPage();
+		List<Display> listPhantrang = dao.getPaging(indexPage);
+//		System.out.print(listSanpham);
+		request.setAttribute("listPhantrang", listPhantrang);
+		request.setAttribute("numberPage", numberPage);
 		request.setAttribute("from", request.getAttribute("from"));
 		request.setAttribute("thongbao", request.getAttribute("thongbao"));
 		RequestDispatcher rq = request.getRequestDispatcher("Views/Web/container/productShop.jsp");

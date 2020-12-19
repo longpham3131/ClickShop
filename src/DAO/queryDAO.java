@@ -281,6 +281,50 @@ public class queryDAO {
         }
         return null;
     }
+    public int getNumberPage() {
+        String query = "SELECT COUNT(*) FROM dbo.Product ";
+        try {
+
+            conn = new MyDB().getConnection();
+            ps = conn.prepareStatement(query);
+            rs = ps.executeQuery();
+            while (rs.next()) {
+                int total = rs.getInt(1);
+                int countPage = 0;
+                countPage = total/12;
+                if (total % 12 != 0 ) {
+                    countPage++;
+                }
+                return countPage;
+            }
+        } catch (Exception e) {
+        }
+        return 0;
+    }
+    public List<Display> getPaging(int index) {
+        String query = "SELECT Product.ProductId, Product.Name,Product.UnitPrice , Image.ImagePath, Product.Description, Product.SubCategoryId , SubCategory.CategoryId \n" +
+                "FROM dbo.Product ,dbo.[Image],dbo.SubCategory \n" +
+                "WHERE Product.ProductId = Image.ProductId AND Product.SubCategoryId = SubCategory.SubCategoryId\n" +
+                "ORDER BY ProductId \n" +
+                "OFFSET ? ROWS \n" +
+                "FETCH FIRST 12 ROWS ONLY;";
+        List<Display> listPhantrang = new ArrayList<Display>();
+        try {
+
+            conn = new MyDB().getConnection();
+            ps = conn.prepareStatement(query);
+            ps.setInt(1,(index -1)*12);
+            rs = ps.executeQuery();
+            while (rs.next()) {
+                listPhantrang.add(new Display(rs.getString(1), rs.getString(2), rs.getString(3), rs.getString(4),
+                        rs.getString(5),rs.getString(6),rs.getString(7)));
+            }
+            return listPhantrang;
+        } catch (Exception e) {
+        }
+        return null;
+    }
+
 //    public boolean filter(String productid, String name, String unitprice, String imagepath, String description,
 //                                 String subcategoryid, String categoryid) {
 //        Connection conn1 = null, conn2 = null;
