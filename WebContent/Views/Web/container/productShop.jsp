@@ -39,26 +39,61 @@
                                    class="dropdown-toggle product__catagory">GIÀY NAM</a>
                                 <ul class="collapse list-unstyled" id="maleXL">
                                     <li>
-                                        <a href="#">CHELSEA BOOT</a>
+                                        <form action="<%=request.getContextPath()%>/filter-Product" method="post">
+                                            <button type="submit" style="    background: transparent; border: none;">
+                                                CHELSEA BOOT
+                                            </button>
+                                            <input type="hidden" value="Chealsea Boots - Men" name="Name"/>
+                                        </form>
                                     </li>
                                     <li>
-                                        <a href="#">DERBY</a>
+                                        <form action="<%=request.getContextPath()%>/filter-Product" method="post">
+                                            <button type="submit" style="    background: transparent; border: none;">
+                                                DERBY
+                                            </button>
+                                            <input type="hidden" value="DERBY" name="Name"/>
+                                        </form>
                                     </li>
                                     <li>
-                                        <a href="#">HARNESS BOOT</a>
+                                        <form action="<%=request.getContextPath()%>/filter-Product" method="post">
+                                            <button type="submit" style="    background: transparent; border: none;">
+                                                HARNESS BOOT
+                                            </button>
+                                            <input type="hidden" value="Harness Boots" name="Name"/>
+                                        </form>
                                     </li>
                                     <li>
-                                        <a href="#">ZIP BOOT</a>
+                                        <form action="<%=request.getContextPath()%>/filter-Product" method="post">
+                                            <button type="submit" style="    background: transparent; border: none;">
+                                                ZIP BOOT
+                                            </button>
+                                            <input type="hidden" value="Zip Boots" name="Name"/>
+                                        </form>
                                     </li>
                                     <li>
-                                        <a href="#">COMBAT BOOT</a>
+                                        <form action="<%=request.getContextPath()%>/filter-Product" method="post">
+                                            <button type="submit" style="    background: transparent; border: none;">
+                                                COMBAT BOOT
+                                            </button>
+                                            <input type="hidden" value="Combat Boots - Men" name="Name"/>
+                                        </form>
                                     </li>
                                     <li>
-                                        <a href="#">OXFORD</a>
+                                        <form action="<%=request.getContextPath()%>/filter-Product" method="post">
+                                            <button type="submit" style="    background: transparent; border: none;">
+                                                OXFORD
+                                            </button>
+                                            <input type="hidden" value="OXFORD" name="Name"/>
+                                        </form>
                                     </li>
-                                    <li>
-                                        <a href="#">MONKSTRAP</a>
-                                    </li>
+<%--                                    <li>--%>
+<%--                                        <form action="<%=request.getContextPath()%>/filter-Product" method="post">--%>
+<%--                                            <button type="submit" style="    background: transparent; border: none;">--%>
+<%--                                                MONKSTRAP--%>
+<%--                                            </button>--%>
+<%--                                            <input type="hidden" value="OXFORD" name="Name"/>--%>
+<%--                                        </form>--%>
+<%--                                    </li>--%>
                                 </ul>
                             </li>
                             <li>
@@ -66,14 +101,29 @@
                                    class="dropdown-toggle product__catagory">GIÀY NỮ</a>
                                 <ul class="collapse list-unstyled" id="femaleXL">
                                     <li>
-                                        <a href="#">CHELSEA BOOT</a>
+                                        <form action="<%=request.getContextPath()%>/filter-Product" method="post">
+                                            <button type="submit" style="    background: transparent; border: none;">
+                                                CHELSEA BOOT
+                                            </button>
+                                            <input type="hidden" value="Chealsea Boots - Women" name="Name"/>
+                                        </form>
                                     </li>
                                     <li>
-                                        <a href="#">COMBAT BOOT</a>
+                                        <form action="<%=request.getContextPath()%>/filter-Product" method="post">
+                                            <button type="submit" style="    background: transparent; border: none;">
+                                                COMBAT BOOT
+                                            </button>
+                                            <input type="hidden" value="Combat Boots - Women" name="Name"/>
+                                        </form>
                                     </li>
-                                    <li>
-                                        <a href="#">DERBY</a>
-                                    </li>
+<%--                                    <li>--%>
+<%--                                        <form action="<%=request.getContextPath()%>/filter-Product" method="post">--%>
+<%--                                            <button type="submit" style="    background: transparent; border: none;">--%>
+<%--                                                DERBY--%>
+<%--                                            </button>--%>
+<%--                                            <input type="hidden" value="Combat Boots - Women" name="Name"/>--%>
+<%--                                        </form>--%>
+<%--                                    </li>--%>
                                 </ul>
                             </li>
                             <li>
@@ -85,69 +135,104 @@
                                             <button type="submit" style="    background: transparent; border: none;">
                                                 T-SHIRT
                                             </button>
-                                            <input type="hidden" value="9" name="Name"/>
+                                            <input type="hidden" value="T-SHIRT" name="Name"/>
                                         </form>
                                     </li>
                                     <li>
-                                        <a href="#">SHIRT</a>
+                                        <form action="<%=request.getContextPath()%>/filter-Product" method="post">
+                                            <button type="submit" style="    background: transparent; border: none;">
+                                                SHIRT
+                                            </button>
+                                            <input type="hidden" value="SHIRT" name="Name"/>
+                                        </form>
                                     </li>
 
                                 </ul>
                             </li>
                             <li>
-                                <a href="#accessory" data-toggle="collapse" aria-expanded="false"
+                                <a href="#accessoryXL" data-toggle="collapse" aria-expanded="false"
                                    class="dropdown-toggle product__catagory">PHỤ KIỆN</a>
                                 <ul class="collapse list-unstyled" id="accessoryXL">
                                     <li>
-                                        <a href="#">BELT</a>
+                                        <form action="<%=request.getContextPath()%>/filter-Product" method="post">
+                                            <button type="submit" style="    background: transparent; border: none;">
+                                                BELT
+                                            </button>
+                                            <input type="hidden" value="BELT" name="Name"/>
+                                        </form>
                                     </li>
                                     <li>
-                                        <a href="#">BRACELET</a>
+                                        <form action="<%=request.getContextPath()%>/filter-Product" method="post">
+                                            <button type="submit" style="    background: transparent; border: none;">
+                                                BRACELET
+                                            </button>
+                                            <input type="hidden" value="BRACELET" name="Name"/>
+                                        </form>
                                     </li>
                                     <li>
-                                        <a href="#">CHAIN</a>
+                                        <form action="<%=request.getContextPath()%>/filter-Product" method="post">
+                                            <button type="submit" style="    background: transparent; border: none;">
+                                                CHAIN
+                                            </button>
+                                            <input type="hidden" value="CHAIN" name="Name"/>
+                                        </form>
                                     </li>
                                     <li>
-                                        <a href="#">BANDANA</a>
+                                        <form action="<%=request.getContextPath()%>/filter-Product" method="post">
+                                            <button type="submit" style="    background: transparent; border: none;">
+                                                BANDANA
+                                            </button>
+                                            <input type="hidden" value="BANDANA" name="Name"/>
+                                        </form>
                                     </li>
                                     <li>
-                                        <a href="#">NECKLAGE</a>
+                                        <form action="<%=request.getContextPath()%>/filter-Product" method="post">
+                                            <button type="submit" style="    background: transparent; border: none;">
+                                                NECKLACE
+                                            </button>
+                                            <input type="hidden" value="NECKLACE" name="Name"/>
+                                        </form>
                                     </li>
                                     <li>
-                                        <a href="#">BUCKET HAT</a>
+                                        <form action="<%=request.getContextPath()%>/filter-Product" method="post">
+                                            <button type="submit" style="    background: transparent; border: none;">
+                                                BUCKET HAT
+                                            </button>
+                                            <input type="hidden" value="BUCKET HAT" name="Name"/>
+                                        </form>
                                     </li>
 
                                 </ul>
                             </li>
-                            <li>
-                                <a href="#newCollection" data-toggle="collapse" aria-expanded="false"
-                                   class="dropdown-toggle product__catagory">NEW COLLECTION</a>
-                                <ul class="collapse list-unstyled" id="newCollection">
-                                    <li>
-                                        <a href="#">THE ALPHA COLLECTION</a>
-                                    </li>
-                                    <li>
-                                        <a href="#">THE BASIC COLLECTION</a>
-                                    </li>
+<%--                            <li>--%>
+<%--                                <a href="#newCollection" data-toggle="collapse" aria-expanded="false"--%>
+<%--                                   class="dropdown-toggle product__catagory">NEW COLLECTION</a>--%>
+<%--                                <ul class="collapse list-unstyled" id="newCollection">--%>
+<%--                                    <li>--%>
+<%--                                        <a href="#">THE ALPHA COLLECTION</a>--%>
+<%--                                    </li>--%>
+<%--                                    <li>--%>
+<%--                                        <a href="#">THE BASIC COLLECTION</a>--%>
+<%--                                    </li>--%>
 
 
-                                </ul>
-                            </li>
-                            <li>
-                                <a href="#" class="product__catagory">WE ARE WOLFER</a>
-                            </li>
-                            <li>
-                                <a href="#niceLife" data-toggle="collapse" aria-expanded="false"
-                                   class="dropdown-toggle product__catagory">LỐI SỐNG ĐẸP</a>
-                                <ul class="collapse list-unstyled" id="niceLife">
-                                    <li>
-                                        <a href="#">BEAUTIFUL LIFESTYLE</a>
-                                    </li>
-                                    <li>
-                                        <a href="#">CÁC TIPS VỀ THỜI TRANG</a>
-                                    </li>
-                                </ul>
-                            </li>
+<%--                                </ul>--%>
+<%--                            </li>--%>
+<%--                            <li>--%>
+<%--                                <a href="#" class="product__catagory">WE ARE WOLFER</a>--%>
+<%--                            </li>--%>
+<%--                            <li>--%>
+<%--                                <a href="#niceLife" data-toggle="collapse" aria-expanded="false"--%>
+<%--                                   class="dropdown-toggle product__catagory">LỐI SỐNG ĐẸP</a>--%>
+<%--                                <ul class="collapse list-unstyled" id="niceLife">--%>
+<%--                                    <li>--%>
+<%--                                        <a href="#">BEAUTIFUL LIFESTYLE</a>--%>
+<%--                                    </li>--%>
+<%--                                    <li>--%>
+<%--                                        <a href="#">CÁC TIPS VỀ THỜI TRANG</a>--%>
+<%--                                    </li>--%>
+<%--                                </ul>--%>
+<%--                            </li>--%>
                             <li>
                                 <a href="#" class="product__catagory">LIÊN HỆ</a>
                             </li>

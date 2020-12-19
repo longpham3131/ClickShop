@@ -266,7 +266,7 @@ public class queryDAO {
     public List<Display> filterSanpham(String name) {
         String query = "SELECT Product.ProductId, Product.Name,Product.UnitPrice , Image.ImagePath, Product.Description, Product.SubCategoryId , SubCategory.CategoryId " +
                 "FROM dbo.Product ,dbo.[Image],dbo.SubCategory " +
-                "WHERE Product.ProductId = Image.ProductId AND Product.SubCategoryId = SubCategory.SubCategoryId AND SubCategory.SubcategoryId ="+name;
+                "WHERE Product.ProductId = Image.ProductId AND Product.SubCategoryId = SubCategory.SubCategoryId AND SubCategory.Name = '"+ name +"'";
         List<Display> listLoc = new ArrayList<Display>();
         try {
 
