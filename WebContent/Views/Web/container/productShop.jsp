@@ -35,6 +35,14 @@
                     <nav id="sidebar">
                         <ul class="list-unstyled components">
                             <li class="active">
+                                <a href="#allXL"  aria-expanded="false" class="product__catagory">
+                                    <form action="<%=request.getContextPath()%>//fill-All-Sanpham" method="post">
+                                        <button type="submit" style="    background: transparent; border: none;">
+                                            TẤT CẢ SẢN PHẨM
+                                        </button>
+<%--                                        <input type="hidden" value="Chealsea Boots - Men" name="Name"/>--%>
+                                    </form>
+                                </a>
                                 <a href="#maleXL" data-toggle="collapse" aria-expanded="false"
                                    class="dropdown-toggle product__catagory">GIÀY NAM</a>
                                 <ul class="collapse list-unstyled" id="maleXL">
