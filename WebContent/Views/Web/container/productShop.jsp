@@ -505,14 +505,15 @@
                     </div>
                     <ul class="pagination pagination-lg">
                         <c:forEach begin="1" end="${numberPage}" var="i">
-                            <li class="page-item">
-                                <form class="page-link" action="<%=request.getContextPath()%>/fill-All-Sanpham">
-                                    <button type="submit" value="${i}" name="index" style="    background: transparent; border: none;">
+                            <form class="page-link" action="<%=request.getContextPath()%>/fill-All-Sanpham">
+                                <button type="submit" value="${i}" name="index"
+                                        style="    background: transparent; border: none;">
+                                    <li class="page-item">
                                         <input type="hidden" value="${i}" name="index"/>
                                             ${i}
-                                    </button>
-                                </form>
-                            </li>
+                                    </li>
+                                </button>
+                            </form>
                         </c:forEach>
                     </ul>
                 </div>
