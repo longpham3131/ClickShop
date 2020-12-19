@@ -4,6 +4,7 @@ import DAO.LoginDAO;
 import DAO.queryDAO;
 import com.model.DetailOrder;
 import com.model.PickingUp;
+import com.model.Shipping;
 
 import java.io.IOException;
 import java.util.List;
@@ -26,13 +27,32 @@ public class goShipper extends HttpServlet {
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		String url = "Views/Shipper/container/home.jsp";
-		String id = request.getParameter("id");
+		String Email = request.getParameter("email");
 		queryDAO dao = new queryDAO();
+
+        String endStatus = request.getParameter("end");
+		String orderId = request.getParameter("orderId");
+		String error=null;
+        if(endStatus!=null) {
+			if(dao.shipperAction(orderId,endStatus) == false)
+				error="1";
+			request.setAttribute("end", null);
+        }
 		List<PickingUp> list4 = dao.pickupList();
 		request.setAttribute("listPicking", list4);
 		List<DetailOrder> list4_1 = dao.OrtherDetailPicking();
 		request.setAttribute("listPickDetail", list4_1);
-		request.setAttribute("email", id);
+
+        List<Shipping> list3 = dao.shippingList();
+        List<DetailOrder> list3_1 = dao.OrtherDetailShipping();
+        request.setAttribute("listShipping", list3);
+        request.setAttribute("listShippingDetail", list3_1);
+
+        System.out.print(list3.size());
+
+		//request.setAttribute("email", Email);
+
+		request.setAttribute("error", error);
 		RequestDispatcher rq= request.getRequestDispatcher(url);
 		rq.forward(request, response);
 	}

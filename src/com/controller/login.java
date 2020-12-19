@@ -1,6 +1,7 @@
 package com.controller;
 
 import DAO.LoginDAO;
+import DAO.queryDAO;
 import com.controller.admin.shipped;
 import com.controller.shipper.goShipper;
 import com.controller.web.fillAllDisplay;
@@ -32,19 +33,23 @@ public class login extends HttpServlet {
 
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        String id = request.getParameter("id");
-        request.setAttribute("id", id);
-        String password = request.getParameter("password");
         String url = "Views//loginAll.jsp";
         HttpSession session1 = request.getSession();
-        session1.invalidate();  // khi vao login thi xoa het trc do
-        request.setAttribute("email", id);
+        session1.invalidate();  // khi vao login thi xoa het trc do//-------------- chua lam dc
+
+        String email = request.getParameter("id");
+        String password = request.getParameter("password");
+        request.setAttribute("id", email);
+
         LoginDAO loginDAO = new LoginDAO();
-        String kq = loginDAO.login(id, password);
+        String kq = loginDAO.login(email, password);
         if (kq != null) {              // need session.get(email) <<<<<<<<<<<<<<<<<<<<<<<
             HttpSession session = request.getSession();
             session.setAttribute("check", "true");
-            session.setAttribute("email", id);
+            session.setAttribute("email", email);
+            queryDAO dao = new queryDAO();
+            String id= dao.idByEmail(email);
+            session.setAttribute("AccId", id);
             if (kq.equals("Administrator")) {
                 url = "Views/Admin/container/home.jsp";
                 RequestDispatcher rq = request.getRequestDispatcher(url);

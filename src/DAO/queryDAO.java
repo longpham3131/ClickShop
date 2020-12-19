@@ -225,7 +225,6 @@ public class queryDAO {
         String query = "SELECT Account.*, AccountRole.Role FROM  Account, AccountRole where Account.Email = AccountRole.Email";
         List<Article> list = new ArrayList<Article>();
         try {
-
             conn = new MyDB().getConnection();
             ps = conn.prepareStatement(query);
             // ps.setInt(1, (index * 20 - 20));
@@ -977,4 +976,41 @@ public class queryDAO {
         return false;
     }
     // ----------- End ship Admin -------------------//
+    public String idByEmail(String email) {
+        String query = "SELECT A.AccountId\r\n"
+                + "	FROM Account A \r\n"
+                + "	WHERE A.Email= '"+email+"' \r\n";
+        try {
+            conn = new MyDB().getConnection();
+            ps = conn.prepareStatement(query);
+            rs = ps.executeQuery();
+            while (rs.next()) {
+                return rs.getString(1);
+            }
+            return null;
+        } catch (Exception e) {
+        }
+        return null;
+    }
+
+    public boolean shipperAction(String orderid, String status) {
+        Connection conn1 = null;
+        PreparedStatement ps1 = null;
+        ResultSet rs = null;
+        try {
+            String query = "update Shipper set Status='"+status+"' WHERE PurchaseOrderId='" + orderid + "'";
+            conn1 = new MyDB().getConnection();
+
+            ps1 = conn1.prepareStatement(query);
+            ps1.executeUpdate();
+
+            return true;
+        } catch (Exception e) {
+            System.out.println(e);
+        }
+        return false;
+    }
+    //------------------------------  TRANG CUA SHIPPPER ----------------------------->
+
+    //------END TRANG CUA SHIPPPER --------->
 }
