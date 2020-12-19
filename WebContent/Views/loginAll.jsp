@@ -47,8 +47,8 @@
 <body>
 <%
     String id = "";
-    if (request.getAttribute("email") != null)
-        id = (String) request.getAttribute("email");
+    if (request.getAttribute("id") != null)
+        id = (String) request.getAttribute("id");
 %>
 <div class="limiter">
     <div class="container-login100" style="">
