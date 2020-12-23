@@ -52,6 +52,7 @@
                 <ul class="navbar-nav ml-auto">
 
                     <!-- Nav Item - Search Dropdown (Visible Only XS) -->
+                    <h3>SHIPPER PAGE</h3>
                     <li class="nav-item dropdown no-arrow d-sm-none"><a
                             class="nav-link dropdown-toggle" href="#" id="searchDropdown"
                             role="button" data-toggle="dropdown" aria-haspopup="true"
@@ -74,6 +75,7 @@
                             </form>
                         </div>
                     </li>
+
 
                     <!-- Nav Item - User Information -->
                     <li class="nav-item dropdown no-arrow"><a
@@ -120,7 +122,7 @@
                                                 class="text-xs font-weight-bold text-success text-uppercase mb-1">
                                             Lay hang
                                         </div>
-                                        <div class="h5 mb-0 font-weight-bold text-gray-800">700 don
+                                        <div class="h5 mb-0 font-weight-bold text-gray-800">${demPicking}
                                         </div>
                                     </div>
                                     <div class="col-auto">
@@ -141,7 +143,7 @@
                                                 class="text-xs font-weight-bold text-primary text-uppercase mb-1">
                                             Dang giao
                                         </div>
-                                        <div class="h5 mb-0 font-weight-bold text-gray-800">88 don
+                                        <div class="h5 mb-0 font-weight-bold text-gray-800">${demShipping}
                                         </div>
                                         <div class="col-auto">
                                             <i class="fas fa-calendar fa-2x text-gray-300"></i>
@@ -315,7 +317,7 @@
                                 <tbody>
                                 <c:set var="a" value="0"/>
                                 <c:forEach items="${listShipping}" var="listSpg" varStatus="loop">
-                                    ${listSpg.status} = ${listSpg.shipperID} /= ${AccId}
+<%--                                    ${listSpg.status} = ${listSpg.shipperID} /= ${AccId}--%>
                                     <c:choose>
                                         <c:when test="${listSpg.status == 'Cancel' && listSpg.shipperID == AccId}">
                                             <c:set var="a" value="1"/>

@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
          pageEncoding="UTF-8" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -21,6 +22,15 @@
 
 <body>
 <header>
+    <%--  Check Login and Role --%>
+    <%
+        String email = (String) session.getAttribute("email");
+        //String role = (String) session.getAttribute("role");
+
+        if (email == null)
+            email = "login";
+    %>
+
     <div class="container ">
         <div class="header__top d-flex align-items-center justify-content-center">
             <div class="header__logo ">
@@ -29,9 +39,23 @@
                 </a>
 
             </div>
+            <%--            <h1>/........... ${email} ...........</h1>--%>
             <div class="header__icons">
-                <a href="<%=request.getContextPath()%>/Views/Web/container/login.jsp" aria-label="Tài khoản"
-                   title="Tài khoản"><i class="fa fa-user"></i></a>
+                <c:choose>
+                    <c:when test="${email != null}">
+                        <a href="<%=request.getContextPath()%>/my-profile" aria-label="Tài khoản"
+                           title="Tài khoản"> ${email} </a>
+                        <form action="<%=request.getContextPath()%>/fill-All-Display" method="post">
+                            <input type="hidden" value="1" name="logout">
+                            <button type="submit" title="Dang xuat"> <i class="fa fa-sign-out-alt"></i> </button>
+                        </form>
+                    </c:when>
+                    <c:otherwise>
+                        <a href="<%=request.getContextPath()%>/login-all" aria-label="Tài khoản"
+                           title="Tài khoản"> <i></i><i class="fa fa-user"></i> </a>
+                    </c:otherwise>
+
+                </c:choose>
                 <a href="#" aria-label="Tìm kiếm" title="Tìm kiếm"><i class="fa fa-search"></i></a>
                 <a href="#" aria-label="Giỏ hàng" title="Giỏ hàng" data-toggle="modal" data-target="#myModal"><i
                         class="fa fa-shopping-cart"></i></a>
@@ -49,7 +73,7 @@
                     <ul class="navbar-nav">
                         <li class="nav-item dropdown no__relative">
                             <a class="nav-link dropdown-toggle" href="#" id="dropdown__giaynam" role="button"
-                               data-toggle="dropdown" aria-haspopup="true" aria-expanded="true" >
+                               data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
                                 GIÀY NAM
                             </a>
                             <div class="dropdown-menu dropdown__giaynam nav-item__dropdown"
@@ -148,16 +172,18 @@
                                     <div class="dropdown__content col-2">
                                         <a class="dropdown-item" href="#">
                                             <form action="<%=request.getContextPath()%>/filter-Product" method="post">
-                                                <button type="submit" style="    background: transparent; border: none;">
+                                                <button type="submit"
+                                                        style="    background: transparent; border: none;">
                                                     CHELSEA BOOT
                                                 </button>
                                                 <input type="hidden" value="Chealsea Boots - Women" name="Name"/>
                                             </form>
                                         </a>
-<%--                                        <a class="dropdown-item" href="#">DERBY</a>--%>
+                                        <%--                                        <a class="dropdown-item" href="#">DERBY</a>--%>
                                         <a class="dropdown-item" href="#">
                                             <form action="<%=request.getContextPath()%>/filter-Product" method="post">
-                                                <button type="submit" style="    background: transparent; border: none;">
+                                                <button type="submit"
+                                                        style="    background: transparent; border: none;">
                                                     COMBAT BOOT
                                                 </button>
                                                 <input type="hidden" value="Combat Boots - Women" name="Name"/>
@@ -270,30 +296,30 @@
                                 </a>
                             </div>
                         </li>
-<%--                        <li class="nav-item dropdown">--%>
-<%--                            <a class="nav-link dropdown-toggle" href="#" id="dropdown__newCollection" role="button"--%>
-<%--                               data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">--%>
-<%--                                NEW COLLECTION--%>
-<%--                            </a>--%>
-<%--                            <div class="dropdown-menu" aria-labelledby="dropdown__newCollection">--%>
-<%--                                <a class="dropdown-item" href="#">THE ALPHA COLLECTION</a>--%>
-<%--                                <a class="dropdown-item" href="#">THE BASIC COLLECTION</a>--%>
-<%--                            </div>--%>
-<%--                        </li>--%>
+                        <%--                        <li class="nav-item dropdown">--%>
+                        <%--                            <a class="nav-link dropdown-toggle" href="#" id="dropdown__newCollection" role="button"--%>
+                        <%--                               data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">--%>
+                        <%--                                NEW COLLECTION--%>
+                        <%--                            </a>--%>
+                        <%--                            <div class="dropdown-menu" aria-labelledby="dropdown__newCollection">--%>
+                        <%--                                <a class="dropdown-item" href="#">THE ALPHA COLLECTION</a>--%>
+                        <%--                                <a class="dropdown-item" href="#">THE BASIC COLLECTION</a>--%>
+                        <%--                            </div>--%>
+                        <%--                        </li>--%>
                         <li class="nav-item">
                             <a class="nav-link" href="#">WE ARE WOLFER <span class="sr-only">(current)</span></a>
                         </li>
-<%--                        <li class="nav-item dropdown">--%>
-<%--                            <a class="nav-link dropdown-toggle" href="#" id="dropdown__niceLife" role="button"--%>
-<%--                               data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">--%>
-<%--                                LỐI SỐNG ĐẸP--%>
-<%--                            </a>--%>
-<%--                            <div class="dropdown-menu" aria-labelledby="dropdown__newCollection">--%>
-<%--                                <a class="dropdown-item" href="#">BEAUTIFUL LIFESTYLE</a>--%>
-<%--                                <a class="dropdown-item" href="#">CÁC TIP VỀ THỜI TRANG</a>--%>
-<%--                            </div>--%>
+                        <%--                        <li class="nav-item dropdown">--%>
+                        <%--                            <a class="nav-link dropdown-toggle" href="#" id="dropdown__niceLife" role="button"--%>
+                        <%--                               data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">--%>
+                        <%--                                LỐI SỐNG ĐẸP--%>
+                        <%--                            </a>--%>
+                        <%--                            <div class="dropdown-menu" aria-labelledby="dropdown__newCollection">--%>
+                        <%--                                <a class="dropdown-item" href="#">BEAUTIFUL LIFESTYLE</a>--%>
+                        <%--                                <a class="dropdown-item" href="#">CÁC TIP VỀ THỜI TRANG</a>--%>
+                        <%--                            </div>--%>
 
-<%--                        </li>--%>
+                        <%--                        </li>--%>
                         <li class="nav-item">
                             <a class="nav-link" href="#">LIÊN HỆ</a>
                         </li>
@@ -344,12 +370,27 @@
                     </div>
                     <!-- Modal footer -->
                     <div class="modal-footer">
-                        <a href="<%=request.getContextPath()%>/Views/Web/container/checkOut.jsp">
-                            <button type="button"
-                                    class="btn btn-success">Thanh
-                                Toán
-                            </button>
-                        </a>
+
+                        <c:choose>
+                            <c:when test="${email != null}">
+                                <a href="<%=request.getContextPath()%>/check-out">
+
+                                    <button type="summit"
+                                            class="btn btn-success">Thanh
+                                        Toán
+                                    </button>
+                                </a>
+                            </c:when>
+                            <c:otherwise>
+                                <a href="<%=request.getContextPath()%>/login-all">
+                                    <button type="summit"
+                                            class="btn btn-success">Thanh
+                                        Toán
+                                    </button>
+                                </a>
+                            </c:otherwise>
+
+                        </c:choose>
 
                     </div>
                 </div>

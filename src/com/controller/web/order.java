@@ -49,7 +49,8 @@ public class order extends HttpServlet {
         request.setAttribute("unitprice", unitprice);
         request.setAttribute("imagepath", imagePath);
         request.setAttribute("description", description);
-        RequestDispatcher rq = request.getRequestDispatcher("Views/Web/container/productDetail.jsp");
+        System.out.print("FSDFSDFSDF");
+        RequestDispatcher rq = request.getRequestDispatcher("Views/Web/index.jsp");
         rq.forward(request, response);
     }
 
@@ -62,7 +63,6 @@ public class order extends HttpServlet {
      */
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         processRequest(request, response);
-
     }
 
 }

@@ -27,7 +27,7 @@ public class goShipper extends HttpServlet {
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		String url = "Views/Shipper/container/home.jsp";
-		String Email = request.getParameter("email");
+		String Email = request.getParameter("id");
 		queryDAO dao = new queryDAO();
 
         String endStatus = request.getParameter("end");
@@ -47,6 +47,9 @@ public class goShipper extends HttpServlet {
         List<DetailOrder> list3_1 = dao.OrtherDetailShipping();
         request.setAttribute("listShipping", list3);
         request.setAttribute("listShippingDetail", list3_1);
+
+        request.setAttribute("demPicking",dao.countPicking(Email));
+		request.setAttribute("demShipping",dao.countShipping(Email));
 
         System.out.print(list3.size());
 

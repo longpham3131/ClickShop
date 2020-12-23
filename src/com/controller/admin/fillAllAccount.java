@@ -53,7 +53,7 @@ public class fillAllAccount extends HttpServlet {
              index = Integer.parseInt(txt);
          }
          queryDAO dao = new queryDAO();
-         List<Article> list = dao.paging(index);
+         List<Article> list = dao.paging();
 
  
         request.setAttribute("listAccount", list);

@@ -81,7 +81,7 @@ function hienThiDSSP(mangSP) {
 
         content += `
         <tr class="rem1">
-  
+
         <td class="invert-image">
             <a href="../container/productDetail.jsp">
                 <img src="${item.anhSP}" alt=" " class="img-responsive">
@@ -91,13 +91,13 @@ function hienThiDSSP(mangSP) {
         <td class="invert">
             <div class="quantity">
                 <div class="quantity-select">
-         
+
                     <button class ="btn btn-light" onclick="giamSoLuong('${item.maSP}')"><i class="fa fa-minus"></i></button>
                     <div class="entry value">
                         <span class="quantity-Order">${item.soLuong}</span>
                     </div>
                     <button class ="btn btn-light" onclick="tangSoLuong('${item.maSP}')"><i class="fa fa-plus"></i></button>
-            
+
                 </div>
             </div>
         </td>

@@ -47,6 +47,7 @@ public class login extends HttpServlet {
             HttpSession session = request.getSession();
             session.setAttribute("check", "true");
             session.setAttribute("email", email);
+            session.setAttribute("role", kq);
             queryDAO dao = new queryDAO();
             String id= dao.idByEmail(email);
             session.setAttribute("AccId", id);

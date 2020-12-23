@@ -48,7 +48,7 @@ public class queryDAO {
     }
 
     public boolean registed(String email, String pass, String firstName, String lastName,
-                                 String phone, String address, String gender, String dateBirth) {
+                            String phone, String address, String gender, String dateBirth) {
 
         try {
 
@@ -220,14 +220,12 @@ public class queryDAO {
         return false;
     }
 
-
-    public List<Article> paging(int index) {
+    public List<Article> paging() {
         String query = "SELECT Account.*, AccountRole.Role FROM  Account, AccountRole where Account.Email = AccountRole.Email";
         List<Article> list = new ArrayList<Article>();
         try {
             conn = new MyDB().getConnection();
             ps = conn.prepareStatement(query);
-            // ps.setInt(1, (index * 20 - 20));
             rs = ps.executeQuery();
             while (rs.next()) {
                 list.add(new Article(rs.getString(1), rs.getString(2), rs.getString(3), rs.getString(4),
@@ -255,17 +253,18 @@ public class queryDAO {
             rs = ps.executeQuery();
             while (rs.next()) {
                 listSanpham.add(new Display(rs.getString(1), rs.getString(2), rs.getString(3), rs.getString(4),
-                        rs.getString(5),rs.getString(6),rs.getString(7)));
+                        rs.getString(5), rs.getString(6), rs.getString(7)));
             }
             return listSanpham;
         } catch (Exception e) {
         }
         return null;
     }
+
     public List<Display> filterSanpham(String name) {
         String query = "SELECT Product.ProductId, Product.Name,Product.UnitPrice , Image.ImagePath, Product.Description, Product.SubCategoryId , SubCategory.CategoryId " +
                 "FROM dbo.Product ,dbo.[Image],dbo.SubCategory " +
-                "WHERE Product.ProductId = Image.ProductId AND Product.SubCategoryId = SubCategory.SubCategoryId AND SubCategory.Name = '"+ name +"'";
+                "WHERE Product.ProductId = Image.ProductId AND Product.SubCategoryId = SubCategory.SubCategoryId AND SubCategory.Name = '" + name + "'";
         List<Display> listLoc = new ArrayList<Display>();
         try {
 
@@ -274,13 +273,14 @@ public class queryDAO {
             rs = ps.executeQuery();
             while (rs.next()) {
                 listLoc.add(new Display(rs.getString(1), rs.getString(2), rs.getString(3), rs.getString(4),
-                        rs.getString(5),rs.getString(6),rs.getString(7)));
+                        rs.getString(5), rs.getString(6), rs.getString(7)));
             }
             return listLoc;
         } catch (Exception e) {
         }
         return null;
     }
+
     public int getNumberPage() {
         String query = "SELECT COUNT(*) FROM dbo.Product ";
         try {
@@ -291,8 +291,8 @@ public class queryDAO {
             while (rs.next()) {
                 int total = rs.getInt(1);
                 int countPage = 0;
-                countPage = total/12;
-                if (total % 12 != 0 ) {
+                countPage = total / 12;
+                if (total % 12 != 0) {
                     countPage++;
                 }
                 return countPage;
@@ -301,6 +301,7 @@ public class queryDAO {
         }
         return 0;
     }
+
     public List<Display> getPaging(int index) {
         String query = "SELECT Product.ProductId, Product.Name,Product.UnitPrice , Image.ImagePath, Product.Description, Product.SubCategoryId , SubCategory.CategoryId \n" +
                 "FROM dbo.Product ,dbo.[Image],dbo.SubCategory \n" +
@@ -313,11 +314,11 @@ public class queryDAO {
 
             conn = new MyDB().getConnection();
             ps = conn.prepareStatement(query);
-            ps.setInt(1,(index -1)*12);
+            ps.setInt(1, (index - 1) * 12);
             rs = ps.executeQuery();
             while (rs.next()) {
                 listPhantrang.add(new Display(rs.getString(1), rs.getString(2), rs.getString(3), rs.getString(4),
-                        rs.getString(5),rs.getString(6),rs.getString(7)));
+                        rs.getString(5), rs.getString(6), rs.getString(7)));
             }
             return listPhantrang;
         } catch (Exception e) {
@@ -766,10 +767,10 @@ public class queryDAO {
             //    System.out.print("```"+rs.getString(1)+"```"+rs2.getString(1));
             while (rs.next()) {
                 //   System.out.print("```"+rs.getString(1)+"```"+rs2.getString(1));
-                if (rs2.next()==true && rs.getString(1).equals(rs2.getString(1))) {
+                if (rs2.next() == true && rs.getString(1).equals(rs2.getString(1))) {
                     list.add(new Shipper(rs.getString(1), rs.getString(2), rs.getString(3), rs.getString(4),
                             rs2.getString(2), rs.getString(5), rs.getString(6), rs.getString(7)));
-                    System.out.print("```"+rs.getString(1)+"```"+rs2.getString(1));
+                    System.out.print("```" + rs.getString(1) + "```" + rs2.getString(1));
                 } else
                     list.add(new Shipper(rs.getString(1), rs.getString(2), rs.getString(3), rs.getString(4),
                             "0", rs.getString(5), rs.getString(6), rs.getString(7)));
@@ -957,7 +958,7 @@ public class queryDAO {
         ResultSet rs = null;
         try {
             String query = "update PurchaseOrder set Status='Completed' WHERE PurchaseOrderId='" + OrtherID + "'";
-            if(Status.equals("Cancel"))
+            if (Status.equals("Cancel"))
                 query = "update PurchaseOrder set  Status='Completed', CancelInvoice='False' WHERE PurchaseOrderId='" + OrtherID + "'";
 
             String query2 = "delete from Shipper WHERE PurchaseOrderId='" + OrtherID + "'";
@@ -975,11 +976,14 @@ public class queryDAO {
         }
         return false;
     }
+
     // ----------- End ship Admin -------------------//
+    //------------------------------  TRANG CUA SHIPPPER ----------------------------->
+
     public String idByEmail(String email) {
         String query = "SELECT A.AccountId\r\n"
                 + "	FROM Account A \r\n"
-                + "	WHERE A.Email= '"+email+"' \r\n";
+                + "	WHERE A.Email= '" + email + "' \r\n";
         try {
             conn = new MyDB().getConnection();
             ps = conn.prepareStatement(query);
@@ -993,12 +997,49 @@ public class queryDAO {
         return null;
     }
 
+    public String countPicking(String shipperEmail) {
+        String query = "SELECT Count(*)\r\n"
+                + "	FROM Shipper S, Account A \r\n"
+                + "	WHERE A.Email= '" + shipperEmail + "'  AND S.Status = 'Picking' AND A.AccountId = S.ShipperId \r\n";
+        try {
+            conn = new MyDB().getConnection();
+            ps = conn.prepareStatement(query);
+            rs = ps.executeQuery();
+//  System.out.printf("...."+ rs.getString(1));
+            while (rs.next()) {
+                System.out.printf(shipperEmail + ",,,," + rs.getString(1));
+                return rs.getString(1);
+            }
+            return null;
+        } catch (Exception e) {
+        }
+        return null;
+    }
+
+    public String countShipping(String shipperEmail) {
+        String query = "SELECT Count(*)\r\n"
+                + "	FROM Shipper S, Account A \r\n"
+                + "	WHERE A.Email= '" + shipperEmail + "'  AND S.Status = 'Shipping' AND A.AccountId = S.ShipperId \r\n";
+        try {
+            conn = new MyDB().getConnection();
+            ps = conn.prepareStatement(query);
+            rs = ps.executeQuery();
+            while (rs.next()) {
+                System.out.printf("---" + rs.getString(1));
+                return rs.getString(1);
+            }
+            return null;
+        } catch (Exception e) {
+        }
+        return null;
+    }
+
     public boolean shipperAction(String orderid, String status) {
         Connection conn1 = null;
         PreparedStatement ps1 = null;
         ResultSet rs = null;
         try {
-            String query = "update Shipper set Status='"+status+"' WHERE PurchaseOrderId='" + orderid + "'";
+            String query = "update Shipper set Status='" + status + "' WHERE PurchaseOrderId='" + orderid + "'";
             conn1 = new MyDB().getConnection();
 
             ps1 = conn1.prepareStatement(query);
@@ -1010,7 +1051,29 @@ public class queryDAO {
         }
         return false;
     }
-    //------------------------------  TRANG CUA SHIPPPER ----------------------------->
 
     //------END TRANG CUA SHIPPPER --------->
+
+    // -------------------------- Client -------------------------- //
+
+    public List<Article> myInfo(String email) {
+        String query = "SELECT Account.* FROM  Account where Account.Email = '" + email + "'";
+        List<Article> list = new ArrayList<Article>();
+        try {
+            conn = new MyDB().getConnection();
+            ps = conn.prepareStatement(query);
+            rs = ps.executeQuery();
+            while (rs.next()) {
+                list.add(new Article(rs.getString(1), rs.getString(2), rs.getString(3), rs.getString(4),
+                        rs.getString(5), rs.getString(6), rs.getString(7), rs.getString(8), rs.getString(9),
+                        rs.getString(10), rs.getString(11), rs.getString(12), "User"));
+            }
+            System.out.print("sdfsdfsdfs d     "+list);
+            return list;
+        } catch (Exception e) {
+        }
+        return null;
+    }
+
+
 }

@@ -7,10 +7,9 @@ public class DetailOrder {
     private String Quanity;
     private String SubTotal;
 
-    public DetailOrder(String orderID, String productID,  String name,  String quanity, String subTotal)
-        {
-            OrderID = orderID;
-            ProductID = productID;
+    public DetailOrder(String orderID, String productID, String name, String quanity, String subTotal) {
+        OrderID = orderID;
+        ProductID = productID;
         SubTotal = subTotal;
         Name = name;
         Quanity = quanity;
