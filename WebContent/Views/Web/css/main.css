@@ -87,7 +87,11 @@ header .nav-item .nav-link {
 .dropdown__content .dropdown-item {
   margin-bottom: 25px;
 }
-
+.dropdown-item.active, .dropdown-item:active{
+  color: black;
+  text-decoration: none;
+  background-color: transparent;
+}
 .dropdown__image span a {
   padding: 25px;
 }

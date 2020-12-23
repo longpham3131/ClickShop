@@ -29,10 +29,11 @@
 
 <section class="carousel">
     <div class="owl-carousel owl-theme">
-        <div class="item"><img src="<%=request.getContextPath()%>/Views/Web/image_product/banner__carousel.jpg" alt="">
-        </div>
         <div class="item"><img src="<%=request.getContextPath()%>/Views/Web/image_product/banner__carousel_2.jpg"
                                alt=""></div>
+        <div class="item"><img src="<%=request.getContextPath()%>/Views/Web/image_product/banner__carousel.jpg" alt="">
+        </div>
+
 
     </div>
 </section>

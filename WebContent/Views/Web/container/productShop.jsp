@@ -40,7 +40,6 @@
                                         <button type="submit" style="    background: transparent; border: none;">
                                             TẤT CẢ SẢN PHẨM
                                         </button>
-                                        <%--                                        <input type="hidden" value="Chealsea Boots - Men" name="Name"/>--%>
                                     </form>
                                 </a>
                                 <a href="#maleXL" data-toggle="collapse" aria-expanded="false"
@@ -94,14 +93,7 @@
                                             <input type="hidden" value="OXFORD" name="Name"/>
                                         </form>
                                     </li>
-                                    <%--                                    <li>--%>
-                                    <%--                                        <form action="<%=request.getContextPath()%>/filter-Product" method="post">--%>
-                                    <%--                                            <button type="submit" style="    background: transparent; border: none;">--%>
-                                    <%--                                                MONKSTRAP--%>
-                                    <%--                                            </button>--%>
-                                    <%--                                            <input type="hidden" value="OXFORD" name="Name"/>--%>
-                                    <%--                                        </form>--%>
-                                    <%--                                    </li>--%>
+
                                 </ul>
                             </li>
                             <li>
@@ -124,14 +116,7 @@
                                             <input type="hidden" value="Combat Boots - Women" name="Name"/>
                                         </form>
                                     </li>
-                                    <%--                                    <li>--%>
-                                    <%--                                        <form action="<%=request.getContextPath()%>/filter-Product" method="post">--%>
-                                    <%--                                            <button type="submit" style="    background: transparent; border: none;">--%>
-                                    <%--                                                DERBY--%>
-                                    <%--                                            </button>--%>
-                                    <%--                                            <input type="hidden" value="Combat Boots - Women" name="Name"/>--%>
-                                    <%--                                        </form>--%>
-                                    <%--                                    </li>--%>
+
                                 </ul>
                             </li>
                             <li>
@@ -208,88 +193,6 @@
                                             </button>
                                             <input type="hidden" value="BUCKET HAT" name="Name"/>
                                         </form>
-                                    </li>
-
-                                </ul>
-                            </li>
-                            <%--                            <li>--%>
-                            <%--                                <a href="#newCollection" data-toggle="collapse" aria-expanded="false"--%>
-                            <%--                                   class="dropdown-toggle product__catagory">NEW COLLECTION</a>--%>
-                            <%--                                <ul class="collapse list-unstyled" id="newCollection">--%>
-                            <%--                                    <li>--%>
-                            <%--                                        <a href="#">THE ALPHA COLLECTION</a>--%>
-                            <%--                                    </li>--%>
-                            <%--                                    <li>--%>
-                            <%--                                        <a href="#">THE BASIC COLLECTION</a>--%>
-                            <%--                                    </li>--%>
-
-
-                            <%--                                </ul>--%>
-                            <%--                            </li>--%>
-                            <%--                            <li>--%>
-                            <%--                                <a href="#" class="product__catagory">WE ARE WOLFER</a>--%>
-                            <%--                            </li>--%>
-                            <%--                            <li>--%>
-                            <%--                                <a href="#niceLife" data-toggle="collapse" aria-expanded="false"--%>
-                            <%--                                   class="dropdown-toggle product__catagory">LỐI SỐNG ĐẸP</a>--%>
-                            <%--                                <ul class="collapse list-unstyled" id="niceLife">--%>
-                            <%--                                    <li>--%>
-                            <%--                                        <a href="#">BEAUTIFUL LIFESTYLE</a>--%>
-                            <%--                                    </li>--%>
-                            <%--                                    <li>--%>
-                            <%--                                        <a href="#">CÁC TIPS VỀ THỜI TRANG</a>--%>
-                            <%--                                    </li>--%>
-                            <%--                                </ul>--%>
-                            <%--                            </li>--%>
-                            <li>
-                                <a href="#" class="product__catagory">LIÊN HỆ</a>
-                            </li>
-                            <li class="filter__color">
-                                <a href="#filterColor" data-toggle="collapse" aria-expanded="false"
-                                   class="dropdown-toggle product__catagory">MÀU SẮC</a>
-                                <ul class="collapse list-unstyled" id="filterColor">
-                                    <li class="active">
-                                        <input type="checkbox" id="data-color-p1" value="TOBACCO"
-                                               name="color-filter">
-                                        <label for="data-color-p1" style="background-color: #b77543"></label>
-                                    </li>
-                                    <li>
-                                        <input type="checkbox" id="data-color-p2" value="TAN" name="color-filter"
-                                        >
-                                        <label for="data-color-p2" style="background-color: #e1b382"></label>
-                                    </li>
-                                    <li>
-                                        <input type="checkbox" id="data-color-p3" value="NÂU ĐẤT"
-                                               name="color-filter">
-                                        <label for="data-color-p3" style="background-color: #5b3d32"></label>
-                                    </li>
-                                    <li>
-                                        <input type="checkbox" id="data-color-p4" value="XÁM CHUỘT"
-                                               name="color-filter">
-                                        <label for="data-color-p4" style="background-color: #787775"></label>
-                                    </li>
-                                    <li>
-                                        <input type="checkbox" id="data-color-p5" value="FOREST BLUE"
-                                               name="color-filter">
-                                        <label for="data-color-p5" style="background-color: #363e6f"></label>
-                                    </li>
-                                    //
-                                    <li>
-
-                                        <input type="checkbox" id="data-color-p6" value="NAVY BLUE"
-                                               name="color-filter">
-
-                                        <label for="data-color-p6" style="background-color: #393357"></label>
-                                    </li>
-                                    <li>
-                                        <input type="checkbox" id="data-color-p7" value="BROWN" name="color-filter"
-                                        >
-                                        <label for="data-color-p7" style="background-color: #6e4a4a"></label>
-                                    </li>
-                                    <li>
-                                        <input type="checkbox" id="data-color-p8" value="BLACK" name="color-filter"
-                                        >
-                                        <label for="data-color-p8" style="background-color: #000000"></label>
                                     </li>
                                 </ul>
                             </li>
@@ -397,64 +300,6 @@
 
                         </div>
                     </div>
-                    <div class="product__colors d-md-block d-lg-none d-xl-none py-3">
-                        <div class="title-bl" href="#mauSacSP" data-toggle="collapse">
-                            <h2>
-                                Màu sắc sản phẩm
-                            </h2>
-                            <i class="fa fa-plus"></i>
-                        </div>
-                        <ul class="collapse list-unstyled row pt-4" id="mauSacSP">
-                            <li class="active col-3">
-                                <input type="checkbox" id="data-color-md-p1" value="TOBACCO"
-                                       name="color-filter">
-                                <label for="data-color-md-p1"
-                                       style="background-color: #b77543"></label>
-                            </li>
-                            <li class="col-3 ">
-                                <input type="checkbox" id="data-color-md-p2" value="TAN"
-                                       name="color-filter">
-                                <label for="data-color-md-p2"
-                                       style="background-color: #e1b382"></label>
-                            </li>
-                            <li class="col-3 ">
-                                <input type="checkbox" id="data-color-md-p3" value="NÂU ĐẤT"
-                                       name="color-filter">
-                                <label for="data-color-md-p3"
-                                       style="background-color: #5b3d32"></label>
-                            </li>
-                            <li class="col-3 ">
-                                <input type="checkbox" id="data-color-md-p4" value="XÁM CHUỘT"
-                                       name="color-filter">
-                                <label for="data-color-md-p4"
-                                       style="background-color: #787775"></label>
-                            </li>
-                            <li class="col-3 ">
-                                <input type="checkbox" id="data-color-md-p5" value="FOREST BLUE"
-                                       name="color-filter">
-                                <label for="data-color-md-p5"
-                                       style="background-color: #363e6f"></label>
-                            </li>
-                            <li class="col-3 ">
-                                <input type="checkbox" id="data-color-md-p6" value="NAVY BLUE"
-                                       name="color-filter">
-                                <label for="data-color-md-p6"
-                                       style="background-color: #393357"></label>
-                            </li>
-                            <li class="col-3 ">
-                                <input type="checkbox" id="data-color-md-p7" value="BROWN"
-                                       name="color-filter">
-                                <label for="data-color-md-p7"
-                                       style="background-color: #6e4a4a"></label>
-                            </li>
-                            <li class="col-3 ">
-                                <input type="checkbox" id="data-color-md-p8" value="BLACK"
-                                       name="color-filter">
-                                <label for="data-color-md-p8"
-                                       style="background-color: #000000"></label>
-                            </li>
-                        </ul>
-                    </div>
 
                     <div class="filter__product text-right pb-5">
                         <!-- <h3>Tất cả sản phẩm (chỗ này thay đổi theo sidebar)</h3> -->
@@ -505,14 +350,15 @@
                     </div>
                     <ul class="pagination pagination-lg">
                         <c:forEach begin="1" end="${numberPage}" var="i">
-                            <li class="page-item">
-                                <form class="page-link" action="<%=request.getContextPath()%>/fill-All-Sanpham">
-                                    <button type="submit" value="${i}" name="index" style="    background: transparent; border: none;">
+                            <form class="page-link" action="<%=request.getContextPath()%>/fill-All-Sanpham">
+                                <button type="submit" value="${i}" name="index"
+                                        style="    background: transparent; border: none;">
+                                    <li class="page-item">
                                         <input type="hidden" value="${i}" name="index"/>
                                             ${i}
-                                    </button>
-                                </form>
-                            </li>
+                                    </li>
+                                </button>
+                            </form>
                         </c:forEach>
                     </ul>
                 </div>
