@@ -1,6 +1,5 @@
 var dssp = new DanhSachSanPham();
 
-
 var tbl = document.getElementById("tableOrder");
 
 var txtQuantity = document.querySelectorAll(".quantity-Order");
@@ -15,7 +14,6 @@ demSoSanPham()
 function demSoSanPham() {
     document.getElementById("soLuongSanPham").innerHTML = tbl.rows.length - 1;
 }
-
 
 
 //Đổi qua định dạng tiền hiện lên web
@@ -78,14 +76,13 @@ function hienThiDSSP(mangSP) {
     var tbody = getMyEle("tbodySP");
     var content = "";
     mangSP.map(function (item, index) {
-
         content += `
-        <tr class="rem1">
+ <tr class="rem1">
 
         <td class="invert-image">
             <a href="../container/productDetail.jsp">
                 <img src="${item.anhSP}" alt=" " class="img-responsive">
-                <div>${item.tenSP}</div>
+                <div>Cai lon ba gia may, du ma vai lon luon, dau cat moi, hihi</div>
             </a>
         </td>
         <td class="invert">
@@ -108,11 +105,26 @@ function hienThiDSSP(mangSP) {
         </td>
     </tr>
         `;
-
-    })
+       })
     tbody.innerHTML = content;
     demSoSanPham()
     tinhTongTienGioHang()
+}
+
+function inputSP(mangSP) {
+    var div = getMyEle("divIp");
+    var content = "";
+    var i = 0;
+    mangSP.map(function (item, index) {
+        content += `
+           <input type="text" value="${item.maSP}" name="maSP${i}">
+           <input type="text" value="${item.soLuong}" name="soLuong${i}">
+           <input type="text" value="${item.giaSP}" name="giaSP${i}">
+        `;
+        i++;
+       })
+     content += ` <input type="text" value="${i}" name="dem">`;
+    div.innerHTML = content;
 }
 //lấy dữ liệu từ localStorage
 
@@ -120,6 +132,7 @@ function getLocalStorage() {
     if (localStorage.getItem("DSSP") != null) {
         dssp.mangSP = JSON.parse(localStorage.getItem("DSSP"));
         hienThiDSSP(dssp.mangSP);
+        inputSP(dssp.mangSP);
     }
 }
 function setLocalStorage() {

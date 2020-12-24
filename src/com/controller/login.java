@@ -45,6 +45,7 @@ public class login extends HttpServlet {
         String kq = loginDAO.login(email, password);
         if (kq != null) {              // need session.get(email) <<<<<<<<<<<<<<<<<<<<<<<
             HttpSession session = request.getSession();
+
             session.setAttribute("check", "true");
             session.setAttribute("email", email);
             session.setAttribute("role", kq);

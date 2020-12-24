@@ -46,11 +46,11 @@
                         <th>Xóa</th>
                     </tr>
                     </thead>
-
                     <tbody id="tbodySP">
                     </tbody>
-
                 </table>
+
+<%--                <h1>${i} , ${y} , ${str}</h1>--%>
             </div>
             <div class="row checkout-left mt-5">
                 <div class="col-md-8 address_form">
@@ -69,31 +69,27 @@
                                         <div class="card_number_grid_left">
                                             <div class="controls">
                                                 <label class="control-label">Số điện thoại :</label>
-                                                <input class="form-control" type="text" placeholder="Số điện thoại">
+                                                <input class="form-control" type="text" placeholder="Số điện thoại" name="phone">
                                             </div>
                                         </div>
                                         <div class="card_number_grid_right">
                                             <div class="controls">
                                                 <label class="control-label">Email: </label>
-                                                <input class="form-control" type="email" placeholder="Email">
+                                                <input class="form-control" type="email" placeholder="Email" name="email">
                                             </div>
                                         </div>
-
-                                        <%--     can 1 cai input list vao servlet: --%>
-                                        <%--        test    --%>
-                                        <div id="xxyy"></div>
-                                        <div class="xxyy" id="xxyy">
-                                            <h1> hoho ${item.soLuong} , ${item} </h1>
-                                        </div>
-                                        <h1> hehe ${item.soLuong} , ${item} , ${i} ,${y} </h1>
-                                        <%--     testttttttttttttttttttttttttttttttttttt   --%>
 
                                         <div class="card_number_grid_right">
                                             <div class="controls">
                                                 <label class="control-label">Địa chỉ: </label>
-                                                <input class="form-control" type="text" placeholder="Địa chỉ">
+                                                <input class="form-control" type="text" placeholder="Địa chỉ" name="address">
                                             </div>
                                         </div>
+
+                                        <div id="divIp">
+                                        </div>
+
+
                                         <div class="clear"></div>
                                     </div>
                                 </div>

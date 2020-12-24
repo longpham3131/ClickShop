@@ -168,12 +168,8 @@
                                     <div class="dropdown__content col-2">
                                         <a class="dropdown-item" href="#">
                                             <form action="<%=request.getContextPath()%>/filter-Product" method="post">
-<<<<<<< HEAD
-                                                <button type="submit"
-                                                        style="    background: transparent; border: none;">
-=======
+
                                                  <button type="submit" style=" outline: none; background: transparent; border: none;">
->>>>>>> f10c67767556cdadb448613457bd7fc5b6028205
                                                     CHELSEA BOOT
                                                 </button>
                                                 <input type="hidden" value="Chealsea Boots - Women" name="Name"/>
@@ -182,12 +178,8 @@
                                         <%--                                        <a class="dropdown-item" href="#">DERBY</a>--%>
                                         <a class="dropdown-item" href="#">
                                             <form action="<%=request.getContextPath()%>/filter-Product" method="post">
-<<<<<<< HEAD
-                                                <button type="submit"
-                                                        style="    background: transparent; border: none;">
-=======
+
                                                  <button type="submit" style=" outline: none; background: transparent; border: none;">
->>>>>>> f10c67767556cdadb448613457bd7fc5b6028205
                                                     COMBAT BOOT
                                                 </button>
                                                 <input type="hidden" value="Combat Boots - Women" name="Name"/>
@@ -337,36 +329,7 @@
                                </div>
                             </div>
                         </li>
-<<<<<<< HEAD
-                        <%--                        <li class="nav-item dropdown">--%>
-                        <%--                            <a class="nav-link dropdown-toggle" href="#" id="dropdown__newCollection" role="button"--%>
-                        <%--                               data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">--%>
-                        <%--                                NEW COLLECTION--%>
-                        <%--                            </a>--%>
-                        <%--                            <div class="dropdown-menu" aria-labelledby="dropdown__newCollection">--%>
-                        <%--                                <a class="dropdown-item" href="#">THE ALPHA COLLECTION</a>--%>
-                        <%--                                <a class="dropdown-item" href="#">THE BASIC COLLECTION</a>--%>
-                        <%--                            </div>--%>
-                        <%--                        </li>--%>
-                        <li class="nav-item">
-                            <a class="nav-link" href="#">WE ARE WOLFER <span class="sr-only">(current)</span></a>
-                        </li>
-                        <%--                        <li class="nav-item dropdown">--%>
-                        <%--                            <a class="nav-link dropdown-toggle" href="#" id="dropdown__niceLife" role="button"--%>
-                        <%--                               data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">--%>
-                        <%--                                LỐI SỐNG ĐẸP--%>
-                        <%--                            </a>--%>
-                        <%--                            <div class="dropdown-menu" aria-labelledby="dropdown__newCollection">--%>
-                        <%--                                <a class="dropdown-item" href="#">BEAUTIFUL LIFESTYLE</a>--%>
-                        <%--                                <a class="dropdown-item" href="#">CÁC TIP VỀ THỜI TRANG</a>--%>
-                        <%--                            </div>--%>
 
-                        <%--                        </li>--%>
-                        <li class="nav-item">
-                            <a class="nav-link" href="#">LIÊN HỆ</a>
-                        </li>
-=======
->>>>>>> f10c67767556cdadb448613457bd7fc5b6028205
 
 
                     </ul>

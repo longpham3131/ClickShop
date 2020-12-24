@@ -2,6 +2,7 @@ package com.controller.web;
 
 import DAO.queryDAO;
 import com.controller.admin.shipped;
+import javafx.util.StringConverter;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -38,20 +39,46 @@ public class order extends HttpServlet {
      */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
+
         queryDAO dao = new queryDAO();
-        String productId  = (String) request.getParameter("ProductId");
-        String name  = (String) request.getParameter("Name");
-        String unitprice  = (String) request.getParameter("UnitPrice");
-        String imagePath  = (String) request.getParameter("ImagePath");
-        String description  = (String) request.getParameter("Description");
-        request.setAttribute("productId", productId);
-        request.setAttribute("name", name);
-        request.setAttribute("unitprice", unitprice);
-        request.setAttribute("imagepath", imagePath);
-        request.setAttribute("description", description);
+        HttpSession session = request.getSession();
+       // String email = (String) request.getParameter("email");
+        String id= dao.idByEmail( (String) session.getAttribute("email"));
+        String dem = (String) request.getParameter("dem");
+        String address = (String) request.getParameter("address");
+        String phone = (String) request.getParameter("phone");
+        String name = (String) request.getParameter("name");
+        //System.out.print("truoc dem");
+        int d = Integer.parseInt(dem);
+        //System.out.print("------"+d);
+        if( (d  > 0))
+        {
+            String[] giaSP = new String[d+1];
+            String[] maSP  = new String[d+1];
+            String[] soLuong = new String[d+1];
+            int sub = 0;
+            for(int i=0; i< d  ; i++) {
+                maSP[i] = (String) request.getParameter("maSP" + i);
+                soLuong[i] = (String) request.getParameter("soLuong" + i);
+                giaSP[i] = (String) request.getParameter("giaSP" + i);
+                System.out.println(id);
+                sub = sub + Integer.parseInt(giaSP[i])*Integer.parseInt(soLuong[i]);
+                System.out.println(maSP[i]+"--"+soLuong[i]+"--"+giaSP[i]);
+            }
+            String orderId= dao.initOrder(id, String.valueOf(sub), address, phone, name ) ;
+            if(orderId != null)
+            {
+                for(int i=0; i< d  ; i++) {
+                    if( dao.InsertDetailOrder(orderId,maSP[i],soLuong[i],giaSP[i],giaSP[i]) == false)
+                        System.out.println("DM SAI ROI, SAI ROI, SAI ROI");
+                }
+                System.out.println("____");
+            }
+        }
+
         System.out.print("FSDFSDFSDF");
-        RequestDispatcher rq = request.getRequestDispatcher("Views/Web/index.jsp");
-        rq.forward(request, response);
+        fillAllDisplay a = new fillAllDisplay();
+        a.doPost(request, response);
     }
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {

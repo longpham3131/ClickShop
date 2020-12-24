@@ -19,7 +19,6 @@ public class queryDAO {
                                  String phone, String address, String gender, String dateBirth, String role) {
 
         try {
-
 //        String sqlBgTran =  "BEGIN TRANSACTION SAVE TRANSACTION Tran_InsertUpdateAccountRole ";
             String sqlExec = "{ Call USP_TaoUser (?,?,?, ?, ?, ?, ?, ?) }";
 //        String sqlCommit = " COMMIT";
@@ -1068,11 +1067,64 @@ public class queryDAO {
                         rs.getString(5), rs.getString(6), rs.getString(7), rs.getString(8), rs.getString(9),
                         rs.getString(10), rs.getString(11), rs.getString(12), "User"));
             }
-            System.out.print("sdfsdfsdfs d     "+list);
+            System.out.print("sdfsdfsdfs d     " + list);
             return list;
         } catch (Exception e) {
         }
         return null;
+    }
+
+
+    public String initOrder(String accid, String Subtotal, String address, String phone, String name) {
+        try {
+            String queery = "insert into PurchaseOrder OUTPUT Inserted.PurchaseOrderId VALUES ('"+accid+"','"+Subtotal+"','"+address+"'," +
+                    "'"+phone+"','Init',GETDATE(),'"+name+"','true')";
+            conn = new MyDB().getConnection();
+//            conn.setAutoCommit(false);
+//            clmt = conn.prepareCall(queery);
+//            clmt.setString(1, "1");
+//            clmt.setString(2, Subtotal);
+//            clmt.setString(3, address);
+//            clmt.setString(4, phone);
+//            clmt.setString(5, "Int");
+//            clmt.setString(6, name);
+//            clmt.setString(7, "true");
+//            clmt.execute();
+//            conn.commit();
+            ps = conn.prepareStatement(queery);
+            rs = ps.executeQuery();
+            while (rs.next()) {
+                return rs.getString(1);
+            }
+        } catch (Exception e) {
+            System.out.println(e);
+        }
+        return null;
+    }
+    public boolean InsertDetailOrder(String PurchaseOrderId, String ProductId, String Quantity, String Cost, String UnitPrice) {
+        try {
+            String sub = String.valueOf(Integer.parseInt(UnitPrice)*Integer.parseInt(Quantity));
+            String sqlExec = "insert into PurchaseOrderDetail VALUES(? ,? ,? ,? ,? ,?) ";
+
+            conn = new MyDB().getConnection();
+
+            conn.setAutoCommit(false);
+
+            clmt = conn.prepareCall(sqlExec);
+            clmt.setString(1, PurchaseOrderId);
+            clmt.setString(2, ProductId);
+            clmt.setString(3, Quantity);
+            clmt.setString(4, Cost);
+            clmt.setString(5, UnitPrice);
+            clmt.setString(6, sub);
+
+            clmt.execute();
+            conn.commit();
+            return true;
+        } catch (Exception e) {
+            System.out.println(e);
+        }
+        return false;
     }
 
 
