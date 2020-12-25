@@ -82,7 +82,7 @@ function hienThiDSSP(mangSP) {
         <td class="invert-image">
             <a href="../container/productDetail.jsp">
                 <img src="${item.anhSP}" alt=" " class="img-responsive">
-                <div>Cai lon ba gia may, du ma vai lon luon, dau cat moi, hihi</div>
+                <div>${item.tenSP} ...</div>
             </a>
         </td>
         <td class="invert">

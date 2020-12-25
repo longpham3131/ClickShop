@@ -20,7 +20,7 @@
             href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
     <!-- MAIN CSS  -->
     <link rel="stylesheet" href="<%=request.getContextPath()%>/Views/Web/css/main.css">
-</head>
+</head
 
 <body>
 <header>
@@ -36,7 +36,7 @@
     <div class="container ">
         <div class="header__top d-flex align-items-center justify-content-center">
             <div class="header__logo ">
-                <a href="<%=request.getContextPath()%>/Views/Web/index.jsp">
+                <a href="<%=request.getContextPath()%>/fill-All-Display">
                     <img src="<%=request.getContextPath()%>/Views/Web/image_product/logo.png" alt="">
                 </a>
 

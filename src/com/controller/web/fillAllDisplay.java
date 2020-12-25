@@ -53,7 +53,7 @@ public class fillAllDisplay extends HttpServlet {
 			index = Integer.parseInt(txt);
 		}
 		queryDAO dao = new queryDAO();
-		List<Display> listSanpham = dao.hienthi(index);
+		List<Display> listSanpham = dao.getPaging(index);
 		request.setAttribute("listSanpham", listSanpham);
 		request.setAttribute("from", request.getAttribute("from"));
 		request.setAttribute("thongbao", request.getAttribute("thongbao"));

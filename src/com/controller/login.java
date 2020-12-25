@@ -58,13 +58,12 @@ public class login extends HttpServlet {
                 rq.forward(request, response);
             } else if (kq.equals("USER")) {
                 fillAllDisplay zx10r = new fillAllDisplay();
-                System.out.print("8888 ");
+                System.out.print("8888"+kq);
                 zx10r.doPost(request, response);
               //  url = "Views/Web/index.jsp";
             } else if (kq.equals("Shipper")) {
                 goShipper s1000rr = new goShipper();
                 s1000rr.doPost(request,response);
-
             }
         } else {
             RequestDispatcher rq = request.getRequestDispatcher(url);

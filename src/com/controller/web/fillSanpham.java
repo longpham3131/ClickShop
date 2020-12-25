@@ -55,6 +55,7 @@ public class fillSanpham extends HttpServlet {
 		request.setAttribute("numberPage", numberPage);
 		request.setAttribute("from", request.getAttribute("from"));
 		request.setAttribute("thongbao", request.getAttribute("thongbao"));
+		request.setAttribute("myIndex",index);
 		RequestDispatcher rq = request.getRequestDispatcher("Views/Web/container/productShop.jsp");
 		rq.forward(request, response);
 	}

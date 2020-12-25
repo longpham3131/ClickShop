@@ -65,12 +65,12 @@ public class order extends HttpServlet {
                 sub = sub + Integer.parseInt(giaSP[i])*Integer.parseInt(soLuong[i]);
                 System.out.println(maSP[i]+"--"+soLuong[i]+"--"+giaSP[i]);
             }
-            String orderId= dao.initOrder(id, String.valueOf(sub), address, phone, name ) ;
+            String orderId= dao.initOrder(id, String.valueOf(sub), address, phone, name ) ; // add 1
             if(orderId != null)
             {
                 for(int i=0; i< d  ; i++) {
                     if( dao.InsertDetailOrder(orderId,maSP[i],soLuong[i],giaSP[i],giaSP[i]) == false)
-                        System.out.println("DM SAI ROI, SAI ROI, SAI ROI");
+                        System.out.println(" SAI ROI, SAI ROI, SAI ROI");
                 }
                 System.out.println("____");
             }

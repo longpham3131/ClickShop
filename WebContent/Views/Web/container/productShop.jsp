@@ -351,13 +351,26 @@
                     <ul class="pagination pagination-lg">
                         <c:forEach begin="1" end="${numberPage}" var="i">
                             <form class="page-link" action="<%=request.getContextPath()%>/fill-All-Sanpham">
-                                <button type="submit" value="${i}" name="index"
-                                        style="    background: transparent; border: none;">
-                                    <li class="page-item">
-                                        <input type="hidden" value="${i}" name="index"/>
-                                            ${i}
-                                    </li>
-                                </button>
+                                <c:choose>
+                                    <c:when test="${myIndex ==  i}">
+                                        <button type="submit" value="${i}" name="index"
+                                                style="    background: transparent; border: #ca2819; background-color: #5a6268">
+                                            <li class="page-item">
+                                                <input type="hidden" value="${i}" name="index"/>
+                                                    ${i}
+                                            </li>
+                                        </button>
+                                    </c:when>
+                                    <c:otherwise>
+                                        <button type="submit" value="${i}" name="index"
+                                                style="    background: transparent; border: #ca2819;">
+                                            <li class="page-item">
+                                                <input type="hidden" value="${i}" name="index"/>
+                                                    ${i}
+                                            </li>
+                                        </button>
+                                    </c:otherwise>
+                                </c:choose>
                             </form>
                         </c:forEach>
                     </ul>
