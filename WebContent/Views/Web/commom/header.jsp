@@ -24,6 +24,7 @@
 
 <body>
 <header>
+    <h1> ${email}</h1>
     <%--  Check Login and Role --%>
     <%
         String email = (String) session.getAttribute("email");

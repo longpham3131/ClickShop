@@ -348,19 +348,47 @@
                             </div>
                         </c:forEach>
                     </div>
-                    <ul class="pagination pagination-lg">
-                        <c:forEach begin="1" end="${numberPage}" var="i">
-                            <form class="page-link" action="<%=request.getContextPath()%>/fill-All-Sanpham">
-                                <button type="submit" value="${i}" name="index"
-                                        style="    background: transparent; border: none;">
-                                    <li class="page-item">
-                                        <input type="hidden" value="${i}" name="index"/>
-                                            ${i}
-                                    </li>
-                                </button>
-                            </form>
-                        </c:forEach>
-                    </ul>
+                    <nav aria-label="Page navigation example pt-4">
+                        <%--                        <ul class="pagination justify-content-center">--%>
+                        <%--                            <li class="page-item">--%>
+                        <%--                                <a class="page-link" href="#" aria-label="Previous">--%>
+                        <%--                                    <span aria-hidden="true">&laquo;</span>--%>
+                        <%--                                    <span class="sr-only">Previous</span>--%>
+                        <%--                                </a>--%>
+                        <%--                            </li>--%>
+                        <%--                            <c:forEach begin="1" end="${numberPage}" var="i">--%>
+                        <%--                                <form class="page-link" action="<%=request.getContextPath()%>/fill-All-Sanpham">--%>
+                        <%--                                    <button type="submit" value="${i}" name="index"--%>
+                        <%--                                            style="    background: transparent; border: none;">--%>
+                        <%--                                        <li class="page-item">--%>
+                        <%--                                            <input type="hidden" value="${i}" name="index"/>--%>
+                        <%--                                                ${i}--%>
+                        <%--                                        </li>--%>
+                        <%--                                    </button>--%>
+                        <%--                                </form>--%>
+                        <%--                            </c:forEach>--%>
+                        <%--                                <a class="page-link" href="#" aria-label="Next">--%>
+                        <%--                                    <span aria-hidden="true">&raquo;</span>--%>
+                        <%--                                    <span class="sr-only">Next</span>--%>
+                        <%--                                </a>--%>
+                        <%--                            </li>--%>
+                        <%--                        </ul>--%>
+                        <ul class="pagination pt-3 justify-content-center">
+                            <c:forEach begin="1" end="${numberPage}" var="i">
+                                <form class="page-link" style=" border: none; border-bottom: 2px solid black; margin: 15px; font-size: 20px;
+                                " action="<%=request.getContextPath()%>/fill-All-Sanpham">
+                                    <button type="submit" value="${i}" name="index"
+                                            style="    background: transparent; border: none;">
+                                        <li class="page-item">
+                                            <input type="hidden" value="${i}" name="index"/>
+                                                ${i}
+                                        </li>
+                                    </button>
+                                </form>
+                            </c:forEach>
+                        </ul>
+                    </nav>
+
                 </div>
             </div>
         </div>
