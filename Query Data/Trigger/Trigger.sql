@@ -3,7 +3,7 @@ GO
 
 -- Không cho phép thêm nhân viên (sale person, shipper) có tuổi nhỏ hơn 18 tuổi.
 
-ALTER TRIGGER UTG_AccountRole_tuoiLonHon18
+CREATE TRIGGER UTG_AccountRole_tuoiLonHon18
 ON dbo.AccountRole
 FOR  INSERT, UPDATE
 AS 

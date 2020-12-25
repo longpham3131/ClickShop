@@ -348,32 +348,39 @@
                             </div>
                         </c:forEach>
                     </div>
-                    <ul class="pagination pagination-lg">
-                        <c:forEach begin="1" end="${numberPage}" var="i">
-                            <form class="page-link" action="<%=request.getContextPath()%>/fill-All-Sanpham">
+                    <nav aria-label="Page navigation example pt-4">
+                        <ul class="pagination pt-3 justify-content-center">
+                            <c:forEach begin="1" end="${numberPage}" var="i">
                                 <c:choose>
                                     <c:when test="${myIndex ==  i}">
-                                        <button type="submit" value="${i}" name="index"
-                                                style="    background: transparent; border: #ca2819; background-color: #5a6268">
-                                            <li class="page-item">
-                                                <input type="hidden" value="${i}" name="index"/>
-                                                    ${i}
-                                            </li>
-                                        </button>
+                                        <form class="page-link" style=" border: none; background-color: #5a6268; border-bottom: 2px solid black; margin: 15px; font-size: 20px;
+                                " action="<%=request.getContextPath()%>/fill-All-Sanpham">
+                                            <button type="submit" value="${i}" name="index"
+                                                    style="    background: transparent; border: #ca2819; ">
+                                                <li class="page-item" style="color: white">
+                                                    <input type="hidden" value="${i}" name="index"/>
+                                                        ${i}
+                                                </li>
+                                            </button>
+                                        </form>
                                     </c:when>
                                     <c:otherwise>
-                                        <button type="submit" value="${i}" name="index"
-                                                style="    background: transparent; border: #ca2819;">
-                                            <li class="page-item">
-                                                <input type="hidden" value="${i}" name="index"/>
-                                                    ${i}
-                                            </li>
-                                        </button>
+                                        <form class="page-link" style=" border: none; border-bottom: 2px solid black; margin: 15px; font-size: 20px;
+                                            " action="<%=request.getContextPath()%>/fill-All-Sanpham">
+                                            <button type="submit" value="${i}" name="index"
+                                                    style="    background: transparent; border: #ca2819;">
+                                                <li class="page-item">
+                                                    <input type="hidden" value="${i}" name="index"/>
+                                                        ${i}
+                                                </li>
+                                            </button>
+                                        </form>
                                     </c:otherwise>
                                 </c:choose>
-                            </form>
-                        </c:forEach>
-                    </ul>
+
+                            </c:forEach>
+                        </ul>
+                    </nav>
                 </div>
             </div>
         </div>
