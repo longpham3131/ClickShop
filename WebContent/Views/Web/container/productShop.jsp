@@ -27,6 +27,15 @@
 <body>
 <c:import url="../commom/header.jsp"> </c:import>
 <section class="product">
+    <div class="product__head d-flex bg-light p-3">
+        <p>Trang chủ /</p>
+        <form action="<%=request.getContextPath()%>//fill-All-Sanpham" method="post">
+            <button type="submit" class="btnDanhMuc">
+                Danh mục
+            </button>
+        </form>
+
+    </div>
     <div class="product__main pt-5">
         <div class="row">
             <div class="d-none d-lg-block d-xl-block col-lg-2 pl-4">
@@ -34,14 +43,14 @@
                     <!-- Sidebar -->
                     <nav id="sidebar">
                         <ul class="list-unstyled components">
-                            <li class="active">
-                                <a href="#allXL" aria-expanded="false" class="product__catagory">
-                                    <form action="<%=request.getContextPath()%>//fill-All-Sanpham" method="post">
-                                        <button type="submit" style="    background: transparent; border: none;">
-                                            TẤT CẢ SẢN PHẨM
-                                        </button>
-                                    </form>
+
+                            <li>
+                                <a href="#allXL" aria-expanded="false">
+
                                 </a>
+                            </li>
+                            <li class="active">
+
                                 <a href="#maleXL" data-toggle="collapse" aria-expanded="false"
                                    class="dropdown-toggle product__catagory">GIÀY NAM</a>
                                 <ul class="collapse list-unstyled" id="maleXL">
@@ -353,11 +362,11 @@
                             <c:forEach begin="1" end="${numberPage}" var="i">
                                 <c:choose>
                                     <c:when test="${myIndex ==  i}">
-                                        <form class="page-link" style=" border: none; background-color: #5a6268; border-bottom: 2px solid black; margin: 15px; font-size: 20px;
+                                        <form class="page-link" style=" border: none;  border-bottom: 2px solid black; margin: 15px; font-size: 20px;
                                 " action="<%=request.getContextPath()%>/fill-All-Sanpham">
                                             <button type="submit" value="${i}" name="index"
                                                     style="    background: transparent; border: #ca2819; ">
-                                                <li class="page-item" style="color: white">
+                                                <li class="page-item">
                                                     <input type="hidden" value="${i}" name="index"/>
                                                         ${i}
                                                 </li>
@@ -365,7 +374,7 @@
                                         </form>
                                     </c:when>
                                     <c:otherwise>
-                                        <form class="page-link" style=" border: none; border-bottom: 2px solid black; margin: 15px; font-size: 20px;
+                                        <form class="page-link" style=" border: none;  margin: 15px; font-size: 20px; opacity: 0.6;
                                             " action="<%=request.getContextPath()%>/fill-All-Sanpham">
                                             <button type="submit" value="${i}" name="index"
                                                     style="    background: transparent; border: #ca2819;">
