@@ -24,7 +24,7 @@
 
 <body>
 <header>
-    <h1> ${email}</h1>
+<%--    <h1> ${email}</h1>--%>
     <%--  Check Login and Role --%>
     <%
         String email = (String) session.getAttribute("email");
@@ -52,12 +52,14 @@
                             <input type="hidden" value="1" name="logout">
                             <button type="submit" title="Dang xuat"> <i class="fa fa-sign-out-alt"></i> </button>
                         </form>
+                        <form action="<%=request.getContextPath()%>/tracking-order" method="post">
+                            <button type="submit" title="Theo doi don hang"> <i class="fa fa-truck"></i> </button>
+                        </form>
                     </c:when>
                     <c:otherwise>
                         <a href="<%=request.getContextPath()%>/login-all" aria-label="Tài khoản"
                            title="Tài khoản"> <i></i><i class="fa fa-user"></i> </a>
                     </c:otherwise>
-
                 </c:choose>
                 <a href="#" aria-label="Tìm kiếm" title="Tìm kiếm"><i class="fa fa-search"></i></a>
                 <a href="#" aria-label="Giỏ hàng" title="Giỏ hàng" data-toggle="modal" data-target="#myModal"><i

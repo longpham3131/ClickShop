@@ -672,7 +672,7 @@ public class queryDAO {
 
     //----- fill 4 o dau -------//
     public int countNeedShipper() {
-        String query = "select Count(PurchaseOrderId) from PurchaseOrder Where Status='init'";
+        String query = "select Count(PurchaseOrderId) from PurchaseOrder Where Status='Init'";
         try {
             conn = new MyDB().getConnection();
             ps = conn.prepareStatement(query);
@@ -786,10 +786,9 @@ public class queryDAO {
         // return ---- accountId,  email,  firstName,  phone,   ortherCarring
         String query = "SELECT P.PurchaseOrderId, A.Email, P.SubTotal, P.Address, P.Phone, P.Status\r\n"
                 + "	FROM Account A, PurchaseOrder P\r\n"
-                + "	WHERE A.AccountId= P.AccountId AND P.Status ='init'";
+                + "	WHERE A.AccountId= P.AccountId AND P.Status ='Init'";
         List<OrtherNoShipper> list = new ArrayList<OrtherNoShipper>();
         try {
-
             conn = new MyDB().getConnection();
             ps = conn.prepareStatement(query);
             rs = ps.executeQuery();
@@ -806,7 +805,7 @@ public class queryDAO {
     public List<DetailOrder> OrtherDetailNoShip() {
         String query = "SELECT  PO.PurchaseOrderId, P.ProductId, Pro.Name, P.Quantity, P.Subtotal\n" +
                 "FROM PurchaseOrderDetail P, Product Pro, PurchaseOrder PO\n" +
-                "WHERE PRO.ProductId = P.ProductId AND PO.Status='init' AND PO.PurchaseOrderId = P.PurchaseOrderId ";
+                "WHERE PRO.ProductId = P.ProductId AND PO.Status='Init' AND PO.PurchaseOrderId = P.PurchaseOrderId";
         List<DetailOrder> list = new ArrayList<DetailOrder>();
         try {
             conn = new MyDB().getConnection();
@@ -823,7 +822,6 @@ public class queryDAO {
         return null;
     }
 
-    // dang lam o day
     public boolean convertNoShipToPickup(String shipperID, String OrtherID) {      // can them transaction here <<<<<<<<<<
         System.out.println("Vao querrryyyyyyyyy");
         Connection conn1 = null, conn2 = null;
@@ -1127,5 +1125,79 @@ public class queryDAO {
         return false;
     }
 
+    // Order Tracking
+    public List<TrackOrder> trackShip(String id) {
+        String query = "SELECT  PO.AccountId ,PO.PurchaseOrderId, PO.SubTotal, S.Status\n" +
+                "FROM PurchaseOrder PO, Shipper S\n" +
+                "WHERE  PO.AccountId = '"+id+"' AND PO.PurchaseOrderId=S.PurchaseOrderId";
+        List<TrackOrder> list = new ArrayList();
+        try {
+            conn = new MyDB().getConnection();
+            ps = conn.prepareStatement(query);
+            rs = ps.executeQuery();
+            while (rs.next()) {
+                list.add(new TrackOrder(rs.getString(1), rs.getString(2), rs.getString(3), rs.getString(4)));
+            }
+            return list;
+        } catch (Exception e) {
+        }
+        return null;
+    }
+    public List<TrackOrder> trackOrder(String id) {
+        String query =  "SELECT  PO.AccountId ,PO.PurchaseOrderId, PO.SubTotal, PO.Status\n" +
+                "FROM PurchaseOrder PO\n" +
+                "WHERE  PO.AccountId = '"+id+"' ";
+        List<TrackOrder> list = new ArrayList();
+        try {
+            conn = new MyDB().getConnection();
+            ps = conn.prepareStatement(query);
+            rs = ps.executeQuery();
+            while (rs.next()) {
+                list.add(new TrackOrder(rs.getString(1), rs.getString(2), rs.getString(3), rs.getString(4)));
+            }
+            return list;
+        } catch (Exception e) {
+        }
+        return null;
+    }
+    public List<TrackAllOrder> trackingAllById(String id) {
+        String query = "SELECT  PO.AccountId ,PO.PurchaseOrderId, Pro.Name, P.Quantity, P.Subtotal, PO.Status\n" +
+                "    FROM PurchaseOrderDetail P, Product Pro, PurchaseOrder PO\n" +
+                "    WHERE PRO.ProductId = P.ProductId AND  PO.PurchaseOrderId = P.PurchaseOrderId AND PO.AccountId = '"+id+"' ";
+        List<TrackAllOrder> list = new ArrayList();
+        try {
+            conn = new MyDB().getConnection();
+            ps = conn.prepareStatement(query);
+            rs = ps.executeQuery();
+            while (rs.next()) {
+                list.add(new TrackAllOrder(rs.getString(1), rs.getString(2), rs.getString(3), rs.getString(4),
+                        rs.getString(5), rs.getString(6)));
+            }
 
+            return list;
+        } catch (Exception e) {
+        }
+        return null;
+    }
+    public List<TrackAllOrder> trackShippingById(String id) {
+        String query = "SELECT  PO.AccountId ,PO.PurchaseOrderId, Pro.Name, P.Quantity, P.Subtotal, S.Status\n" +
+                "FROM PurchaseOrderDetail P, Product Pro, PurchaseOrder PO, Shipper S\n" +
+                "WHERE PRO.ProductId = P.ProductId AND  PO.PurchaseOrderId = P.PurchaseOrderId \n" +
+                "AND PO.AccountId = '"+id+"' AND S.PurchaseOrderId = P.PurchaseOrderId";
+        List<TrackAllOrder> list = new ArrayList();
+        try {
+            conn = new MyDB().getConnection();
+            ps = conn.prepareStatement(query);
+            rs = ps.executeQuery();
+            while (rs.next()) {
+                list.add(new TrackAllOrder(rs.getString(1), rs.getString(2), rs.getString(3), rs.getString(4),
+                        rs.getString(5), rs.getString(6)));
+                System.out.println("+-+-+-+-+" + rs.getString(6));
+            }
+
+            return list;
+        } catch (Exception e) {
+        }
+        return null;
+    }
 }
