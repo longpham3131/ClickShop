@@ -40,8 +40,12 @@
                                 aria-controls="pills-home" aria-selected="true">Đăng nhập</a>
                         </li>
                         <li class="nav-item" role="presentation">
-                            <a class="nav-link" id="pills-profile-tab" data-toggle="pill" href="#formRegister" role="tab"
+                            <a class="nav-link"  data-toggle="pill" href="#formRegister" role="tab"
                                 aria-controls="pills-profile" aria-selected="false">Đăng kí</a>
+                        </li>
+                        <li class="nav-item" role="presentation">
+                            <a class="nav-link"  data-toggle="pill" href="#formForgot" role="tab"
+                               aria-controls="pills-profile" aria-selected="false">Quên mật khẩu</a>
                         </li>
     
                     </ul>
@@ -134,6 +138,74 @@
                             </div> <!-- /.form-group -->
                             <button type="submit" class="btn btn-outline-success w-100">Đăng kí</button>
                            </form>
+                        </div>
+                        <div class="tab-pane fade" id="formForgot" role="tabpanel" aria-labelledby="pills-profile-tab">
+                            <form action="">
+                                <div class="logo__brand text-center p-2">
+                                    <h4> Quên mật khẩu</h4>
+                                </div>
+                                <div class="form-group">
+                                    <div class="col-sm-12">
+                                        <input type="text" id="firstName" placeholder="Họ" class="form-control" autofocus>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+
+                                    <div class="col-sm-12">
+                                        <input type="text" id="lastName" placeholder="Tên" class="form-control" autofocus>
+                                    </div>
+                                </div>
+
+                                <div class="form-group">
+                                    <div class="col-sm-12">
+                                        <input type="email" id="email" placeholder="Email" class="form-control" name="email">
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <div class="col-sm-12">
+                                        <input type="password" id="password" placeholder="Mật khẩu" class="form-control">
+                                    </div>
+                                </div>
+                                <div class="form-group">
+
+                                    <div class="col-sm-12">
+                                        <input type="password" id="passwordRewrite" placeholder="Nhập lại mật khẩu" class="form-control">
+                                    </div>
+                                </div>
+                                <div class="form-group">
+
+                                    <div class="col-sm-12">
+                                        <input type="date" id="birthDate" class="form-control">
+                                    </div>
+                                </div>
+                                <div class="form-group">
+
+                                    <div class="col-sm-12">
+                                        <input type="phoneNumber" id="phoneNumber" placeholder="Số điện thoại"
+                                               class="form-control">
+
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <div class="col-sm-12">
+                                        <div class="row ml-3">
+                                            <div class="form-check col-6">
+                                                <input class="form-check-input" type="radio" name="exampleRadios" id="radioNam" value="Male" checked>
+                                                <label class="form-check-label" for="radioNam">
+                                                    Nam
+                                                </label>
+                                            </div>
+                                            <div class="form-check col-6">
+                                                <input class="form-check-input" type="radio" name="exampleRadios" id="radioNu" value="Female">
+                                                <label class="form-check-label" for="radioNu">
+                                                    Nữ
+                                                </label>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div> <!-- /.form-group -->
+                                <button type="submit" class="btn btn-outline-success w-100">Đăng kí</button>
+                            </form>
                         </div>
                     </div>
                 </div>

@@ -1200,4 +1200,21 @@ public class queryDAO {
         }
         return null;
     }
+
+    public boolean resetPassword(String email, String newpass) {
+        Connection conn1 = null;
+        PreparedStatement ps1 = null;
+        ResultSet rs = null;
+        try {
+            String query = "Update Account set Password='"+newpass+"' Where Email = '"+email+"'";
+            System.out.println(query);
+            conn1 = new MyDB().getConnection();
+            ps1 = conn1.prepareStatement(query);
+            ps1.executeUpdate();
+            return true;
+        } catch (Exception e) {
+            System.out.println(e);
+        }
+        return false;
+    }
 }

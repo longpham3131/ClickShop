@@ -50,6 +50,7 @@
     if (request.getAttribute("id") != null)
         id = (String) request.getAttribute("id");
 %>
+<%--<h1> -- <%=request.getAttribute("Message")%> ---</h1>--%>
 <div class="limiter">
     <div class="container-login100" style="">
         <div class="wrap-login100">
@@ -89,6 +90,9 @@
             <!-- Button to Open the Modal -->
             <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#myModal">
                 Register
+            </button>
+            <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#myForgot">
+                Forgot Password
             </button>
         </div>
     </div>
@@ -190,7 +194,33 @@
         </div>
     </div>
 </div>
-
+<div class="modal fade" id="myForgot">
+    <div class="modal-dialog ">
+        <div class="modal-content">
+            <form action="${pageContext.request.contextPath}/forgot" method="post">
+                <!-- Modal Header -->
+                <div class="modal-header">
+                    <h4 class="modal-title">Forgot Password</h4>
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                </div>
+                <!-- Modal body -->
+                <div class="modal-body">
+                    <div class="form-row">
+                        <div class="form-group col-6">
+                            <label for="DOfB">Your email:</label>
+                            <input type="text" class="form-control" id="mail" name="email">
+                        </div>
+                    </div>
+                </div>
+                <!-- Modal footer -->
+                <div class="modal-footer">
+                    <button type="submit" class="btn btn-success">Send code</button>
+                    <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
 <div id="dropDownSelect1"></div>
 
 <!-- Thư viện hỗ trợ Jquery -->
