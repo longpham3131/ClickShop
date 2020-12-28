@@ -51,8 +51,8 @@ public class forgot extends HttpServlet {
             queryDAO dao = new queryDAO();
             if (dao.accountExists(email)) {
                 int randomNum = ThreadLocalRandom.current().nextInt(1000, 9999);
-                String mess = "Yout code is: "+randomNum;
-                EmailUtility.sendEmail(host, port, user, pass, email, "ClickShop",
+                String mess = "Yout code is: <h2>"+randomNum+"</h2>";
+                EmailUtility.sendEmail(host, port, user, pass, email, "ClickShop Forgot Password",
                         mess);
                 resultMessage = "The e-mail was sent successfully";
                 HttpSession session = request.getSession();
