@@ -14,20 +14,21 @@
 <body>
 <c:choose>
     <c:when test="${kq == 'true'}">
-
-    <form action="${pageContext.request.contextPath}/reset-pass" method="post">
-        Reser Password:
-        New Password: <input type="text" name="newpass">
-        <input type="hidden" value="${mail}", name="email">
-        <input type="submit" value="Xac nhan">
-    </form>
-        <c:if test="${tb == 0}"> Co loi, password chua reset</c:if>
+        <form action="${pageContext.request.contextPath}/reset-pass" method="post">
+            Reser Password:
+            New Password: <input type="text" name="newpass">
+            <input type="hidden" value="${mail}" , name="email">
+            <input type="submit" value="Xac nhan">
+        </form>
+        <c:if test="${tb == 0}">
+            <script> alert(" Co loi, password chua reset"); </script>
+        </c:if>
     </c:when>
     <c:when test="${kq == 'spam'}">
         <form action="${pageContext.request.contextPath}/forgot" method="post">
             Sai qua nhieu roi, tui t se gui cho may code khac. <br>
             Email: (${mail})
-            <input type="hidden" value="${mail}", name="email">
+            <input type="hidden" value="${mail}" , name="email">
             <input type="submit" value="Xac nhan">
         </form>
     </c:when>
@@ -36,10 +37,13 @@
             Kiem tra code duoc gui den email cua ban (${mail}) <br>
             Code: <input type="text" name="inputCode">
             <input type="submit" value="Xac nhan">
-            <br>So lan thu: ${dem}
+            <br>So lan thu con lai: ${dem}
         </form>
     </c:otherwise>
 </c:choose>
+<form action="${pageContext.request.contextPath}/login-all" method="post">
+    <input type="submit" value="Back to Login Form">
+</form>
 
 </body>
 </html>

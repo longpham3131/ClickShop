@@ -61,7 +61,7 @@
                            title="Tài khoản"> <i></i><i class="fa fa-user"></i> </a>
                     </c:otherwise>
                 </c:choose>
-                <a href="#" aria-label="Tìm kiếm" title="Tìm kiếm"><i class="fa fa-search"></i></a>
+<%--                <a href="#" aria-label="Tìm kiếm" title="Tìm kiếm"><i class="fa fa-search"></i></a>--%>
                 <a href="#" aria-label="Giỏ hàng" title="Giỏ hàng" data-toggle="modal" data-target="#myModal"><i
                         class="fa fa-shopping-cart"></i></a>
             </div>

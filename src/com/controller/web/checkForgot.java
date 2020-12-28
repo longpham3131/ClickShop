@@ -31,32 +31,34 @@ public class checkForgot extends HttpServlet {
         try {
             String code = request.getParameter("inputCode");
             HttpSession session = request.getSession();
-            String mycode = (String) session.getAttribute("code" );
-        //    String email = (String) session.getAttribute("mail" );
-            int dem =  Integer.parseInt((String) session.getAttribute("dem" ));
-            System.out.println(code+"  "+ mycode+" "+ dem);
-            if(dem!=1) {
-                if(code.equals(mycode))
-                {
-                    resultMessage="true";
+            String mycode = (String) session.getAttribute("code");
+            //    String email = (String) session.getAttribute("mail" );
+            int dem = Integer.parseInt((String) session.getAttribute("dem"));
+            System.out.println(code + "  " + mycode + " " + dem);
+            if (dem != 0) {
+                if (code.equals(mycode)) {
+                    resultMessage = "true";
                     request.setAttribute("kq", resultMessage);
                     RequestDispatcher rq = request.getRequestDispatcher("Views/Web/container/EnterCode.jsp");
                     rq.forward(request, response);
-                }
-                else
-                {
+                } else {
                     // again
-                    resultMessage="false";
+                    resultMessage = "false";
                     dem--;
-                    session.setAttribute("dem", String.valueOf(dem));
-                    request.setAttribute("kq", resultMessage);
-                    RequestDispatcher rq = request.getRequestDispatcher("Views/Web/container/EnterCode.jsp");
-                    rq.forward(request, response);
+                    if (dem == 0) {
+                        resultMessage = "spam";
+                        request.setAttribute("kq", resultMessage);
+                        RequestDispatcher rq = request.getRequestDispatcher("Views/Web/container/EnterCode.jsp");
+                        rq.forward(request, response);
+                    } else {
+                        session.setAttribute("dem", String.valueOf(dem));
+                        request.setAttribute("kq", resultMessage);
+                        RequestDispatcher rq = request.getRequestDispatcher("Views/Web/container/EnterCode.jsp");
+                        rq.forward(request, response);
+                    }
                 }
-            }
-            else
-            {
-                resultMessage="spam";
+            } else {
+                resultMessage = "spam";
                 request.setAttribute("kq", resultMessage);
                 RequestDispatcher rq = request.getRequestDispatcher("Views/Web/container/EnterCode.jsp");
                 rq.forward(request, response);

@@ -64,7 +64,8 @@ public class forgot extends HttpServlet {
                 rq.forward(request, response);
             }
             else {
-                resultMessage = "Email `"+email+"` is not registered";
+               // resultMessage = "Email `"+email+"` is not registered";
+                resultMessage="-1";
                 request.setAttribute("Message", resultMessage);
                 RequestDispatcher rq = request.getRequestDispatcher("Views/loginAll.jsp");
                 rq.forward(request, response);

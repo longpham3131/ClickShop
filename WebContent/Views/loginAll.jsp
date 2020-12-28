@@ -49,7 +49,12 @@
     String id = "";
     if (request.getAttribute("id") != null)
         id = (String) request.getAttribute("id");
+    if(request.getAttribute("Message")=="-1")
+    {
+%> <script> alert("Email khong tim thay");</script><%
+    }
 %>
+
 <%--<h1> -- <%=request.getAttribute("Message")%> ---</h1>--%>
 <div class="limiter">
     <div class="container-login100" style="">
