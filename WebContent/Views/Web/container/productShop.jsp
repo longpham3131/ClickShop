@@ -371,6 +371,14 @@
 
     </div>
 </section>
+
+<div class="loader-wrapper">
+    <span class="loader"><span class="loader-inner"></span></span>
+</div>
+
+
+
+
 <c:import url="../commom/footer.jsp"> </c:import>
 
 <!-- Thư viện hỗ trợ Jquery -->
@@ -381,9 +389,15 @@
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-ho+j7jyWK8fNQe+A12Hb8AhRq26LrZ/JpcUGGOn+Y7RsweNrtN/tE3MoK7ZeZDyx"
         crossorigin="anonymous"></script>
+<script>
+    $(window).on("load",function(){
+        $(".loader-wrapper").fadeOut("slow");
+    });
+</script>
 <a href="#" class="backToTop cd-top text-replace js-cd-top"></a>
 <script src="<%=request.getContextPath()%>/Views/Web/js/main.js"></script>
 <script src="<%=request.getContextPath()%>/Views/Web/js/util.js"></script>
+
 
 <%--<script src="<%=request.getContextPath()%>/Views/Web/js/checkOut.js"></script>--%>
 </body>

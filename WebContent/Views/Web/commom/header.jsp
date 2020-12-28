@@ -34,8 +34,8 @@
             email = "login";
     %>
 
-    <div class="container">
-        <div class="header__top d-flex justify-content-between">
+    <div class="">
+        <div class="header__top d-flex justify-content-between align-items-center">
             <div class="header__logo">
                 <a href="<%=request.getContextPath()%>/fill-All-Display">
                     <img src="<%=request.getContextPath()%>/Views/Web/image_product/logo.png" alt="">
@@ -314,12 +314,14 @@
                     </div>
                 </nav>
             </div>
-            <div class="header__icons">
+            <div class="header__icons d-flex  align-items-center">
                 <c:choose>
                     <c:when test="${email != null}">
                         <a href="<%=request.getContextPath()%>/my-profile" aria-label="Tài khoản"
                            title="Tài khoản"> ${email} </a>
-                        <form action="<%=request.getContextPath()%>/fill-All-Display" method="post">
+                        <a href="#" aria-label="Giỏ hàng" title="Giỏ hàng" data-toggle="modal" data-target="#myModal"><i
+                                class="fa fa-shopping-cart"></i></a>
+                        <form action="<%=request.getContextPath()%>/fill-All-Display" method="post" class="px-2">
                             <input type="hidden" value="1" name="logout">
                             <button type="submit" title="Dang xuat"> <i class="fa fa-sign-out-alt"></i> </button>
                         </form>
@@ -328,11 +330,12 @@
                     <c:otherwise>
                         <a href="<%=request.getContextPath()%>/login-all" aria-label="Tài khoản"
                            title="Tài khoản"> <i></i><i class="fa fa-user"></i> </a>
+                        <a href="#" aria-label="Giỏ hàng" title="Giỏ hàng" data-toggle="modal" data-target="#myModal"><i
+                                class="fa fa-shopping-cart"></i></a>
                     </c:otherwise>
                 </c:choose>
 <%--                <a href="#" aria-label="Tìm kiếm" title="Tìm kiếm"><i class="fa fa-search"></i></a>--%>
-                <a href="#" aria-label="Giỏ hàng" title="Giỏ hàng" data-toggle="modal" data-target="#myModal"><i
-                        class="fa fa-shopping-cart"></i></a>
+
             </div>
 
 

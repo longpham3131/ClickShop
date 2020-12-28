@@ -24,6 +24,7 @@
 </head>
 
 <body>
+
 <!--checkout-->
 <section class="checkout_wthree py-sm-5 py-3">
     <div class="container">
@@ -108,6 +109,10 @@
         </div>
     </div>
 </section>
+
+<div class="loader-wrapper">
+    <span class="loader"><span class="loader-inner"></span></span>
+</div>
 <!--//checkout-->
 <!-- BOOSTRAP JS -->
 <script src="https://code.jquery.com/jquery-3.5.1.min.js"
@@ -116,6 +121,11 @@
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-ho+j7jyWK8fNQe+A12Hb8AhRq26LrZ/JpcUGGOn+Y7RsweNrtN/tE3MoK7ZeZDyx"
         crossorigin="anonymous"></script>
+<script>
+    $(window).on("load",function(){
+        $(".loader-wrapper").fadeOut("slow");
+    });
+</script>
 <script src="<%=request.getContextPath()%>/Views/Web/js/sanPham.js"></script>
 <script src="<%=request.getContextPath()%>/Views/Web/js/DanhSachSanPham.js"></script>
 <script src="<%=request.getContextPath()%>/Views/Web/js/checkOut.js"></script>
