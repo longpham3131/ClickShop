@@ -25,8 +25,11 @@
 </head>
 
 <body>
-<c:import url="./commom/header.jsp"> </c:import>
+<div class="loader-wrapper">
+    <span class="loader"><span class="loader-inner"></span></span>
+</div>
 
+<c:import url="./commom/header.jsp"> </c:import>
 <section class="carousel">
     <div class="owl-carousel owl-theme">
         <div class="item"><img src="<%=request.getContextPath()%>/Views/Web/image_product/banner__carousel_2.jpg"
@@ -131,8 +134,9 @@
     </div>
 
 </section>
-
 <c:import url="./commom/footer.jsp"> </c:import>
+
+
 
 
 <!-- Thư viện hỗ trợ Jquery -->
@@ -143,6 +147,11 @@
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-ho+j7jyWK8fNQe+A12Hb8AhRq26LrZ/JpcUGGOn+Y7RsweNrtN/tE3MoK7ZeZDyx"
         crossorigin="anonymous"></script>
+<script>
+    $(window).on("load",function(){
+        $(".loader-wrapper").fadeOut("slow");
+    });
+</script>
 <!-- OWL CAROUSEL JS -->
 <script src="<%=request.getContextPath()%>/Views/Web/js/owl.carousel.min.js"></script>
 <script>
@@ -174,26 +183,3 @@
         },
     });
 </script>
-<script>
-    // When the user scrolls down 20px from the top of the document, slide down the navbar
-    // window.onscroll = function() {scrollFunction()};
-
-    // function scrollFunction() {
-    //   if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
-    //     document.getElementById("header").style.top = "0";
-    //   } else {
-    //     document.getElementById("header").style.top = "-50px";
-    //   }
-    // }
-    // </script>
-<!-- SCROLL TO TOP  -->
-
-<a href="#" class="backToTop cd-top text-replace js-cd-top"></a>
-<script src="<%=request.getContextPath()%>/Views/Web/js/main.js"></script>
-<script src="<%=request.getContextPath()%>/Views/Web/js/util.js"></script>
-<script src="<%=request.getContextPath()%>/Views/Web/js/sanPham.js"></script>
-<script src="<%=request.getContextPath()%>/Views/Web/js/DanhSachSanPham.js"></script>
-<script src="<%=request.getContextPath()%>/Views/Web/js/checkOut.js"></script>
-</body>
-
-</html>

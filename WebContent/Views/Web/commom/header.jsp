@@ -34,21 +34,294 @@
             email = "login";
     %>
 
-    <div class="container ">
-        <div class="header__top d-flex align-items-center justify-content-center">
-            <div class="header__logo ">
+    <div class="">
+        <div class="header__top d-flex justify-content-between align-items-center">
+            <div class="header__logo">
                 <a href="<%=request.getContextPath()%>/fill-All-Display">
                     <img src="<%=request.getContextPath()%>/Views/Web/image_product/logo.png" alt="">
                 </a>
 
             </div>
-            <%--            <h1>/........... ${email} ...........</h1>--%>
-            <div class="header__icons">
+            <div class="header__nav">
+                <nav class="navbar navbar-expand-lg">
+                    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown"
+                            aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+                        <span class="navbar-toggler-icon"></span>
+                    </button>
+
+                    <div class="collapse navbar-collapse justify-content-around" id="navbarNavDropdown">
+                        <ul class="navbar-nav">
+                            <li class="nav-item dropdown no__relative">
+                                <a class="nav-link dropdown-toggle" href="#" id="dropdown__giaynam" role="button"
+                                   data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+                                    GIÀY NAM
+                                </a>
+                                <div class="dropdown-menu dropdown__giaynam nav-item__dropdown animate__animated animate__fadeInLeftBig "
+                                     aria-labelledby="dropdown__giaynam">
+                                    <div class="row">
+                                        <div class="dropdown__content col-2">
+                                            <a class="dropdown-item" href="#">
+                                                <form action="<%=request.getContextPath()%>/filter-Product" method="post">
+                                                    <button type="submit"
+                                                            style=" outline: none;   background: transparent; border: none;">
+                                                        CHELSEA BOOT
+                                                    </button>
+                                                    <input type="hidden" value="Chealsea Boots - Men" name="Name"/>
+                                                </form>
+                                            </a>
+                                            <a class="dropdown-item" href="#">
+                                                <form action="<%=request.getContextPath()%>/filter-Product" method="post">
+                                                    <button type="submit" style=" outline: none; background: transparent; border: none;">
+                                                        DERBY
+                                                    </button>
+                                                    <input type="hidden" value="DERBY" name="Name"/>
+                                                </form>
+                                            </a>
+                                            <a class="dropdown-item" href="#">
+                                                <form action="<%=request.getContextPath()%>/filter-Product" method="post">
+                                                    <button type="submit" style=" outline: none; background: transparent; border: none;">
+                                                        HARNESS BOOT
+                                                    </button>
+                                                    <input type="hidden" value="Harness Boots" name="Name"/>
+                                                </form>
+                                            </a>
+                                            <a class="dropdown-item" href="#">
+                                                <form action="<%=request.getContextPath()%>/filter-Product" method="post">
+                                                    <button type="submit" style=" outline: none; background: transparent; border: none;">
+                                                        ZIP BOOT
+                                                    </button>
+                                                    <input type="hidden" value="Zip Boots" name="Name"/>
+                                                </form>
+                                            </a>
+                                            <a class="dropdown-item" href="#">
+                                                <form action="<%=request.getContextPath()%>/filter-Product" method="post">
+                                                    <button type="submit" style=" outline: none; background: transparent; border: none;">
+                                                        COMBAT BOOT
+                                                    </button>
+                                                    <input type="hidden" value="Combat Boots - Men" name="Name"/>
+                                                </form>
+                                            </a>
+                                            <a class="dropdown-item" href="#">
+                                                <form action="<%=request.getContextPath()%>/filter-Product" method="post">
+                                                    <button type="submit" style=" outline: none; background: transparent; border: none;">
+                                                        OXFORD
+                                                    </button>
+                                                    <input type="hidden" value="OXFORD" name="Name"/>
+                                                </form>
+                                            </a>
+                                        </div>
+                                        <div class="dropdown__image col-10">
+                                            <div class="row">
+                                                <div class="col-4">
+                                                    <img src="<%=request.getContextPath()%>/Views/Web/image_product/dropdown__nam_1.png"
+                                                         alt="">
+
+                                                </div>
+                                                <div class="col-4">
+                                                    <img src="<%=request.getContextPath()%>/Views/Web/image_product/dropdown__nam_2.png"
+                                                         alt="">
+
+
+                                                </div>
+                                                <div class="col-4">
+                                                    <img src="<%=request.getContextPath()%>/Views/Web/image_product/dropdown__nam_3.png"
+                                                         alt="">
+
+
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </li>
+
+                            <li class="nav-item dropdown no__relative">
+                                <a class="nav-link dropdown-toggle" href="#" id="dropdown__giaynu" role="button"
+                                   data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                    GIÀY NỮ
+                                </a>
+                                <div class="dropdown-menu dropdown__giaynu nav-item__dropdown animate__animated animate__fadeInLeftBig"
+                                     aria-labelledby="dropdown__giaynu">
+                                    <div class="row">
+                                        <div class="dropdown__content col-2">
+                                            <a class="dropdown-item" href="#">
+                                                <form action="<%=request.getContextPath()%>/filter-Product" method="post">
+
+                                                    <button type="submit" style=" outline: none; background: transparent; border: none;">
+                                                        CHELSEA BOOT
+                                                    </button>
+                                                    <input type="hidden" value="Chealsea Boots - Women" name="Name"/>
+                                                </form>
+                                            </a>
+                                            <%--                                        <a class="dropdown-item" href="#">DERBY</a>--%>
+                                            <a class="dropdown-item" href="#">
+                                                <form action="<%=request.getContextPath()%>/filter-Product" method="post">
+
+                                                    <button type="submit" style=" outline: none; background: transparent; border: none;">
+                                                        COMBAT BOOT
+                                                    </button>
+                                                    <input type="hidden" value="Combat Boots - Women" name="Name"/>
+                                                </form>
+                                            </a>
+                                        </div>
+                                        <div class="dropdown__image col-10">
+                                            <div class="row">
+                                                <div class="col-4">
+                                                    <img src="<%=request.getContextPath()%>/Views/Web/image_product/dropdown__nu_1.png"
+                                                         alt="Responsive image">
+                                                </div>
+                                                <div class="col-4">
+                                                    <img src="<%=request.getContextPath()%>/Views/Web/image_product/dropdown__nu_2.png"
+                                                         alt="Responsive image">
+                                                </div>
+                                                <div class="col-4">
+                                                    <img src="<%=request.getContextPath()%>/Views/Web/image_product/dropdown__nu_3.png"
+                                                         alt="Responsive image">
+
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </li>
+
+                            <li class="nav-item dropdown no__relative">
+                                <a class="nav-link dropdown-toggle" href="#" id="dropdown__Tee" role="button"
+                                   data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+                                    TEE(UNISEX)
+                                </a>
+                                <div class="dropdown-menu  nav-item__dropdown animate__animated animate__fadeInLeftBig" aria-labelledby="dropdown__Tee">
+                                    <div class="row">
+                                        <div class="dropdown__content col-2">
+                                            <a class="dropdown-item" href="#">
+                                                <form action="<%=request.getContextPath()%>/filter-Product" method="post">
+                                                    <button type="submit" style=" outline: none; background: transparent; border: none;">
+                                                        T-SHIRT
+                                                    </button>
+                                                    <input type="hidden" value="T-SHIRT" name="Name"/>
+                                                </form>
+                                            </a>
+                                            <a class="dropdown-item" href="#">
+                                                <form action="<%=request.getContextPath()%>/filter-Product" method="post">
+                                                    <button type="submit" style=" outline: none; background: transparent; border: none;">
+                                                        SHIRT
+                                                    </button>
+                                                    <input type="hidden" value="SHIRT" name="Name"/>
+                                                </form>
+                                            </a>
+                                        </div>
+                                        <div class="dropdown__image col-10">
+                                            <div class="row">
+                                                <div class="col-4">
+                                                    <img src="<%=request.getContextPath()%>/Views/Web/image_product/dropdown__tee_1.jpg"
+                                                         alt="Responsive image">
+                                                </div>
+                                                <div class="col-4">
+                                                    <img src="<%=request.getContextPath()%>/Views/Web/image_product/dropdown__tee_2.jpg"
+                                                         alt="Responsive image">
+                                                </div>
+                                                <div class="col-4">
+                                                    <img src="<%=request.getContextPath()%>/Views/Web/image_product/dropdown__tee_3.jpg"
+                                                         alt="Responsive image">
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                    </div>
+
+                                </div>
+                            </li>
+                            <li class="nav-item dropdown no__relative">
+                                <a class="nav-link dropdown-toggle" href="#" id="dropdown__phuKien" role="button"
+                                   data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+                                    PHỤ KIỆN
+                                </a>
+                                <div class="dropdown-menu nav-item__dropdown animate__animated animate__fadeInLeftBig" aria-labelledby="dropdown__phuKien">
+                                    <div class="row">
+                                        <div class="dropdown__content col-2">
+                                            <a class="dropdown-item" href="#">
+                                                <form action="<%=request.getContextPath()%>/filter-Product" method="post">
+                                                    <button type="submit" style=" outline: none; background: transparent; border: none;">
+                                                        BELT
+                                                    </button>
+                                                    <input type="hidden" value="BELT" name="Name"/>
+                                                </form>
+                                            </a>
+                                            <a class="dropdown-item" href="#">
+                                                <form action="<%=request.getContextPath()%>/filter-Product" method="post">
+                                                    <button type="submit" style=" outline: none; background: transparent; border: none;">
+                                                        BRACELET
+                                                    </button>
+                                                    <input type="hidden" value="BRACELET" name="Name"/>
+                                                </form>
+                                            </a>
+                                            <a class="dropdown-item" href="#">
+                                                <form action="<%=request.getContextPath()%>/filter-Product" method="post">
+                                                    <button type="submit" style=" outline: none; background: transparent; border: none;">
+                                                        CHAIN
+                                                    </button>
+                                                    <input type="hidden" value="CHAIN" name="Name"/>
+                                                </form>
+                                            </a>
+                                            <a class="dropdown-item" href="#">
+                                                <form action="<%=request.getContextPath()%>/filter-Product" method="post">
+                                                    <button type="submit" style=" outline: none; background: transparent; border: none;">
+                                                        BANDANA
+                                                    </button>
+                                                    <input type="hidden" value="BANDANA" name="Name"/>
+                                                </form>
+                                            </a>
+                                            <a class="dropdown-item" href="#">
+                                                <form action="<%=request.getContextPath()%>/filter-Product" method="post">
+                                                    <button type="submit" style=" outline: none; background: transparent; border: none;">
+                                                        NECKLACE
+                                                    </button>
+                                                    <input type="hidden" value="NECKLACE" name="Name"/>
+                                                </form>
+                                            </a>
+                                            <a class="dropdown-item" href="#">
+                                                <form action="<%=request.getContextPath()%>/filter-Product" method="post">
+                                                    <button type="submit" style=" outline: none; background: transparent; border: none;">
+                                                        BUCKET HAT
+                                                    </button>
+                                                    <input type="hidden" value="BUCKET HAT" name="Name"/>
+                                                </form>
+                                            </a>
+                                        </div>
+                                        <div class="dropdown__image col-10">
+                                            <div class="row">
+                                                <div class="col-4">
+                                                    <img src="<%=request.getContextPath()%>/Views/Web/image_product/dropdown__belt_1.jpg"
+                                                         alt="Responsive image">
+                                                </div>
+                                                <div class="col-4">
+                                                    <img src="<%=request.getContextPath()%>/Views/Web/image_product/dropdown__belt_2.jpg"
+                                                         alt="Responsive image">
+                                                </div>
+                                                <div class="col-4">
+                                                    <img src="<%=request.getContextPath()%>/Views/Web/image_product/dropdown__chain_1.jpg"
+                                                         alt="Responsive image">
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </li>
+
+
+
+                        </ul>
+                    </div>
+                </nav>
+            </div>
+            <div class="header__icons d-flex  align-items-center">
                 <c:choose>
                     <c:when test="${email != null}">
                         <a href="<%=request.getContextPath()%>/my-profile" aria-label="Tài khoản"
                            title="Tài khoản"> ${email} </a>
-                        <form action="<%=request.getContextPath()%>/fill-All-Display" method="post">
+                        <a href="#" aria-label="Giỏ hàng" title="Giỏ hàng" data-toggle="modal" data-target="#myModal"><i
+                                class="fa fa-shopping-cart"></i></a>
+                        <form action="<%=request.getContextPath()%>/fill-All-Display" method="post" class="px-2">
                             <input type="hidden" value="1" name="logout">
                             <button type="submit" title="Dang xuat"> <i class="fa fa-sign-out-alt"></i> </button>
                         </form>
@@ -57,286 +330,18 @@
                     <c:otherwise>
                         <a href="<%=request.getContextPath()%>/login-all" aria-label="Tài khoản"
                            title="Tài khoản"> <i></i><i class="fa fa-user"></i> </a>
+                        <a href="#" aria-label="Giỏ hàng" title="Giỏ hàng" data-toggle="modal" data-target="#myModal"><i
+                                class="fa fa-shopping-cart"></i></a>
                     </c:otherwise>
                 </c:choose>
 <%--                <a href="#" aria-label="Tìm kiếm" title="Tìm kiếm"><i class="fa fa-search"></i></a>--%>
-                <a href="#" aria-label="Giỏ hàng" title="Giỏ hàng" data-toggle="modal" data-target="#myModal"><i
-                        class="fa fa-shopping-cart"></i></a>
+
             </div>
+
+
         </div>
 
-        <div class="header__nav">
-            <nav class="navbar navbar-expand-lg">
-                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown"
-                        aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
-                    <span class="navbar-toggler-icon"></span>
-                </button>
 
-                <div class="collapse navbar-collapse justify-content-around" id="navbarNavDropdown">
-                    <ul class="navbar-nav">
-                        <li class="nav-item dropdown no__relative">
-                            <a class="nav-link dropdown-toggle" href="#" id="dropdown__giaynam" role="button"
-                               data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
-                                GIÀY NAM
-                            </a>
-                            <div class="dropdown-menu dropdown__giaynam nav-item__dropdown animate__animated animate__fadeInLeftBig "
-                                 aria-labelledby="dropdown__giaynam">
-                                <div class="row">
-                                    <div class="dropdown__content col-2">
-                                        <a class="dropdown-item" href="#">
-                                            <form action="<%=request.getContextPath()%>/filter-Product" method="post">
-                                                <button type="submit"
-                                                        style=" outline: none;   background: transparent; border: none;">
-                                                    CHELSEA BOOT
-                                                </button>
-                                                <input type="hidden" value="Chealsea Boots - Men" name="Name"/>
-                                            </form>
-                                        </a>
-                                        <a class="dropdown-item" href="#">
-                                            <form action="<%=request.getContextPath()%>/filter-Product" method="post">
-                                                 <button type="submit" style=" outline: none; background: transparent; border: none;">
-                                                    DERBY
-                                                </button>
-                                                <input type="hidden" value="DERBY" name="Name"/>
-                                            </form>
-                                        </a>
-                                        <a class="dropdown-item" href="#">
-                                            <form action="<%=request.getContextPath()%>/filter-Product" method="post">
-                                                 <button type="submit" style=" outline: none; background: transparent; border: none;">
-                                                    HARNESS BOOT
-                                                </button>
-                                                <input type="hidden" value="Harness Boots" name="Name"/>
-                                            </form>
-                                        </a>
-                                        <a class="dropdown-item" href="#">
-                                            <form action="<%=request.getContextPath()%>/filter-Product" method="post">
-                                                 <button type="submit" style=" outline: none; background: transparent; border: none;">
-                                                    ZIP BOOT
-                                                </button>
-                                                <input type="hidden" value="Zip Boots" name="Name"/>
-                                            </form>
-                                        </a>
-                                        <a class="dropdown-item" href="#">
-                                            <form action="<%=request.getContextPath()%>/filter-Product" method="post">
-                                                 <button type="submit" style=" outline: none; background: transparent; border: none;">
-                                                    COMBAT BOOT
-                                                </button>
-                                                <input type="hidden" value="Combat Boots - Men" name="Name"/>
-                                            </form>
-                                        </a>
-                                        <a class="dropdown-item" href="#">
-                                            <form action="<%=request.getContextPath()%>/filter-Product" method="post">
-                                                 <button type="submit" style=" outline: none; background: transparent; border: none;">
-                                                    OXFORD
-                                                </button>
-                                                <input type="hidden" value="OXFORD" name="Name"/>
-                                            </form>
-                                        </a>
-                                    </div>
-                                    <div class="dropdown__image col-10">
-                                        <div class="row">
-                                            <div class="col-4">
-                                                <img src="<%=request.getContextPath()%>/Views/Web/image_product/dropdown__nam_1.png"
-                                                     alt="">
-
-                                            </div>
-                                            <div class="col-4">
-                                                <img src="<%=request.getContextPath()%>/Views/Web/image_product/dropdown__nam_2.png"
-                                                     alt="">
-
-
-                                            </div>
-                                            <div class="col-4">
-                                                <img src="<%=request.getContextPath()%>/Views/Web/image_product/dropdown__nam_3.png"
-                                                     alt="">
-
-
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </li>
-
-                        <li class="nav-item dropdown no__relative">
-                            <a class="nav-link dropdown-toggle" href="#" id="dropdown__giaynu" role="button"
-                               data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                GIÀY NỮ
-                            </a>
-                            <div class="dropdown-menu dropdown__giaynu nav-item__dropdown animate__animated animate__fadeInLeftBig"
-                                 aria-labelledby="dropdown__giaynu">
-                                <div class="row">
-                                    <div class="dropdown__content col-2">
-                                        <a class="dropdown-item" href="#">
-                                            <form action="<%=request.getContextPath()%>/filter-Product" method="post">
-
-                                                 <button type="submit" style=" outline: none; background: transparent; border: none;">
-                                                    CHELSEA BOOT
-                                                </button>
-                                                <input type="hidden" value="Chealsea Boots - Women" name="Name"/>
-                                            </form>
-                                        </a>
-                                        <%--                                        <a class="dropdown-item" href="#">DERBY</a>--%>
-                                        <a class="dropdown-item" href="#">
-                                            <form action="<%=request.getContextPath()%>/filter-Product" method="post">
-
-                                                 <button type="submit" style=" outline: none; background: transparent; border: none;">
-                                                    COMBAT BOOT
-                                                </button>
-                                                <input type="hidden" value="Combat Boots - Women" name="Name"/>
-                                            </form>
-                                        </a>
-                                    </div>
-                                    <div class="dropdown__image col-10">
-                                        <div class="row">
-                                            <div class="col-4">
-                                                <img src="<%=request.getContextPath()%>/Views/Web/image_product/dropdown__nu_1.png"
-                                                     alt="Responsive image">
-                                            </div>
-                                            <div class="col-4">
-                                                <img src="<%=request.getContextPath()%>/Views/Web/image_product/dropdown__nu_2.png"
-                                                     alt="Responsive image">
-                                            </div>
-                                            <div class="col-4">
-                                                <img src="<%=request.getContextPath()%>/Views/Web/image_product/dropdown__nu_3.png"
-                                                     alt="Responsive image">
-
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </li>
-
-                        <li class="nav-item dropdown no__relative">
-                            <a class="nav-link dropdown-toggle" href="#" id="dropdown__Tee" role="button"
-                               data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
-                                TEE(UNISEX)
-                            </a>
-                            <div class="dropdown-menu  nav-item__dropdown animate__animated animate__fadeInLeftBig" aria-labelledby="dropdown__Tee">
-                                <div class="row">
-                                    <div class="dropdown__content col-2">
-                                        <a class="dropdown-item" href="#">
-                                            <form action="<%=request.getContextPath()%>/filter-Product" method="post">
-                                                <button type="submit" style=" outline: none; background: transparent; border: none;">
-                                                    T-SHIRT
-                                                </button>
-                                                <input type="hidden" value="T-SHIRT" name="Name"/>
-                                            </form>
-                                        </a>
-                                        <a class="dropdown-item" href="#">
-                                            <form action="<%=request.getContextPath()%>/filter-Product" method="post">
-                                                <button type="submit" style=" outline: none; background: transparent; border: none;">
-                                                    SHIRT
-                                                </button>
-                                                <input type="hidden" value="SHIRT" name="Name"/>
-                                            </form>
-                                        </a>
-                                    </div>
-                                    <div class="dropdown__image col-10">
-                                        <div class="row">
-                                            <div class="col-4">
-                                                <img src="<%=request.getContextPath()%>/Views/Web/image_product/dropdown__tee_1.jpg"
-                                                     alt="Responsive image">
-                                            </div>
-                                            <div class="col-4">
-                                                <img src="<%=request.getContextPath()%>/Views/Web/image_product/dropdown__tee_2.jpg"
-                                                     alt="Responsive image">
-                                            </div>
-                                            <div class="col-4">
-                                                <img src="<%=request.getContextPath()%>/Views/Web/image_product/dropdown__tee_3.jpg"
-                                                     alt="Responsive image">
-                                            </div>
-                                        </div>
-                                    </div>
-
-                                </div>
-
-                            </div>
-                        </li>
-                        <li class="nav-item dropdown no__relative">
-                            <a class="nav-link dropdown-toggle" href="#" id="dropdown__phuKien" role="button"
-                               data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
-                                PHỤ KIỆN
-                            </a>
-                            <div class="dropdown-menu nav-item__dropdown animate__animated animate__fadeInLeftBig" aria-labelledby="dropdown__phuKien">
-                               <div class="row">
-                                   <div class="dropdown__content col-2">
-                                       <a class="dropdown-item" href="#">
-                                           <form action="<%=request.getContextPath()%>/filter-Product" method="post">
-                                               <button type="submit" style=" outline: none; background: transparent; border: none;">
-                                                   BELT
-                                               </button>
-                                               <input type="hidden" value="BELT" name="Name"/>
-                                           </form>
-                                       </a>
-                                       <a class="dropdown-item" href="#">
-                                           <form action="<%=request.getContextPath()%>/filter-Product" method="post">
-                                               <button type="submit" style=" outline: none; background: transparent; border: none;">
-                                                   BRACELET
-                                               </button>
-                                               <input type="hidden" value="BRACELET" name="Name"/>
-                                           </form>
-                                       </a>
-                                       <a class="dropdown-item" href="#">
-                                           <form action="<%=request.getContextPath()%>/filter-Product" method="post">
-                                               <button type="submit" style=" outline: none; background: transparent; border: none;">
-                                                   CHAIN
-                                               </button>
-                                               <input type="hidden" value="CHAIN" name="Name"/>
-                                           </form>
-                                       </a>
-                                       <a class="dropdown-item" href="#">
-                                           <form action="<%=request.getContextPath()%>/filter-Product" method="post">
-                                               <button type="submit" style=" outline: none; background: transparent; border: none;">
-                                                   BANDANA
-                                               </button>
-                                               <input type="hidden" value="BANDANA" name="Name"/>
-                                           </form>
-                                       </a>
-                                       <a class="dropdown-item" href="#">
-                                           <form action="<%=request.getContextPath()%>/filter-Product" method="post">
-                                               <button type="submit" style=" outline: none; background: transparent; border: none;">
-                                                   NECKLACE
-                                               </button>
-                                               <input type="hidden" value="NECKLACE" name="Name"/>
-                                           </form>
-                                       </a>
-                                       <a class="dropdown-item" href="#">
-                                           <form action="<%=request.getContextPath()%>/filter-Product" method="post">
-                                               <button type="submit" style=" outline: none; background: transparent; border: none;">
-                                                   BUCKET HAT
-                                               </button>
-                                               <input type="hidden" value="BUCKET HAT" name="Name"/>
-                                           </form>
-                                       </a>
-                                   </div>
-                                   <div class="dropdown__image col-10">
-                                       <div class="row">
-                                           <div class="col-4">
-                                               <img src="<%=request.getContextPath()%>/Views/Web/image_product/dropdown__belt_1.jpg"
-                                                    alt="Responsive image">
-                                           </div>
-                                           <div class="col-4">
-                                               <img src="<%=request.getContextPath()%>/Views/Web/image_product/dropdown__belt_2.jpg"
-                                                    alt="Responsive image">
-                                           </div>
-                                           <div class="col-4">
-                                               <img src="<%=request.getContextPath()%>/Views/Web/image_product/dropdown__chain_1.jpg"
-                                                    alt="Responsive image">
-                                           </div>
-                                       </div>
-                                   </div>
-                               </div>
-                            </div>
-                        </li>
-
-
-
-                    </ul>
-                </div>
-            </nav>
-        </div>
         <!-- Modal giỏ hàng -->
         <div class="modal fade" id="myModal">
             <div class="modal-dialog">
