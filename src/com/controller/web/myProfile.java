@@ -3,6 +3,8 @@ package com.controller.web;
 import DAO.queryDAO;
 import com.model.Article;
 import com.model.Display;
+import com.model.TrackAllOrder;
+import com.model.TrackOrder;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -45,6 +47,18 @@ public class myProfile extends HttpServlet {
         HttpSession session = request.getSession();
         String email = (String) session.getAttribute("email");
         queryDAO dao = new queryDAO();
+        String id= dao.idByEmail( (String) session.getAttribute("email"));
+
+        List<TrackOrder> list1 = dao.trackOrder(id);
+        List<TrackAllOrder> list1_1 = dao.trackingAllById(id);
+        List<TrackOrder> list2 = dao.trackShip(id);
+        List<TrackAllOrder> list2_1 = dao.trackShippingById(id);
+
+        request.setAttribute("listAllOrder", list1);
+        request.setAttribute("listAllOrderDetail", list1_1);
+        request.setAttribute("listShipOrder", list2);
+        request.setAttribute("listShipOrderDetail", list2_1);
+
         List<Article> myinfo = dao.myInfo(email);
         System.out.print(myinfo);
         request.setAttribute("myinfo",myinfo);

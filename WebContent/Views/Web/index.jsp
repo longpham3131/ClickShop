@@ -95,44 +95,32 @@
             allowfullscreen></iframe>
 </section>
 <section class="outfit container">
-    <h4 class="pb-2"><a href="#">@thewolf.vn - Outfit Inspiration</a></h4>
+    <h4 class="pb-2"><a href="#">Click Shop Founder</a></h4>
     <div class="swiper-container">
         <div class="swiper-wrapper">
             <div class="swiper-slide">
-                <img src="<%=request.getContextPath()%>/Views/Web/image_product/outfit1.jpg" alt="">
-                <a href="#" data-toggle="modal" data-target="#exampleModal"><span>SHOP THIS LOOK</span></a>
+                <img src="<%=request.getContextPath()%>/Views/Web/image_product/kha.jpg" alt="">
+                <a href="#" data-toggle="modal" data-target="#exampleModal"><span>PHAM THUC KHA</span></a>
             </div>
             <div class="swiper-slide">
-                <img src="<%=request.getContextPath()%>/Views/Web/image_product/outfit2.jpg" alt="">
-                <a href="#" data-toggle="modal" data-target="#exampleModal"><span>SHOP THIS LOOK</span></a>
+                <img src="<%=request.getContextPath()%>/Views/Web/image_product/kiet.jpg" alt="">
+                <a href="#" data-toggle="modal" data-target="#exampleModal"><span>NGUYEN TUAN KIET</span></a>
             </div>
             <div class="swiper-slide">
-                <img src="<%=request.getContextPath()%>/Views/Web/image_product/outfit3.jpg" alt="">
-                <a href="#" data-toggle="modal" data-target="#exampleModal"><span>SHOP THIS LOOK</span></a>
+                <img src="<%=request.getContextPath()%>/Views/Web/image_product/long.jpg" alt="">
+                <a href="#" data-toggle="modal" data-target="#exampleModal"><span>PHAM HOANG LONG</span></a>
             </div>
             <div class="swiper-slide">
-                <img src="<%=request.getContextPath()%>/Views/Web/image_product/outfit4.jpg" alt="">
-                <a href="#" data-toggle="modal" data-target="#exampleModal"><span>SHOP THIS LOOK</span></a>
+                <img src="<%=request.getContextPath()%>/Views/Web/image_product/kha.jpg" alt="">
+                <a href="#" data-toggle="modal" data-target="#exampleModal"><span>PHAM THUC KHA</span></a>
             </div>
             <div class="swiper-slide">
-                <img src="<%=request.getContextPath()%>/Views/Web/image_product/outfit6.jpg" alt="">
-                <a href="#" data-toggle="modal" data-target="#exampleModal"><span>SHOP THIS LOOK</span></a>
+                <img src="<%=request.getContextPath()%>/Views/Web/image_product/kiet.jpg" alt="">
+                <a href="#" data-toggle="modal" data-target="#exampleModal"><span>NGUYEN TUAN KIET</span></a>
             </div>
             <div class="swiper-slide">
-                <img src="<%=request.getContextPath()%>/Views/Web/image_product/outfit7.jpg" alt="">
-                <a href="#" data-toggle="modal" data-target="#exampleModal"><span>SHOP THIS LOOK</span></a>
-            </div>
-            <div class="swiper-slide">
-                <img src="<%=request.getContextPath()%>/Views/Web/image_product/outfit8.jpg" alt="">
-                <a href="#" data-toggle="modal" data-target="#exampleModal"><span>SHOP THIS LOOK</span></a>
-            </div>
-            <div class="swiper-slide">
-                <img src="<%=request.getContextPath()%>/Views/Web/image_product/outfit9.jpg" alt="">
-                <a href="#" data-toggle="modal" data-target="#exampleModal"><span>SHOP THIS LOOK</span></a>
-            </div>
-            <div class="swiper-slide">
-                <img src="<%=request.getContextPath()%>/Views/Web/image_product/outfit10.jpg" alt="">
-                <a href="#" data-toggle="modal" data-target="#exampleModal"><span>SHOP THIS LOOK</span></a>
+                <img src="<%=request.getContextPath()%>/Views/Web/image_product/long.jpg" alt="">
+                <a href="#" data-toggle="modal" data-target="#exampleModal"><span>PHAM HOANG LONG</span></a>
             </div>
 
 

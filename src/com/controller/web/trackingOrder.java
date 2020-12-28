@@ -46,16 +46,11 @@ public class trackingOrder extends HttpServlet {
         queryDAO dao = new queryDAO();
         HttpSession session = request.getSession();
         String id= dao.idByEmail( (String) session.getAttribute("email"));
+
         List<TrackOrder> list1 = dao.trackOrder(id);
         List<TrackAllOrder> list1_1 = dao.trackingAllById(id);
-
         List<TrackOrder> list2 = dao.trackShip(id);
         List<TrackAllOrder> list2_1 = dao.trackShippingById(id);
-
-//        System.out.println("C2:" + list1);
-////        System.out.println("C2:" + list1_1);
-////        System.out.println("C2:" + list2);
-////        System.out.println("C2:" + list2_1);
 
         request.setAttribute("listAllOrder", list1);
         request.setAttribute("listAllOrderDetail", list1_1);

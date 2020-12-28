@@ -52,9 +52,7 @@
                             <input type="hidden" value="1" name="logout">
                             <button type="submit" title="Dang xuat"> <i class="fa fa-sign-out-alt"></i> </button>
                         </form>
-                        <form action="<%=request.getContextPath()%>/tracking-order" method="post">
-                            <button type="submit" title="Theo doi don hang"> <i class="fa fa-truck"></i> </button>
-                        </form>
+
                     </c:when>
                     <c:otherwise>
                         <a href="<%=request.getContextPath()%>/login-all" aria-label="Tài khoản"
