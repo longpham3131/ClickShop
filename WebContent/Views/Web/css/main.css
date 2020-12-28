@@ -25,6 +25,9 @@ body {
   background: #fff;
   position: initial !important;
 }
+button:focus{
+  outline: none;
+}
 
 section {
   margin-top: 40px;
@@ -49,15 +52,7 @@ section {
 }
 
 /* HEADER  */
-.header__logo {
-  flex-grow: 1;
-  text-align: right;
-}
 
-.header__icons {
-  flex-grow: 1;
-  text-align: right;
-}
 
 .header__icons a {
   color: black;
@@ -1198,6 +1193,10 @@ button.submit.check_out:hover {
   -ms-transition: 0.5s all;
 }
 
+button:focus {
+  outline: none !important;
+}
+
 .section_room_pay {
   margin-bottom: 2em;
 }
@@ -1387,4 +1386,5 @@ button.submit.check_out:hover {
 .loginTW .nav-pills .nav-item .link__login {
   border-right: 4px solid black;
 }
+
 /*# sourceMappingURL=main.css.map */
