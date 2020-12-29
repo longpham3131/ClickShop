@@ -45,6 +45,7 @@ public class fillAllDisplay extends HttpServlet {
 		HttpSession session = request.getSession();
 		if(request.getParameter("logout") != null) {
 			session.setAttribute("email", null);
+			session.setAttribute("authentic", null);
 		}
 		int index = 0;
 		if (txt == null) {
