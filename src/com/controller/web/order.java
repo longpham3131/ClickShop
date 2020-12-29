@@ -66,19 +66,12 @@ public class order extends HttpServlet {
                 System.out.println(maSP[i]+"--"+soLuong[i]+"--"+giaSP[i]);
             }
             String orderId= dao.initOrder(id, String.valueOf(sub), address, phone, name ) ; // add 1
-            if(orderId != null)
-            {
-                for(int i=0; i< d  ; i++) {
-                    if( dao.InsertDetailOrder(orderId,maSP[i],soLuong[i],giaSP[i],giaSP[i]) == false)
-                        System.out.println(" SAI ROI, SAI ROI, SAI ROI");
-                }
-                System.out.println("____");
-            }
+
         }
 
-        System.out.print("FSDFSDFSDF");
-        fillAllDisplay a = new fillAllDisplay();
-        a.doPost(request, response);
+//        System.out.print("FSDFSDFSDF");
+//        fillAllDisplay a = new fillAllDisplay();
+//        a.doPost(request, response);
     }
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {

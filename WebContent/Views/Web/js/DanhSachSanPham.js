@@ -29,6 +29,9 @@ class DanhSachSanPham {
             console.log("không tìm thấy Sản phẩm");
         }
     }
+    xoaTatCaSP() {
+        this.mangSP.splice(0);
+    }
     capNhat(sp) {
         var viTri = this.timViTri(sp.maSP);
         if (viTri > -1) {
