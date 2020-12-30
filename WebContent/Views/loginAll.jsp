@@ -57,7 +57,7 @@
 
 <%--<h1> -- <%=request.getAttribute("Message")%> ---</h1>--%>
 <div class="limiter">
-    <div class="container-login100" style="">
+    <div class="container-login100" style="background-image: url('<%=request.getContextPath()%>/Views/Web/image_product/banner__carousel_2.jpg');">
         <div class="wrap-login100">
             <form class="login100-form validate-form" action="${pageContext.request.contextPath}/login-all"
                   method="post">
@@ -66,7 +66,7 @@
 					</span>
 
                 <span class="login100-form-title p-b-34 p-t-27">
-						Login For All
+						Login
 					</span>
 
                 <div class="wrap-input100 validate-input" data-validate="Enter username">
@@ -79,12 +79,7 @@
                     <span class="focus-input100" data-placeholder="&#xf191;"></span>
                 </div>
 
-                <div class="contact100-form-checkbox">
-                    <input class="input-checkbox100" id="ckb1" type="checkbox" name="remember-me">
-                    <label class="label-checkbox100" for="ckb1">
-                        Remember me
-                    </label>
-                </div>
+
 
                 <div class="container-login100-form-btn mt-4">
                     <button class="login100-form-btn" type="submit">
@@ -93,12 +88,17 @@
                 </div>
             </form>
             <!-- Button to Open the Modal -->
-            <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#myModal">
-                Register
-            </button>
-            <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#myForgot">
-                Forgot Password
-            </button>
+            <div class="text-center">
+                <button type="button" style="background-color: transparent; padding: 10px 0; color: white" data-toggle="modal" data-target="#myModal">
+                    Register
+                </button>
+            </div>
+            <div class="text-center">
+                <button type="button" style="background-color: transparent; color: white " data-toggle="modal" data-target="#myForgot">
+                    Forgot Password
+                </button>
+            </div>
+
         </div>
     </div>
 
@@ -124,7 +124,7 @@
 
                         <div class="form-group col-6">
                             <label for="inpPass">Password:</label>
-                            <input type="pass" class="form-control" id="inpPass" name="passw"
+                            <input type="password" class="form-control" id="inpPass" name="passw"
                                    placeholder="Password">
                         </div>
                     </div>

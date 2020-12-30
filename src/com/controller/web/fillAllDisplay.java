@@ -59,8 +59,8 @@ public class fillAllDisplay extends HttpServlet {
 		request.setAttribute("from", request.getAttribute("from"));
 		request.setAttribute("thongbao", request.getAttribute("thongbao"));
 		System.out.print("9999 ");
+	//	response.sendRedirect("Vews/Web/index.jsp");
 		RequestDispatcher rq = request.getRequestDispatcher("Views/Web/index.jsp");
-//		RequestDispatcher rq = request.getRequestDispatcher("Views/Web/container/productShop.jsp");
 		rq.forward(request, response);
 	}
 

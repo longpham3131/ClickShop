@@ -58,7 +58,7 @@ public class forgot extends HttpServlet {
                 HttpSession session = request.getSession();
                 session.setAttribute("code", String.valueOf(randomNum) );
                 session.setAttribute("dem", "3");
-                session.setAttribute("mail", email );
+                session.setAttribute("email", email );
                 request.setAttribute("Message", resultMessage);
                 RequestDispatcher rq = request.getRequestDispatcher("Views/Web/container/EnterCode.jsp");
                 rq.forward(request, response);

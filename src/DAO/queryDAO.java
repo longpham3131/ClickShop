@@ -1075,6 +1075,7 @@ public class queryDAO {
 
     public String initOrder(String accid, String Subtotal, String address, String phone, String name) {
         try {
+            System.out.println(accid+Subtotal+address+phone+name);
             String queery = "insert into PurchaseOrder OUTPUT Inserted.PurchaseOrderId VALUES ('"+accid+"','"+Subtotal+"','"+address+"'," +
                     "'"+phone+"','Init',GETDATE(),'"+name+"','true')";
             conn = new MyDB().getConnection();
@@ -1217,4 +1218,6 @@ public class queryDAO {
         }
         return false;
     }
+
+
 }

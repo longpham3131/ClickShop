@@ -65,7 +65,11 @@ function giamSoLuong(maSP) {
 
 }
 
-
+// function deleteAllRow() {
+//     dssp.xoaTatCaSP();
+//     setLocalStorage();
+//     getLocalStorage();
+// }
 
 function deleteRow(maSP) {
     dssp.xoaSP(maSP);
@@ -128,6 +132,28 @@ function inputSP(mangSP) {
      content += ` <input type="text" value="${i}" name="dem">`;
     div.innerHTML = content;
 }
+
+function coutDownBackHome() {
+
+    var x = setInterval(function() {
+
+        // Find the distance between now and the count down date
+        var distance = 3;
+
+        // Time calculations for days, hours, minutes and seconds
+        var seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+        // Display the result in the element with id="demo"
+        document.getElementById("demo").innerHTML = seconds + "s ";
+
+        // If the count down is finished, write some text
+        if (distance < 0) {
+            clearInterval(x);
+            getMyEle("btnBackHome").onclick();
+        }
+    }, 1000);
+}
+
 //lấy dữ liệu từ localStorage
 
 function getLocalStorage() {

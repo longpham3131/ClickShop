@@ -25,6 +25,18 @@
 </head>
 
 <body>
+<%--<h1>${kq} </h1>--%>
+<c:if test="${kq == 1}">
+    <script> alert("DAT HANG thanh cong");</script>
+    <%  session.setAttribute("kq", "0"); %>
+
+</c:if>
+<c:if test="${kq == -1} ">
+    <%  session.setAttribute("kq", "0"); %>
+    <script> alert("DAT HANG that bai"); </script>
+</c:if>
+
+
 <div class="loader-wrapper">
     <span class="loader"><span class="loader-inner"></span></span>
 </div>
@@ -137,8 +149,6 @@
 <c:import url="./commom/footer.jsp"> </c:import>
 
 
-
-
 <!-- Thư viện hỗ trợ Jquery -->
 <script src="https://code.jquery.com/jquery-3.5.1.min.js"
         integrity="sha256-9/aliU8dGd2tb6OSsuzixeV4y/faTqgFtohetphbbj0=" crossorigin="anonymous"></script>
@@ -148,7 +158,7 @@
         integrity="sha384-ho+j7jyWK8fNQe+A12Hb8AhRq26LrZ/JpcUGGOn+Y7RsweNrtN/tE3MoK7ZeZDyx"
         crossorigin="anonymous"></script>
 <script>
-    $(window).on("load",function(){
+    $(window).on("load", function () {
         $(".loader-wrapper").fadeOut("slow");
     });
 </script>

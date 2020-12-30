@@ -61,29 +61,30 @@
                         <div class="creditly-wrapper wrapper">
                             <div class="information-wrapper">
                                 <div class="first-row form-group">
+                                    <c:forEach items="${fillTextBox}" var="info">
                                     <div class="controls">
                                         <label class="control-label">Họ và tên: </label>
                                         <input class="billing-address-name form-control" type="text" name="name"
-                                               placeholder="Họ và tên">
+                                              value="${info.firstName} ${info.lastName} ">
                                     </div>
                                     <div class="card_number_grids">
                                         <div class="card_number_grid_left">
                                             <div class="controls">
                                                 <label class="control-label">Số điện thoại :</label>
-                                                <input class="form-control" type="text" placeholder="Số điện thoại" name="phone">
+                                                <input class="form-control" type="text" placeholder="Số điện thoại" name="phone" value="${info.phone}">
                                             </div>
                                         </div>
                                         <div class="card_number_grid_right">
                                             <div class="controls">
                                                 <label class="control-label">Email: </label>
-                                                <input class="form-control" type="email" placeholder="Email" name="email">
+                                                <input class="form-control" type="email" placeholder="Email" name="email" value="${email}" disabled>
                                             </div>
                                         </div>
 
                                         <div class="card_number_grid_right">
                                             <div class="controls">
                                                 <label class="control-label">Địa chỉ: </label>
-                                                <input class="form-control" type="text" placeholder="Địa chỉ" name="address">
+                                                <input class="form-control" type="text" placeholder="Địa chỉ" name="address"  value="${info.address}">
                                             </div>
                                         </div>
 
@@ -92,9 +93,37 @@
 
                                         <div class="clear"></div>
                                     </div>
+                                    </c:forEach>
                                 </div>
                                 <div class="wrap-btnCheckOut text-right">
-                                    <button class="submit check_out">Thanh toán</button>
+                                    <button type="submit"  class="btn btn-success" data-toggle="modal" data-target="#myModal">Thanh toán</button>
+                                    <!-- The Modal -->
+                                    <div class="modal fade" id="myModal">
+                                        <div class="modal-dialog">
+                                            <div class="modal-content">
+
+                                                <!-- Modal Header -->
+                                                <div class="modal-header">
+                                                    <h4 class="modal-title">Thông báo</h4>
+                                                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                                                </div>
+
+                                                <!-- Modal body -->
+                                                <div class="modal-body">
+                                                    Chờ tí, đơn hàng đang thực hiện
+                                                </div>
+
+                                                <!-- Modal footer -->
+                                                <a href="<%=request.getContextPath()%>/check-out">
+                                                    <button type="button" class="btn btn-primary"  id="btnBackHome">
+                                                        <i class="fa fa-reply pl-1"></i> Hủy
+                                                    </button>
+                                                </a>
+
+                                            </div>
+                                        </div>
+                                    </div>
+
                                 </div>
 
                             </div>
