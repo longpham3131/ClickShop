@@ -41,81 +41,81 @@ You can't access this page if you use link-url and not login -->
 <!---- nhan thong bao phan hoi ---->
 <c:if test="${from == 'insert'}">
 	<c:if test="${(thongbao == 'true') && (from=='insert')}">
-		<script type="text/javascript">
-			alert('INSERT: Insert Complete');
-		</script>
-	</c:if>
-	<c:if test="${(thongbao == 'error') && (from=='insert')}">
-		<script type="text/javascript">
-			alert('INSERT: Error when insert');
-		</script>
-	</c:if>
-	<c:if test="${(thongbao == 'input') && (from=='insert')}">
-		<script type="text/javascript">
-			alert('INSERT: input not true');
-		</script>
-	</c:if>
+        <script type="text/javascript">
+            alert('Thêm: Thành công!!!');
+        </script>
+    </c:if>
+    <c:if test="${(thongbao == 'error') && (from=='insert')}">
+        <script type="text/javascript">
+            alert('Thêm thất bại : Tuổi của nhân viên phải lớn hơn 18');
+        </script>
+    </c:if>
+    <c:if test="${(thongbao == 'input') && (from=='insert')}">
+        <script type="text/javascript">
+            alert('Thêm: lỗi nhập liệu!!!');
+        </script>
+    </c:if>
 </c:if>
 <c:if test="${from == 'update'}">
 	<c:if test="${(thongbao == 'true')}">
-		<script type="text/javascript">
-			alert('update: update Complete');
-		</script>
-	</c:if>
-	<c:if test="${(thongbao == 'error') }">
-		<script type="text/javascript">
-			alert('update: Error when update');
-		</script>
-	</c:if>
-	<c:if test="${(thongbao == 'input')}">
-		<script type="text/javascript">
-			alert('update: input not true');
-		</script>
-	</c:if>
+        <script type="text/javascript">
+            alert('Cập nhật: Thành công!!!');
+        </script>
+    </c:if>
+    <c:if test="${(thongbao == 'error') }">
+        <script type="text/javascript">
+            alert('Cập nhật: Tuổi nhân viên phải lớn hơn 18');
+        </script>
+    </c:if>
+    <c:if test="${(thongbao == 'input')}">
+        <script type="text/javascript">
+            alert('Cập nhật: input not true');
+        </script>
+    </c:if>
 </c:if>
 <!-- delete -->
 <c:if test="${from == 'delete'}">
 	<c:if test="${(thongbao == 'true') && (from=='delete')}">
-		<script type="text/javascript">
-			alert('DELETE: delete Complete');
-		</script>
-	</c:if>
-	<c:if test="${(thongbao == 'error') && (from=='delete')}">
-		<script type="text/javascript">
-			alert('DELETE: Error when delete');
-		</script>
-	</c:if>
-	<c:if test="${(thongbao == 'input') && (from=='delete')}">
-		<script type="text/javascript">
-			alert('DELETE: input not true');
-		</script>
-	</c:if>
-	<c:if test="${(thongbao == 'notFound') && (from=='delete')}">
-		<script type="text/javascript">
-			alert('DELETE: Not Found this email');
-		</script>
-	</c:if>
+        <script type="text/javascript">
+            alert('Block/Unblock Thành công !!!');
+        </script>
+    </c:if>
+    <c:if test="${(thongbao == 'error') && (from=='delete')}">
+        <script type="text/javascript">
+            alert('Block/Unblock: Thất bại');
+        </script>
+    </c:if>
+    <c:if test="${(thongbao == 'input') && (from=='delete')}">
+        <script type="text/javascript">
+            alert('Block/Unblock: Hãy nhập đầy đủ dữ liệu');
+        </script>
+    </c:if>
+    <c:if test="${(thongbao == 'notFound') && (from=='delete')}">
+        <script type="text/javascript">
+            alert('Block/Unblock: Không tìm thấy email này');
+        </script>
+    </c:if>
 </c:if>
 
 <c:if test="${from == 'block'}">
 	<c:if test="${(thongbao == 'true') && (from=='block')}">
 		<script type="text/javascript">
-			alert('Block: Complete');
+			alert('Block: Thành công !!!');
 		</script>
 	</c:if>
 	<c:if test="${(thongbao == 'error') && (from=='block')}">
 		<script type="text/javascript">
-			alert('Block: Error when Block');
+			alert('Block: Lỗi xảy khi khi thực hiện');
 		</script>
 	</c:if>
 	<c:if test="${(thongbao == 'input') && (from=='block')}">
 		<script type="text/javascript">
-			alert('Block: input not true');
+			alert('Block: Lỗi input');
 		</script>
 	</c:if>
 	<c:if test="${(thongbao == 'notFound') && (from=='block')}">
 		<script type="text/javascript">
-			alert('Block: Not Found this id');
+			alert('Block: Không tìm thấy id');
 		</script>
 	</c:if>
 </c:if>
@@ -123,22 +123,22 @@ You can't access this page if you use link-url and not login -->
 <c:if test="${from == 'unblock'}">
 	<c:if test="${(thongbao == 'true') && (from=='unblock')}">
 		<script type="text/javascript">
-			alert('Unblock: Complete');
+			alert('Unblock: Thành công !!!');
 		</script>
 	</c:if>
 	<c:if test="${(thongbao == 'error') && (from=='block')}">
 		<script type="text/javascript">
-			alert('Block: Error when Block');
+			alert('Block: Lỗi xảy khi khi thực hiện');
 		</script>
 	</c:if>
 	<c:if test="${(thongbao == 'input') && (from=='block')}">
 		<script type="text/javascript">
-			alert('Block: input not true');
+			alert('Block: Lỗi input');
 		</script>
 	</c:if>
 	<c:if test="${(thongbao == 'notFound') && (from=='block')}">
 		<script type="text/javascript">
-			alert('Block: Not Found this id');
+			alert('Block: Không tìm thấy id');
 		</script>
 	</c:if>
 </c:if>
@@ -280,13 +280,13 @@ You can't access this page if you use link-url and not login -->
 													   value=""
 													   name="img">
 											</div>
-											<label for="genderlb"
+											<label for="genderlb1"
 												   class="col-sm-4 col-form-label">Giới tính sản phẩm
 												:</label>
 											<div class="col-sm-8">
 												<input type="text"
 													   class="form-control-plaintext"
-													   id="genderlb"
+													   id="genderlb1"
 													   value=""
 													   name="gender">
 											</div>
@@ -315,15 +315,15 @@ You can't access this page if you use link-url and not login -->
 							<!-------Ten-cot------ -->
 							<thead>
 							<tr>
-								<th>ID</th>
-								<th>Category</th>
-								<th>Product Name</th>
-								<th>Unit price</th>
-								<th>Like</th>
-								<th>Gender</th>
-								<th>Description</th>
-								<th>Available</th>
-								<th>Action</th>
+								<th>ID Sản Phẩm</th>
+								<th>Loại sản phẩm</th>
+								<th>Tên sản phẩm</th>
+								<th>Giá</th>
+								<th>Số lượt thích</th>
+								<th>Giới tính</th>
+								<th>Mô tả</th>
+								<th>Khả dụng</th>
+								<th>Chức năng</th>
 							</tr>
 							</thead>
 
@@ -352,7 +352,7 @@ You can't access this page if you use link-url and not login -->
 
 															<!-- Modal Header -->
 															<div class="modal-header">
-																<h4 class="modal-title">Profile</h4>
+																<h4 class="modal-title">Thông tin</h4>
 																<button type="button" class="close"
 																		data-dismiss="modal">&times;
 																</button>
@@ -364,9 +364,7 @@ You can't access this page if you use link-url and not login -->
 
 																<div class="form-group row">
 																	<label for="prodid"
-																		   class="col-sm-4 col-form-label">Product
-																		ID
-																		:</label>
+																		   class="col-sm-4 col-form-label">ID Sản phẩm :</label>
 																	<div class="col-sm-8">
 																		<input type="text" readonly
 																			   class="form-control-plaintext"
@@ -374,9 +372,7 @@ You can't access this page if you use link-url and not login -->
 																			   value="${row.productId}">
 																	</div>
 																	<label for="cateidlb"
-																		   class="col-sm-4 col-form-label">Sub
-																		Category
-																		:</label>
+																		   class="col-sm-4 col-form-label">Loại sản phẩm:</label>
 																	<div class="col-sm-8">
 																		<input type="text" readonly
 																			   class="form-control-plaintext"
@@ -384,7 +380,7 @@ You can't access this page if you use link-url and not login -->
 																			   value="${row.getSubCategoryId()}">
 																	</div>
 																	<label for="namelb"
-																		   class="col-sm-4 col-form-label">Name
+																		   class="col-sm-4 col-form-label">Tên sản phẩm
 																		:</label>
 																	<div class="col-sm-8">
 																		<input type="text" readonly
@@ -393,9 +389,7 @@ You can't access this page if you use link-url and not login -->
 																			   value="${row.getName()}">
 																	</div>
 																	<label for="pricelb"
-																		   class="col-sm-4 col-form-label">Unit
-																		Price
-																		:</label>
+																		   class="col-sm-4 col-form-label">Giá :</label>
 																	<div class="col-sm-8">
 																		<input type="text" readonly
 																			   class="form-control-plaintext"
@@ -403,8 +397,7 @@ You can't access this page if you use link-url and not login -->
 																			   value="${row.getUnitPrice()}">
 																	</div>
 																	<label for="likelb"
-																		   class="col-sm-4 col-form-label">Like
-																		:</label>
+																		   class="col-sm-4 col-form-label">Số lượt thích:</label>
 																	<div class="col-sm-8">
 																		<input type="text" readonly
 																			   class="form-control-plaintext"
@@ -412,8 +405,7 @@ You can't access this page if you use link-url and not login -->
 																			   value="${row.getLike()}">
 																	</div>
 																	<label for="deslb"
-																		   class="col-sm-4 col-form-label">Description
-																		:</label>
+																		   class="col-sm-4 col-form-label">Mô tả:</label>
 																	<div class="col-sm-8">
 																		<input type="hidden" readonly
 																			   class="form-control-plaintext"
@@ -432,21 +424,19 @@ You can't access this page if you use link-url and not login -->
 																				  readonly>${row.getDescription()} </textarea>
 																	</div>
 																	<label for="availb"
-																		   class="col-sm-4 col-form-label">Available
-																		:</label>
+																		   class="col-sm-4 col-form-label">Khả dụng:</label>
 																	<div class="col-sm-8">
 																		<input type="text" readonly
 																			   class="form-control-plaintext"
 																			   id="availb"
 																			   value="${row.getAvailable()}">
 																	</div>
-																	<label for="genderlb"
-																		   class="col-sm-4 col-form-label">Gender
-																		:</label>
+																	<label for="genderlb2"
+																		   class="col-sm-4 col-form-label">Giới tính :</label>
 																	<div class="col-sm-8">
 																		<input type="text" readonly
 																			   class="form-control-plaintext"
-																			   id="genderlb"
+																			   id="genderlb2"
 																			   value="${row.getGender()}">
 																	</div>
 																</div>
@@ -459,10 +449,10 @@ You can't access this page if you use link-url and not login -->
 																		data-toggle="modal"
 																		data-target="#productedit${row.productId}"
 																>
-																	Edit
+																	Chỉnh sửa
 																</button>
 																<button type="button" class="btn btn-danger"
-																		data-dismiss="modal">Close
+																		data-dismiss="modal">Đóng
 																</button>
 															</div>
 														</div>
@@ -478,7 +468,7 @@ You can't access this page if you use link-url and not login -->
 
 															<!-- Modal Header -->
 															<div class="modal-header">
-																<h4 class="modal-title">Edit Product</h4>
+																<h4 class="modal-title">Chỉnh sửa sản phẩm</h4>
 																<button type="button" class="close"
 																		data-dismiss="modal">&times;
 																</button>
@@ -488,12 +478,10 @@ You can't access this page if you use link-url and not login -->
 															<div class="modal-body">
 
 																<form action="${pageContext.request.contextPath}/update-product"
-																	  method="post" id="formEdit">
+																	  method="post" id="formEdit${row.productId}">
 																	<div class="form-group row">
 																		<label for="prodid"
-																			   class="col-sm-4 col-form-label">Product
-																			ID
-																			:</label>
+																			   class="col-sm-4 col-form-label">ID Sản phẩm:</label>
 																		<div class="col-sm-8">
 																			<input type="text"
 																				   class="form-control-plaintext"
@@ -502,9 +490,7 @@ You can't access this page if you use link-url and not login -->
 																				   name="productid">
 																		</div>
 																		<label for="cateidlb"
-																			   class="col-sm-4 col-form-label">Sub
-																			Category
-																			:</label>
+																			   class="col-sm-4 col-form-label">Loại sản phẩm :</label>
 																		<div class="col-sm-8">
 																			<input type="text"
 																				   class="form-control-plaintext"
@@ -513,8 +499,7 @@ You can't access this page if you use link-url and not login -->
 																				   name="subcategory">
 																		</div>
 																		<label for="namelb"
-																			   class="col-sm-4 col-form-label">Name
-																			:</label>
+																			   class="col-sm-4 col-form-label">Tên sản phẩm :</label>
 																		<div class="col-sm-8">
 																			<input type="text"
 																				   class="form-control-plaintext"
@@ -523,9 +508,7 @@ You can't access this page if you use link-url and not login -->
 																				   name="name">
 																		</div>
 																		<label for="pricelb"
-																			   class="col-sm-4 col-form-label">Unit
-																			Price
-																			:</label>
+																			   class="col-sm-4 col-form-label">Giá :</label>
 																		<div class="col-sm-8">
 																			<input type="text"
 																				   class="form-control-plaintext"
@@ -534,8 +517,7 @@ You can't access this page if you use link-url and not login -->
 																				   name="unitprice">
 																		</div>
 																		<label for="likelb"
-																			   class="col-sm-4 col-form-label">Like
-																			:</label>
+																			   class="col-sm-4 col-form-label">Số lượt thích:</label>
 																		<div class="col-sm-8">
 																			<input type="text"
 																				   class="form-control-plaintext"
@@ -544,8 +526,7 @@ You can't access this page if you use link-url and not login -->
 																			>
 																		</div>
 																		<label for="deslb"
-																			   class="col-sm-4 col-form-label">Description
-																			:</label>
+																			   class="col-sm-4 col-form-label">Mô tả:</label>
 																		<div class="col-sm-8">
 																			<input type="hidden"
 																				   class="form-control-plaintext"
@@ -567,8 +548,7 @@ You can't access this page if you use link-url and not login -->
 																			>${row.getDescription()} </textarea>
 																		</div>
 																		<label for="availb"
-																			   class="col-sm-4 col-form-label">Available
-																			:</label>
+																			   class="col-sm-4 col-form-label">Khả dụng:</label>
 																		<div class="col-sm-8">
 																			<input type="text"
 																				   class="form-control-plaintext"
@@ -576,30 +556,30 @@ You can't access this page if you use link-url and not login -->
 																				   value="${row.getAvailable()}"
 																				   name="available">
 																		</div>
-																		<label for="genderlb"
-																			   class="col-sm-4 col-form-label">Gender
+																		<label for="genderlb3"
+																			   class="col-sm-4 col-form-label">Giới tính
 																			:</label>
 																		<div class="col-sm-8">
 																			<input type="text"
 																				   class="form-control-plaintext"
-																				   id="genderlb"
+																				   id="genderlb3"
 																				   value="${row.getGender()}"
 																				   name="gender">
 																		</div>
 
 																	</div>
-																	<button type="submit" class="btn btn-success">
-																		Update
-																	</button>
+																	
 																</form>
 
 
 															</div>
 															<!-- Modal footer -->
 															<div class="modal-footer">
-
+																<button type="submit" form="formEdit${row.productId}" class="btn btn-success">
+																		Cập nhật
+																	</button>
 																<button type="button" class="btn btn-danger"
-																		data-dismiss="modal">Close
+																		data-dismiss="modal">Đóng
 																</button>
 															</div>
 														</div>
@@ -618,14 +598,14 @@ You can't access this page if you use link-url and not login -->
 															<div class="modal-body">
 																<form action="${pageContext.request.contextPath}/block-product"
 																	  method="post">
-																	<h4 class="modal-title">Are you sure?
-																		Product name:${row.getName()} </h4>
+																	<h4 class="modal-title">Bạn có chắc muốn Block 
+																		sản phẩm :${row.getName()} </h4>
 																	<input type="hidden" name="id"
 																		   value="${row.productId}"/>
 																	<input type="submit" value="Block!"
 																		   class="btn btn-warning"/>
 																	<button type="button" class="btn btn-danger"
-																			data-dismiss="modal">Close
+																			data-dismiss="modal">Đóng
 																	</button>
 																</form>
 															</div>

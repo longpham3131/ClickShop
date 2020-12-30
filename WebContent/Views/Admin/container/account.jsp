@@ -31,34 +31,34 @@
 <c:if test="${from == 'insert'}">
     <c:if test="${(thongbao == 'true') && (from=='insert')}">
         <script type="text/javascript">
-            alert('INSERT: Insert Complete');
+            alert('Thêm: Thành công!!!');
         </script>
     </c:if>
     <c:if test="${(thongbao == 'error') && (from=='insert')}">
         <script type="text/javascript">
-            alert('INSERT FAILURE : Tuổi của nhân viên phải lớn hơn 18');
+            alert('Thêm thất bại : Tuổi của nhân viên phải lớn hơn 18');
         </script>
     </c:if>
     <c:if test="${(thongbao == 'input') && (from=='insert')}">
         <script type="text/javascript">
-            alert('INSERT: input not true');
+            alert('Thêm: lỗi nhập liệu!!!');
         </script>
     </c:if>
 </c:if>
 <c:if test="${from == 'update'}">
     <c:if test="${(thongbao == 'true')}">
         <script type="text/javascript">
-            alert('update: update Complete');
+            alert('Cập nhật: Thành công!!!');
         </script>
     </c:if>
     <c:if test="${(thongbao == 'error') }">
         <script type="text/javascript">
-            alert('UPDATE FAILURE: Tuổi nhân viên phải lớn hơn 18');
+            alert('Cập nhật: Tuổi nhân viên phải lớn hơn 18');
         </script>
     </c:if>
     <c:if test="${(thongbao == 'input')}">
         <script type="text/javascript">
-            alert('update: input not true');
+            alert('Cập nhật: input not true');
         </script>
     </c:if>
 </c:if>
@@ -66,44 +66,44 @@
 <c:if test="${from == 'delete'}">
     <c:if test="${(thongbao == 'true') && (from=='delete')}">
         <script type="text/javascript">
-            alert('Block/Unblock completed');
+            alert('Block/Unblock Thành công !!!');
         </script>
     </c:if>
     <c:if test="${(thongbao == 'error') && (from=='delete')}">
         <script type="text/javascript">
-            alert('Block/Unblock: Error');
+            alert('Block/Unblock: Thất bại');
         </script>
     </c:if>
     <c:if test="${(thongbao == 'input') && (from=='delete')}">
         <script type="text/javascript">
-            alert('Block/Unblock: Input = null');
+            alert('Block/Unblock: Hãy nhập đầy đủ dữ liệu');
         </script>
     </c:if>
     <c:if test="${(thongbao == 'notFound') && (from=='delete')}">
         <script type="text/javascript">
-            alert('Block/Unblock: Not Found this email');
+            alert('Block/Unblock: Không tìm thấy email này');
         </script>
     </c:if>
 </c:if>
 <c:if test="${from == 'reset'}">
     <c:if test="${(thongbao == 'true')}">
         <script type="text/javascript">
-            alert('Reset completed');
+            alert('Reset : thành công!!!');
         </script>
     </c:if>
     <c:if test="${(thongbao == 'error')}">
         <script type="text/javascript">
-            alert('Reset error');
+            alert('Reset : lỗi!!!');
         </script>
     </c:if>
     <c:if test="${(thongbao == 'input')}">
         <script type="text/javascript">
-            alert('Reset Input = null');
+            alert('Reset : Hãy nhập đầy đủ dữ liệu');
         </script>
     </c:if>
     <c:if test="${(thongbao == 'notFound') && (from=='delete')}">
         <script type="text/javascript">
-            alert('Reset: Not Found this email');
+            alert('Reset: Không tìm thấy email này');
         </script>
     </c:if>
 </c:if>
@@ -406,10 +406,10 @@
                                                                 <button type="button" class="btn btn-primary"
                                                                         data-toggle="modal"
                                                                         data-target="#editAccount${listAcc.accountId}">
-                                                                    Edit
+                                                                    Chỉnh sửa
                                                                 </button>
                                                                 <button type="button" class="btn btn-danger"
-                                                                        data-dismiss="modal">Close
+                                                                        data-dismiss="modal">Đóng
                                                                 </button>
                                                             </div>
                                                         </div>
@@ -626,21 +626,19 @@
         <div class="modal-dialog" role="document">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalLabel">Ready to
-                        Leave?</h5>
+                    <h5 class="modal-title" id="exampleModalLabel">Bạn có chắc sẽ muốn đăng xuất?</h5>
                     <button class="close" type="button" data-dismiss="modal"
                             aria-label="Close">
                         <span aria-hidden="true">×</span>
                     </button>
                 </div>
-                <div class="modal-body">Select "Logout" below if you are
-                    ready to end your current session.
+                <div class="modal-body">Chọn "đăng xuất" nếu bạn đã sẵn sàng
                 </div>
                 <div class="modal-footer">
                     <button class="btn btn-secondary" type="button"
-                            data-dismiss="modal">Cancel
+                            data-dismiss="modal">Hủy
                     </button>
-                    <a class="btn btn-primary" href="../login.jsp">Logout</a>
+                    <a class="btn btn-primary" href="../login.jsp">Đăng xuất</a>
                 </div>
             </div>
         </div>

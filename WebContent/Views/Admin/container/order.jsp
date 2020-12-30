@@ -42,34 +42,34 @@ You can't access this page if you use link-url and not login -->
 <c:if test="${from == 'insert'}">
     <c:if test="${(thongbao == 'true') && (from=='insert')}">
         <script type="text/javascript">
-            alert('INSERT: Insert Complete');
+            alert('Thêm: Thành công!!!');
         </script>
     </c:if>
     <c:if test="${(thongbao == 'error') && (from=='insert')}">
         <script type="text/javascript">
-            alert('INSERT: Error when insert');
+            alert('Thêm thất bại : Tuổi của nhân viên phải lớn hơn 18');
         </script>
     </c:if>
     <c:if test="${(thongbao == 'input') && (from=='insert')}">
         <script type="text/javascript">
-            alert('INSERT: input not true');
+            alert('Thêm: lỗi nhập liệu!!!');
         </script>
     </c:if>
 </c:if>
 <c:if test="${from == 'update'}">
     <c:if test="${(thongbao == 'true')}">
         <script type="text/javascript">
-            alert('update: update Complete');
+            alert('Cập nhật: Thành công!!!');
         </script>
     </c:if>
     <c:if test="${(thongbao == 'error') }">
         <script type="text/javascript">
-            alert('update: Error when update');
+            alert('Cập nhật: Tuổi nhân viên phải lớn hơn 18');
         </script>
     </c:if>
     <c:if test="${(thongbao == 'input')}">
         <script type="text/javascript">
-            alert('update: input not true');
+            alert('Cập nhật: input not true');
         </script>
     </c:if>
 </c:if>
@@ -77,22 +77,22 @@ You can't access this page if you use link-url and not login -->
 <c:if test="${from == 'delete'}">
     <c:if test="${(thongbao == 'true') && (from=='delete')}">
         <script type="text/javascript">
-            alert('DELETE: delete Complete');
+            alert('Block/Unblock Thành công !!!');
         </script>
     </c:if>
     <c:if test="${(thongbao == 'error') && (from=='delete')}">
         <script type="text/javascript">
-            alert('DELETE: Error when delete');
+            alert('Block/Unblock: Thất bại');
         </script>
     </c:if>
     <c:if test="${(thongbao == 'input') && (from=='delete')}">
         <script type="text/javascript">
-            alert('DELETE: input not true');
+            alert('Block/Unblock: Hãy nhập đầy đủ dữ liệu');
         </script>
     </c:if>
     <c:if test="${(thongbao == 'notFound') && (from=='delete')}">
         <script type="text/javascript">
-            alert('DELETE: Not Found this email');
+            alert('Block/Unblock: Không tìm thấy email này');
         </script>
     </c:if>
 </c:if>
@@ -134,12 +134,12 @@ You can't access this page if you use link-url and not login -->
                             <!-------Ten-cot------ -->
                             <thead>
                             <tr>
-                                <th>ID</th>
-                                <th>Created Date</th>
+                                <th>ID đơn hàng</th>
+                                <th>Ngày tạo</th>
                                 <th>Email</th>
                                 <th>Sub </th>
-                                <th>Address</th>
-                                <th>Phone</th>
+                                <th>Địa chỉ</th>
+                                <th>Số điện thoại</th>
                             </tr>
                             </thead>
 
@@ -167,11 +167,11 @@ You can't access this page if you use link-url and not login -->
             <ul class="nav nav-tabs" id="myTab" role="tablist">
                 <li class="nav-item"><a class="nav-link active" id="home-tab"
                                         data-toggle="tab" href="#insert" role="tab" aria-controls="home"
-                                        aria-selected="true">Insert</a></li>
+                                        aria-selected="true">Thêm</a></li>
 
                 <li class="nav-item"><a class="nav-link" id="profile-tab"
                                         data-toggle="tab" href="#update" role="tab"
-                                        aria-controls="profile" aria-selected="false">Update</a></li>
+                                        aria-controls="profile" aria-selected="false">Cập nhật</a></li>
 
                 <%-- <li class="nav-item"><a class="nav-link" id="contact-tab"
                     data-toggle="tab" href="#delete" role="tab"
@@ -217,19 +217,18 @@ You can't access this page if you use link-url and not login -->
             <div class="modal-dialog" role="document">
                 <div class="modal-content">
                     <div class="modal-header">
-                        <h5 class="modal-title" id="exampleModalLabel">Ready to
-                            Leave?</h5>
+                        <h5 class="modal-title" id="exampleModalLabel">Bạn có chắc sẽ muốn đăng xuất?</h5>
                         <button class="close" type="button" data-dismiss="modal"
                                 aria-label="Close">
-                            <span aria-hidden="true">ï¿½</span>
+                            <span aria-hidden="true">×</span>
                         </button>
                     </div>
-                    <div class="modal-body">Select "Logout" below if you are
-                        ready to end your current session.</div>
+                    <div class="modal-body">Chọn "đăng xuất" nếu bạn đã sẵn sàng</div>
                     <div class="modal-footer">
                         <button class="btn btn-secondary" type="button"
-                                data-dismiss="modal">Cancel</button>
-                        <a class="btn btn-primary" href="../login.jsp">Logout</a>
+                                data-dismiss="modal">Hủy
+                    </button>
+                    <a class="btn btn-primary" href="../login.jsp">Đăng xuất</a>
                     </div>
                 </div>
             </div>
