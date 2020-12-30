@@ -51,14 +51,14 @@ public class forgot extends HttpServlet {
             queryDAO dao = new queryDAO();
             if (dao.accountExists(email)) {
                 int randomNum = ThreadLocalRandom.current().nextInt(1000, 9999);
-                String mess = "Yout code is: "+randomNum;
-                EmailUtility.sendEmail(host, port, user, pass, email, "ClickShop",
+                String mess = "Yout code is: <h2>"+randomNum+"</h2>";
+                EmailUtility.sendEmail(host, port, user, pass, email, "ClickShop Forgot Password",
                         mess);
                 resultMessage = "The e-mail was sent successfully";
                 HttpSession session = request.getSession();
                 session.setAttribute("code", String.valueOf(randomNum) );
                 session.setAttribute("dem", "3");
-                session.setAttribute("mail", email );
+                session.setAttribute("email", email );
                 request.setAttribute("Message", resultMessage);
                 RequestDispatcher rq = request.getRequestDispatcher("Views/Web/container/EnterCode.jsp");
                 rq.forward(request, response);

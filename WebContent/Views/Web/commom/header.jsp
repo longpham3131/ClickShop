@@ -377,6 +377,8 @@
                         </table>
                         <div class="text-right pt-3">
                             <h3>Tổng tiền: <span id="totalPrice">0đ</span></h3>
+                            <div id="divIp">
+                            </div>
                         </div>
                     </div>
                     <!-- Modal footer -->
@@ -400,9 +402,7 @@
                                     </button>
                                 </a>
                             </c:otherwise>
-
                         </c:choose>
-
                     </div>
                 </div>
             </div>

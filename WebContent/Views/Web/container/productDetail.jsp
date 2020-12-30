@@ -226,10 +226,8 @@
 
 <script src="<%=request.getContextPath()%>/Views/Web/js/sanPham.js"></script>
 <script src="<%=request.getContextPath()%>/Views/Web/js/DanhSachSanPham.js"></script>
-
 <script src="<%=request.getContextPath()%>/Views/Web/js/addToCart.js"></script>
 <script src="<%=request.getContextPath()%>/Views/Web/js/checkOut.js"></script>
-
 
 </body>
 

@@ -398,8 +398,11 @@
 <script src="<%=request.getContextPath()%>/Views/Web/js/main.js"></script>
 <script src="<%=request.getContextPath()%>/Views/Web/js/util.js"></script>
 
+<script src="<%=request.getContextPath()%>/Views/Web/js/sanPham.js"></script>
+<script src="<%=request.getContextPath()%>/Views/Web/js/DanhSachSanPham.js"></script>
+<script src="<%=request.getContextPath()%>/Views/Web/js/checkOut.js"></script>
 
-<%--<script src="<%=request.getContextPath()%>/Views/Web/js/checkOut.js"></script>--%>
+
 </body>
 
 </html>

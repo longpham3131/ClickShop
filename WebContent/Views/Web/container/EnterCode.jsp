@@ -96,6 +96,7 @@
                         <div class="form-group">
                             <label>Xác thực thành công<br></label>
                         </div>
+                        <input type="hidden" name="email" value="${email}">
                         <div class="form-group row">
                             <label for="inpPass" class="col-sm-4 col-form-label">Mật khẩu mới:</label>
                             <div class="col-sm-4">

@@ -25,6 +25,10 @@
 </head>
 
 <body>
+<%--<h1>${kq} </h1>--%>
+
+
+
 <div class="loader-wrapper">
     <span class="loader"><span class="loader-inner"></span></span>
 </div>
@@ -137,8 +141,6 @@
 <c:import url="./commom/footer.jsp"> </c:import>
 
 
-
-
 <!-- Thư viện hỗ trợ Jquery -->
 <script src="https://code.jquery.com/jquery-3.5.1.min.js"
         integrity="sha256-9/aliU8dGd2tb6OSsuzixeV4y/faTqgFtohetphbbj0=" crossorigin="anonymous"></script>
@@ -147,8 +149,27 @@
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-ho+j7jyWK8fNQe+A12Hb8AhRq26LrZ/JpcUGGOn+Y7RsweNrtN/tE3MoK7ZeZDyx"
         crossorigin="anonymous"></script>
+
+<script src="<%=request.getContextPath()%>/Views/Web/js/sanPham.js"></script>
+<script src="<%=request.getContextPath()%>/Views/Web/js/DanhSachSanPham.js"></script>
+<script src="<%=request.getContextPath()%>/Views/Web/js/checkOut.js"></script>
+<c:if test="${kq == 1}">
+
+<%--Xóa giỏ hàng sau khi đặt hàng thành công --%>
+<script> alert("Đặt hàng thành công");</script>
 <script>
-    $(window).on("load",function(){
+    dssp.xoaTatCaSP();
+    setLocalStorage();
+    getLocalStorage();
+</script>
+        <%  session.setAttribute("kq", "0"); %>
+</c:if>
+<c:if test="${kq == -1} ">
+        <%  session.setAttribute("kq", "0"); %>
+<script> alert("Đặt hàng thất bại"); </script>
+</c:if>
+<script>
+    $(window).on("load", function () {
         $(".loader-wrapper").fadeOut("slow");
     });
 </script>

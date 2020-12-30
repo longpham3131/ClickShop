@@ -65,11 +65,11 @@ function giamSoLuong(maSP) {
 
 }
 
-// function deleteAllRow() {
-//     dssp.xoaTatCaSP();
-//     setLocalStorage();
-//     getLocalStorage();
-// }
+function deleteAllRow() {
+    dssp.xoaTatCaSP();
+    setLocalStorage();
+    getLocalStorage();
+}
 
 function deleteRow(maSP) {
     dssp.xoaSP(maSP);
@@ -86,7 +86,6 @@ function hienThiDSSP(mangSP) {
         <td class="invert-image">
             <a href="../container/productDetail.jsp">
                 <img src="${item.anhSP}" alt=" " class="img-responsive">
-
                 <div>${item.tenSP}</div>
 
             </a>
@@ -123,13 +122,13 @@ function inputSP(mangSP) {
     var i = 0;
     mangSP.map(function (item, index) {
         content += `
-           <input type="text" value="${item.maSP}" name="maSP${i}">
-           <input type="text" value="${item.soLuong}" name="soLuong${i}">
-           <input type="text" value="${item.giaSP}" name="giaSP${i}">
+           <input type="hidden" value="${item.maSP}" name="maSP${i}">
+           <input type="hidden" value="${item.soLuong}" name="soLuong${i}">
+           <input type="hidden" value="${item.giaSP}" name="giaSP${i}">
         `;
         i++;
        })
-     content += ` <input type="text" value="${i}" name="dem">`;
+     content += ` <input type="hidden" value="${i}" name="dem">`;
     div.innerHTML = content;
 }
 
