@@ -29,13 +29,11 @@
 <c:if test="${kq == 1}">
     <script> alert("DAT HANG thanh cong");</script>
     <%  session.setAttribute("kq", "0"); %>
-
 </c:if>
 <c:if test="${kq == -1} ">
     <%  session.setAttribute("kq", "0"); %>
     <script> alert("DAT HANG that bai"); </script>
 </c:if>
-
 
 <div class="loader-wrapper">
     <span class="loader"><span class="loader-inner"></span></span>

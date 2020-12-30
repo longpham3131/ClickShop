@@ -77,7 +77,7 @@
                                         <div class="card_number_grid_right">
                                             <div class="controls">
                                                 <label class="control-label">Email: </label>
-                                                <input class="form-control" type="email" placeholder="Email" name="email" value="${email}" disabled>
+                                                <input class="form-control" type="email" placeholder="Email" name="email" value="${email}" readonly>
                                             </div>
                                         </div>
 
