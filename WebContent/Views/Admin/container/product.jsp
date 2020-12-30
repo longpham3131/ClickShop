@@ -168,21 +168,22 @@ You can't access this page if you use link-url and not login -->
 			<!--  TABLE PRODUCT ----->
 			<div class="card shadow mb-4">
 				<div class="card-header py-3">
-					<form action="${pageContext.request.contextPath}/fill-All-Product"
-						  method="post" id="RefreshProduct">
-						<input type="hidden" value="Refresh data">
-					</form>
+					<h6 class="m-0 font-weight-bold text-primary"
+						style="display: inline; float: left; padding-top: 6px">Danh sách sản phẩm</h6>
+					<!-- Refresh Databa -->
+					<div style=" padding-left: 5%; display: inline; width: 30%; float: left">
+						<form action="${pageContext.request.contextPath}/fill-All-Product"
+							  method="post">
+							<button type="submit" class="btn btn-warning"><i class="fa fa-undo"></i> Tải lại bảng
+							</button>
+						</form>
+					</div>
 
+					<!-- Button to Open the Modal -->
 					<button type="button" class="btn btn-success" style="width: 15%; display:inline; float: right;"
 							data-toggle="modal"
 							data-target="#addProduct">
-						<i class="fa fa-plus mr-2"></i> Add Product
-					</button>
-					<button type="submit" class="btn btn-success" style="width: 15%; display:inline; float: right;"
-							data-toggle="modal"
-							form="RefreshProduct">
-
-						<i class="fas fa-sync mr-2"></i> Refresh data
+						<i class="fa fa-plus mr-2"></i> Thêm sản phẩm
 					</button>
 					<div class="modal" id="addProduct">
 						<div class="modal-dialog">
@@ -190,21 +191,19 @@ You can't access this page if you use link-url and not login -->
 
 								<!-- Modal Header -->
 								<div class="modal-header">
-									<h4 class="modal-title">Add Product</h4>
+									<h4 class="modal-title">Thêm sản phẩm</h4>
 									<button type="button" class="close"
 											data-dismiss="modal">&times;
 									</button>
 								</div>
-
 								<!-- Modal body -->
 								<div class="modal-body">
-
 									<form action="${pageContext.request.contextPath}/insert-product"
 										  method="post" id="formAdd">
 										<div class="form-group">
-											<label for="cateidlb">Sub Category :</label>
+											<label for="cateidlbAdd">Loại sản phẩm :</label>
 
-											<select id="cateidlb" class="form-control"
+											<select id="cateidlbAdd" class="form-control"
 													name="subcategory">
 
 												<c:forEach items="${listCategory}" var="cate">
@@ -217,33 +216,18 @@ You can't access this page if you use link-url and not login -->
 											</select>
 										</div>
 										<div class="form-group row">
-
-											<%-- <label for="cateidlb"
-                                                   class="col-sm-4 col-form-label">Sub Category
-                                                :</label>
-                                            <div class="col-sm-8">
-                                                <input type="text"
-                                                       class="form-control-plaintext"
-                                                       id="cateidlb"
-                                                       value=""
-                                                       name="subcategory">
-                                            </div> --%>
 											<label for="namelb"
-												   class="col-sm-4 col-form-label">Name
+												   class="col-sm-4 col-form-label">Tên sản phẩm
 												:</label>
 											<div class="col-sm-8">
-												<input type="text"
-													   class="form-control-plaintext"
-													   id="namelb"
-													   value=""
-													   name="name">
+												<input type="text" class="form-control" id="namelb" name="name">
 											</div>
 											<label for="pricelb"
-												   class="col-sm-4 col-form-label">Unit Price
+												   class="col-sm-4 col-form-label">Đơn giá
 												:</label>
 											<div class="col-sm-8">
 												<input type="text"
-													   class="form-control-plaintext"
+													   class="form-control"
 													   id="pricelb"
 													   value=""
 													   name="unitprice">
@@ -253,17 +237,17 @@ You can't access this page if you use link-url and not login -->
 												:</label>
 											<div class="col-sm-8">
 												<input type="text"
-													   class="form-control-plaintext"
+													   class="form-control"
 													   id="likelb"
 													   value=""
 												>
 											</div>
 											<label for="deslb"
-												   class="col-sm-4 col-form-label">Description
+												   class="col-sm-4 col-form-label">Mô tả sản phẩm
 												:</label>
 											<div class="col-sm-8">
 												<input type="hidden"
-													   class="form-control-plaintext"
+													   class="form-control"
 													   id="addProdip"
 													   value=""
 													   name="description">
@@ -287,7 +271,7 @@ You can't access this page if you use link-url and not login -->
 													   name="available">
 											</div>
 											<label for="img"
-												   class="col-sm-4 col-form-label">Image
+												   class="col-sm-4 col-form-label">Link ảnh
 												:</label>
 											<div class="col-sm-8">
 												<input type="text"
@@ -297,7 +281,7 @@ You can't access this page if you use link-url and not login -->
 													   name="img">
 											</div>
 											<label for="genderlb"
-												   class="col-sm-4 col-form-label">Gender
+												   class="col-sm-4 col-form-label">Giới tính sản phẩm
 												:</label>
 											<div class="col-sm-8">
 												<input type="text"
@@ -307,18 +291,18 @@ You can't access this page if you use link-url and not login -->
 													   name="gender">
 											</div>
 										</div>
-										<button type="submit" class="btn btn-success">
-											Add Product
-										</button>
+
 									</form>
 								</div>
 							</div>
 
 							<!-- Modal footer -->
 							<div class="modal-footer">
-
+								<button type="submit" class="btn btn-success" form="formAdd">
+									Thêm sản phẩm
+								</button>
 								<button type="button" class="btn btn-danger"
-										data-dismiss="modal">Close
+										data-dismiss="modal">Đóng
 								</button>
 							</div>
 						</div>
@@ -682,43 +666,6 @@ You can't access this page if you use link-url and not login -->
 			</div>
 			<!-- ---- END Of TABLE -- -->
 
-			<!-------------- Them xoa sua !!! Can Design lai !! ------------ -->
-
-			<ul class="nav nav-tabs" id="myTab" role="tablist">
-				<li class="nav-item"><a class="nav-link active" id="home-tab"
-										data-toggle="tab" href="#insert" role="tab" aria-controls="home"
-										aria-selected="true">Insert</a></li>
-
-				<li class="nav-item"><a class="nav-link" id="profile-tab"
-										data-toggle="tab" href="#update" role="tab"
-										aria-controls="profile" aria-selected="false">Update</a></li>
-
-				<%-- <li class="nav-item"><a class="nav-link" id="contact-tab"
-                    data-toggle="tab" href="#delete" role="tab"
-                    aria-controls="contact" aria-selected="false">Delete</a></li> --%>
-			</ul>
-
-			<div class="tab-content" id="myTabContent">
-				<div class="tab-pane fade show active" id="insert" role="tabpanel"
-					 aria-labelledby="home-tab">
-					<c:import url="product/insert.jsp"></c:import>
-				</div>
-				<div class="tab-pane fade" id="update" role="tabpanel"
-					 aria-labelledby="profile-tab">
-					<c:import url="product/update.jsp"></c:import>
-				</div>
-				<%-- <div class="tab-pane fade" id="delete" role="tabpanel"
-                    aria-labelledby="contact-tab">
-                    <c:import url="product/delete.jsp"></c:import>
-                </div>  --%>
-
-				<!--------------END Them xoa sua  ------------ -->
-
-
-				<!-- Footer -->
-				<c:import url="../commom/footer.html"/>
-				<!-- End of Footer -->
-			</div>
 			<!-- End of Content Wrapper -->
 		</div>
 
