@@ -26,14 +26,7 @@
 
 <body>
 <%--<h1>${kq} </h1>--%>
-<c:if test="${kq == 1}">
-    <script> alert("DAT HANG thanh cong");</script>
-    <%  session.setAttribute("kq", "0"); %>
-</c:if>
-<c:if test="${kq == -1} ">
-    <%  session.setAttribute("kq", "0"); %>
-    <script> alert("DAT HANG that bai"); </script>
-</c:if>
+
 
 <div class="loader-wrapper">
     <span class="loader"><span class="loader-inner"></span></span>
@@ -155,6 +148,25 @@
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-ho+j7jyWK8fNQe+A12Hb8AhRq26LrZ/JpcUGGOn+Y7RsweNrtN/tE3MoK7ZeZDyx"
         crossorigin="anonymous"></script>
+
+<script src="<%=request.getContextPath()%>/Views/Web/js/sanPham.js"></script>
+<script src="<%=request.getContextPath()%>/Views/Web/js/DanhSachSanPham.js"></script>
+<script src="<%=request.getContextPath()%>/Views/Web/js/checkOut.js"></script>
+<c:if test="${kq == 1}">
+
+<%--Xóa giỏ hàng sau khi đặt hàng thành công --%>
+<script> alert("Đặt hàng thành công");</script>
+<script>
+    dssp.xoaTatCaSP();
+    setLocalStorage();
+    getLocalStorage();
+</script>
+        <%  session.setAttribute("kq", "0"); %>
+</c:if>
+<c:if test="${kq == -1} ">
+        <%  session.setAttribute("kq", "0"); %>
+<script> alert("Đặt hàng thất bại"); </script>
+</c:if>
 <script>
     $(window).on("load", function () {
         $(".loader-wrapper").fadeOut("slow");

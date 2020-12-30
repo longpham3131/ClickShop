@@ -358,7 +358,7 @@
                         <div class="d-sm-flex justify-content-end mb-4">
 
                             <h4 class="mt-sm-0 mt-3">Hiện tại có :
-                                <span id="soLuongSanPham">3 </span> sản phẩm
+                                <span id="soLuongSanPham">0</span> sản phẩm
                             </h4>
                         </div>
                         <table class="timetable_sub" id="tableOrder">
@@ -377,6 +377,8 @@
                         </table>
                         <div class="text-right pt-3">
                             <h3>Tổng tiền: <span id="totalPrice">0đ</span></h3>
+                            <div id="divIp">
+                            </div>
                         </div>
                     </div>
                     <!-- Modal footer -->
@@ -400,9 +402,7 @@
                                     </button>
                                 </a>
                             </c:otherwise>
-
                         </c:choose>
-
                     </div>
                 </div>
             </div>

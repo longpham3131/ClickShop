@@ -24,7 +24,7 @@
 </head>
 
 <body>
-
+<%--<c:import url="../commom/header.jsp"> </c:import>--%>
 <!--checkout-->
 <section class="checkout_wthree py-sm-5 py-3">
     <div class="container">
@@ -91,7 +91,6 @@
                                         <div id="divIp">
                                         </div>
 
-                                        <div class="clear"></div>
                                     </div>
                                     </c:forEach>
                                 </div>
@@ -101,43 +100,31 @@
                                     <div class="modal fade" id="myModal">
                                         <div class="modal-dialog">
                                             <div class="modal-content">
-
                                                 <!-- Modal Header -->
                                                 <div class="modal-header">
                                                     <h4 class="modal-title">Thông báo</h4>
                                                     <button type="button" class="close" data-dismiss="modal">&times;</button>
                                                 </div>
-
                                                 <!-- Modal body -->
                                                 <div class="modal-body">
-                                                    Chờ tí, đơn hàng đang thực hiện
+                                                    Chờ tí, đơn hàng đang thực hiện...
                                                 </div>
-
-                                                <!-- Modal footer -->
-                                                <a href="<%=request.getContextPath()%>/check-out">
-                                                    <button type="button" class="btn btn-primary"  id="btnBackHome">
-                                                        <i class="fa fa-reply pl-1"></i> Hủy
-                                                    </button>
-                                                </a>
-
                                             </div>
                                         </div>
                                     </div>
-
                                 </div>
-
                             </div>
                         </div>
                     </form>
                 </div>
                 <div class="col-md-4">
-                    <h2>Total price: <span id="totalPrice">1600</span></h2>
+                    <h2>Tổng tiền: <span id="totalPrice">0đ</span></h2>
                 </div>
             </div>
         </div>
     </div>
 </section>
-
+<c:import url="../commom/footer.jsp"> </c:import>
 <div class="loader-wrapper">
     <span class="loader"><span class="loader-inner"></span></span>
 </div>
@@ -157,6 +144,8 @@
 <script src="<%=request.getContextPath()%>/Views/Web/js/sanPham.js"></script>
 <script src="<%=request.getContextPath()%>/Views/Web/js/DanhSachSanPham.js"></script>
 <script src="<%=request.getContextPath()%>/Views/Web/js/checkOut.js"></script>
+
+
 
 </body>
 

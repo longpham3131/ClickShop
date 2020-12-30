@@ -78,9 +78,9 @@ public class order extends HttpServlet {
                         maSP[i] = (String) request.getParameter("maSP" + i);
                         soLuong[i] = (String) request.getParameter("soLuong" + i);
                         giaSP[i] = (String) request.getParameter("giaSP" + i);
-                        System.out.println(id);
-                        sub = sub + Integer.parseInt(giaSP[i]) * Integer.parseInt(soLuong[i]);
-                        System.out.println(maSP[i] + "--" + soLuong[i] + "--" + giaSP[i]);
+                        System.out.println("\n ID USER:"+id +"...");
+                        sub = sub + (Integer.parseInt(giaSP[i]) * Integer.parseInt(soLuong[i]));
+                        System.out.println("---"+maSP[i] + "--" + soLuong[i] + "--" + giaSP[i]);
                     }
                     String orderId = dao.initOrder(id, String.valueOf(sub), address, phone, name); // add 1
                     if (orderId != null) {

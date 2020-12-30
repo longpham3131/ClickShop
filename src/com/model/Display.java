@@ -1,5 +1,7 @@
 package com.model;
 
+import DAO.queryDAO;
+
 public class Display {
 	private String ProductId;
 	private String Name;
@@ -8,6 +10,7 @@ public class Display {
 	private String Description;
 	private String SubCategoryId;
 	private String CategoryId;
+	private String Quannity;
 	public Display(){}
 	public Display(String productId, String name, String unitprice, String imagePath, String description, String subCategoryId, String categoryId) {
 		ProductId = productId;
@@ -17,6 +20,9 @@ public class Display {
 		Description = description;
 		SubCategoryId = subCategoryId;
 		CategoryId = categoryId;
+		queryDAO dao = new queryDAO();
+		Quannity = dao.GetQuanityAvai(ProductId);
+		System.out.print("* "+Quannity);
 	}
 	public String getProductId() {
 		return ProductId;
@@ -67,5 +73,13 @@ public class Display {
 
 	public void setCategoryId(String categoryId) {
 		CategoryId = categoryId;
+	}
+
+	public String getQuannity() {
+		return Quannity;
+	}
+
+	public void setQuannity(String quannity) {
+		Quannity=quannity;
 	}
 }

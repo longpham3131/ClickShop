@@ -302,7 +302,7 @@ public class queryDAO {
     }
 
     public List<Display> getPaging(int index) {
-        String query = "SELECT Product.ProductId, Product.Name,Product.UnitPrice , Image.ImagePath, Product.Description, Product.SubCategoryId , SubCategory.CategoryId \n" +
+        String query = "SELECT Product.ProductId, Product.Name,Product.UnitPrice , Image.ImagePath, Product.Description, Product.SubCategoryId , SubCategory.CategoryId, Product.Available \n" +
                 "FROM dbo.Product ,dbo.[Image],dbo.SubCategory \n" +
                 "WHERE Product.ProductId = Image.ProductId AND Product.SubCategoryId = SubCategory.SubCategoryId\n" +
                 "ORDER BY ProductId \n" +
@@ -1106,9 +1106,7 @@ public class queryDAO {
             String sqlExec = "insert into PurchaseOrderDetail VALUES(? ,? ,? ,? ,? ,?) ";
 
             conn = new MyDB().getConnection();
-
             conn.setAutoCommit(false);
-
             clmt = conn.prepareCall(sqlExec);
             clmt.setString(1, PurchaseOrderId);
             clmt.setString(2, ProductId);
@@ -1116,14 +1114,23 @@ public class queryDAO {
             clmt.setString(4, Cost);
             clmt.setString(5, UnitPrice);
             clmt.setString(6, sub);
-
             clmt.execute();
             conn.commit();
+        //    System.out.println("dcm loi hoai 1");
+            String query2= "Update Product \n" +
+                    "set Available = (Available-"+Quantity+") where ProductId='"+ProductId+"'";
+            conn = new MyDB().getConnection();
+          //  System.out.println("dcm loi hoai 2");
+            ps = conn.prepareStatement(query2);
+         //   System.out.println("dcm loi hoai 3");
+            ps.executeUpdate();
+        //    System.out.println("dcm loi hoai 4");
             return true;
         } catch (Exception e) {
+     //       System.out.println("dcm loi hoai 1");
             System.out.println(e);
+            return false;
         }
-        return false;
     }
 
     // Order Tracking
@@ -1217,6 +1224,23 @@ public class queryDAO {
             System.out.println(e);
         }
         return false;
+    }
+
+    public String GetQuanityAvai (String ProductID) {
+        String query = "SELECT Available\n" +
+                "FROM Product\n" +
+                "WHERE  ProductId = '"+ProductID+"'";
+        try {
+            conn = new MyDB().getConnection();
+            ps = conn.prepareStatement(query);
+            rs = ps.executeQuery();
+            while (rs.next()) {
+                return rs.getString(1);
+            }
+            return null;
+        } catch (Exception e) {
+        }
+        return null;
     }
 
 
