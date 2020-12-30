@@ -25,15 +25,7 @@
     <jsp:useBean id="a" class="DAO.queryDAO" scope="request"></jsp:useBean>
 </head>
 <body>
-<!--  Check authentic --!>
-<!-- Servlet return true if complete login authentication
-You can't access this page if you use link-url and not login -->
 
-<%--  <c:if test="${check != 'true'}">
-    <c:redirect url="/admin" />
-</c:if>  --%>
-
-<!--  Check authentic --!>
 
 <!---- nhan thong bao phan hoi ---->
 <c:if test="${from == 'insert'}">
@@ -136,29 +128,33 @@ You can't access this page if you use link-url and not login -->
             <!--  TABLEE ----->
             <div class="card shadow mb-4">
                 <div class="card-header py-3">
-                    <h6 class="m-0 font-weight-bold text-primary" style="display: inline; float: left; padding-top: 6px">Account Database</h6>
-					<!-- Refresh Databa -->
-					<div style=" padding-left: 5%; display: inline; width: 15%; float: left" >
-						<form action="${pageContext.request.contextPath}/fill-All-Account"
-							  method="post" >
-							<input type="submit" class="btn btn-danger" value="Refresh Data" style="background-color: #f5c6cb; color: #1d2124">
-						</form>
-					</div>
-					<!-- Button to Open the Modal -->
-					<button type="button" class="btn btn-success" style="width: 15%; display:inline; float: right;" data-toggle="modal"
-							data-target="#addUser">
-						<i class="fa fa-plus mr-2"></i> Add user
-					</button>
+                    <h6 class="m-0 font-weight-bold text-primary"
+                        style="display: inline; float: left; padding-top: 6px">Danh sách tài khoản</h6>
+                    <!-- Refresh Databa -->
+                    <div style=" padding-left: 5%; display: inline; width: 30%; float: left">
+                        <form action="${pageContext.request.contextPath}/fill-All-Account"
+                              method="post">
+                            <button type="submit" class="btn btn-warning"><i class="fa fa-undo"></i> Tải lại bảng
+                            </button>
+                        </form>
+                    </div>
+
+                    <!-- Button to Open the Modal -->
+                    <button type="button" class="btn btn-success" style="width: 15%; display:inline; float: right;"
+                            data-toggle="modal"
+                            data-target="#addUser">
+                        <i class="fa fa-plus mr-2"></i> Thêm tài khoản
+                    </button>
                 </div>
 
                 <!-- The Modal -->
-                <div class="modal" id="addUser">
-                    <div class="modal-dialog">
+                <div class="modal fade" id="addUser">
+                    <div class="modal-dialog modal-dialog-centered">
                         <div class="modal-content">
 
                             <!-- Modal Header -->
                             <div class="modal-header">
-                                <h4 class="modal-title">Add user</h4>
+                                <h4 class="modal-title">Thêm tài khoản</h4>
                                 <button type="button" class="close" data-dismiss="modal">&times;</button>
                             </div>
 
@@ -167,65 +163,62 @@ You can't access this page if you use link-url and not login -->
                                 <form action="${pageContext.request.contextPath}/insert-account" id="formAdd"
                                       method="post">
                                     <div class="form-group">
-
                                         <label for="addEmail">Email :</label>
-                                        <input
-
-                                                type="email" id="addEmail" class="form-control" name="email"
-                                        >
+                                        <input type="email" id="addEmail" class="form-control" name="email">
                                     </div>
-                                    <div class="form-group">
-                                        <label for="addFname">First name :</label> <input
-                                            type="text" id="addFname" class="form-control" name="firstname"
-                                    >
+                                    <div class="form-row">
+                                        <div class="form-group col-6">
+                                            <label for="addFname">Họ :</label>
+                                            <input type="text" id="addFname" class="form-control" name="firstname">
+                                        </div>
+                                        <div class="form-group col-6">
+                                            <label for="addLname">Tên :</label>
+                                            <input type="text" id="addLname" class="form-control" name="lastname">
+                                        </div>
                                     </div>
-                                    <div class="form-group">
-                                        <label for="addLname">Last name :</label> <input
-                                            type="text" id="addLname" class="form-control" name="lastname"
-                                    >
-                                    </div>
-                                    <div class="form-group">
-                                        <label for="addPhone">Phone :</label> <input
-                                            type="tel" id="addPhone" class="form-control" name="phone"
-                                    >
-                                    </div>
-                                    <div class="form-group">
-                                        <label for="addAddress">Address :</label> <input
-                                            type="text" id="addAddress" class="form-control" name="address"
-                                    >
-                                    </div>
-                                    <div class="form-group">
-                                        <label for="addGender">Gender :</label>
-                                        <select name="gender" id="addGender" class="form-control" name="gender">
-                                            <%
-                                                String[] sex = {"M", "F"};
-                                                for (int s = 0; s < 2; s++) {
-                                            %>
-                                            <option value="<%=sex[s]%>">
+                                    <div class="form-row">
+                                        <div class="form-group col-6">
+                                            <label for="addGender">Giới tính :</label>
+                                            <select name="gender" id="addGender" class="form-control" name="gender">
                                                 <%
-                                                    if (s == 0) {
-                                                %>Male<%
-                                                }
-                                            %>
+                                                    String[] sex = {"M", "F"};
+                                                    for (int s = 0; s < 2; s++) {
+                                                %>
+                                                <option value="<%=sex[s]%>">
+                                                    <%
+                                                        if (s == 0) {
+                                                    %>Nam<%
+                                                    }
+                                                %>
+                                                    <%
+                                                        if (s == 1) {
+                                                    %>Nữ<%
+                                                    }
+                                                %>
+                                                </option>
                                                 <%
-                                                    if (s == 1) {
-                                                %>Female<%
-                                                }
-                                            %>
-                                            </option>
-                                            <%
-                                                }
-                                            %>
+                                                    }
+                                                %>
 
-                                        </select>
+                                            </select>
+                                        </div>
+                                        <div class="form-group col-6">
+                                            <label for="addDOfB">Ngày sinh :</label>
+                                            <input type="date" class="form-control" id="addDOfB" name="Bday">
+                                        </div>
                                     </div>
                                     <div class="form-group">
-                                        <label for="addDOfB">Day of birth :</label> <input
-                                            type="date" class="form-control" id="addDOfB" name="Bday"
-                                    >
+                                        <label for="addPhone">Số điện thoại :</label>
+                                        <input type="tel" id="addPhone" class="form-control" name="phone">
                                     </div>
                                     <div class="form-group">
-                                        <label for="addRole">Day of birth :</label>
+                                        <label for="addAddress">Địa chỉ :</label>
+                                        <input type="text" id="addAddress" class="form-control" name="address">
+                                    </div>
+
+
+                                    <div class="form-group">
+                                        <label for="addRole">Loại tài khoản :</label>
                                         <select name="role" id="addRole" class="form-control" name="role">
                                             <%
                                                 String[] Role = {"USER", "SALER", "ADMINISTRATOR", "SHIPPER"};
@@ -240,13 +233,15 @@ You can't access this page if you use link-url and not login -->
                                         </select>
                                     </div>
 
-                                    <button type="submit" form="formAdd" class="btn btn-success">Add</button>
-                                    <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+
 
                                 </form>
                             </div>
                             <!-- Modal footer -->
-
+                            <div class="modal-footer">
+                                <button type="submit" form="formAdd" class="btn btn-success">Thêm tài khoản</button>
+                                <button type="button" class="btn btn-danger" data-dismiss="modal">Đóng</button>
+                            </div>
 
                         </div>
                     </div>
@@ -259,12 +254,12 @@ You can't access this page if you use link-url and not login -->
                             <tr>
                                 <th>ID</th>
                                 <th>Email</th>
-                                <th>First Name</th>
-                                <th>Last Name</th>
-                                <th>Phone</th>
-                                <th>Status</th>
-                                <th>Role</th>
-                                <th>Actions</th>
+                                <th>Họ</th>
+                                <th>Tên</th>
+                                <th>Số điện thoại</th>
+                                <th>Trạng thái</th>
+                                <th>Loại tài khoản</th>
+                                <th>Thao tác</th>
                             </tr>
                             </thead>
 
@@ -285,17 +280,17 @@ You can't access this page if you use link-url and not login -->
                                             <td>${listAcc.role}</td>
                                             <td>
                                                 <!-- POPUP Detail -->
-                                                <button type="button" class="btn btn-info" title="Detail"
+                                                <button type="button" class="btn btn-info" title="Thông tin chi tiết"
                                                         data-toggle="modal" data-target="#myModal${listAcc.accountId}">
                                                     <i class="fa fa-address-book"></i>
                                                 </button>
-                                                <div class="modal" id="myModal${listAcc.accountId}">
+                                                <div class="modal fade" id="myModal${listAcc.accountId}">
                                                     <div class="modal-dialog">
                                                         <div class="modal-content">
 
                                                             <!-- Modal Header -->
                                                             <div class="modal-header">
-                                                                <h4 class="modal-title">Profile</h4>
+                                                                <h4 class="modal-title">Thông tin chi tiết</h4>
                                                                 <button type="button" class="close"
                                                                         data-dismiss="modal">&times;
                                                                 </button>
@@ -306,7 +301,7 @@ You can't access this page if you use link-url and not login -->
 
                                                                 <div class="form-group row">
                                                                     <label for="staticID"
-                                                                           class="col-sm-4 col-form-label">Account ID
+                                                                           class="col-sm-4 col-form-label">Mã tài khoản
                                                                         :</label>
                                                                     <div class="col-sm-8">
                                                                         <input type="text" readonly
@@ -328,7 +323,7 @@ You can't access this page if you use link-url and not login -->
                                                                 </div>
                                                                 <div class="form-group row">
                                                                     <label for="staticName"
-                                                                           class="col-sm-4 col-form-label">Name
+                                                                           class="col-sm-4 col-form-label">Họ và tên
                                                                         :</label>
                                                                     <div class="col-sm-8">
                                                                         <input type="text" readonly
@@ -339,7 +334,7 @@ You can't access this page if you use link-url and not login -->
                                                                 </div>
                                                                 <div class="form-group row">
                                                                     <label for="staticPhone"
-                                                                           class="col-sm-4 col-form-label">Phone
+                                                                           class="col-sm-4 col-form-label">Số điện thoại
                                                                         :</label>
                                                                     <div class="col-sm-8">
                                                                         <input type="text" readonly
@@ -350,7 +345,7 @@ You can't access this page if you use link-url and not login -->
                                                                 </div>
                                                                 <div class="form-group row">
                                                                     <label for="staticAddress"
-                                                                           class="col-sm-4 col-form-label">Address
+                                                                           class="col-sm-4 col-form-label">Địa chỉ
                                                                         :</label>
                                                                     <div class="col-sm-8">
                                                                         <input type="text" readonly
@@ -361,7 +356,7 @@ You can't access this page if you use link-url and not login -->
                                                                 </div>
                                                                 <div class="form-group row">
                                                                     <label for="staticGender"
-                                                                           class="col-sm-4 col-form-label">Gender
+                                                                           class="col-sm-4 col-form-label">Giới tính
                                                                         :</label>
                                                                     <div class="col-sm-8">
                                                                         <input type="text" readonly
@@ -372,7 +367,7 @@ You can't access this page if you use link-url and not login -->
                                                                 </div>
                                                                 <div class="form-group row">
                                                                     <label for="staticDOfB"
-                                                                           class="col-sm-4 col-form-label">Date of birth
+                                                                           class="col-sm-4 col-form-label">Ngày sinh
                                                                         :</label>
                                                                     <div class="col-sm-8">
                                                                         <input type="text" readonly
@@ -383,7 +378,7 @@ You can't access this page if you use link-url and not login -->
                                                                 </div>
                                                                 <div class="form-group row">
                                                                     <label for="staticCreated"
-                                                                           class="col-sm-4 col-form-label">Created date
+                                                                           class="col-sm-4 col-form-label">Ngày tạo
                                                                         :</label>
                                                                     <div class="col-sm-8">
                                                                         <input type="text" readonly
@@ -394,7 +389,7 @@ You can't access this page if you use link-url and not login -->
                                                                 </div>
                                                                 <div class="form-group row">
                                                                     <label for="staticStatus"
-                                                                           class="col-sm-4 col-form-label">Status
+                                                                           class="col-sm-4 col-form-label">Trạng thái
                                                                         :</label>
                                                                     <div class="col-sm-8">
                                                                         <input type="text" readonly
@@ -421,19 +416,19 @@ You can't access this page if you use link-url and not login -->
                                                     </div>
                                                 </div>
                                                 <!-- POPUP Edit -->
-                                                <button type="button" class="btn btn-primary" title="Edit"
+                                                <button type="button" class="btn btn-primary" title="Sửa thông tin"
                                                         data-toggle="modal"
                                                         data-target="#editAccount${listAcc.accountId}"><i
                                                         class="fa fa-edit"></i>
                                                 </button>
                                                 <!-- The Modal -->
-                                                <div class="modal" id="editAccount${listAcc.accountId}">
-                                                    <div class="modal-dialog">
+                                                <div class="modal fade" id="editAccount${listAcc.accountId}">
+                                                    <div class="modal-dialog modal-dialog-centered">
                                                         <div class="modal-content">
 
                                                             <!-- Modal Header -->
                                                             <div class="modal-header">
-                                                                <h4 class="modal-title">Modal Heading</h4>
+                                                                <h4 class="modal-title">Cập nhật thông tin</h4>
                                                                 <button type="button" class="close"
                                                                         data-dismiss="modal">&times;
                                                                 </button>
@@ -445,88 +440,88 @@ You can't access this page if you use link-url and not login -->
                                                                       method="post" id="formEdit">
 
                                                                     <div class="form-group">
-                                                                        <label for="inpEmail">Email :</label> <input
-
-                                                                            type="text" id="inpEmail"
-                                                                            class="form-control"
-
-                                                                            value="${listAcc.email}"
-                                                                            name="email" readonly
-																	>
+                                                                        <label for="inpEmail">Email :</label>
+                                                                        <input type="text" id="inpEmail" class="form-control" value="${listAcc.email}"name="email" readonly>
                                                                     </div>
-                                                                    <div class="form-group">
-                                                                        <label for="inpFName">First name :</label>
-                                                                        <input
-                                                                                type="text" id="inpFName"
+                                                                    <div class="form-row">
+                                                                        <div class="form-group col-6">
+                                                                            <label for="inpFName">Họ :</label>
+                                                                            <input
+                                                                                    type="text" id="inpFName"
+                                                                                    class="form-control"
+                                                                                    value="${listAcc.firstName}"
+                                                                                    name="firstname">
+                                                                        </div>
+                                                                        <div class="form-group col-6">
+                                                                            <label for="inpLName">Tên :</label> <input
+                                                                                type="text" id="inpLName"
                                                                                 class="form-control"
-                                                                                value="${listAcc.firstName}"
-                                                                                name="firstname">
+                                                                                value=" ${listAcc.lastName}"
+                                                                                name="lastname">
+                                                                        </div>
                                                                     </div>
-                                                                    <div class="form-group">
-                                                                        <label for="inpLName">Last name :</label> <input
-                                                                            type="text" id="inpLName"
-                                                                            class="form-control"
-                                                                            value=" ${listAcc.lastName}"
-                                                                            name="lastname">
+                                                                    <div class="form-row">
+                                                                        <div class="form-group col-6">
+                                                                            <label for="editGender">Gender :</label>
+                                                                            <select id="editGender" class="form-control"
+                                                                                    name="gender">
+                                                                                <c:choose>
+                                                                                    <c:when test="${listAcc.gender eq 'F'}">
+                                                                                        <option value="F"
+                                                                                                selected>
+                                                                                            Nữ
+                                                                                        </option>
+                                                                                        <option value="M">
+                                                                                            Nam
+                                                                                        </option>
+                                                                                    </c:when>
+                                                                                    <c:otherwise>
+                                                                                        <option value="F">
+                                                                                            Nữ
+                                                                                        </option>
+                                                                                        <option value="M" selected>
+                                                                                            Nam
+                                                                                        </option>
+                                                                                    </c:otherwise>
+                                                                                </c:choose>
+                                                                            </select>
+                                                                        </div>
+
+                                                                        <div class="form-group col-6">
+                                                                            <label for="inpDOfB">Ngày sinh :</label>
+                                                                            <input
+                                                                                    type="date" class="form-control"
+                                                                                    id="inpDOfB"
+                                                                                    value="${listAcc.dayofBirth}"
+                                                                                    name="Bday">
+                                                                        </div>
                                                                     </div>
+
                                                                     <div class="form-group">
-                                                                        <label for="inpPhone">Phone :</label> <input
+                                                                        <label for="inpPhone">Số điện thoại :</label> <input
                                                                             type="tel" id="inpPhone"
                                                                             class="form-control"
                                                                             value="${listAcc.phone}" name="phone">
                                                                     </div>
                                                                     <div class="form-group">
-                                                                        <label for="inpAddress">Address :</label> <input
+                                                                        <label for="inpAddress">Địa chỉ :</label> <input
                                                                             type="text" id="inpAddress"
                                                                             class="form-control"
                                                                             value="${listAcc.address}" name="address">
                                                                     </div>
-                                                                    <div class="form-group">
-                                                                        <label for="editGender">Gender :</label>
-                                                                        <select id="editGender" class="form-control"
-                                                                                name="gender">
-                                                                            <c:choose>
-                                                                                <c:when test="${listAcc.gender eq 'F'}">
-                                                                                    <option value="F"
-                                                                                            selected>
-                                                                                        Female
-                                                                                    </option>
-                                                                                    <option value="M">
-                                                                                        Male
-                                                                                    </option>
-                                                                                </c:when>
-                                                                                <c:otherwise>
-                                                                                    <option value="F">
-                                                                                        Female
-                                                                                    </option>
-                                                                                    <option value="M" selected>
-                                                                                        Male
-                                                                                    </option>
-                                                                                </c:otherwise>
-                                                                            </c:choose>
-                                                                        </select>
-                                                                    </div>
-
-                                                                    <div class="form-group">
-                                                                        <label for="inpDOfB">Day of birth :</label>
-                                                                        <input
-                                                                                type="date" class="form-control"
-                                                                                id="inpDOfB"
-                                                                                value="${listAcc.dayofBirth}"
-                                                                                name="Bday">
-                                                                    </div>
-
-                                                                    <button type="submit" class="btn btn-success">
-                                                                        Update
-                                                                    </button>
-                                                                    <button type="button" class="btn btn-danger"
-                                                                            data-dismiss="modal">Close
-                                                                    </button>
                                                                 </form>
 
                                                             </div>
 
                                                             <!-- Modal footer -->
+                                                            <div class="modal-footer">
+                                                                <button type="submit" class="btn btn-success" form="formEdit">
+                                                                    Cập nhật
+                                                                </button>
+                                                                <button type="button" class="btn btn-danger"
+                                                                        data-dismiss="modal">Đóng
+                                                                </button>
+                                                            </div>
 
                                                         </div>
                                                     </div>
@@ -535,36 +530,40 @@ You can't access this page if you use link-url and not login -->
                                                 <form action="${pageContext.request.contextPath}/reset-password"
                                                       method="post" style="display: inline">
                                                     <input type="hidden" value="${listAcc.email}" name="email">
-                                                    <button type="submit" title="Reset password"
+                                                    <button type="submit" title="Tạo lại mật khẩu"
                                                             class="btn btn-warning"><i class="fa fa-redo-alt"></i>
                                                     </button>
                                                 </form>
 
 
-                                                <button type="button" class="btn btn-dark" title="Block"
+                                                <button type="button" class="btn btn-dark" title="Khóa tài khoản"
                                                         data-toggle="modal"
                                                         data-target="#blockAccount${listAcc.accountId}"><i
                                                         class="fa fa-lock"></i>
                                                 </button>
                                                 <!-- The Modal -->
 
-                                                <div class="modal" id="blockAccount${listAcc.accountId}">
+                                                <div class="modal fade" id="blockAccount${listAcc.accountId}">
                                                     <div class="modal-dialog">
                                                         <div class="modal-content">
                                                             <div class="modal-body">
                                                                 <form action="${pageContext.request.contextPath}/delete-account"
                                                                       method="post">
-                                                                    <h4 class="modal-title">Are you sure?
-                                                                        Email:${listAcc.email} </h4>
+                                                                    <h4 class="modal-title">Bạn có chắc muốn khóa tài khoản: ${listAcc.email} </h4>
                                                                     <input type="hidden" name="email"
                                                                            value="${listAcc.email}"/>
-                                                                    <input type="submit" value="Block!"
-                                                                           class="btn btn-warning"/>
-                                                                    <button type="button" class="btn btn-danger"
-                                                                            data-dismiss="modal">Close
-                                                                    </button>
+
                                                                 </form>
                                                             </div>
+
+                                                            <div class="modal-footer">
+                                                                <input type="submit" value="Block!"
+                                                                       class="btn btn-warning"/>
+                                                                <button type="button" class="btn btn-danger"
+                                                                        data-dismiss="modal">Đóng
+                                                                </button>
+                                                            </div>
+
                                                         </div>
                                                     </div>
                                                 </div>
@@ -584,7 +583,7 @@ You can't access this page if you use link-url and not login -->
                                                 <form action="${pageContext.request.contextPath}/unblock-account"
                                                       method="post">
                                                     <input type="hidden" value="${listAcc.email}" name="email">
-                                                    <button type="submit" title="UnBlock" class="btn btn-success">
+                                                    <button type="submit" title="Mở khóa" class="btn btn-success">
                                                         <i class="fa fa-key "></i>
                                                     </button>
                                                 </form>

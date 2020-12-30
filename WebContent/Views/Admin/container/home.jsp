@@ -72,9 +72,9 @@
 					<div
 						class="d-sm-flex align-items-center justify-content-between mb-4">
 						<h1 class="h3 mb-0 text-gray-800">Dashboard</h1>
-						<a href="#"
-							class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm"><i
-							class="fas fa-download fa-sm text-white-50"></i> Generate Report</a>
+<%--						<a href="#"--%>
+<%--							class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm"><i--%>
+<%--							class="fas fa-download fa-sm text-white-50"></i> Generate Report</a>--%>
 					</div>
 
 					<!-- 4 o dau -->
@@ -88,7 +88,7 @@
 										<div class="col mr-2">
 											<div
 												class="text-xs font-weight-bold text-success text-uppercase mb-1">
-												Doanh thu thang</div>
+												Doanh thu tháng</div>
 											<div class="h5 mb-0 font-weight-bold text-gray-800"><%=subtotal%>
 												$
 											</div>
@@ -109,7 +109,7 @@
 										<div class="col mr-2">
 											<div
 												class="text-xs font-weight-bold text-primary text-uppercase mb-1">
-												Tong so nhan vien</div>
+												Tổng số nhân viên</div>
 											<div class="h5 mb-0 font-weight-bold text-gray-800"><%=emp%></div>
 										</div>
 										<div class="col-auto">
@@ -127,8 +127,7 @@
 									<div class="row no-gutters align-items-center">
 										<div class="col mr-2">
 											<div
-												class="text-xs font-weight-bold text-info text-uppercase mb-1">Tong
-												so User</div>
+												class="text-xs font-weight-bold text-info text-uppercase mb-1">Tổng số tài khoản</div>
 											<div class="row no-gutters align-items-center">
 												<div class="col-auto">
 													<div class="h5 mb-0 mr-3 font-weight-bold text-gray-800"><%=user%></div>
@@ -158,7 +157,7 @@
 										<div class="col mr-2">
 											<div
 												class="text-xs font-weight-bold text-warning text-uppercase mb-1">
-												So don hoan thanh</div>
+												Số đơn đã hoàn thành</div>
 											<div class="h5 mb-0 font-weight-bold text-gray-800"><%=other%></div>
 										</div>
 										<div class="col-auto">
@@ -180,8 +179,7 @@
 								<!-- Card Header - Dropdown -->
 								<div
 									class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
-									<h6 class="m-0 font-weight-bold text-primary">Tong quan
-										doanh thu</h6>
+									<h6 class="m-0 font-weight-bold text-primary">Tổng quan doanh thu</h6>
 									<div class="dropdown no-arrow">
 										<a class="dropdown-toggle" href="#" role="button"
 											id="dropdownMenuLink2" data-toggle="dropdown"
@@ -214,8 +212,7 @@
 								<!-- Card Header - Dropdown -->
 								<div
 									class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
-									<h6 class="m-0 font-weight-bold text-primary">Best selling
-										category</h6>
+									<h6 class="m-0 font-weight-bold text-primary">Sản phẩm bán chạy</h6>
 									<div class="dropdown no-arrow">
 										<a class="dropdown-toggle" href="#" role="button"
 											id="dropdownMenuLink" data-toggle="dropdown"
@@ -232,13 +229,13 @@
 									</div>
 									<div class="mt-4 text-center small">
 										<span class="mr-2"> <i
-											class="fas fa-circle text-secondary"></i> Accessory
+											class="fas fa-circle text-secondary"></i> Phụ kiện
 										</span> <span class="mr-2"> <i
-											class="fas fa-circle text-primary"></i> Tee
+											class="fas fa-circle text-primary"></i> Áo
 										</span>  <span class="mr-2"> <i
-											class="fas fa-circle text-success"></i> Women Shoes
+											class="fas fa-circle text-success"></i> Giày nữ
 										</span>  <span class="mr-2"> <i
-											class="fas fa-circle text-danger"></i> Men Shoes
+											class="fas fa-circle text-danger"></i> Giày nam
 										</span>
 									</div>
 								</div>
