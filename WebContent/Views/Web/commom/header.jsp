@@ -358,7 +358,7 @@
                         <div class="d-sm-flex justify-content-end mb-4">
 
                             <h4 class="mt-sm-0 mt-3">Hiện tại có :
-                                <span id="soLuongSanPham">3 </span> sản phẩm
+                                <span id="soLuongSanPham">0</span> sản phẩm
                             </h4>
                         </div>
                         <table class="timetable_sub" id="tableOrder">

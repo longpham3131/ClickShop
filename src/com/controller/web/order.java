@@ -70,8 +70,8 @@ public class order extends HttpServlet {
         }
 
 //        System.out.print("FSDFSDFSDF");
-//        fillAllDisplay a = new fillAllDisplay();
-//        a.doPost(request, response);
+        fillAllDisplay a = new fillAllDisplay();
+        a.doPost(request, response);
     }
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {

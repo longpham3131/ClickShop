@@ -24,7 +24,7 @@
 </head>
 
 <body>
-
+<%--<c:import url="../commom/header.jsp"> </c:import>--%>
 <!--checkout-->
 <section class="checkout_wthree py-sm-5 py-3">
     <div class="container">
@@ -130,13 +130,13 @@
                     </form>
                 </div>
                 <div class="col-md-4">
-                    <h2>Total price: <span id="totalPrice">1600</span></h2>
+                    <h2>Tổng tiền: <span id="totalPrice">0đ</span></h2>
                 </div>
             </div>
         </div>
     </div>
 </section>
-
+<c:import url="../commom/footer.jsp"> </c:import>
 <div class="loader-wrapper">
     <span class="loader"><span class="loader-inner"></span></span>
 </div>
