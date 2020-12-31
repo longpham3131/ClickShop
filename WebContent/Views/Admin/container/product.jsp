@@ -14,7 +14,7 @@
 
 	<title>?<c:out value="${thongbao }"/>-<c:out value="${ from}"/>
 	</title>
-	<!-- Custom fonts for this template-->
+	<!-- CusStom fonts for this template-->
 
 	<link href="<%= request.getContextPath()%>/Views/Admin/vendor/fontawesome-free/css/all.min.css" rel="stylesheet"
 

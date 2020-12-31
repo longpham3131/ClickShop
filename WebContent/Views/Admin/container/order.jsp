@@ -36,7 +36,7 @@ You can't access this page if you use link-url and not login -->
 <%-- 	<c:if test="${check != 'true'}">
 		<c:redirect url="/admin" />
 	</c:if> --%>
-<!--  Check authentic --!>
+<!--  Check authenASDtic --!>
 
 <!---- nhan thong bao phan hoi ---->
 <c:if test="${from == 'insert'}">
