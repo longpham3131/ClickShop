@@ -406,14 +406,18 @@
 <script src="<%=request.getContextPath()%>/Views/Web/js/DanhSachSanPham.js"></script>
 <script src="<%=request.getContextPath()%>/Views/Web/js/checkOut.js"></script>
 
-<%--<script>--%>
-<%--    let listGia = document.querySelectorAll(".priceProduct");--%>
-<%--    listGia.map( ()  => {--%>
-<%--        console.log(listGia.innerHTML);--%>
-<%--        // listGia[index].innerHTML = new Intl.NumberFormat('vn-VN', { style: 'currency', currency: 'VND' }).format(parseInt(listGia[index].innerHTML));--%>
-<%--    })--%>
-<%--    //--%>
-<%--</script>--%>
+<script>
+    let listGia = document.querySelectorAll(".priceProduct");
+    console.log(listGia);
+    for (i = 0; i < listGia.length; i++) {
+        listGia[i].innerHTML = new Intl.NumberFormat('vn-VN', { style: 'currency', currency: 'VND' }).format(parseInt(listGia[i].innerHTML));
+    }
+    // listGia.map( ()  => {
+    //     console.log(listGia.innerHTML);
+    //     // listGia[index].innerHTML = new Intl.NumberFormat('vn-VN', { style: 'currency', currency: 'VND' }).format(parseInt(listGia[index].innerHTML));
+    // })
+    //
+</script>
 
 </body>
 
