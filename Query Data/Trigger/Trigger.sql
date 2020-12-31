@@ -1,4 +1,4 @@
-﻿USE ClickShop
+﻿USE Uni4
 GO
 
 -- Không cho phép thêm nhân viên (sale person, shipper) có tuổi nhỏ hơn 18 tuổi.
@@ -25,16 +25,6 @@ BEGIN
 END
 GO
 
-EXEC dbo.USP_TaoUser @Email = 'hoanghaulele@gmail.com', -- varchar(100)
-    @FirstName = 'Tuan', -- varchar(50)
-    @LastName = 'Kiet', -- varchar(50)
-    @Phone = '092', -- varchar(20)
-    @Address = 'Quan 9', -- varchar(200)
-    @Gender = 'F', -- varchar(1)
-    @DayOfBirth = '2012-11-08', -- date
-    @Role = 'SHIPPER' -- varchar(20)
-
-GO
 
 -----------------------------------------------
 
@@ -59,30 +49,6 @@ BEGIN
 END
 GO
 
-INSERT dbo.Product
-        ( SubCategoryId ,
-          Name ,
-          UnitPrice ,
-          [Like] ,
-          Gender ,
-          Description ,
-          Available
-        )
-VALUES  ( 1 , -- SubCategoryId - int
-          'Duoi Cao' , -- Name - varchar(100)
-          1500000 , -- UnitPrice - decimal
-          19 , -- Like - int
-          0 , -- Gender - int
-          'Duoi con cao' , -- Description - varchar(max)
-          1  -- Available - bit
-        )
-
-SELECT * FROM dbo.Product 
-SELECT * FROM dbo.Image
-GO
-
-DELETE dbo.AccountRole WHERE Email = 'hoanghau111@gmail.com'
-DELETE dbo.Account WHERE Email ='hoanghau111@gmail.com'
 ----------------------------------------------------------------------------
 -- Không cho cập nhật thông tin nếu tuổi mới nhập vào nhỏ hơn 18
 CREATE TRIGGER UTG_Account_tuoiNVLonHon18

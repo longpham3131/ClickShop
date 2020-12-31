@@ -200,9 +200,12 @@
                                                             </thead>
                                                             <!----------Noi-dung-------- -->
                                                             <tbody>
+
                                                             <c:set var="sum" value="0"/>
                                                             <c:forEach items="${listPickDetail}" var="listPick"
                                                                        varStatus="loop">
+                                                                <h2>${listPkg.orderID}</h2>
+                                                                <h2>---${listPick.orderID}</h2>
                                                                 <c:if test="${listPkg.orderID == listPick.orderID}">
                                                                     <tr>
                                                                         <td>${listPick.productID}</td>
@@ -439,7 +442,7 @@
                                                             </div>
                                                             <!-- Modal footer -->
                                                             <div class="modal-footer">
-                                                                <button type="submit" form="formAcceptOrder" data-dismiss="modal" class="btn btn-success">Xác nhận
+                                                                <button type="submit" form="formAcceptOrder" class="btn btn-success">Xác nhận
                                                                 </button>
                                                                 <button type="button" class="btn btn-danger"
                                                                         data-dismiss="modal">Đóng
@@ -474,10 +477,9 @@
                                                                 </form>
                                                             </div>
 
-
                                                             <!-- Modal footer -->
                                                             <div class="modal-footer">
-                                                                <button type="submit" class="btn btn-success" form="formCancel" data-dismiss="modal">Xác nhận</button>
+                                                                <button type="submit" class="btn btn-success" form="formCancel">Xác nhận</button>
                                                                 <button type="button" class="btn btn-danger"
                                                                         data-dismiss="modal">Đóng
                                                                 </button>

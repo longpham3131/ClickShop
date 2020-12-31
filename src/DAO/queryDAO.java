@@ -739,10 +739,7 @@ public class queryDAO {
     //------ Bang so 1 ---------//
     public List<Shipper> shipperList() {         // rs2.next() can then undo trong truong hop co testcase nhieu shipper
         // return ---- accountId,  email,  firstName,  phone,   ortherCarring
-        String query = "SELECT A.AccountId, A.Email, A.FirstName, A.Phone, A.LastName, A.Address, A.Gender\n" +
-                " FROM Shipper S, Account A, AccountRole AR\n" +
-                "WHERE A.Email=AR.Email AND AR.Role='shipper'\n" +
-                "GROUP BY A.AccountId, A.Email, A.FirstName, A.Phone, A.LastName, A.Address, A.Gender";
+        String query = "SELECT  * FROM dbo.SV_shipperList";
 
         String query2 = "SELECT S.ShipperId ,COUNT(*) as carrying\n" +
                 "\tFROM  Shipper S\n" +
@@ -751,9 +748,9 @@ public class queryDAO {
         List<Shipper> list = new ArrayList<Shipper>();
         try {
             conn = new MyDB().getConnection();
-            ps = conn.prepareStatement(query);
-            rs = ps.executeQuery();
-            System.out.print("////////");
+            Statement stmt = null;
+            stmt = conn.createStatement();
+            rs = stmt.executeQuery(query);
 
             Connection conn2 = null;
             PreparedStatement ps2 = null;
@@ -761,11 +758,9 @@ public class queryDAO {
             conn2 = new MyDB().getConnection();
             ps2 = conn2.prepareStatement(query2);
             rs2 = ps2.executeQuery();
-            //    rs.next();
-            //    rs2.next();
-            //    System.out.print("```"+rs.getString(1)+"```"+rs2.getString(1));
+
             while (rs.next()) {
-                //   System.out.print("```"+rs.getString(1)+"```"+rs2.getString(1));
+
                 if (rs2.next() == true && rs.getString(1).equals(rs2.getString(1))) {
                     list.add(new Shipper(rs.getString(1), rs.getString(2), rs.getString(3), rs.getString(4),
                             rs2.getString(2), rs.getString(5), rs.getString(6), rs.getString(7)));
@@ -784,14 +779,13 @@ public class queryDAO {
     // ----- Bang so 2 ---------//
     public List<OrtherNoShipper> initOrderList() {
         // return ---- accountId,  email,  firstName,  phone,   ortherCarring
-        String query = "SELECT P.PurchaseOrderId, A.Email, P.SubTotal, P.Address, P.Phone, P.Status\r\n"
-                + "	FROM Account A, PurchaseOrder P\r\n"
-                + "	WHERE A.AccountId= P.AccountId AND P.Status ='Init'";
+        String query = "SELECT  * FROM dbo.SV_initOrderList";
         List<OrtherNoShipper> list = new ArrayList<OrtherNoShipper>();
         try {
             conn = new MyDB().getConnection();
-            ps = conn.prepareStatement(query);
-            rs = ps.executeQuery();
+            Statement stmt = null;
+            stmt = conn.createStatement();
+            rs = stmt.executeQuery(query);
             while (rs.next()) {
                 list.add(new OrtherNoShipper(rs.getString(1), rs.getString(2), rs.getString(3), rs.getString(4),
                         rs.getString(5), rs.getString(6)));
@@ -803,14 +797,13 @@ public class queryDAO {
     }
 
     public List<DetailOrder> OrtherDetailNoShip() {
-        String query = "SELECT  PO.PurchaseOrderId, P.ProductId, Pro.Name, P.Quantity, P.Subtotal\n" +
-                "FROM PurchaseOrderDetail P, Product Pro, PurchaseOrder PO\n" +
-                "WHERE PRO.ProductId = P.ProductId AND PO.Status='Init' AND PO.PurchaseOrderId = P.PurchaseOrderId";
+        String query = "SELECT  * FROM dbo.SV_OrtherDetailNoShip";
         List<DetailOrder> list = new ArrayList<DetailOrder>();
         try {
             conn = new MyDB().getConnection();
-            ps = conn.prepareStatement(query);
-            rs = ps.executeQuery();
+            Statement stmt = null;
+            stmt = conn.createStatement();
+            rs = stmt.executeQuery(query);
             while (rs.next()) {
                 list.add(new DetailOrder(rs.getString(1), rs.getString(2), rs.getString(3), rs.getString(4),
                         rs.getString(5)));
@@ -849,16 +842,13 @@ public class queryDAO {
     // ---- Bang so 3 ---------//
     public List<PickingUp> pickupList() {
         // return ---- accountId,  email,  firstName,  phone,   ortherCarring
-        String query = "	SELECT S.PurchaseOrderId, S.ShipperId, A.Email, P.SubTotal, P.Address, P.Phone, S.Status\r\n"
-                + "	FROM Account A, PurchaseOrder P, Shipper S\r\n"
-                + "	WHERE A.AccountId= P.AccountId  AND S.PurchaseOrderId = P.PurchaseOrderId AND S.Status='Picking'";
+        String query = "SELECT  * FROM dbo.SV_pickupList";
         List<PickingUp> list = new ArrayList<PickingUp>();
         try {
-
-
             conn = new MyDB().getConnection();
-            ps = conn.prepareStatement(query);
-            rs = ps.executeQuery();
+            Statement stmt = null;
+            stmt = conn.createStatement();
+            rs = stmt.executeQuery(query);
             while (rs.next()) {
                 list.add(new PickingUp(rs.getString(1), rs.getString(2), rs.getString(3), rs.getString(4),
                         rs.getString(5), rs.getString(6), rs.getString(7)));
@@ -870,19 +860,17 @@ public class queryDAO {
     }
 
     public List<DetailOrder> OrtherDetailPicking() {
-        String query = "SELECT  PO.PurchaseOrderId, P.ProductId, Pro.Name, P.Quantity, P.Subtotal\n" +
-                "FROM PurchaseOrderDetail P, Product Pro, PurchaseOrder PO, Shipper SP \n" +
-                "WHERE PRO.ProductId = P.ProductId AND SP.Status='Picking' AND PO.PurchaseOrderId = P.PurchaseOrderId AND SP.PurchaseOrderId=P.PurchaseOrderId";
+        String query = "SELECT  * FROM SV_OrtherDetailShipping";
         List<DetailOrder> list = new ArrayList<DetailOrder>();
         try {
             conn = new MyDB().getConnection();
-            ps = conn.prepareStatement(query);
-            rs = ps.executeQuery();
+            Statement stmt = null;
+            stmt = conn.createStatement();
+            rs = stmt.executeQuery(query);
             while (rs.next()) {
                 list.add(new DetailOrder(rs.getString(1), rs.getString(2), rs.getString(3), rs.getString(4),
                         rs.getString(5)));
             }
-            //System.out.println("Contents of list ::" + list);
             return list;
         } catch (Exception e) {
         }
@@ -910,15 +898,13 @@ public class queryDAO {
     // ---End Bang 3 ---//
     //---- Bang so 4 -----//
     public List<Shipping> shippingList() {
-        String query = "SELECT S.PurchaseOrderId, S.ShipperId, A.Email, P.SubTotal, P.Address, P.Phone, S.Status\r\n"
-                + "	FROM Account A, PurchaseOrder P, Shipper S\r\n"
-                + "	WHERE A.AccountId= P.AccountId  AND S.PurchaseOrderId = P.PurchaseOrderId AND P.Status ='Processing' AND (S.Status='shipping' OR S.Status='Cancel' OR S.Status='Completed')\r\n";
+        String query = "select  * from dbo.SV_shippingList";
         List<Shipping> list = new ArrayList<Shipping>();
         try {
-
             conn = new MyDB().getConnection();
-            ps = conn.prepareStatement(query);
-            rs = ps.executeQuery();
+            Statement stmt = null;
+            stmt = conn.createStatement();
+            rs = stmt.executeQuery(query);
             while (rs.next()) {
                 list.add(new Shipping(rs.getString(1), rs.getString(2), rs.getString(3), rs.getString(4),
                         rs.getString(5), rs.getString(6), rs.getString(7)));
@@ -930,14 +916,13 @@ public class queryDAO {
     }
 
     public List<DetailOrder> OrtherDetailShipping() {
-        String query = "SELECT  PO.PurchaseOrderId, P.ProductId, Pro.Name, P.Quantity, P.Subtotal\n" +
-                "FROM PurchaseOrderDetail P, Product Pro, PurchaseOrder PO, Shipper SP \n" +
-                "WHERE PRO.ProductId = P.ProductId AND (SP.Status='shipping' OR SP.Status='Cancel' OR SP.Status='Completed') AND PO.PurchaseOrderId = P.PurchaseOrderId AND SP.PurchaseOrderId=P.PurchaseOrderId";
+        String query = "SELECT  * from  SV_OrtherDetailShipping";
         List<DetailOrder> list = new ArrayList<DetailOrder>();
         try {
             conn = new MyDB().getConnection();
-            ps = conn.prepareStatement(query);
-            rs = ps.executeQuery();
+            Statement stmt = null;
+            stmt = conn.createStatement();
+            rs = stmt.executeQuery(query);
             while (rs.next()) {
                 list.add(new DetailOrder(rs.getString(1), rs.getString(2), rs.getString(3), rs.getString(4),
                         rs.getString(5)));
