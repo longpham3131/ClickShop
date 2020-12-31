@@ -29,7 +29,6 @@ function tinhTongTien1SP() {
     return tien1SP;
 }
 
-//Tính tổng tiền
 
 function tinhTongTienGioHang() {
     var tien1SP = tinhTongTien1SP();
@@ -41,13 +40,20 @@ function tinhTongTienGioHang() {
 }
 //Mỗi lần nhấn + - thì cập nhật số lượng{}
 function tangSoLuong(maSP) {
-    var viTri = dssp.timViTri(maSP)
+
+    var viTri = dssp.timViTri(maSP);
+
     var soLuongHT = parseInt(dssp.mangSP[viTri].soLuong)
-    dssp.mangSP[viTri].soLuong = soLuongHT + 1;
-    console.log(viTri);
-    dssp.capNhat(dssp.mangSP[viTri]);
-    setLocalStorage();
-    getLocalStorage();
+
+    if(soLuongHT < dssp.mangSP[viTri].soLuongKho){
+        dssp.mangSP[viTri].soLuong = soLuongHT + 1;
+        dssp.capNhat(dssp.mangSP[viTri]);
+        setLocalStorage();
+        getLocalStorage();
+    }
+    // else if(soLuongHT == dssp.mangSP[viTri].soLuongKho){
+    //     getMyEle("textThongBaoSoLuong").innerHTML ="Số lượng đã đạt giới hạn";
+    // }
 }
 function giamSoLuong(maSP) {
     var viTri = dssp.timViTri(maSP);
@@ -55,6 +61,7 @@ function giamSoLuong(maSP) {
     dssp.mangSP[viTri].soLuong = soLuongHT - 1;
     if(dssp.mangSP[viTri].soLuong < 1){
         deleteRow(maSP);
+        // getMyEle("textThongBaoSoLuong").innerHTML = "";
         demSoSanPham();
     }
     else{
@@ -65,11 +72,6 @@ function giamSoLuong(maSP) {
 
 }
 
-function deleteAllRow() {
-    dssp.xoaTatCaSP();
-    setLocalStorage();
-    getLocalStorage();
-}
 
 function deleteRow(maSP) {
     dssp.xoaSP(maSP);
@@ -101,7 +103,10 @@ function hienThiDSSP(mangSP) {
                     <button class ="btn btn-light" onclick="tangSoLuong('${item.maSP}')"><i class="fa fa-plus"></i></button>
 
                 </div>
+                 
+     
             </div>
+            
         </td>
         <td class="invert d-none">${item.giaSP}</td>
         <td></td>
@@ -132,26 +137,6 @@ function inputSP(mangSP) {
     div.innerHTML = content;
 }
 
-function coutDownBackHome() {
-
-    var x = setInterval(function() {
-
-        // Find the distance between now and the count down date
-        var distance = 3;
-
-        // Time calculations for days, hours, minutes and seconds
-        var seconds = Math.floor((distance % (1000 * 60)) / 1000);
-
-        // Display the result in the element with id="demo"
-        document.getElementById("demo").innerHTML = seconds + "s ";
-
-        // If the count down is finished, write some text
-        if (distance < 0) {
-            clearInterval(x);
-            getMyEle("btnBackHome").onclick();
-        }
-    }, 1000);
-}
 
 //lấy dữ liệu từ localStorage
 

@@ -38,8 +38,8 @@
             <div class="col-md-4 col-sm-12 col-xs-12 product-content-desc" id="detail-product">
                 <div class="product-title">
                     <h1 id="pro-name">${name}</h1>
-                    <span id="pro_sku"  hidden>${productId}</span>
-                    <span >Còn lại: ${Quannity}</span>
+                    <p class="pb-2" >Mã sản phẩm: <span id="pro_sku" >${productId}</span> </p>
+                    <p>Còn lại: <span id="pro_quan">${Quannity}</span> </p>
 
                 </div>
                 <div class="product-price" id="price-preview">
@@ -102,6 +102,7 @@
                                    class="quantity-selector">
                             <input type="button" value="+" id="btnPlus" class="qty-btn">
                         </div>
+                        <p id="textThongBao" class="text-danger py-1"></p>
                         <div class="wrap-addcart clearfix">
                             <button type="button" id="add-to-cart"
                                     class="add-to-cartProduct button dark btn-addtocart addtocart-modal" name="add"
@@ -211,11 +212,11 @@
 
 <c:import url="../commom/footer.jsp"> </c:import>
 <!-- BOOSTRAP JS -->
-<script>
-    $(window).on("load", function () {
-        $(".loader-wrapper").fadeOut("slow");
-    });
-</script>
+<%--<script>--%>
+<%--    $(window).on("load", function () {--%>
+<%--        $(".loader-wrapper").fadeOut("slow");--%>
+<%--    });--%>
+<%--</script>--%>
 <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
         integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
         crossorigin="anonymous"></script>

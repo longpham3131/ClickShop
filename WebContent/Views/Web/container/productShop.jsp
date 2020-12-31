@@ -313,48 +313,29 @@
 
                     <div class="row">
                         <c:forEach items="${listPhantrang}" var="row">
-                            <c:if test="${row.getQuannity() > 0 }">
-                                <div class="col- 12 col-md-6 col-lg-4 col-xl-3 product__item">
-                                    <form action="<%=request.getContextPath()%>/chooseProduct" method="post">
-                                        <button type="submit" style="    background: transparent; border: none;">
-                                            <input type="hidden" value="${row.productId}" name="ProductId"/>
-                                            <input type="hidden" value="${row.name}" name="Name"/>
-                                            <input type="hidden" value="${row.imagePath}" name="ImagePath"/>
-                                            <input type="hidden" value="${row.description}" name="Description"/>
-                                            <input type="hidden" value="${row.getUnitPrice()}" name="UnitPrice"/>
-                                            <input type="hidden" value="${row.getQuannity()}" name="Quannity"/>
-                                            <img src="<%=request.getContextPath()%>/Views/Web${row.getImagePath()}"
-                                                 alt="">
-                                            <c:if test="${row.getQuannity() < 10 }">
-                                                <p style="color: #ca2819; ">
-                                                    SAP CHAY HANG
-                                                </p>
-                                            </c:if>
-                                            <h4>
-                                                    ${row.name}
-                                            </h4>
-                                            <span>${row.getUnitPrice()}</span>
-                                        </button>
-                                    </form>
-                                </div>
-                            </c:if>
-                            <c:if test="${row.getQuannity() <= 0 }">
-<%--                                FADE THIS ROW--%>
-                                    <div class="col- 12 col-md-6 col-lg-4 col-xl-3 product__item">
-                                        <button type="submit"
-                                                style="    background: transparent; border: none; background-color: #bac8f3">
-                                            <img src="<%=request.getContextPath()%>/Views/Web${row.getImagePath()}"
-                                                 alt="">
-                                            <p style="color: #721c24; ">
-                                               HET HANG
-                                            </p>
-                                            <h4>
-                                                    ${row.name}
-                                            </h4>
-                                            <span>${row.getUnitPrice()}</span>
-                                        </button>
-                                    </div>
-                            </c:if>
+                            <div class="col- 12 col-md-6 col-lg-4 col-xl-3 product__item">
+                                <form action="<%=request.getContextPath()%>/chooseProduct" method="post">
+                                    <button type="submit" style="    background: transparent; border: none;">
+                                        <input type="hidden" value="${row.productId}" name="ProductId"/>
+                                        <input type="hidden" value="${row.name}" name="Name"/>
+                                        <input type="hidden" value="${row.imagePath}" name="ImagePath"/>
+                                        <input type="hidden" value="${row.description}" name="Description"/>
+                                        <input type="hidden" value="${row.getUnitPrice()}" name="UnitPrice"/>
+                                        <input type="hidden" value="${row.getQuannity()}" name="Quannity"/>
+                                        <img src="<%=request.getContextPath()%>/Views/Web${row.getImagePath()}"
+                                             alt="">
+                                        <c:if test="${row.getQuannity() <= 0 }">
+                                            <h5 style="color: #721c24; position: absolute; bottom: 55px; left: 0; right: 0;">
+                                                HẾT HÀNG
+                                            </h5>
+                                        </c:if>
+                                        <h4>
+                                                ${row.name}
+                                        </h4>
+                                        <span class="priceProduct">${row.getUnitPrice()}</span>
+                                    </button>
+                                </form>
+                            </div>
                         </c:forEach>
                     </div>
                     <nav aria-label="Page navigation example pt-4">
@@ -425,6 +406,14 @@
 <script src="<%=request.getContextPath()%>/Views/Web/js/DanhSachSanPham.js"></script>
 <script src="<%=request.getContextPath()%>/Views/Web/js/checkOut.js"></script>
 
+<%--<script>--%>
+<%--    let listGia = document.querySelectorAll(".priceProduct");--%>
+<%--    listGia.map( ()  => {--%>
+<%--        console.log(listGia.innerHTML);--%>
+<%--        // listGia[index].innerHTML = new Intl.NumberFormat('vn-VN', { style: 'currency', currency: 'VND' }).format(parseInt(listGia[index].innerHTML));--%>
+<%--    })--%>
+<%--    //--%>
+<%--</script>--%>
 
 </body>
 
