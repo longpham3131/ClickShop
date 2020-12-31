@@ -331,7 +331,7 @@ You can't access this page if you use link-url and not login -->
 							<tbody>
 							<c:forEach items="${listProduct}" var="row">
 								<c:choose>
-									<c:when test="${row.getAvailable() ==1}">
+									<c:when test="${row.getAvailable() >= 1}">
 										<tr>
 											<td><c:out value="${row.getProductId()}"/></td>
 											<td>${row.getSubCategoryId()}</td>

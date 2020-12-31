@@ -38,8 +38,8 @@
             <div class="col-md-4 col-sm-12 col-xs-12 product-content-desc" id="detail-product">
                 <div class="product-title">
                     <h1 id="pro-name">${name}</h1>
-
-                    <span id="pro_sku">${productId}</span>
+                    <span id="pro_sku"  hidden>${productId}</span>
+                    <span >Còn lại: ${Quannity}</span>
 
                 </div>
                 <div class="product-price" id="price-preview">
