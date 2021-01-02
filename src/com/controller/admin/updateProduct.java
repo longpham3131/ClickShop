@@ -43,20 +43,26 @@ public class updateProduct extends HttpServlet {
 		String productid = request.getParameter("productid");
 		String subcategory = request.getParameter("subcategory");
 		String name = request.getParameter("name");
-		String unitprice = request.getParameter("unitprice");
+		String imgPath = "";
+		if(request.getParameter("img") == ""){
+			imgPath = request.getParameter("imgPathTempt");
+		}
+		else {
+			imgPath = "/image_product/" + request.getParameter("img");
+		}
+		int unitprice =Integer.parseInt(request.getParameter("unitprice"));
 		String gender = request.getParameter("gender");
 		String description = request.getParameter("description");
 		String available = request.getParameter("available");
-		// System.out.println(DateTimeNow);
 		String tb = "";  // thong bao
-		if (productid == "" || subcategory == "" || name == "" || unitprice == "" || description == "" || gender == "" || available == "")
+		if (productid == "" || subcategory == "" || name == "" || unitprice < 0 || description == "" || gender == "" || available == "")
 			tb = "input";
 		String url = "Views/Admin/container/product.jsp";
 		String kq="1";
 		if (tb == "") {
 			queryDAO qD = new queryDAO();
 			try {
-				if (qD.updateProduct(productid, subcategory, name, unitprice, gender, description, available))
+				if (qD.updateProduct(productid, subcategory, name, imgPath, unitprice, gender, description, available))
 					tb = "true";
 				else
 					tb = "error";			
@@ -72,7 +78,5 @@ public class updateProduct extends HttpServlet {
 		request.setAttribute("thongbao", tb);
 		fillAllProduct a = new fillAllProduct();
 		a.doPost(request, response);
-
 	}
-
 }

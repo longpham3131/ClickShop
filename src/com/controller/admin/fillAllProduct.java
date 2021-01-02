@@ -56,18 +56,14 @@ public class fillAllProduct extends HttpServlet {
 			index = Integer.parseInt(txt);
 		}
 		queryDAO dao = new queryDAO();
-		List<Article1> list1 = dao.sanpham(index);
-		List<Category> listcate = dao.listcategory(index);
-		System.out.print(" xx");
+		List<Article1> list1 = dao.sanpham();
+		List<Category> listcate = dao.listcategory();
 		request.setAttribute("listCategory", listcate);
 		request.setAttribute("listProduct", list1);
 		request.setAttribute("from", request.getAttribute("from"));
 		request.setAttribute("thongbao", request.getAttribute("thongbao"));
 		RequestDispatcher rq = request.getRequestDispatcher("Views/Admin/container/product.jsp");
 		rq.forward(request, response);
-//         request.setAttribute("listProduct",list1);
-//         RequestDispatcher rs = request.getRequestDispatcher("Views/Admin/container/product.jsp"); 
-//         rs.forward(request, response); 
 	}
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)

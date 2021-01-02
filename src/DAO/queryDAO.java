@@ -350,27 +350,18 @@ public class queryDAO {
 
     // ------------------ START PRODUCT ---------------//
 
-    public List<Article1> sanpham(int index) {
-        String query = "SELECT * FROM  Product";
+    public List<Article1> sanpham() {
+        String query = "SELECT pro.*, img.ImagePath FROM dbo.Product pro, dbo.Image img WHERE pro.ProductId = img.ProductId ";
         List<Article1> list1 = new ArrayList<Article1>();
         try {
 
             conn = new MyDB().getConnection();
-            ps = conn.prepareStatement(query);
-            // ps.setInt(1, (index * 20 - 20));
-            rs = ps.executeQuery();
+            Statement stmt = null;
+            stmt = conn.createStatement();
+            rs = stmt.executeQuery(query);
             while (rs.next()) {
                 list1.add(new Article1(rs.getString(1), rs.getString(2), rs.getString(3), rs.getString(4),
-                        rs.getString(5), rs.getString(6), rs.getString(7), rs.getString(8)));
-
-                // user = new User(rs.getString("productId"),
-                // rs.getString("subcategoryId"),
-                // rs.getString("name"),
-                // rs.getString("unitprice"),
-                // rs.getString("like"),
-                // rs.getString("gender"),
-                // rs.getString("description"),
-                // rs.getString("available"));
+                        rs.getString(5), rs.getString(6), rs.getString(7),rs.getString(8)));
             }
             return list1;
         } catch (Exception e) {
@@ -378,27 +369,18 @@ public class queryDAO {
         return null;
     }
 
-    public List<Category> listcategory(int index) {
-        String query = "SELECT * FROM  Category";
+    public List<Category> listcategory() {
+        String query = "SELECT * FROM  dbo.SubCategory";
         List<Category> list = new ArrayList<Category>();
-        System.out.print("category");
         try {
 
-            conn = new MyDB().getConnection();
-            ps = conn.prepareStatement(query);
-            // ps.setInt(1, (index * 20 - 20));
-            rs = ps.executeQuery();
+            Statement stmt = null;
+            stmt = conn.createStatement();
+            rs = stmt.executeQuery(query);
             while (rs.next()) {
-                list.add(new Category(rs.getString(1), rs.getString(2)));
 
-                // user = new User(rs.getString("productId"),
-                // rs.getString("subcategoryId"),
-                // rs.getString("name"),
-                // rs.getString("unitprice"),
-                // rs.getString("like"),
-                // rs.getString("gender"),
-                // rs.getString("description"),
-                // rs.getString("available"));
+                list.add(new Category(rs.getString(1), rs.getString(3)));
+
             }
             return list;
         } catch (Exception e) {
@@ -406,25 +388,26 @@ public class queryDAO {
         return null;
     }
 
-    public boolean insertProduct(String productid, String subcategory, String name, String unitprice, String like,
-                                 String gender, String description, String available, String img) {
-        Connection conn1 = null, conn2 = null;
-        PreparedStatement ps1 = null, ps2 = null;
+    public boolean insertProduct(String subcategory, String name, String img ,int unitprice,
+                                 String gender, String description, String available) {
+
+        Connection conn1 = null;
+        CallableStatement clsm = null;
         ResultSet rs = null;
         try {
-            String query = "EXEC dbo.PSP_ThemSP " + subcategory + "," + name + "," + img + "," + unitprice + "," + 0 + "," + gender + "," + description;
-            System.out.println(query);
+            String query = "{ Call PSP_ThemSP(?,?,?,?,?,?,?)}";
+
             conn1 = new MyDB().getConnection();
-            ps1 = conn1.prepareStatement(query);
-            ps1.executeUpdate();
+            clsm = conn1.prepareCall(query);
 
-            // String query2 = "insert into AccountRole values('" + email + "','" + role +
-            // "')";
-            // conn2 = new MyDB().getConnection();
-            // System.out.println(query2);
-            // ps2 = conn2.prepareStatement(query2);
-            // ps2.executeUpdate();
-
+            clsm.setString(1, subcategory);
+            clsm.setString(2, name);
+            clsm.setString(3, img);
+            clsm.setInt(4, unitprice);
+            clsm.setString(5, gender);
+            clsm.setString(6, description);
+            clsm.setString(7, available);
+            clsm.execute();
             return true;
         } catch (Exception e) {
             System.out.println(e);
@@ -484,19 +467,24 @@ public class queryDAO {
         return false;
     }
 
-    public boolean updateProduct(String productid, String subcategory, String name, String unitprice, String gender,
+    public boolean updateProduct(String productid, String subcategory, String name, String img, int unitprice, String gender,
                                  String description, String available) {
-        Connection conn1 = null, conn2 = null;
-        PreparedStatement ps1 = null, ps2 = null;
+        Connection conn1 = null;
+        CallableStatement clsm = null;
         ResultSet rs = null;
         try {
-            String query = "update Product" + " set SubCategoryId='" + subcategory + "', Name='" + name
-                    + "',UnitPrice='" + unitprice + "',Gender='" + gender + "',Description='" + description
-                    + "' ,Available='" + available + "'" + " WHERE ProductId=" + productid + "";
-            System.out.println(query);
+            String query = "{ Call PSP_CapNhatSanPham(?,?,?,?,?,?,?,?)}";
             conn1 = new MyDB().getConnection();
-            ps1 = conn1.prepareStatement(query);
-            ps1.executeUpdate();
+            clsm = conn1.prepareCall(query);
+            clsm.setString(1, productid);
+            clsm.setString(2, subcategory);
+            clsm.setString(3, name);
+            clsm.setString(4, img);
+            clsm.setInt(5, unitprice);
+            clsm.setString(6, gender);
+            clsm.setString(7, description);
+            clsm.setString(8, available);
+            clsm.execute();
             return true;
         } catch (Exception e) {
             System.out.println(e);

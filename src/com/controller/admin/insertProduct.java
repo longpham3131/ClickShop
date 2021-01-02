@@ -39,22 +39,24 @@ public class insertProduct extends HttpServlet {
 		String productid = request.getParameter("productid");
 		String subcategory = request.getParameter("subcategory");
 		String name = request.getParameter("name");
-		String unitprice = request.getParameter("unitprice");
-		String like = request.getParameter("like");
+		int unitprice = Integer.parseInt(request.getParameter("unitprice")) ;
 		String gender = request.getParameter("gender");
 		String description = request.getParameter("description");
 		String available = request.getParameter("available");
-		String img = request.getParameter("img");
+		String img = "/image_product/" +  request.getParameter("img");
+
+
 		// System.out.println(DateTimeNow);
 		String tb = "";  // thong bao
-		if (subcategory == "" || name == "" || unitprice == "" || description == "" || gender == "" || available == ""|| img == "")
+		if (subcategory == "" || name == "" || unitprice < 0 || description == "" || gender == "" || available == "")
 			tb = "input";
 		String url = "Views/Admin/container/product.jsp";
 		String kq="1";
 		if (tb == "") {
 			queryDAO qD = new queryDAO();
+			System.out.print("Chay toi đây rồi");
 			try {
-				if (qD.insertProduct(productid, subcategory, name, unitprice, like, gender, description, available,img))
+				if (qD.insertProduct(subcategory, name, img, unitprice, gender, description, available))
 					tb = "true";
 				else
 					tb = "error";

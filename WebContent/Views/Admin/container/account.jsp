@@ -602,8 +602,6 @@
             </div>
 
             <!-- ---- END Of TABLE -- -->
-
-
             <!-- Footer -->
             <c:import url="../commom/footer.html"/>
             <!-- End of Footer -->
