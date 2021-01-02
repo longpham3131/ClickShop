@@ -229,20 +229,20 @@
             src="<%=request.getContextPath()%>/Views/Admin/js/sb-admin-2.min.js"></script>
 
     <!-- Page level plugins -->
-    <script
-            src="<%=request.getContextPath()%>/Views/Admin/vendor/chart.js/Chart.min.js"></script>
+<%--    <script--%>
+<%--            src="<%=request.getContextPath()%>/Views/Admin/vendor/chart.js/Chart.min.js"></script>--%>
     <script
             src="<%=request.getContextPath()%>/Views/Admin/vendor/datatables/jquery.dataTables.min.js"></script>
     <script
             src="<%=request.getContextPath()%>/Views/Admin/vendor/datatables/dataTables.bootstrap4.min.js"></script>
 
     <!-- Page level custom scripts -->
-    <script
-            src="<%=request.getContextPath()%>/Views/Admin/js/demo/chart-area-demo.js"></script>
+<%--    <script--%>
+<%--            src="<%=request.getContextPath()%>/Views/Admin/js/demo/chart-area-demo.js"></script>--%>
     <script
             src="<%=request.getContextPath()%>/Views/Admin/js/demo/datatables-demo.js"></script>
-    <script
-            src="<%=request.getContextPath()%>/Views/Admin/js/demo/chart-pie-demo.js"></script>
+<%--    <script--%>
+<%--            src="<%=request.getContextPath()%>/Views/Admin/js/demo/chart-pie-demo.js"></script>--%>
     <script
             src="<%=request.getContextPath()%>/Views/Admin/js/tableShipView.js"></script>
 

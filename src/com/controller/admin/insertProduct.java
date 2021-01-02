@@ -23,7 +23,6 @@ public class insertProduct extends HttpServlet {
 
 	public insertProduct() {
 		super();
-
 	}
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
@@ -34,6 +33,7 @@ public class insertProduct extends HttpServlet {
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse
 	 *      response)
 	 */
+
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		String productid = request.getParameter("productid");

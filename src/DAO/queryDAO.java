@@ -229,7 +229,7 @@ public class queryDAO {
             while (rs.next()) {
                 list.add(new Article(rs.getString(1), rs.getString(2), rs.getString(3), rs.getString(4),
                         rs.getString(5), rs.getString(6), rs.getString(7), rs.getString(8), rs.getString(9),
-                        rs.getString(10), rs.getString(11), rs.getString(12), rs.getString(13)));
+                        rs.getString(10), rs.getString(11), rs.getString(12), rs.getString(14)));
             }
             return list;
         } catch (Exception e) {
@@ -860,7 +860,7 @@ public class queryDAO {
     }
 
     public List<DetailOrder> OrtherDetailPicking() {
-        String query = "SELECT  * FROM SV_OrtherDetailShipping";
+        String query = "SELECT  * FROM SV_OrtherDetailPicking";
         List<DetailOrder> list = new ArrayList<DetailOrder>();
         try {
             conn = new MyDB().getConnection();
@@ -1227,6 +1227,36 @@ public class queryDAO {
         }
         return null;
     }
+    public String getCoin(String email)
+    {
+        String query = "SELECT A.coin\r\n"
+                + "	FROM Account A \r\n"
+                + "	WHERE A.Email= '" + email + "' \r\n";
+        try
+        {
+            conn = new MyDB().getConnection();
+            ps = conn.prepareStatement(query);
+            rs = ps.executeQuery();
+            while (rs.next()) {
+                return rs.getString(1);
+            }
+            return null;
+        } catch (Exception e) {
+            return null; }
+    }
 
+    public void truCoin(String email, String sub) {
+        String query = "\n" +
+                "UPDATE dbo.Account \n" +
+                "\tSET coin = coin-" + sub + "\n" +
+                "\tWHERE Email = '" + email + "'";
+        // System.out.println(query);
+        try {
+            conn = new MyDB().getConnection();
+            ps = conn.prepareStatement(query);
+            ps.executeQuery();
+        }
+        catch (Exception e) {}
+    }
 
 }

@@ -99,10 +99,14 @@ public class order extends HttpServlet {
                             }
                         }
                         mess = mess + "</tbody> </table>";
+                        //tru tien
+                        dao.truCoin(email, String.valueOf(sub));
+                        String mycoib= dao.getCoin(email);
+                        session.setAttribute("coin", mycoib);
                         EmailUtility.sendEmail(host, port, user, pass, email, "ClickShop Order", mess);
                     }
                 }
-                System.out.print("FSDFSDFSDF");
+               // System.out.print("FSDFSDFSDF");
                 session.setAttribute("kq", "1");
                 response.sendRedirect(request.getContextPath()+"/fill-All-Display");
                 //   fillAllDisplay a = new fillAllDisplay();

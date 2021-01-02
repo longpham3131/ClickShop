@@ -45,13 +45,14 @@ public class login extends HttpServlet {
         String kq = loginDAO.login(email, password);
         if (kq != null) {              // need session.get(email) <<<<<<<<<<<<<<<<<<<<<<<
             HttpSession session = request.getSession();
-
             session.setAttribute("check", "true");
             session.setAttribute("email", email);
             session.setAttribute("role", kq);
             queryDAO dao = new queryDAO();
             String id= dao.idByEmail(email);
+            String mycoib= dao.getCoin(email);
             session.setAttribute("AccId", id);
+            session.setAttribute("coin", mycoib);
             if (kq.equals("Administrator")) {
                 url = "Views/Admin/container/home.jsp";
                 RequestDispatcher rq = request.getRequestDispatcher(url);
