@@ -323,7 +323,7 @@
                             <input type="hidden" value="1" name="logout">
                             <button type="submit" title="Dang xuat"> <i class="fa fa-sign-out-alt"></i> </button>
                         </form>
-
+                        Coin: ${coin}
                     </c:when>
                     <c:otherwise>
                         <a href="<%=request.getContextPath()%>/login-all" aria-label="Tài khoản"

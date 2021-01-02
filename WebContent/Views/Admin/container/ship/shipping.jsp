@@ -35,11 +35,11 @@
                                 <td>${listSpg.status}</td>
                                 <td>
                                     <button type="button" class="btn btn-info" title="Other Detail"
-                                            data-toggle="modal" data-target="#myShippingOrder${listSpg.orderID}">
+                                            data-toggle="modal" data-target="#myShippingOrder1${listSpg.orderID}">
                                         <i class="fa fa-address-book"></i>
                                     </button>
                                     <button type="button" class="btn btn-primary" title="Detail"
-                                            data-toggle="modal" data-target="#myModal${listSpg.shipperID}">
+                                            data-toggle="modal" data-target="#myship1${listSpg.shipperID}">
                                         <i class="fa fa-shipping-fast"></i>
                                     </button>
                                     <button type="button" class="btn btn-danger" title="Complete Order"
@@ -47,7 +47,7 @@
                                         <i class="fa fa-check-square"></i>
                                     </button>
 
-                                    <div class="modal" id="myShippingOrder${listSpg.orderID}">
+                                    <div class="modal" id="myShippingOrder1${listSpg.orderID}">
                                         <div class="modal-dialog">
                                             <div class="modal-content">
 
@@ -67,6 +67,7 @@
                                                         <div class="col-sm-8">
                                                             <input type="text" Quantity readonly
                                                                    class="form-control-plaintext"
+                                                                   id="staticID"
                                                                    value="${listSpg.orderID}">
                                                         </div>
                                                     </div>
@@ -78,6 +79,7 @@
                                                         <div class="col-sm-8">
                                                             <input type="text" readonly
                                                                    class="form-control-plaintext"
+                                                                   id="staticEmail"
                                                                    value="${listSpg.email}">
                                                         </div>
                                                     </div>
@@ -144,95 +146,100 @@
                                         </div>
                                     </div>
 
-                                    <div class="modal" id="myModal${listSpg.shipperID}">
-                                        <div class="modal-dialog">
-                                            <div class="modal-content">
+                                    <div class="modal" id="myship1${listSpg.shipperID}">
+                                        <c:forEach items="${listShipper}" var="listSp" varStatus="loop">
+                                            <c:if test="${listSp.getAccountId() == listSpg.shipperID}">
+                                                <div class="modal-dialog">
+                                                    <div class="modal-content">
 
-                                                <!-- Modal Header -->
-                                                <div class="modal-header">
-                                                    <h4 class="modal-title">Profile Shipper</h4>
-                                                    <button type="button" class="close"
-                                                            data-dismiss="modal">&times;
-                                                    </button>
-                                                </div>
-                                                <!-- Modal body -->
-                                                <div class="modal-body">
-                                                    <div class="form-group row">
-                                                        <label for="staticID"
-                                                               class="col-sm-4 col-form-label">Account ID
-                                                            :</label>
-                                                        <div class="col-sm-8">
-                                                            <input type="text" readonly
-                                                                   class="form-control-plaintext"
-                                                                   id="staticID"
-                                                                   value="${listSp.accountId}">
+                                                        <!-- Modal Header -->
+                                                        <div class="modal-header">
+                                                            <h4 class="modal-title">Profile Shipper</h4>
+                                                            <button type="button" class="close"
+                                                                    data-dismiss="modal">&times;
+                                                            </button>
                                                         </div>
-                                                    </div>
-                                                    <div class="form-group row">
-                                                        <label for="staticEmail"
-                                                               class="col-sm-4 col-form-label">Email
-                                                            :</label>
-                                                        <div class="col-sm-8">
-                                                            <input type="text" readonly
-                                                                   class="form-control-plaintext"
-                                                                   id="staticEmail"
-                                                                   value="${listSp.email}">
-                                                        </div>
-                                                    </div>
-                                                    <div class="form-group row">
-                                                        <label for="staticName"
-                                                               class="col-sm-4 col-form-label">Name
-                                                            :</label>
-                                                        <div class="col-sm-8">
-                                                            <input type="text" readonly
-                                                                   class="form-control-plaintext"
-                                                                   id="staticName"
-                                                                   value="${listSp.firstName} ${listSp.lastName}">
-                                                        </div>
-                                                    </div>
-                                                    <div class="form-group row">
-                                                        <label for="staticPhone"
-                                                               class="col-sm-4 col-form-label">Phone
-                                                            :</label>
-                                                        <div class="col-sm-8">
-                                                            <input type="text" readonly
-                                                                   class="form-control-plaintext"
-                                                                   id="staticPhone"
-                                                                   value="${listSp.phone}">
-                                                        </div>
-                                                    </div>
-                                                    <div class="form-group row">
-                                                        <label for="staticAddress"
-                                                               class="col-sm-4 col-form-label">Address
-                                                            :</label>
-                                                        <div class="col-sm-8">
-                                                            <input type="text" readonly
-                                                                   class="form-control-plaintext"
-                                                                   id="staticAddress"
-                                                                   value="${listSp.address}">
-                                                        </div>
-                                                    </div>
-                                                    <div class="form-group row">
-                                                        <label for="staticGender"
-                                                               class="col-sm-4 col-form-label">Gender
-                                                            :</label>
-                                                        <div class="col-sm-8">
-                                                            <input type="text" readonly
-                                                                   class="form-control-plaintext"
-                                                                   id="staticGender"
-                                                                   value="${listSp.gender}">
-                                                        </div>
-                                                    </div>
+                                                        <!-- Modal body -->
+                                                        <div class="modal-body">
+                                                            <div class="form-group row">
+                                                                <label for="staticID"
+                                                                       class="col-sm-4 col-form-label">Account ID
+                                                                    :</label>
+                                                                <div class="col-sm-8">
+                                                                    <input type="text" readonly
+                                                                           class="form-control-plaintext"
+                                                                           id="staticID"
+                                                                           value="${listSp.accountId}">
+                                                                </div>
+                                                            </div>
+                                                            <div class="form-group row">
+                                                                <label for="staticEmail"
+                                                                       class="col-sm-4 col-form-label">Email
+                                                                    :</label>
+                                                                <div class="col-sm-8">
+                                                                    <input type="text" readonly
+                                                                           class="form-control-plaintext"
+                                                                           id="staticEmail"
+                                                                           value="${listSp.email}">
+                                                                </div>
+                                                            </div>
+                                                            <div class="form-group row">
+                                                                <label for="staticName"
+                                                                       class="col-sm-4 col-form-label">Name
+                                                                    :</label>
+                                                                <div class="col-sm-8">
+                                                                    <input type="text" readonly
+                                                                           class="form-control-plaintext"
+                                                                           id="staticName"
+                                                                           value="${listSp.firstName} ${listSp.lastName}">
+                                                                </div>
+                                                            </div>
+                                                            <div class="form-group row">
+                                                                <label for="staticPhone"
+                                                                       class="col-sm-4 col-form-label">Phone
+                                                                    :</label>
+                                                                <div class="col-sm-8">
+                                                                    <input type="text" readonly
+                                                                           class="form-control-plaintext"
+                                                                           id="staticPhone"
+                                                                           value="${listSp.phone}">
+                                                                </div>
+                                                            </div>
+                                                            <div class="form-group row">
+                                                                <label for="staticAddress"
+                                                                       class="col-sm-4 col-form-label">Address
+                                                                    :</label>
+                                                                <div class="col-sm-8">
+                                                                    <input type="text" readonly
+                                                                           class="form-control-plaintext"
+                                                                           id="staticAddress"
+                                                                           value="${listSp.address}">
+                                                                </div>
+                                                            </div>
+                                                            <div class="form-group row">
+                                                                <label for="staticGender"
+                                                                       class="col-sm-4 col-form-label">Gender
+                                                                    :</label>
+                                                                <div class="col-sm-8">
+                                                                    <input type="text" readonly
+                                                                           class="form-control-plaintext"
+                                                                           id="staticGender"
+                                                                           value="${listSp.gender}">
+                                                                </div>
+                                                            </div>
 
+                                                        </div>
+                                                        <!-- Modal footer -->
+                                                        <div class="modal-footer">
+                                                            <button type="button" class="btn btn-danger"
+                                                                    data-dismiss="modal">Close
+                                                            </button>
+                                                        </div>
+                                                    </div>
                                                 </div>
-                                                <!-- Modal footer -->
-                                                <div class="modal-footer">
-                                                    <button type="button" class="btn btn-danger"
-                                                            data-dismiss="modal">Close
-                                                    </button>
-                                                </div>
-                                            </div>
-                                        </div>
+
+                                            </c:if>
+                                        </c:forEach>
                                     </div>
 
                                     <div class="modal" id="endOrder${listSpg.orderID}">
@@ -252,7 +259,8 @@
                                                 <form action="<%=request.getContextPath()%>/endOrder" method="post">
                                                     <input type="hidden" value="${listSpg.orderID}" name="OrtherID"/>
                                                     <input type="hidden" value="${listSpg.status}" name="Status"/>
-                                                    <input type="submit" value="Agree" style="background-color: #357ebd; color: white">
+                                                    <input type="submit" value="Agree"
+                                                           style="background-color: #357ebd; color: white">
                                                 </form>
                                                 <!-- Modal footer -->
                                                 <div class="modal-footer">
@@ -278,7 +286,7 @@
                                         <i class="fa fa-address-book"></i>
                                     </button>
                                     <button type="button" class="btn btn-primary" title="Detail"
-                                            data-toggle="modal" data-target="#myModal${listSpg.shipperID}">
+                                            data-toggle="modal" data-target="#myship2${listSpg.shipperID}">
                                         <i class="fa fa-shipping-fast"></i>
                                     </button>
                                     <button type="button" class="btn btn-danger" title="Complete Order"
@@ -385,95 +393,100 @@
                                         </div>
                                     </div>
 
-                                    <div class="modal" id="myModal${listSpg.shipperID}">
-                                        <div class="modal-dialog">
-                                            <div class="modal-content">
+                                    <div class="modal" id="myship2${listSpg.shipperID}">
+                                        <c:forEach items="${listShipper}" var="listSp" varStatus="loop">
+                                            <c:if test="${listSp.getAccountId() == listSpg.shipperID}">
+                                                <div class="modal-dialog">
+                                                    <div class="modal-content">
 
-                                                <!-- Modal Header -->
-                                                <div class="modal-header">
-                                                    <h4 class="modal-title">Profile Shipper</h4>
-                                                    <button type="button" class="close"
-                                                            data-dismiss="modal">&times;
-                                                    </button>
-                                                </div>
-                                                <!-- Modal body -->
-                                                <div class="modal-body">
-                                                    <div class="form-group row">
-                                                        <label for="staticID"
-                                                               class="col-sm-4 col-form-label">Account ID
-                                                            :</label>
-                                                        <div class="col-sm-8">
-                                                            <input type="text" readonly
-                                                                   class="form-control-plaintext"
-                                                                   id="staticID"
-                                                                   value="${listSp.accountId}">
+                                                        <!-- Modal Header -->
+                                                        <div class="modal-header">
+                                                            <h4 class="modal-title">Profile Shipper</h4>
+                                                            <button type="button" class="close"
+                                                                    data-dismiss="modal">&times;
+                                                            </button>
                                                         </div>
-                                                    </div>
-                                                    <div class="form-group row">
-                                                        <label for="staticEmail"
-                                                               class="col-sm-4 col-form-label">Email
-                                                            :</label>
-                                                        <div class="col-sm-8">
-                                                            <input type="text" readonly
-                                                                   class="form-control-plaintext"
-                                                                   id="staticEmail"
-                                                                   value="${listSp.email}">
-                                                        </div>
-                                                    </div>
-                                                    <div class="form-group row">
-                                                        <label for="staticName"
-                                                               class="col-sm-4 col-form-label">Name
-                                                            :</label>
-                                                        <div class="col-sm-8">
-                                                            <input type="text" readonly
-                                                                   class="form-control-plaintext"
-                                                                   id="staticName"
-                                                                   value="${listSp.firstName} ${listSp.lastName}">
-                                                        </div>
-                                                    </div>
-                                                    <div class="form-group row">
-                                                        <label for="staticPhone"
-                                                               class="col-sm-4 col-form-label">Phone
-                                                            :</label>
-                                                        <div class="col-sm-8">
-                                                            <input type="text" readonly
-                                                                   class="form-control-plaintext"
-                                                                   id="staticPhone"
-                                                                   value="${listSp.phone}">
-                                                        </div>
-                                                    </div>
-                                                    <div class="form-group row">
-                                                        <label for="staticAddress"
-                                                               class="col-sm-4 col-form-label">Address
-                                                            :</label>
-                                                        <div class="col-sm-8">
-                                                            <input type="text" readonly
-                                                                   class="form-control-plaintext"
-                                                                   id="staticAddress"
-                                                                   value="${listSp.address}">
-                                                        </div>
-                                                    </div>
-                                                    <div class="form-group row">
-                                                        <label for="staticGender"
-                                                               class="col-sm-4 col-form-label">Gender
-                                                            :</label>
-                                                        <div class="col-sm-8">
-                                                            <input type="text" readonly
-                                                                   class="form-control-plaintext"
-                                                                   id="staticGender"
-                                                                   value="${listSp.gender}">
-                                                        </div>
-                                                    </div>
+                                                        <!-- Modal body -->
+                                                        <div class="modal-body">
+                                                            <div class="form-group row">
+                                                                <label for="staticID"
+                                                                       class="col-sm-4 col-form-label">Account ID
+                                                                    :</label>
+                                                                <div class="col-sm-8">
+                                                                    <input type="text" readonly
+                                                                           class="form-control-plaintext"
+                                                                           id="staticID"
+                                                                           value="${listSp.accountId}">
+                                                                </div>
+                                                            </div>
+                                                            <div class="form-group row">
+                                                                <label for="staticEmail"
+                                                                       class="col-sm-4 col-form-label">Email
+                                                                    :</label>
+                                                                <div class="col-sm-8">
+                                                                    <input type="text" readonly
+                                                                           class="form-control-plaintext"
+                                                                           id="staticEmail"
+                                                                           value="${listSp.email}">
+                                                                </div>
+                                                            </div>
+                                                            <div class="form-group row">
+                                                                <label for="staticName"
+                                                                       class="col-sm-4 col-form-label">Name
+                                                                    :</label>
+                                                                <div class="col-sm-8">
+                                                                    <input type="text" readonly
+                                                                           class="form-control-plaintext"
+                                                                           id="staticName"
+                                                                           value="${listSp.firstName} ${listSp.lastName}">
+                                                                </div>
+                                                            </div>
+                                                            <div class="form-group row">
+                                                                <label for="staticPhone"
+                                                                       class="col-sm-4 col-form-label">Phone
+                                                                    :</label>
+                                                                <div class="col-sm-8">
+                                                                    <input type="text" readonly
+                                                                           class="form-control-plaintext"
+                                                                           id="staticPhone"
+                                                                           value="${listSp.phone}">
+                                                                </div>
+                                                            </div>
+                                                            <div class="form-group row">
+                                                                <label for="staticAddress"
+                                                                       class="col-sm-4 col-form-label">Address
+                                                                    :</label>
+                                                                <div class="col-sm-8">
+                                                                    <input type="text" readonly
+                                                                           class="form-control-plaintext"
+                                                                           id="staticAddress"
+                                                                           value="${listSp.address}">
+                                                                </div>
+                                                            </div>
+                                                            <div class="form-group row">
+                                                                <label for="staticGender"
+                                                                       class="col-sm-4 col-form-label">Gender
+                                                                    :</label>
+                                                                <div class="col-sm-8">
+                                                                    <input type="text" readonly
+                                                                           class="form-control-plaintext"
+                                                                           id="staticGender"
+                                                                           value="${listSp.gender}">
+                                                                </div>
+                                                            </div>
 
+                                                        </div>
+                                                        <!-- Modal footer -->
+                                                        <div class="modal-footer">
+                                                            <button type="button" class="btn btn-danger"
+                                                                    data-dismiss="modal">Close
+                                                            </button>
+                                                        </div>
+                                                    </div>
                                                 </div>
-                                                <!-- Modal footer -->
-                                                <div class="modal-footer">
-                                                    <button type="button" class="btn btn-danger"
-                                                            data-dismiss="modal">Close
-                                                    </button>
-                                                </div>
-                                            </div>
-                                        </div>
+
+                                            </c:if>
+                                        </c:forEach>
                                     </div>
 
                                     <div class="modal" id="endOrder${listSpg.orderID}">
@@ -493,7 +506,8 @@
                                                 <form action="<%=request.getContextPath()%>/endOrder" method="post">
                                                     <input type="hidden" value="${listSpg.orderID}" name="OrtherID"/>
                                                     <input type="hidden" value="${listSpg.status}" name="Status"/>
-                                                    <input type="submit" value="Agree" style="background-color: #357ebd; color: white">
+                                                    <input type="submit" value="Agree"
+                                                           style="background-color: #357ebd; color: white">
                                                 </form>
                                                 <!-- Modal footer -->
                                                 <div class="modal-footer">
@@ -519,7 +533,7 @@
                                         <i class="fa fa-address-book"></i>
                                     </button>
                                     <button type="button" class="btn btn-primary" title="Detail"
-                                            data-toggle="modal" data-target="#myModal${listSpg.shipperID}">
+                                            data-toggle="modal" data-target="#myship3${listSpg.shipperID}">
                                         <i class="fa fa-shipping-fast"></i></button>
 
                                     <div class="modal" id="myShippingOrder${listSpg.orderID}">
@@ -621,95 +635,100 @@
                                         </div>
                                     </div>
 
-                                    <div class="modal" id="myModal${listSpg.shipperID}">
-                                        <div class="modal-dialog">
-                                            <div class="modal-content">
+                                    <div class="modal" id="myship3${listSpg.shipperID}">
+                                        <c:forEach items="${listShipper}" var="listSp" varStatus="loop">
+                                            <c:if test="${listSp.getAccountId() == listSpg.shipperID}">
+                                                <div class="modal-dialog">
+                                                    <div class="modal-content">
 
-                                                <!-- Modal Header -->
-                                                <div class="modal-header">
-                                                    <h4 class="modal-title">Profile Shipper</h4>
-                                                    <button type="button" class="close"
-                                                            data-dismiss="modal">&times;
-                                                    </button>
-                                                </div>
-                                                <!-- Modal body -->
-                                                <div class="modal-body">
-                                                    <div class="form-group row">
-                                                        <label for="staticID"
-                                                               class="col-sm-4 col-form-label">Account ID
-                                                            :</label>
-                                                        <div class="col-sm-8">
-                                                            <input type="text" readonly
-                                                                   class="form-control-plaintext"
-                                                                   id="staticID"
-                                                                   value="${listSp.accountId}">
+                                                        <!-- Modal Header -->
+                                                        <div class="modal-header">
+                                                            <h4 class="modal-title">Profile Shipper</h4>
+                                                            <button type="button" class="close"
+                                                                    data-dismiss="modal">&times;
+                                                            </button>
                                                         </div>
-                                                    </div>
-                                                    <div class="form-group row">
-                                                        <label for="staticEmail"
-                                                               class="col-sm-4 col-form-label">Email
-                                                            :</label>
-                                                        <div class="col-sm-8">
-                                                            <input type="text" readonly
-                                                                   class="form-control-plaintext"
-                                                                   id="staticEmail"
-                                                                   value="${listSp.email}">
-                                                        </div>
-                                                    </div>
-                                                    <div class="form-group row">
-                                                        <label for="staticName"
-                                                               class="col-sm-4 col-form-label">Name
-                                                            :</label>
-                                                        <div class="col-sm-8">
-                                                            <input type="text" readonly
-                                                                   class="form-control-plaintext"
-                                                                   id="staticName"
-                                                                   value="${listSp.firstName} ${listSp.lastName}">
-                                                        </div>
-                                                    </div>
-                                                    <div class="form-group row">
-                                                        <label for="staticPhone"
-                                                               class="col-sm-4 col-form-label">Phone
-                                                            :</label>
-                                                        <div class="col-sm-8">
-                                                            <input type="text" readonly
-                                                                   class="form-control-plaintext"
-                                                                   id="staticPhone"
-                                                                   value="${listSp.phone}">
-                                                        </div>
-                                                    </div>
-                                                    <div class="form-group row">
-                                                        <label for="staticAddress"
-                                                               class="col-sm-4 col-form-label">Address
-                                                            :</label>
-                                                        <div class="col-sm-8">
-                                                            <input type="text" readonly
-                                                                   class="form-control-plaintext"
-                                                                   id="staticAddress"
-                                                                   value="${listSp.address}">
-                                                        </div>
-                                                    </div>
-                                                    <div class="form-group row">
-                                                        <label for="staticGender"
-                                                               class="col-sm-4 col-form-label">Gender
-                                                            :</label>
-                                                        <div class="col-sm-8">
-                                                            <input type="text" readonly
-                                                                   class="form-control-plaintext"
-                                                                   id="staticGender"
-                                                                   value="${listSp.gender}">
-                                                        </div>
-                                                    </div>
+                                                        <!-- Modal body -->
+                                                        <div class="modal-body">
+                                                            <div class="form-group row">
+                                                                <label for="staticID"
+                                                                       class="col-sm-4 col-form-label">Account ID
+                                                                    :</label>
+                                                                <div class="col-sm-8">
+                                                                    <input type="text" readonly
+                                                                           class="form-control-plaintext"
+                                                                           id="staticID"
+                                                                           value="${listSp.accountId}">
+                                                                </div>
+                                                            </div>
+                                                            <div class="form-group row">
+                                                                <label for="staticEmail"
+                                                                       class="col-sm-4 col-form-label">Email
+                                                                    :</label>
+                                                                <div class="col-sm-8">
+                                                                    <input type="text" readonly
+                                                                           class="form-control-plaintext"
+                                                                           id="staticEmail"
+                                                                           value="${listSp.email}">
+                                                                </div>
+                                                            </div>
+                                                            <div class="form-group row">
+                                                                <label for="staticName"
+                                                                       class="col-sm-4 col-form-label">Name
+                                                                    :</label>
+                                                                <div class="col-sm-8">
+                                                                    <input type="text" readonly
+                                                                           class="form-control-plaintext"
+                                                                           id="staticName"
+                                                                           value="${listSp.firstName} ${listSp.lastName}">
+                                                                </div>
+                                                            </div>
+                                                            <div class="form-group row">
+                                                                <label for="staticPhone"
+                                                                       class="col-sm-4 col-form-label">Phone
+                                                                    :</label>
+                                                                <div class="col-sm-8">
+                                                                    <input type="text" readonly
+                                                                           class="form-control-plaintext"
+                                                                           id="staticPhone"
+                                                                           value="${listSp.phone}">
+                                                                </div>
+                                                            </div>
+                                                            <div class="form-group row">
+                                                                <label for="staticAddress"
+                                                                       class="col-sm-4 col-form-label">Address
+                                                                    :</label>
+                                                                <div class="col-sm-8">
+                                                                    <input type="text" readonly
+                                                                           class="form-control-plaintext"
+                                                                           id="staticAddress"
+                                                                           value="${listSp.address}">
+                                                                </div>
+                                                            </div>
+                                                            <div class="form-group row">
+                                                                <label for="staticGender"
+                                                                       class="col-sm-4 col-form-label">Gender
+                                                                    :</label>
+                                                                <div class="col-sm-8">
+                                                                    <input type="text" readonly
+                                                                           class="form-control-plaintext"
+                                                                           id="staticGender"
+                                                                           value="${listSp.gender}">
+                                                                </div>
+                                                            </div>
 
+                                                        </div>
+                                                        <!-- Modal footer -->
+                                                        <div class="modal-footer">
+                                                            <button type="button" class="btn btn-danger"
+                                                                    data-dismiss="modal">Close
+                                                            </button>
+                                                        </div>
+                                                    </div>
                                                 </div>
-                                                <!-- Modal footer -->
-                                                <div class="modal-footer">
-                                                    <button type="button" class="btn btn-danger"
-                                                            data-dismiss="modal">Close
-                                                    </button>
-                                                </div>
-                                            </div>
-                                        </div>
+
+                                            </c:if>
+                                        </c:forEach>
                                     </div>
 
                                 </td>

@@ -131,112 +131,115 @@
                             <!----------Noi-dung-------- -->
                             <tbody>
                             <c:forEach items="${listPicking}" var="listPkg" varStatus="loop">
-                                <tr>
-                                    <td>${listPkg.orderID}</td>
-                                    <td>${listPkg.subTotal}</td>
-                                    <td>${listPkg.address}</td>
-                                    <td>
-                                        <button type="button" class="btn btn-info" title="Other Detail"
-                                                data-toggle="modal" data-target="#mypick${listPkg.orderID}">
-                                            <i class="fa fa-address-book"></i>
-                                        </button>
+                                <c:if test="${shipid==listPkg.shipperID}">
+                                    <tr>
+                                        <td>${listPkg.orderID}</td>
+                                        <td>${listPkg.subTotal}</td>
+                                        <td>${listPkg.address}</td>
+                                        <td>
+                                            <button type="button" class="btn btn-info" title="Other Detail"
+                                                    data-toggle="modal" data-target="#mypick${listPkg.orderID}">
+                                                <i class="fa fa-address-book"></i>
+                                            </button>
 
-                                        <div class="modal fade" id="mypick${listPkg.orderID}">
-                                            <div class="modal-dialog modal-xl">
-                                                <div class="modal-content">
+                                            <div class="modal fade" id="mypick${listPkg.orderID}">
+                                                <div class="modal-dialog modal-xl">
+                                                    <div class="modal-content">
 
-                                                    <!-- Modal Header -->
-                                                    <div class="modal-header">
-                                                        <h4 class="modal-title">Chi tiết đơn hàng</h4>
-                                                        <button type="button" class="close"
-                                                                data-dismiss="modal">&times;
-                                                        </button>
-                                                    </div>
-                                                    <!-- Modal body -->
-                                                    <div class="modal-body">
-                                                        <div class="form-group row">
-                                                            <label for="staticID"
-                                                                   class="col-sm-4 col-form-label">Mã đơn hàng
-                                                                :</label>
-                                                            <div class="col-sm-8">
-                                                                <input type="text" Quantity readonly
-                                                                       class="form-control-plaintext"
-                                                                       id="staticID"
-                                                                       value="${listPkg.orderID}">
+                                                        <!-- Modal Header -->
+                                                        <div class="modal-header">
+                                                            <h4 class="modal-title">Chi tiết đơn hàng</h4>
+                                                            <button type="button" class="close"
+                                                                    data-dismiss="modal">&times;
+                                                            </button>
+                                                        </div>
+                                                        <!-- Modal body -->
+                                                        <div class="modal-body">
+                                                            <div class="form-group row">
+                                                                <label for="staticID"
+                                                                       class="col-sm-4 col-form-label">Mã đơn hàng
+                                                                    :</label>
+                                                                <div class="col-sm-8">
+                                                                    <input type="text" Quantity readonly
+                                                                           class="form-control-plaintext"
+                                                                           id="staticID"
+                                                                           value="${listPkg.orderID}">
+                                                                </div>
                                                             </div>
+
+                                                            <div class="form-group row">
+                                                                <label
+                                                                        class="col-sm-4 col-form-label">Địa chỉ giao
+                                                                    hàng
+                                                                    :</label>
+                                                                <div class="col-sm-8">
+                                                                    <input type="text" readonly
+                                                                           class="form-control-plaintext"
+                                                                           value="${listPkg.address}">
+                                                                </div>
+                                                            </div>
+
+                                                            <div class="form-group row">
+                                                                <label
+                                                                        class="col-sm-4 col-form-label">Số điện thoại
+                                                                    khách
+                                                                    hàng
+                                                                    :</label>
+                                                                <div class="col-sm-8">
+                                                                    <input type="text" readonly
+                                                                           class="form-control-plaintext"
+                                                                           value="${listPkg.phone}">
+                                                                </div>
+                                                            </div>
+                                                            <table class="table table-bordered" id="orther detail"
+                                                                   width="100%"
+                                                                   cellspacing="0">
+                                                                <thead>
+                                                                <tr>
+                                                                    <th>Mã sản phẩm</th>
+                                                                    <th>Tên sản phẩm</th>
+                                                                    <th>Số lượng</th>
+                                                                    <th>Giá sản phẩm</th>
+                                                                </tr>
+                                                                </thead>
+                                                                <!----------Noi-dung-------- -->
+                                                                <tbody>
+
+                                                                <c:set var="sum" value="0"/>
+                                                                <c:forEach items="${listPickDetail}" var="listPick"
+                                                                           varStatus="loop">
+                                                                    <%--                                                                <h2>${listPkg.orderID}</h2>--%>
+                                                                    <%--                                                                <h2>---${listPick.orderID}</h2>--%>
+                                                                    <c:if test="${listPkg.orderID == listPick.orderID}">
+                                                                        <tr>
+                                                                            <td>${listPick.productID}</td>
+                                                                            <td>${listPick.name}</td>
+                                                                            <td>${listPick.quanity}</td>
+                                                                            <td>${listPick.subTotal}</td>
+                                                                            <c:set var="tien"
+                                                                                   value="${listPick.subTotal}"/>
+                                                                            <c:set var="sum" value="${sum + tien}"/>
+                                                                        </tr>
+                                                                    </c:if>
+                                                                </c:forEach>
+                                                                </tbody>
+                                                            </table>
+                                                            Tổng tiền đơn hàng: ${sum}
                                                         </div>
 
-                                                        <div class="form-group row">
-                                                            <label
-                                                                    class="col-sm-4 col-form-label">Địa chỉ giao hàng
-                                                                :</label>
-                                                            <div class="col-sm-8">
-                                                                <input type="text" readonly
-                                                                       class="form-control-plaintext"
-                                                                       value="${listPkg.address}">
-                                                            </div>
+                                                        <!-- Modal footer -->
+                                                        <div class="modal-footer">
+                                                            <button type="button" class="btn btn-danger"
+                                                                    data-dismiss="modal">Đóng
+                                                            </button>
                                                         </div>
 
-                                                        <div class="form-group row">
-                                                            <label
-                                                                    class="col-sm-4 col-form-label">Số điện thoại khách
-                                                                hàng
-                                                                :</label>
-                                                            <div class="col-sm-8">
-                                                                <input type="text" readonly
-                                                                       class="form-control-plaintext"
-                                                                       value="${listPkg.phone}">
-                                                            </div>
-                                                        </div>
-                                                        <table class="table table-bordered" id="orther detail" width="100%"
-                                                               cellspacing="0">
-                                                            <thead>
-                                                            <tr>
-                                                                <th>Mã sản phẩm</th>
-                                                                <th>Tên sản phẩm</th>
-                                                                <th>Số lượng</th>
-                                                                <th>Giá sản phẩm</th>
-                                                            </tr>
-                                                            </thead>
-                                                            <!----------Noi-dung-------- -->
-                                                            <tbody>
-
-                                                            <c:set var="sum" value="0"/>
-                                                            <c:forEach items="${listPickDetail}" var="listPick"
-                                                                       varStatus="loop">
-                                                                <h2>${listPkg.orderID}</h2>
-                                                                <h2>---${listPick.orderID}</h2>
-                                                                <c:if test="${listPkg.orderID == listPick.orderID}">
-                                                                    <tr>
-                                                                        <td>${listPick.productID}</td>
-                                                                        <td>${listPick.name}</td>
-                                                                        <td>${listPick.quanity}</td>
-                                                                        <td>${listPick.subTotal}</td>
-                                                                        <c:set var="tien" value="${listPick.subTotal}"/>
-                                                                        <c:set var="sum" value="${sum + tien}"/>
-                                                                    </tr>
-                                                                </c:if>
-                                                            </c:forEach>
-                                                            </tbody>
-                                                        </table>
-                                                        Tổng tiền đơn hàng: ${sum}
                                                     </div>
-
-                                                    <!-- Modal footer -->
-                                                    <div class="modal-footer">
-                                                        <button type="button" class="btn btn-danger"
-                                                                data-dismiss="modal">Đóng
-                                                        </button>
-                                                    </div>
-
                                                 </div>
                                             </div>
-                                        </div>
-
-
-                                    </td>
-
-                                </tr>
+                                        </td>
+                                    </tr>
+                                </c:if>
                             </c:forEach>
 
                             </tbody>
@@ -351,7 +354,8 @@
 
                                                                 <div class="form-group row">
                                                                     <label
-                                                                            class="col-sm-4 col-form-label">Địa chỉ giao hàng
+                                                                            class="col-sm-4 col-form-label">Địa chỉ giao
+                                                                        hàng
                                                                         :</label>
                                                                     <div class="col-sm-8">
                                                                         <input type="text" readonly
@@ -362,7 +366,8 @@
 
                                                                 <div class="form-group row">
                                                                     <label
-                                                                            class="col-sm-4 col-form-label">Số điện thoại khách hàng
+                                                                            class="col-sm-4 col-form-label">Số điện
+                                                                        thoại khách hàng
                                                                         :</label>
                                                                     <div class="col-sm-8">
                                                                         <input type="text" readonly
@@ -442,7 +447,8 @@
                                                             </div>
                                                             <!-- Modal footer -->
                                                             <div class="modal-footer">
-                                                                <button type="submit" form="formAcceptOrder" class="btn btn-success">Xác nhận
+                                                                <button type="submit" form="formAcceptOrder"
+                                                                        class="btn btn-success">Xác nhận
                                                                 </button>
                                                                 <button type="button" class="btn btn-danger"
                                                                         data-dismiss="modal">Đóng
@@ -479,7 +485,9 @@
 
                                                             <!-- Modal footer -->
                                                             <div class="modal-footer">
-                                                                <button type="submit" class="btn btn-success" form="formCancel">Xác nhận</button>
+                                                                <button type="submit" class="btn btn-success"
+                                                                        form="formCancel">Xác nhận
+                                                                </button>
                                                                 <button type="button" class="btn btn-danger"
                                                                         data-dismiss="modal">Đóng
                                                                 </button>
