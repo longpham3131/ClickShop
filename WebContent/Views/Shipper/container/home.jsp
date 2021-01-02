@@ -439,7 +439,7 @@
                                                                 Mã đơn hàng: ${listSpg.orderID}<br>
                                                                 Số điện thoại khách hàng: ${listSpg.phone}<br>
                                                                 <form action="<%=request.getContextPath()%>/shipper"
-                                                                      method="post" id="formAcceptOrder">
+                                                                      method="post" id="formAcceptOrder${listSpg.orderID}">
                                                                     <input type="hidden" value="Completed" name="end"/>
                                                                     <input type="hidden" value="${listSpg.orderID}"
                                                                            name="orderId"/>
@@ -447,7 +447,7 @@
                                                             </div>
                                                             <!-- Modal footer -->
                                                             <div class="modal-footer">
-                                                                <button type="submit" form="formAcceptOrder"
+                                                                <button type="submit" form="formAcceptOrder${listSpg.orderID}"
                                                                         class="btn btn-success">Xác nhận
                                                                 </button>
                                                                 <button type="button" class="btn btn-danger"
@@ -475,18 +475,17 @@
                                                                 Số điện thoại khách hàng: ${listSpg.phone}<br>
                                                                 Không thể giao đến khách hàng
                                                                 <form action="<%=request.getContextPath()%>/shipper"
-                                                                      method="post" id="formCancel">
+                                                                      method="post" id="formCancel${listSpg.orderID}">
                                                                     <input type="hidden" value="Cancel" name="end"/>
                                                                     <input type="hidden" value="${listSpg.orderID}"
                                                                            name="orderId"/>
-
                                                                 </form>
                                                             </div>
 
                                                             <!-- Modal footer -->
                                                             <div class="modal-footer">
                                                                 <button type="submit" class="btn btn-success"
-                                                                        form="formCancel">Xác nhận
+                                                                        form="formCancel${listSpg.orderID}">Xác nhận
                                                                 </button>
                                                                 <button type="button" class="btn btn-danger"
                                                                         data-dismiss="modal">Đóng

@@ -74,74 +74,6 @@ You can't access this page if you use link-url and not login -->
     </c:if>
 </c:if>
 <!-- delete -->
-<c:if test="${from == 'delete'}">
-    <c:if test="${(thongbao == 'true') && (from=='delete')}">
-        <script type="text/javascript">
-            alert('Block/Unblock Thành công !!!');
-        </script>
-    </c:if>
-    <c:if test="${(thongbao == 'error') && (from=='delete')}">
-        <script type="text/javascript">
-            alert('Block/Unblock: Thất bại');
-        </script>
-    </c:if>
-    <c:if test="${(thongbao == 'input') && (from=='delete')}">
-        <script type="text/javascript">
-            alert('Block/Unblock: Hãy nhập đầy đủ dữ liệu');
-        </script>
-    </c:if>
-    <c:if test="${(thongbao == 'notFound') && (from=='delete')}">
-        <script type="text/javascript">
-            alert('Block/Unblock: Không tìm thấy email này');
-        </script>
-    </c:if>
-</c:if>
-
-<c:if test="${from == 'block'}">
-    <c:if test="${(thongbao == 'true') && (from=='block')}">
-        <script type="text/javascript">
-            alert('Block: Thành công !!!');
-        </script>
-    </c:if>
-    <c:if test="${(thongbao == 'error') && (from=='block')}">
-        <script type="text/javascript">
-            alert('Block: Lỗi xảy khi khi thực hiện');
-        </script>
-    </c:if>
-    <c:if test="${(thongbao == 'input') && (from=='block')}">
-        <script type="text/javascript">
-            alert('Block: Lỗi input');
-        </script>
-    </c:if>
-    <c:if test="${(thongbao == 'notFound') && (from=='block')}">
-        <script type="text/javascript">
-            alert('Block: Không tìm thấy id');
-        </script>
-    </c:if>
-</c:if>
-
-<c:if test="${from == 'unblock'}">
-    <c:if test="${(thongbao == 'true') && (from=='unblock')}">
-        <script type="text/javascript">
-            alert('Unblock: Thành công !!!');
-        </script>
-    </c:if>
-    <c:if test="${(thongbao == 'error') && (from=='block')}">
-        <script type="text/javascript">
-            alert('Block: Lỗi xảy khi khi thực hiện');
-        </script>
-    </c:if>
-    <c:if test="${(thongbao == 'input') && (from=='block')}">
-        <script type="text/javascript">
-            alert('Block: Lỗi input');
-        </script>
-    </c:if>
-    <c:if test="${(thongbao == 'notFound') && (from=='block')}">
-        <script type="text/javascript">
-            alert('Block: Không tìm thấy id');
-        </script>
-    </c:if>
-</c:if>
 <%
     session.setAttribute("from", "product");
 %>
@@ -404,7 +336,8 @@ You can't access this page if you use link-url and not login -->
                                                                         </c:choose>
                                                                     </div>
                                                                     <label for="pricelb"
-                                                                           class="col-sm-4 col-form-label">Đơn Giá :</label>
+                                                                           class="col-sm-4 col-form-label">Đơn Giá
+                                                                        :</label>
                                                                     <div class="col-sm-8">
                                                                         <input type="text" readonly
                                                                                class="form-control-plaintext"
@@ -428,11 +361,13 @@ You can't access this page if you use link-url and not login -->
                                                                     <label for="availb"
                                                                            class="col-sm-4 col-form-label">Ảnh:</label>
                                                                     <div class="col-sm-8">
-                                                                        <img src="<%=request.getContextPath()%>/Views/Web${row.getImgPath()}" class="img-fluid">
+                                                                        <img src="<%=request.getContextPath()%>/Views/Web${row.getImgPath()}"
+                                                                             class="img-fluid">
 
                                                                     </div>
                                                                     <label for="availb"
-                                                                           class="col-sm-4 col-form-label">Số lượng:</label>
+                                                                           class="col-sm-4 col-form-label">Số
+                                                                        lượng:</label>
                                                                     <div class="col-sm-8">
                                                                         <input type="text" readonly
                                                                                class="form-control-plaintext"
@@ -506,25 +441,28 @@ You can't access this page if you use link-url and not login -->
                                                                             phẩm :</label>
                                                                         <div class="col-sm-8">
 
-                                                                            <select id="subCateIdEdit" multiple class="form-control"
-                                                                                             name="subcategory">
-                                                                            <c:forEach items="${listCategory}" var="cate">
-                                                                                <c:choose>
-                                                                                    <c:when test="${row.getSubCategoryId() == cate.getCategoryId()}">
-                                                                                        <option selected value="${cate.getCategoryId()}"
-                                                                                        >
-                                                                                                ${cate.getName()}
-                                                                                        </option>
-                                                                                    </c:when>
-                                                                                    <c:otherwise>
-                                                                                        <option value="${cate.getCategoryId()}"
-                                                                                        >
-                                                                                                ${cate.getName()}
-                                                                                        </option>
-                                                                                    </c:otherwise>
-                                                                                </c:choose>
-                                                                            </c:forEach>
-                                                                        </select>
+                                                                            <select id="subCateIdEdit" multiple
+                                                                                    class="form-control"
+                                                                                    name="subcategory">
+                                                                                <c:forEach items="${listCategory}"
+                                                                                           var="cate">
+                                                                                    <c:choose>
+                                                                                        <c:when test="${row.getSubCategoryId() == cate.getCategoryId()}">
+                                                                                            <option selected
+                                                                                                    value="${cate.getCategoryId()}"
+                                                                                            >
+                                                                                                    ${cate.getName()}
+                                                                                            </option>
+                                                                                        </c:when>
+                                                                                        <c:otherwise>
+                                                                                            <option value="${cate.getCategoryId()}"
+                                                                                            >
+                                                                                                    ${cate.getName()}
+                                                                                            </option>
+                                                                                        </c:otherwise>
+                                                                                    </c:choose>
+                                                                                </c:forEach>
+                                                                            </select>
                                                                         </div>
                                                                     </div>
                                                                     <div class="form-group row">
@@ -532,22 +470,29 @@ You can't access this page if you use link-url and not login -->
                                                                                class="col-sm-4 col-form-label"> Đối
                                                                             tượng:</label>
                                                                         <div class="col-sm-8">
-                                                                            <select id="genderEdit"  class="form-control"  name="gender">
+                                                                            <select id="genderEdit" class="form-control"
+                                                                                    name="gender">
                                                                                 <c:choose>
                                                                                     <c:when test="${row.getGender() == '0' }">
-                                                                                        <option  value="0" selected>Nam</option>
+                                                                                        <option value="0" selected>Nam
+                                                                                        </option>
                                                                                         <option value="1">Nữ</option>
-                                                                                        <option value="2">Cả hai</option>
+                                                                                        <option value="2">Cả hai
+                                                                                        </option>
                                                                                     </c:when>
                                                                                     <c:when test="${row.getGender() == '1' }">
-                                                                                        <option  value="0">Nam</option>
-                                                                                        <option  value="1" selected>Nữ</option>
-                                                                                        <option value="2">Cả hai</option>
+                                                                                        <option value="0">Nam</option>
+                                                                                        <option value="1" selected>Nữ
+                                                                                        </option>
+                                                                                        <option value="2">Cả hai
+                                                                                        </option>
                                                                                     </c:when>
                                                                                     <c:otherwise>
                                                                                         <option value="0">Nam</option>
                                                                                         <option value="1">Nữ</option>
-                                                                                        <option  value="2" selected>Cả hai</option>
+                                                                                        <option value="2" selected>Cả
+                                                                                            hai
+                                                                                        </option>
                                                                                     </c:otherwise>
                                                                                 </c:choose>
                                                                             </select>
@@ -586,13 +531,16 @@ You can't access this page if you use link-url and not login -->
                                                                                class="col-sm-4 col-form-label">Link ảnh
                                                                             :</label>
                                                                         <div class="col-sm-8">
-                                                                            <input type="file" id="imgPathEdit" class="form-control-file" name="img" >
-                                                                            <input type="hidden" name="imgPathTempt" value="${row.getImgPath()}">
+                                                                            <input type="file" id="imgPathEdit"
+                                                                                   class="form-control-file" name="img">
+                                                                            <input type="hidden" name="imgPathTempt"
+                                                                                   value="${row.getImgPath()}">
                                                                         </div>
                                                                     </div>
                                                                     <div class="form-group row">
                                                                         <label for="availEdit"
-                                                                               class="col-sm-4 col-form-label">Số lượng:</label>
+                                                                               class="col-sm-4 col-form-label">Số
+                                                                            lượng:</label>
                                                                         <div class="col-sm-8">
                                                                             <input type="number"
                                                                                    class="form-control"
@@ -618,58 +566,384 @@ You can't access this page if you use link-url and not login -->
                                                         </div>
                                                     </div>
                                                 </div>
-                                                <button type="button" class="btn btn-dark" title="Block"
-                                                        data-toggle="modal"
-                                                        data-target="#blockProduct${row.getProductId()}"><i
-                                                        class="fa fa-lock"></i>
-                                                </button>
+                                                    <%--                                                <button type="button" class="btn btn-dark" title="Block"--%>
+                                                    <%--                                                        data-toggle="modal"--%>
+                                                    <%--                                                        data-target="#blockProduct${row.getProductId()}"><i--%>
+                                                    <%--                                                        class="fa fa-lock"></i>--%>
+                                                    <%--                                                </button>--%>
                                                 <!-- The Modal -->
 
-                                                <div class="modal" id="blockProduct${row.getProductId()}">
-                                                    <div class="modal-dialog">
-                                                        <div class="modal-content">
-                                                            <div class="modal-body">
-                                                                <form action="${pageContext.request.contextPath}/block-product"
-                                                                      method="post">
-                                                                    <h4 class="modal-title">Bạn có chắc muốn Block
-                                                                        sản phẩm :${row.getName()} </h4>
-                                                                    <input type="hidden" name="id"
-                                                                           value="${row.productId}"/>
-                                                                    <input type="submit" value="Block!"
-                                                                           class="btn btn-warning"/>
-                                                                    <button type="button" class="btn btn-danger"
-                                                                            data-dismiss="modal">Đóng
-                                                                    </button>
-                                                                </form>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </div>
+                                                    <%--                                                <div class="modal" id="blockProduct${row.getProductId()}">--%>
+                                                    <%--                                                    <div class="modal-dialog">--%>
+                                                    <%--                                                        <div class="modal-content">--%>
+                                                    <%--                                                            <div class="modal-body">--%>
+                                                    <%--                                                                <form action="${pageContext.request.contextPath}/block-product"--%>
+                                                    <%--                                                                      method="post">--%>
+                                                    <%--                                                                    <h4 class="modal-title">Bạn có chắc muốn Block--%>
+                                                    <%--                                                                        sản phẩm :${row.getName()} </h4>--%>
+                                                    <%--                                                                    <input type="hidden" name="id"--%>
+                                                    <%--                                                                           value="${row.productId}"/>--%>
+                                                    <%--                                                                    <input type="submit" value="Block!"--%>
+                                                    <%--                                                                           class="btn btn-warning"/>--%>
+                                                    <%--                                                                    <button type="button" class="btn btn-danger"--%>
+                                                    <%--                                                                            data-dismiss="modal">Đóng--%>
+                                                    <%--                                                                    </button>--%>
+                                                    <%--                                                                </form>--%>
+                                                    <%--                                                            </div>--%>
+                                                    <%--                                                        </div>--%>
+                                                    <%--                                                    </div>--%>
+                                                    <%--                                                </div>--%>
                                             </td>
                                         </tr>
                                     </c:when>
                                     <c:otherwise>
                                         <tr style="background-color: #5a6268; ">
-                                            <td>${row.productId}</td>
-                                            <td><img src="<%=request.getContextPath()%>/Views/Web${row.getImgPath()}"
-                                                     style="width: 100%;"></td>
-                                            <td>${row.getName()}</td>
+                                            <td scope="row"><c:out value="${row.getProductId()}"/></td>
+                                            <td class="w-25">
+                                                <img src="<%=request.getContextPath()%>/Views/Web${row.getImgPath()}"
+                                                     class="img-fluid ">
+                                            </td>
+                                            <td class="w-25">${row.name}</td>
                                             <td>${row.getUnitPrice()}</td>
-
-
                                             <td>${row.available}</td>
                                             <td>
-                                                <form action="${pageContext.request.contextPath}/unblock-product"
-                                                      id="unblock${row.productId}"
-                                                      method="post">
-                                                    <input type="hidden" value="${row.productId}" name="id">
-                                                    <button type="submit" title="UnBlock" form="unblock${row.productId}"
-                                                            class="btn btn-success">
-                                                        <i class="fa fa-key "></i>
-                                                    </button>
-                                                </form>
+                                                <button type="button" class="btn btn-info" title="Detail"
+                                                        data-toggle="modal" data-target="#Product${row.productId}">
+                                                    <i class="fa fa-address-book"></i>
+                                                </button>
+                                                <div class="modal fade" id="Product${row.productId}">
+                                                    <div class="modal-dialog">
+                                                        <div class="modal-content">
+
+                                                            <!-- Modal Header -->
+                                                            <div class="modal-header">
+                                                                <h4 class="modal-title">Thông tin</h4>
+                                                                <button type="button" class="close"
+                                                                        data-dismiss="modal">&times;
+                                                                </button>
+                                                            </div>
+                                                            <!-- Modal body -->
+                                                            <div class="modal-body">
+
+                                                                <div class="form-group row">
+                                                                    <label for="prodid"
+                                                                           class="col-sm-4 col-form-label">ID Sản phẩm
+                                                                        :</label>
+                                                                    <div class="col-sm-8">
+                                                                        <input type="text" readonly
+                                                                               class="form-control-plaintext"
+                                                                               id="prodid"
+                                                                               value="${row.productId}">
+                                                                    </div>
+
+                                                                    <label for="namelb"
+                                                                           class="col-sm-4 col-form-label">Tên sản phẩm
+                                                                        :</label>
+                                                                    <div class="col-sm-8">
+                                                                        <input type="text" readonly
+                                                                               class="form-control-plaintext"
+                                                                               id="namelb"
+                                                                               value="${row.getName()}">
+                                                                    </div>
+                                                                    <label for="cateidlb"
+                                                                           class="col-sm-4 col-form-label">Loại sản
+                                                                        phẩm:</label>
+                                                                    <div class="col-sm-8">
+                                                                        <c:forEach items="${listCategory}" var="cate">
+                                                                            <c:if test="${row.getSubCategoryId() == cate.getCategoryId()}">
+                                                                                <input type="text" readonly
+                                                                                       class="form-control-plaintext"
+                                                                                       id="cateidlb"
+                                                                                       value="${cate.getName()}">
+                                                                            </c:if>
+                                                                        </c:forEach>
+                                                                    </div>
+                                                                    <label for="genderlb2"
+                                                                           class="col-sm-4 col-form-label">Đối tượng:
+                                                                        :</label>
+                                                                    <div class="col-sm-8">
+                                                                        <c:choose>
+                                                                            <c:when test="${row.getGender() == '0'}">
+                                                                                <input type="text" readonly
+                                                                                       class="form-control-plaintext"
+                                                                                       id="genderlb2"
+                                                                                       value="Nam">
+                                                                            </c:when>
+                                                                            <c:when test="${row.getGender() == '1'}">
+                                                                                <input type="text" readonly
+                                                                                       class="form-control-plaintext"
+                                                                                       id="genderlb2"
+                                                                                       value="Nữ">
+                                                                            </c:when>
+                                                                            <c:otherwise>
+                                                                                <input type="text" readonly
+                                                                                       class="form-control-plaintext"
+                                                                                       id="genderlb2"
+                                                                                       value="Cả hai">
+                                                                            </c:otherwise>
+                                                                        </c:choose>
+                                                                    </div>
+                                                                    <label for="pricelb"
+                                                                           class="col-sm-4 col-form-label">Đơn Giá
+                                                                        :</label>
+                                                                    <div class="col-sm-8">
+                                                                        <input type="text" readonly
+                                                                               class="form-control-plaintext"
+                                                                               id="pricelb"
+                                                                               value="${row.getUnitPrice()}">
+                                                                    </div>
+
+                                                                    <label for="deslb"
+                                                                           class="col-sm-4 col-form-label">Mô
+                                                                        tả:</label>
+                                                                    <div class="col-sm-8">
+                                                                        <input type="hidden" readonly
+                                                                               class="form-control-plaintext"
+                                                                               id="hidenip"
+                                                                               value="${row.getDescription()}">
+                                                                        <textarea class="form-control"
+                                                                                  id="deslb"
+                                                                                  value="${row.getDescription()}"
+                                                                                  readonly>${row.getDescription()} </textarea>
+                                                                    </div>
+                                                                    <label for="availb"
+                                                                           class="col-sm-4 col-form-label">Ảnh:</label>
+                                                                    <div class="col-sm-8">
+                                                                        <img src="<%=request.getContextPath()%>/Views/Web${row.getImgPath()}"
+                                                                             class="img-fluid">
+
+                                                                    </div>
+                                                                    <label for="availb"
+                                                                           class="col-sm-4 col-form-label">Số
+                                                                        lượng:</label>
+                                                                    <div class="col-sm-8">
+                                                                        <input type="text" readonly
+                                                                               class="form-control-plaintext"
+                                                                               id="availb"
+                                                                               value="${row.getAvailable()}">
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                            <!-- Modal footer -->
+                                                            <div class="modal-footer">
+                                                                <button type="button" class="btn btn-primary"
+                                                                        data-toggle="modal"
+                                                                        data-target="#productedit${row.productId}"
+                                                                >
+                                                                    Chỉnh sửa
+                                                                </button>
+                                                                <button type="button" class="btn btn-danger"
+                                                                        data-dismiss="modal">Đóng
+                                                                </button>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <button type="button" class="btn btn-primary" title="Edit"
+                                                        data-toggle="modal"
+                                                        data-target="#productedit${row.productId}"><i
+                                                        class="fa fa-edit"></i></button>
+                                                <div class="modal fade" id="productedit${row.productId}">
+                                                    <div class="modal-dialog">
+                                                        <div class="modal-content">
+
+                                                            <!-- Modal Header -->
+                                                            <div class="modal-header">
+                                                                <h4 class="modal-title">Chỉnh sửa sản phẩm</h4>
+                                                                <button type="button" class="close"
+                                                                        data-dismiss="modal">&times;
+                                                                </button>
+                                                            </div>
+                                                            <!-- Modal body -->
+                                                            <div class="modal-body">
+
+                                                                <form action="${pageContext.request.contextPath}/update-product"
+                                                                      method="post" id="formEdit${row.productId}">
+                                                                    <div class="form-group row">
+                                                                        <label for="prodidEdit"
+                                                                               class="col-sm-4 col-form-label">ID Sản
+                                                                            phẩm:</label>
+                                                                        <div class="col-sm-8">
+                                                                            <input type="text"
+                                                                                   class="form-control-plaintext"
+                                                                                   id="prodidEdit" readonly
+                                                                                   value="${row.productId}"
+                                                                                   name="productid">
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="form-group row">
+                                                                        <label for="nameProEdit"
+                                                                               class="col-sm-4 col-form-label">Tên sản
+                                                                            phẩm :</label>
+                                                                        <div class="col-sm-8">
+                                                                            <input type="text"
+                                                                                   class="form-control"
+                                                                                   id="nameProEdit"
+                                                                                   value="${row.getName()}"
+                                                                                   name="name">
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="form-group row">
+                                                                        <label for="subCateIdEdit"
+                                                                               class="col-sm-4 col-form-label">Loại sản
+                                                                            phẩm :</label>
+                                                                        <div class="col-sm-8">
+
+                                                                            <select id="subCateIdEdit" multiple
+                                                                                    class="form-control"
+                                                                                    name="subcategory">
+                                                                                <c:forEach items="${listCategory}"
+                                                                                           var="cate">
+                                                                                    <c:choose>
+                                                                                        <c:when test="${row.getSubCategoryId() == cate.getCategoryId()}">
+                                                                                            <option selected
+                                                                                                    value="${cate.getCategoryId()}"
+                                                                                            >
+                                                                                                    ${cate.getName()}
+                                                                                            </option>
+                                                                                        </c:when>
+                                                                                        <c:otherwise>
+                                                                                            <option value="${cate.getCategoryId()}"
+                                                                                            >
+                                                                                                    ${cate.getName()}
+                                                                                            </option>
+                                                                                        </c:otherwise>
+                                                                                    </c:choose>
+                                                                                </c:forEach>
+                                                                            </select>
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="form-group row">
+                                                                        <label for="genderEdit"
+                                                                               class="col-sm-4 col-form-label"> Đối
+                                                                            tượng:</label>
+                                                                        <div class="col-sm-8">
+                                                                            <select id="genderEdit" class="form-control"
+                                                                                    name="gender">
+                                                                                <c:choose>
+                                                                                    <c:when test="${row.getGender() == '0' }">
+                                                                                        <option value="0" selected>Nam
+                                                                                        </option>
+                                                                                        <option value="1">Nữ</option>
+                                                                                        <option value="2">Cả hai
+                                                                                        </option>
+                                                                                    </c:when>
+                                                                                    <c:when test="${row.getGender() == '1' }">
+                                                                                        <option value="0">Nam</option>
+                                                                                        <option value="1" selected>Nữ
+                                                                                        </option>
+                                                                                        <option value="2">Cả hai
+                                                                                        </option>
+                                                                                    </c:when>
+                                                                                    <c:otherwise>
+                                                                                        <option value="0">Nam</option>
+                                                                                        <option value="1">Nữ</option>
+                                                                                        <option value="2" selected>Cả
+                                                                                            hai
+                                                                                        </option>
+                                                                                    </c:otherwise>
+                                                                                </c:choose>
+                                                                            </select>
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="form-group row">
+                                                                        <label for="priceProEdit"
+                                                                               class="col-sm-4 col-form-label">Đơn Giá
+                                                                            :</label>
+                                                                        <div class="col-sm-8">
+                                                                            <input type="text"
+                                                                                   class="form-control"
+                                                                                   id="priceProEdit"
+                                                                                   value="${row.getUnitPrice()}"
+                                                                                   name="unitprice">
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="form-group row">
+                                                                        <label for="deslb"
+                                                                               class="col-sm-4 col-form-label">Mô
+                                                                            tả:</label>
+                                                                        <div class="col-sm-8">
+                                                                            <input type="hidden"
+                                                                                   class="form-control"
+                                                                                   id="hidenip${row.productId}"
+                                                                                   value="${row.getDescription()}"
+                                                                                   name="description">
+                                                                            <textarea class="form-control"
+                                                                                      id="deslb${row.productId}"
+                                                                                      onkeyup="myFunction('hidenip${row.productId}','deslb${row.productId}')"
+                                                                            >${row.getDescription()} </textarea>
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="form-group row">
+                                                                        <label for="imgPathEdit"
+                                                                               class="col-sm-4 col-form-label">Link ảnh
+                                                                            :</label>
+                                                                        <div class="col-sm-8">
+                                                                            <input type="file" id="imgPathEdit"
+                                                                                   class="form-control-file" name="img">
+                                                                            <input type="hidden" name="imgPathTempt"
+                                                                                   value="${row.getImgPath()}">
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="form-group row">
+                                                                        <label for="availEdit"
+                                                                               class="col-sm-4 col-form-label">Số
+                                                                            lượng:</label>
+                                                                        <div class="col-sm-8">
+                                                                            <input type="number"
+                                                                                   class="form-control"
+                                                                                   id="availEdit"
+                                                                                   value="${row.getAvailable()}"
+                                                                                   name="available">
+                                                                        </div>
+                                                                    </div>
+                                                                </form>
+
+
+                                                            </div>
+                                                            <!-- Modal footer -->
+                                                            <div class="modal-footer">
+                                                                <button type="submit" form="formEdit${row.productId}"
+                                                                        class="btn btn-success">
+                                                                    Cập nhật
+                                                                </button>
+                                                                <button type="button" class="btn btn-danger"
+                                                                        data-dismiss="modal">Đóng
+                                                                </button>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                    <%--                                                <button type="button" class="btn btn-dark" title="Block"--%>
+                                                    <%--                                                        data-toggle="modal"--%>
+                                                    <%--                                                        data-target="#blockProduct${row.getProductId()}"><i--%>
+                                                    <%--                                                        class="fa fa-lock"></i>--%>
+                                                    <%--                                                </button>--%>
+                                                <!-- The Modal -->
+
+                                                    <%--                                                <div class="modal" id="blockProduct${row.getProductId()}">--%>
+                                                    <%--                                                    <div class="modal-dialog">--%>
+                                                    <%--                                                        <div class="modal-content">--%>
+                                                    <%--                                                            <div class="modal-body">--%>
+                                                    <%--                                                                <form action="${pageContext.request.contextPath}/block-product"--%>
+                                                    <%--                                                                      method="post">--%>
+                                                    <%--                                                                    <h4 class="modal-title">Bạn có chắc muốn Block--%>
+                                                    <%--                                                                        sản phẩm :${row.getName()} </h4>--%>
+                                                    <%--                                                                    <input type="hidden" name="id"--%>
+                                                    <%--                                                                           value="${row.productId}"/>--%>
+                                                    <%--                                                                    <input type="submit" value="Block!"--%>
+                                                    <%--                                                                           class="btn btn-warning"/>--%>
+                                                    <%--                                                                    <button type="button" class="btn btn-danger"--%>
+                                                    <%--                                                                            data-dismiss="modal">Đóng--%>
+                                                    <%--                                                                    </button>--%>
+                                                    <%--                                                                </form>--%>
+                                                    <%--                                                            </div>--%>
+                                                    <%--                                                        </div>--%>
+                                                    <%--                                                    </div>--%>
+                                                    <%--                                                </div>--%>
                                             </td>
                                         </tr>
+
                                     </c:otherwise>
                                 </c:choose>
                             </c:forEach>
@@ -684,78 +958,78 @@ You can't access this page if you use link-url and not login -->
         </div>
         <c:import url="../commom/footer.html"/>
     </div>
-        <!-- End of Page Wrapper -->
+    <!-- End of Page Wrapper -->
 
-        <!-- Scroll to Top Button-->
-        <a class="scroll-to-top rounded" href="#page-top"> <i
-                class="fas fa-angle-up"></i>
-        </a>
+    <!-- Scroll to Top Button-->
+    <a class="scroll-to-top rounded" href="#page-top"> <i
+            class="fas fa-angle-up"></i>
+    </a>
 
-        <!-- Logout Modal-->
-        <!-- Xac nhan Logout -->
-        <div class="modal fade" id="logoutModal" tabindex="-1" role="dialog"
-             aria-labelledby="exampleModalLabel" aria-hidden="true">
-            <div class="modal-dialog" role="document">
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <h5 class="modal-title" id="exampleModalLabel">Ready to
-                            Leave?</h5>
-                        <button class="close" type="button" data-dismiss="modal"
-                                aria-label="Close">
-                            <span aria-hidden="true">ï¿½</span>
-                        </button>
-                    </div>
-                    <div class="modal-body">Select "Logout" below if you are
-                        ready to end your current session.
-                    </div>
-                    <div class="modal-footer">
-                        <button class="btn btn-secondary" type="button"
-                                data-dismiss="modal">Cancel
-                        </button>
-                        <a class="btn btn-primary" href="../login.jsp">Logout</a>
-                    </div>
+    <!-- Logout Modal-->
+    <!-- Xac nhan Logout -->
+    <div class="modal fade" id="logoutModal" tabindex="-1" role="dialog"
+         aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Ready to
+                        Leave?</h5>
+                    <button class="close" type="button" data-dismiss="modal"
+                            aria-label="Close">
+                        <span aria-hidden="true">ï¿½</span>
+                    </button>
+                </div>
+                <div class="modal-body">Select "Logout" below if you are
+                    ready to end your current session.
+                </div>
+                <div class="modal-footer">
+                    <button class="btn btn-secondary" type="button"
+                            data-dismiss="modal">Cancel
+                    </button>
+                    <a class="btn btn-primary" href="../login.jsp">Logout</a>
                 </div>
             </div>
         </div>
-        <!-- Bootstrap core JavaScript-->
-        <script>
-            function myFunction(a, b) {
-                document.getElementById(a).value = document.getElementById(b).value;
-                console.log(document.getElementById(a).value);
-            }
+    </div>
+    <!-- Bootstrap core JavaScript-->
+    <script>
+        function myFunction(a, b) {
+            document.getElementById(a).value = document.getElementById(b).value;
+            console.log(document.getElementById(a).value);
+        }
 
-            // chuyển tập tin ảnh
-            // document.getElementById("btnThemSP").addEventListener("click", function(){
-            // 	console.log("yeye");
-            // 	document.getElementById("imgPathAdd").value = document.getElementById("imgPath").files[0].name;
-            // })
-        </script>
-        <script
-                src="<%=request.getContextPath()%>/Views/Admin/vendor/jquery/jquery.min.js"></script>
-        <script
-                src="<%=request.getContextPath()%>/Views/Admin/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+        // chuyển tập tin ảnh
+        // document.getElementById("btnThemSP").addEventListener("click", function(){
+        // 	console.log("yeye");
+        // 	document.getElementById("imgPathAdd").value = document.getElementById("imgPath").files[0].name;
+        // })
+    </script>
+    <script
+            src="<%=request.getContextPath()%>/Views/Admin/vendor/jquery/jquery.min.js"></script>
+    <script
+            src="<%=request.getContextPath()%>/Views/Admin/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
 
-        <!-- Core plugin JavaScript-->
-        <script
-                src="<%=request.getContextPath()%>/Views/Admin/vendor/jquery-easing/jquery.easing.min.js"></script>
+    <!-- Core plugin JavaScript-->
+    <script
+            src="<%=request.getContextPath()%>/Views/Admin/vendor/jquery-easing/jquery.easing.min.js"></script>
 
-        <!-- Custom scripts for all pages-->
-        <script
-                src="<%=request.getContextPath()%>/Views/Admin/js/sb-admin-2.min.js"></script>
+    <!-- Custom scripts for all pages-->
+    <script
+            src="<%=request.getContextPath()%>/Views/Admin/js/sb-admin-2.min.js"></script>
 
-        <!-- Page level plugins -->
+    <!-- Page level plugins -->
 
-        <script
-                src="<%=request.getContextPath()%>/Views/Admin/vendor/datatables/jquery.dataTables.min.js"></script>
-        <script
-                src="<%=request.getContextPath()%>/Views/Admin/vendor/datatables/dataTables.bootstrap4.min.js"></script>
+    <script
+            src="<%=request.getContextPath()%>/Views/Admin/vendor/datatables/jquery.dataTables.min.js"></script>
+    <script
+            src="<%=request.getContextPath()%>/Views/Admin/vendor/datatables/dataTables.bootstrap4.min.js"></script>
 
-        <!-- Page level custom scripts -->
-        <script
-                src="<%=request.getContextPath()%>/Views/Admin/js/demo/datatables-demo.js"></script>
+    <!-- Page level custom scripts -->
+    <script
+            src="<%=request.getContextPath()%>/Views/Admin/js/demo/datatables-demo.js"></script>
 
 
-        <!-- Page level custom scripts -->
+    <!-- Page level custom scripts -->
 
 
 </body>

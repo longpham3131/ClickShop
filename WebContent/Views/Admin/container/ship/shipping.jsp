@@ -35,19 +35,19 @@
                                 <td>${listSpg.status}</td>
                                 <td>
                                     <button type="button" class="btn btn-info" title="Other Detail"
-                                            data-toggle="modal" data-target="#myShippingOrder1${listSpg.orderID}">
+                                            data-toggle="modal" data-target="#myCancekOrder1${listSpg.orderID}">
                                         <i class="fa fa-address-book"></i>
                                     </button>
                                     <button type="button" class="btn btn-primary" title="Detail"
-                                            data-toggle="modal" data-target="#myship1${listSpg.shipperID}">
+                                            data-toggle="modal" data-target="#myship12${listSpg.shipperID}">
                                         <i class="fa fa-shipping-fast"></i>
                                     </button>
                                     <button type="button" class="btn btn-danger" title="Complete Order"
-                                            data-toggle="modal" data-target="#endOrder${listSpg.orderID}">
+                                            data-toggle="modal" data-target="#endOrder123${listSpg.orderID}">
                                         <i class="fa fa-check-square"></i>
                                     </button>
 
-                                    <div class="modal" id="myShippingOrder1${listSpg.orderID}">
+                                    <div class="modal" id="myCancekOrder1${listSpg.orderID}">
                                         <div class="modal-dialog">
                                             <div class="modal-content">
 
@@ -146,7 +146,7 @@
                                         </div>
                                     </div>
 
-                                    <div class="modal" id="myship1${listSpg.shipperID}">
+                                    <div class="modal" id="myship12${listSpg.shipperID}">
                                         <c:forEach items="${listShipper}" var="listSp" varStatus="loop">
                                             <c:if test="${listSp.getAccountId() == listSpg.shipperID}">
                                                 <div class="modal-dialog">
@@ -242,7 +242,7 @@
                                         </c:forEach>
                                     </div>
 
-                                    <div class="modal" id="endOrder${listSpg.orderID}">
+                                    <div class="modal" id="endOrder123${listSpg.orderID}">
                                         <div class="modal-dialog">
                                             <div class="modal-content">
 

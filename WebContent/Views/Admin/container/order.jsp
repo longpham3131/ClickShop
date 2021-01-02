@@ -164,41 +164,41 @@ You can't access this page if you use link-url and not login -->
 
             <!-------------- Them xoa sua !!! Can Design lai !! ------------ -->
 
-            <ul class="nav nav-tabs" id="myTab" role="tablist">
-                <li class="nav-item"><a class="nav-link active" id="home-tab"
-                                        data-toggle="tab" href="#insert" role="tab" aria-controls="home"
-                                        aria-selected="true">Thêm</a></li>
+<%--            <ul class="nav nav-tabs" id="myTab" role="tablist">--%>
+<%--                <li class="nav-item"><a class="nav-link active" id="home-tab"--%>
+<%--                                        data-toggle="tab" href="#insert" role="tab" aria-controls="home"--%>
+<%--                                        aria-selected="true">Thêm</a></li>--%>
 
-                <li class="nav-item"><a class="nav-link" id="profile-tab"
-                                        data-toggle="tab" href="#update" role="tab"
-                                        aria-controls="profile" aria-selected="false">Cập nhật</a></li>
+<%--                <li class="nav-item"><a class="nav-link" id="profile-tab"--%>
+<%--                                        data-toggle="tab" href="#update" role="tab"--%>
+<%--                                        aria-controls="profile" aria-selected="false">Cập nhật</a></li>--%>
 
-                <%-- <li class="nav-item"><a class="nav-link" id="contact-tab"
-                    data-toggle="tab" href="#delete" role="tab"
-                    aria-controls="contact" aria-selected="false">Delete</a></li> --%>
-            </ul>
+<%--                &lt;%&ndash; <li class="nav-item"><a class="nav-link" id="contact-tab"--%>
+<%--                    data-toggle="tab" href="#delete" role="tab"--%>
+<%--                    aria-controls="contact" aria-selected="false">Delete</a></li> &ndash;%&gt;--%>
+<%--            </ul>--%>
 
-            <div class="tab-content" id="myTabContent">
-                <div class="tab-pane fade show active" id="insert" role="tabpanel"
-                     aria-labelledby="home-tab">
-                    <c:import url="product/insert.jsp"></c:import>
-                </div>
-                <div class="tab-pane fade" id="update" role="tabpanel"
-                     aria-labelledby="profile-tab">
-                    <c:import url="product/update.jsp"></c:import>
-                </div>
-                <%-- <div class="tab-pane fade" id="delete" role="tabpanel"
-                    aria-labelledby="contact-tab">
-                    <c:import url="product/delete.jsp"></c:import>
-                </div>  --%>
+<%--            <div class="tab-content" id="myTabContent">--%>
+<%--                <div class="tab-pane fade show active" id="insert" role="tabpanel"--%>
+<%--                     aria-labelledby="home-tab">--%>
+<%--                    <c:import url="product/insert.jsp"></c:import>--%>
+<%--                </div>--%>
+<%--                <div class="tab-pane fade" id="update" role="tabpanel"--%>
+<%--                     aria-labelledby="profile-tab">--%>
+<%--                    <c:import url="product/update.jsp"></c:import>--%>
+<%--                </div>--%>
+<%--                &lt;%&ndash; <div class="tab-pane fade" id="delete" role="tabpanel"--%>
+<%--                    aria-labelledby="contact-tab">--%>
+<%--                    <c:import url="product/delete.jsp"></c:import>--%>
+<%--                </div>  &ndash;%&gt;--%>
 
-                <!--------------END Them xoa sua  ------------ -->
+<%--                <!--------------END Them xoa sua  ------------ -->--%>
 
 
-                <!-- Footer -->
-                <c:import url="../commom/footer.html" />
-                <!-- End of Footer -->
-            </div>
+<%--                <!-- Footer -->--%>
+<%--                <c:import url="../commom/footer.html" />--%>
+<%--                <!-- End of Footer -->--%>
+<%--            </div>--%>
             <!-- End of Content Wrapper -->
         </div>
 
