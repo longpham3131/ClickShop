@@ -548,7 +548,7 @@
                                                         <div class="modal-content">
                                                             <div class="modal-body">
                                                                 <form action="${pageContext.request.contextPath}/delete-account"
-                                                                      method="post">
+                                                                      method="post" id = "blockform${listAcc.email}">
                                                                     <h4 class="modal-title">Bạn có chắc muốn khóa tài khoản: ${listAcc.email} </h4>
                                                                     <input type="hidden" name="email"
                                                                            value="${listAcc.email}"/>
@@ -558,7 +558,7 @@
 
                                                             <div class="modal-footer">
                                                                 <input type="submit" value="Block!"
-                                                                       class="btn btn-warning"/>
+                                                                       class="btn btn-warning" form="blockform${listAcc.email}"/>
                                                                 <button type="button" class="btn btn-danger"
                                                                         data-dismiss="modal">Đóng
                                                                 </button>

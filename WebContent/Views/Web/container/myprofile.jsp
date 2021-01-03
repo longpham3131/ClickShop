@@ -122,7 +122,7 @@
                                                         <thead>
                                                         <tr>
                                                             <th>Mã đơn hàng</th>
-                                                            <th>Mã sản phẩm</th>
+<%--                                                            <th>Mã tai khoan </th>--%>
                                                             <th>Tổng tiền</th>
                                                             <th>Tên sản phẩm</th>
                                                             <th>Số lượng</th>
@@ -134,7 +134,7 @@
                                                             <tr>
                                                                 <c:if test="${listAO.getOrderID() == listAOD.getOrderID()}">
                                                                     <td> ${listAOD.getOrderID()}</td>
-                                                                    <td> ${listAOD.getAccID()}</td>
+<%--                                                                    <td> ${listAOD.getAccID()}</td>--%>
                                                                     <td> ${listAOD.getSubTotal()}</td>
                                                                     <td> ${listAOD.getName()}</td>
                                                                     <td> ${listAOD.getQuanity()}</td>
@@ -164,13 +164,12 @@
                 <%-- DANG GIAO--%>
                 <div class="card shadow mb-4">
                     <div class="card-header py-3 text-center">
-                        <h5 class="m-0 font-weight-bold text-dark">Đang vận chuyển</h5>
+                        <h5 class="m-0 font-weight-bold text-dark">Đang Thực Hiện</h5>
                     </div>
                     <table class="table table-bordered" id="dataTable" width="100%"
                            cellspacing="0">
                         <thead>
                         <tr>
-
                             <th>Mã đơn hàng</th>
                             <th>Tổng tiền</th>
                             <th>Trạng thái</th>
@@ -183,7 +182,11 @@
 
                                 <td> ${ListSO.getOrderID()}</td>
                                 <td> ${ListSO.getSubTotal()}</td>
-                                <td> ${ListSO.getStatus()}</td>
+                                <td>
+                                        ${ListSO.getStatus()}
+<%--                                    <c:if test=" ${ListSO.getStatus() == 'Picking'}">  Đang chuẩn bị hàng </c:if>--%>
+<%--                                    <c:if test=" ${ListSO.getStatus() eq 'Shipping'}">  Đang giao hàng </c:if>--%>
+                                </td>
                                 <td>
                                     <button type="button" class="btn btn-info" title="Detail" data-toggle="modal"
                                             data-target="#detailShip${ListSO.getOrderID()}">
@@ -206,7 +209,7 @@
                                                         <thead>
                                                         <tr>
                                                             <th>Mã đơn hàng</th>
-                                                            <th>Mã sản phẩm</th>
+<%--                                                            <th>Mã sản phẩm</th>--%>
                                                             <th>Tổng tiền</th>
                                                             <th>Tên sản phẩm</th>
                                                             <th>Số lượng</th>
@@ -218,7 +221,7 @@
                                                             <tr>
                                                                 <c:if test="${ListSO.getOrderID() == listSODetail.getOrderID()}">
                                                                     <td> ${listSODetail.getOrderID()}</td>
-                                                                    <td> ${listSlistSODetailOD.getAccID()}</td>
+<%--                                                                    <td> ${listSODetail.getAccID()}</td>--%>
                                                                     <td> ${listSODetail.getSubTotal()}</td>
                                                                     <td> ${listSODetail.getName()}</td>
                                                                     <td> ${listSODetail.getQuanity()}</td>
@@ -245,8 +248,6 @@
                     </table>
                 </div>
             </div>
-
-
         </div>
     </div>
 </div>
