@@ -60,13 +60,18 @@
                                 <input type="hidden" value="${row.imagePath}" name="ImagePath"/>
                                 <input type="hidden" value="${row.description}" name="Description"/>
                                 <input type="hidden" value="${row.getUnitPrice()}" name="UnitPrice"/>
+                                <input type="hidden" value="${row.getQuannity()}" name="Quannity"/>
                                 <img src="<%=request.getContextPath()%>/Views/Web${row.getImagePath()}" alt="">
+                                <c:if test="${row.getQuannity() <= 0 }">
+                                    <h5 style="color: #721c24; position: absolute; bottom: 55px; left: 0; right: 0;">
+                                        HẾT HÀNG
+                                    </h5>
+                                </c:if>
                                 <h4>
-                                    <td>${row.name}</td>
+                                        ${row.name}
                                 </h4>
-
-                                <span>
-                                    <td>${row.getUnitPrice()}</td>
+                                <span class="priceProduct">
+                                        ${row.getUnitPrice()}
                                 </span>
                             </button>
                         </form>
@@ -115,21 +120,7 @@
             <div class="swiper-slide">
                 <img src="<%=request.getContextPath()%>/Views/Web/image_product/long.jpg" alt="">
                 <a href="#" data-toggle="modal" data-target="#exampleModal"><span>PHAM HOANG LONG</span></a>
-            </div>
-            <div class="swiper-slide">
-                <img src="<%=request.getContextPath()%>/Views/Web/image_product/kha.jpg" alt="">
-                <a href="#" data-toggle="modal" data-target="#exampleModal"><span>PHAM THUC KHA</span></a>
-            </div>
-            <div class="swiper-slide">
-                <img src="<%=request.getContextPath()%>/Views/Web/image_product/kiet.jpg" alt="">
-                <a href="#" data-toggle="modal" data-target="#exampleModal"><span>NGUYEN TUAN KIET</span></a>
-            </div>
-            <div class="swiper-slide">
-                <img src="<%=request.getContextPath()%>/Views/Web/image_product/long.jpg" alt="">
-                <a href="#" data-toggle="modal" data-target="#exampleModal"><span>PHAM HOANG LONG</span></a>
-            </div>
-
-
+            </div >
         </div>
         <!-- Add Arrows -->
         <div class="swiper-button-next"></div>
@@ -152,6 +143,13 @@
 <script src="<%=request.getContextPath()%>/Views/Web/js/sanPham.js"></script>
 <script src="<%=request.getContextPath()%>/Views/Web/js/DanhSachSanPham.js"></script>
 <script src="<%=request.getContextPath()%>/Views/Web/js/checkOut.js"></script>
+<script>
+    let listGia = document.querySelectorAll(".priceProduct");
+    console.log(listGia);
+    for (i = 0; i < listGia.length; i++) {
+        listGia[i].innerHTML = new Intl.NumberFormat('vn-VN', { style: 'currency', currency: 'VND' }).format(parseInt(listGia[i].innerHTML));
+    }
+</script>
 <c:if test="${kq == 1}">
 
 <%--Xóa giỏ hàng sau khi đặt hàng thành công --%>
@@ -161,6 +159,7 @@
     setLocalStorage();
     getLocalStorage();
 </script>
+
         <%  session.setAttribute("kq", "0"); %>
 </c:if>
 <c:if test="${kq == -1} ">
