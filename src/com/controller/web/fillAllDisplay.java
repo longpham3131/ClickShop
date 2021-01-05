@@ -62,6 +62,7 @@ public class fillAllDisplay extends HttpServlet {
 		request.setAttribute("listAllPro", listAllPro);
 		request.setAttribute("from", request.getAttribute("from"));
 		request.setAttribute("thongbao", request.getAttribute("thongbao"));
+
 		RequestDispatcher rq = request.getRequestDispatcher("Views/Web/index.jsp");
 		rq.forward(request, response);
 	}

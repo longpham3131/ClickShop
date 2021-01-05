@@ -26,11 +26,11 @@
 
 <body id="page-top">
 
-	<!--  Check authentic -->
-	<c:if test="${check != 'true'}">
-		<c:redirect url="/admin" />
-	</c:if>
-	<!--  Check authentic -->
+<%--	<!--  Check authentic -->--%>
+<%--	<c:if test="${check != 'true'}">--%>
+<%--		<c:redirect url="/admin" />--%>
+<%--	</c:if>--%>
+<%--	<!--  Check authentic -->--%>
 
 
 	<%

@@ -53,6 +53,7 @@ public class login extends HttpServlet {
             String mycoib= dao.getCoin(email);
             session.setAttribute("AccId", id);
             session.setAttribute("coin", mycoib);
+            session.setAttribute("Check_Authentic_Final_Using", kq);
             if (kq.equals("Administrator")) {
                 url = "Views/Admin/container/home.jsp";
                 RequestDispatcher rq = request.getRequestDispatcher(url);

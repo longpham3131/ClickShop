@@ -16,7 +16,8 @@
           integrity="sha512-1PKOgIY59xJ8Co8+NE6FZ+LOAZKjy+KY8iq0G4B3CyeY6wYHN3yt9PW0XpSriVlkMXe40PTKnXrLnZ9+fkDaog=="
           crossorigin="anonymous"/>
     <!-- Scrollbar Custom CSS -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/malihu-custom-scrollbar-plugin/3.1.5/jquery.mCustomScrollbar.min.css">
+    <link rel="stylesheet"
+          href="https://cdnjs.cloudflare.com/ajax/libs/malihu-custom-scrollbar-plugin/3.1.5/jquery.mCustomScrollbar.min.css">
     <!-- Link Swiper's CSS -->
     <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css">
     <!-- OWL  CSS  -->
@@ -121,7 +122,7 @@
             <div class="swiper-slide">
                 <img src="<%=request.getContextPath()%>/Views/Web/image_product/long.jpg" alt="">
                 <a href="#" data-toggle="modal" data-target="#exampleModal"><span>PHAM HOANG LONG</span></a>
-            </div >
+            </div>
         </div>
         <!-- Add Arrows -->
         <div class="swiper-button-next"></div>
@@ -131,7 +132,6 @@
 </section>
 
 <c:import url="./commom/footer.jsp"> </c:import>
-
 
 
 <!-- Thư viện hỗ trợ Jquery -->
@@ -153,7 +153,10 @@
 <script>
     let listGia = document.querySelectorAll(".priceProduct");
     for (i = 0; i < listGia.length; i++) {
-        listGia[i].innerHTML = new Intl.NumberFormat('vn-VN', { style: 'currency', currency: 'VND' }).format(parseInt(listGia[i].innerHTML));
+        listGia[i].innerHTML = new Intl.NumberFormat('vn-VN', {
+            style: 'currency',
+            currency: 'VND'
+        }).format(parseInt(listGia[i].innerHTML));
     }
 </script>
 
@@ -179,16 +182,14 @@
 
 
 <c:if test="${kq == 1}">
-
-<%--Xóa giỏ hàng sau khi đặt hàng thành công --%>
-<script> alert("Đặt hàng thành công");</script>
-<script>
-    dssp.xoaTatCaSP();
-    setLocalStorage();
-    getLocalStorage();
-</script>
-
-        <%  session.setAttribute("kq", "0"); %>
+    <%--Xóa giỏ hàng sau khi đặt hàng thành công --%>
+    <script> alert("Đặt hàng thành công");</script>
+    <script>
+        dssp.xoaTatCaSP();
+        setLocalStorage();
+        getLocalStorage();
+    </script>
+    <%  session.setAttribute("kq", "0"); %>
 </c:if>
 <c:if test="${kq == -1} ">
         <%  session.setAttribute("kq", "0"); %>

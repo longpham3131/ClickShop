@@ -26,6 +26,7 @@
 <body>
 <%--<c:import url="../commom/header.jsp"> </c:import>--%>
 <!--checkout-->
+<c:if test="${loi == 'mn'}"> <script> alert("Deo du tien")</script></c:if>
 <section class="checkout_wthree py-sm-5 py-3">
     <div class="container">
         <div class="check_w3ls">

@@ -48,7 +48,6 @@ public class queryDAO {
 
     public boolean registed(String email, String pass, String firstName, String lastName,
                             String phone, String address, String gender, String dateBirth) {
-
         try {
 
             String sqlExec = "{ Call USP_DangKy (?,?,?, ?, ?, ?, ?, ?) }";

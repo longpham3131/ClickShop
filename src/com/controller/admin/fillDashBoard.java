@@ -1,10 +1,13 @@
 package com.controller.admin;
 
 import java.io.IOException;
+
 import com.model.Article;
+
 import java.sql.ResultSet;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -22,12 +25,12 @@ import com.model.Article;
  */
 @WebServlet("/dashboard")
 public class fillDashBoard extends HttpServlet {
-	private static final long serialVersionUID = 1L;
-       
+    private static final long serialVersionUID = 1L;
+
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public fillDashBoard	() {
+    public fillDashBoard() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -36,28 +39,34 @@ public class fillDashBoard extends HttpServlet {
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
      * methods.
      *
-     * @param request servlet request
+     * @param request  servlet request
      * @param response servlet response
      * @throws ServletException if a servlet-specific error occurs
-     * @throws IOException if an I/O error occurs
+     * @throws IOException      if an I/O error occurs
      */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-    	 response.setContentType("text/html;charset=UTF-8");
-    	RequestDispatcher rq= request.getRequestDispatcher( "Views/Admin/container/home.jsp");
- 		rq.forward(request, response);
+        response.setContentType("text/html;charset=UTF-8");
+        HttpSession session = request.getSession();
+        if (Objects.equals((String) session.getAttribute("Check_Authentic_Final_Using"), "Administrator") == true){
+            RequestDispatcher rq = request.getRequestDispatcher("Views/Admin/container/home.jsp");
+            rq.forward(request, response);
+        }
+    	 else{
+                 response.sendRedirect(request.getContextPath() + "/login-all");
+        }
     }
-    
-    
-	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		 processRequest(request, response);
-		 }
 
-	/**
-	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
-	 */
-	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		processRequest(request, response);
 
-	}
+    protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        processRequest(request, response);
+    }
+
+    /**
+     * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
+     */
+    protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        processRequest(request, response);
+
+    }
 
 }
