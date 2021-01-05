@@ -40,16 +40,14 @@ public class filterSanpham extends HttpServlet {
 	protected void processRequest(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		response.setContentType("text/html;charset=UTF-8");
-		String name  = (String) request.getParameter("Name");
+		String name  = request.getParameter("Name");
 		System.out.print(name);
 		queryDAO dao = new queryDAO();
 		List<Display> danhsachLoc = dao.filterSanpham(name);
 		System.out.print(danhsachLoc);
-		request.setAttribute("listPhantrang", danhsachLoc);
+		request.setAttribute("listSanpham", danhsachLoc);
 		request.setAttribute("from", request.getAttribute("from"));
 		request.setAttribute("thongbao", request.getAttribute("thongbao"));
-		System.out.print("9999 ");
-//		RequestDispatcher rq = request.getRequestDispatcher("Views/Web/index.jsp");
 		RequestDispatcher rq = request.getRequestDispatcher("Views/Web/container/productShop.jsp");
 		rq.forward(request, response);
 	}
