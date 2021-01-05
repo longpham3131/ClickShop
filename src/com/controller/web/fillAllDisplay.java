@@ -1,6 +1,7 @@
 package com.controller.web;
 
 import DAO.queryDAO;
+import com.model.Article1;
 import com.model.Display;
 
 import javax.servlet.RequestDispatcher;
@@ -42,6 +43,7 @@ public class fillAllDisplay extends HttpServlet {
 			throws ServletException, IOException {
 		response.setContentType("text/html;charset=UTF-8");
 		String txt = request.getParameter("index");
+
 		HttpSession session = request.getSession();
 		if(request.getParameter("logout") != null) {
 			session.setAttribute("email", null);
@@ -55,11 +57,11 @@ public class fillAllDisplay extends HttpServlet {
 		}
 		queryDAO dao = new queryDAO();
 		List<Display> listSanpham = dao.getPaging(index);
+		List<Article1> listAllPro = dao.sanpham();
 		request.setAttribute("listSanpham", listSanpham);
+		request.setAttribute("listAllPro", listAllPro);
 		request.setAttribute("from", request.getAttribute("from"));
 		request.setAttribute("thongbao", request.getAttribute("thongbao"));
-		System.out.print("9999 ");
-	//	response.sendRedirect("Vews/Web/index.jsp");
 		RequestDispatcher rq = request.getRequestDispatcher("Views/Web/index.jsp");
 		rq.forward(request, response);
 	}

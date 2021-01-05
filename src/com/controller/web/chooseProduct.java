@@ -40,12 +40,12 @@ public class chooseProduct extends HttpServlet {
         response.setContentType("text/html;charset=UTF-8");
         queryDAO dao = new queryDAO();
 
-        String productId  = (String) request.getParameter("ProductId");
-        String name  = (String) request.getParameter("Name");
-        String unitprice  = (String) request.getParameter("UnitPrice");
-        String imagePath  = (String) request.getParameter("ImagePath");
-        String description  = (String) request.getParameter("Description");
-        String quan = (String) request.getParameter("Quannity");
+        String productId  = request.getParameter("ProductId");
+        String name  =  request.getParameter("Name");
+        String unitprice  = request.getParameter("UnitPrice");
+        String imagePath  =request.getParameter("ImagePath");
+        String description  =  request.getParameter("Description");
+        String quan =  request.getParameter("Quannity");
         request.setAttribute("productId", productId);
         request.setAttribute("name", name);
         request.setAttribute("unitprice", unitprice);
