@@ -1,3 +1,5 @@
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -55,6 +57,12 @@
     }
 %>
 
+<%-- KQ DANG KY --%>
+<c:if test="${kqDangki == true}"><script>  alert("Đăng kí thành công"); </script> </c:if>
+<c:if test="${kqDangki == 'loi'}"><script>  alert("Lỗi"); </script> </c:if>
+<c:if test="${kqDangki == 'email'}"><script>  alert("Lỗi đắng kí: Email is null"); </script> </c:if>
+<c:if test="${kqDangki == 'pass'}"><script>  alert("Lỗi đắng kí: Pass is null"); </script> </c:if>
+<c:if test="${kqDangki == 'phone'}"><script>  alert("Lỗi đắng kí: Phone is null"); </script> </c:if>
 <%--<h1> -- <%=request.getAttribute("Message")%> ---</h1>--%>
 <div class="limiter">
     <div class="container-login100" style="background-image: url('<%=request.getContextPath()%>/Views/Web/image_product/banner__carousel_2.jpg');">
@@ -119,7 +127,7 @@
                     <div class="form-row">
                         <div class="form-group col-6">
                             <label for="inpEmail">Email:</label>
-                            <input type="email" class="form-control" id="inpEmail" name="email" placeholder="Email">
+                            <input type="email" class="form-control" id="inpEmail" name="email" placeholder="Email" value="${email}">
                         </div>
 
                         <div class="form-group col-6">
@@ -132,20 +140,20 @@
                     <div class="form-row">
                         <div class="form-group col-6">
                             <label>First name:</label>
-                            <input type="text" class="form-control" name="inpFname"
+                            <input type="text" class="form-control" name="inpFname"  value="${firstname}"
                                    placeholder="First name">
 
                         </div>
                         <div class="form-group col-6">
                             <label for="inpLname">Last name:</label>
-                            <input type="text" class="form-control" name="Lname" id="inpLname"
+                            <input type="text" class="form-control" name="Lname" id="inpLname" value="${lastname}"
                                    placeholder="Last name"></div>
 
                     </div>
                     <div class="form-row">
                         <div class="form-group col-6">
                             <label for="DOfB">Day of birth</label>
-                            <input type="date" class="form-control" id="DOfB" name="Bday">
+                            <input type="date" class="form-control" id="DOfB" name="Bday" value="${Bday}">
                         </div>
                         <div class="form-group col-6">
                             <label for="Gender">Gender</label>
@@ -177,12 +185,12 @@
                     <div class="form-row">
                         <div class="form-group col-6">
                             <label for="inpPhone">Phone:</label>
-                            <input type="tel" class="form-control" id="inpPhone" name="phone"
+                            <input type="tel" class="form-control" id="inpPhone" name="phone" value="${phone}"
                                    placeholder="Phone number">
                         </div>
                         <div class="form-group col-6">
                             <label for="inpAddress">Address:</label>
-                            <input type="text" class="form-control" name="address" id="inpAddress"
+                            <input type="text" class="form-control" name="address" id="inpAddress" value="${address}"
                                    placeholder="Address">
                         </div>
                     </div>

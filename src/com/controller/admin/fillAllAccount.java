@@ -5,6 +5,7 @@ import com.model.Article;
 import java.sql.ResultSet;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 
 import javax.servlet.RequestDispatcher;
 
@@ -44,24 +45,29 @@ public class fillAllAccount extends HttpServlet {
      */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
     	 response.setContentType("text/html;charset=UTF-8");
+        HttpSession session = request.getSession();
+        if (Objects.equals((String) session.getAttribute("Check_Authentic_Final_Using"), "Administrator") == true) {
+            String txt = request.getParameter("index");
+            int index = 0;
+            if (txt == null) {
+                index = 1;
+            } else {
+                index = Integer.parseInt(txt);
+            }
+            queryDAO dao = new queryDAO();
+            List<Article> list = dao.paging();
 
-         String txt = request.getParameter("index");
-         int index = 0;
-         if(txt == null){
-             index = 1;
-         }else{
-             index = Integer.parseInt(txt);
-         }
-         queryDAO dao = new queryDAO();
-         List<Article> list = dao.paging();
 
- 
-        request.setAttribute("listAccount", list);
-        request.setAttribute("size", list.size());
-        request.setAttribute("from", request.getAttribute("from"));
- 		request.setAttribute("thongbao", request.getAttribute("thongbao"));
-        RequestDispatcher rq= request.getRequestDispatcher("Views/Admin/container/account.jsp");
- 		rq.forward(request, response);
+            request.setAttribute("listAccount", list);
+            request.setAttribute("size", list.size());
+            request.setAttribute("from", request.getAttribute("from"));
+            request.setAttribute("thongbao", request.getAttribute("thongbao"));
+            RequestDispatcher rq = request.getRequestDispatcher("Views/Admin/container/account.jsp");
+            rq.forward(request, response);
+        }
+        else{
+            response.sendRedirect(request.getContextPath() + "/login-all");
+        }
 
     }
     

@@ -40,22 +40,44 @@ public class register extends HttpServlet {
         String gender = request.getParameter("gender");
         String Bday = request.getParameter("Bday");
         System.out.print(email+pass+firstname+lastname+ Bday+gender);
-        queryDAO qD = new queryDAO();
+        String er ="-1";
         String tb = "";
-        try {
-            if (qD.registed(email, pass, firstname, lastname,
-                    phone, address, gender, Bday))
-                tb = "true";
-            else
-                tb = "error";
-        } catch (Exception e) {
-            System.out.print(e);
-        }
 
-        HttpSession session = request.getSession();
-        if (session == null)
-            response.sendRedirect("Views/loginAll.jsp");
-        request.setAttribute("thongbao", tb);
+        if(phone == null || phone=="")
+            er = "phone";
+        if(email == null || email=="")
+            er = "email";
+        if(pass == null || pass=="")
+            er = "pass";
+        System.out.print(er);
+        if(er == "-1") {
+            queryDAO qD = new queryDAO();
+            try {
+                if (qD.registed(email, pass, firstname, lastname,
+                        phone, address, gender, Bday))
+                    tb = "true";
+                else
+                    tb = "loi";
+            } catch (Exception e) {
+                System.out.print(e);
+            }
+        }
+        else
+            tb = er;
+
+        if(tb!="true") {
+            request.setAttribute("email", email);
+            request.setAttribute("firstname", firstname);
+            request.setAttribute("lastname", lastname);
+            request.setAttribute("Bday", Bday);
+            request.setAttribute("phone", phone);
+            request.setAttribute("address", address);
+            request.setAttribute("gender", gender);
+        }
+        else
+            request.setAttribute("id", email);
+        request.setAttribute("kqDangki", tb);
+        request.setAttribute("er", er);
         RequestDispatcher rq = request.getRequestDispatcher("Views/loginAll.jsp");
         rq.forward(request, response);
     }

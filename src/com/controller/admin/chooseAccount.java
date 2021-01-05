@@ -26,7 +26,7 @@ public class chooseAccount extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 	}
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		String a= request.getParameter("choose");
+    	String a= request.getParameter("choose");
 		String url="Views/Admin/container/account/account.jsp";
 		String kq="0";
 		if(a.equals("Insert"))
