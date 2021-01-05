@@ -1,4 +1,3 @@
-@charset "UTF-8";
 /* GLOBAL  */
 * {
   margin: 0;
@@ -53,20 +52,20 @@ section {
 
 /* HEADER  */
 .header__top{
-    padding: 15px;
+  padding: 15px;
 }
 .header__logo {
   flex-grow: 1;
   text-align: left;
-    padding-left: 15px;
+  padding-left: 15px;
 }
 .header__nav{
-    flex-grow: 2;
+  flex-grow: 2;
 }
 .header__icons {
   flex-grow: 1;
   justify-content: center;
-    padding-right: 15px;
+  padding-right: 15px;
 }
 
 .header__icons a {
@@ -117,55 +116,55 @@ header {
   background: #9F9F9F;
 }
 .loader-wrapper {
-    width: 100%;
-    height: 100%;
-    position: absolute;
-    top: 0;
-    left: 0;
-    background-color: #242f3f;
-    display:flex;
-    justify-content: center;
-    align-items: center;
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  background-color: #242f3f;
+  display:flex;
+  justify-content: center;
+  align-items: center;
   z-index: 999;
 }
 .loader {
-    display: inline-block;
-    width: 30px;
-    height: 30px;
-    position: relative;
-    border: 4px solid #Fff;
-    animation: loader 2s infinite ease;
+  display: inline-block;
+  width: 30px;
+  height: 30px;
+  position: relative;
+  border: 4px solid #Fff;
+  animation: loader 2s infinite ease;
 }
 .loader-inner {
-    vertical-align: top;
-    display: inline-block;
-    width: 100%;
-    background-color: #fff;
-    animation: loader-inner 2s infinite ease-in;
+  vertical-align: top;
+  display: inline-block;
+  width: 100%;
+  background-color: #fff;
+  animation: loader-inner 2s infinite ease-in;
 }
 @keyframes loader {
-    0% { transform: rotate(0deg);}
-    25% { transform: rotate(180deg);}
-    50% { transform: rotate(180deg);}
-    75% { transform: rotate(360deg);}
-    100% { transform: rotate(360deg);}
+  0% { transform: rotate(0deg);}
+  25% { transform: rotate(180deg);}
+  50% { transform: rotate(180deg);}
+  75% { transform: rotate(360deg);}
+  100% { transform: rotate(360deg);}
 }
 @keyframes loader-inner {
-    0% {
-        height: 0%;
-    }
-    25% {
-        height: 0%;
-    }
-    50% {
-        height: 100%;
-    }
-    75% {
-        height: 100%;
-    }
-    100% {
-        height: 0%;
-    }
+  0% {
+    height: 0%;
+  }
+  25% {
+    height: 0%;
+  }
+  50% {
+    height: 100%;
+  }
+  75% {
+    height: 100%;
+  }
+  100% {
+    height: 0%;
+  }
 }
 /* CONTACT  */
 .contact {
@@ -1457,5 +1456,3 @@ button:focus {
 .loginTW .nav-pills .nav-item .link__login {
   border-right: 4px solid black;
 }
-
-/*# sourceMappingURL=main.css.map */

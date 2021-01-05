@@ -1,6 +1,7 @@
 package com.controller.web;
 
 import DAO.queryDAO;
+import com.model.Article1;
 import com.model.Display;
 
 import javax.servlet.RequestDispatcher;
@@ -50,8 +51,9 @@ public class fillSanpham extends HttpServlet {
 		queryDAO dao = new queryDAO();
 		int numberPage = dao.getNumberPage();
 		List<Display> listPhantrang = dao.getPaging(indexPage);
-//		System.out.print(listSanpham);
-		request.setAttribute("listPhantrang", listPhantrang);
+        List<Article1> listAllPro = dao.sanpham();
+        request.setAttribute("listAllPro", listAllPro);
+		request.setAttribute("listSanpham", listPhantrang);
 		request.setAttribute("numberPage", numberPage);
 		request.setAttribute("from", request.getAttribute("from"));
 		request.setAttribute("thongbao", request.getAttribute("thongbao"));

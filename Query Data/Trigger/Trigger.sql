@@ -73,20 +73,18 @@ GO
 
 ------------------------------ 19/12/2020
 -- Mã hóa password sau khi tạo
-USE Uni3
+USE Uni8
 GO 
 ALTER TRIGGER [dbo].[MaHoa]
 ON [dbo].[Account]
-AFTER INSERT, UPDATE
+For UPDATE
 AS
 BEGIN
 	DECLARE @newPass VARCHAR(200),@oldPass VARCHAR(200), @id VARCHAR(100)
 
-
 	SELECT @newPass = Inserted.Password
 	FROM Inserted
 
-	
 	SELECT @oldPass = Deleted.Password
 	FROM Deleted
 
@@ -102,3 +100,96 @@ BEGIN
 		WHERE Email = @id
 	END
 END
+GO
+
+ALTER PROC dbo.USP_DangKy
+(@Email varchar(100), @Pass varchar(100), @FirstName varchar(50), @LastName varchar(50), @Phone varchar(20), 
+@Address varchar(200), @Gender varchar(1), @DayOfBirth DATE)
+AS
+BEGIN
+		INSERT dbo.Account
+		        ( Email ,
+		          Password ,
+		          ImageLink ,
+		          FirstName ,
+		          LastName ,
+		          Phone ,
+		          Address ,
+		          Gender ,
+		          DayOfBirth ,
+		          CreatedDate ,
+		          isAvailable
+		        )
+		VALUES  ( @Email , -- Email - varchar(100)
+		          dbo.MaHoaMD5(@Pass) , -- Password - varchar(200)
+		          'none' , -- ImageLink - varchar(400)
+		          @FirstName , -- FirstName - varchar(50)
+		          @LastName , -- LastName - varchar(50)
+		          @Phone , -- Phone - varchar(20)
+		          @Address , -- Address - varchar(200)
+		          @Gender , -- Gender - varchar(1)
+		          @DayOfBirth , -- DayOfBirth - datetime
+		          GETDATE() , -- CreatedDate - datetime
+		          1  -- isAvailable - bit
+		        )
+		INSERT dbo.AccountRole
+		        ( Email, Role )
+		VALUES  ( @Email, -- Email - varchar(100)
+		          'USER'  -- Role - varchar(20)
+		          )
+END 
+GO
+
+ALTER PROC dbo.USP_TaoUser 
+(@Email varchar(100), @FirstName varchar(50), @LastName varchar(50), @Phone varchar(20), 
+@Address varchar(200), @Gender varchar(1), @DayOfBirth DATE, @Role varchar(20))
+AS
+BEGIN
+		INSERT dbo.Account
+		        ( Email ,
+		          Password ,
+		          ImageLink ,
+		          FirstName ,
+		          LastName ,
+		          Phone ,
+		          Address ,
+		          Gender ,
+		          DayOfBirth ,
+		          CreatedDate ,
+		          isAvailable
+		        )
+		VALUES  ( @Email , -- Email - varchar(100)
+		          dbo.MaHoaMD5('1') , -- Password - varchar(200)
+		          'none' , -- ImageLink - varchar(400)
+		          @FirstName , -- FirstName - varchar(50)
+		          @LastName , -- LastName - varchar(50)
+		          @Phone , -- Phone - varchar(20)
+		          @Address , -- Address - varchar(200)
+		          @Gender , -- Gender - varchar(1)
+		          @DayOfBirth , -- DayOfBirth - datetime
+		          GETDATE() , -- CreatedDate - datetime
+		          1  -- isAvailable - bit
+		        )
+		INSERT dbo.AccountRole
+		        ( Email, Role )
+		VALUES  ( @Email, -- Email - varchar(100)
+		          @Role  -- Role - varchar(20)
+		          )
+END 
+GO
+
+
+
+
+EXEC dbo.USP_DangKy @Email = 'TienTien@gmail.com', -- varchar(100)
+    @Pass = '1', -- varchar(100)
+    @FirstName = 'Tien', -- varchar(50)
+    @LastName = 'Tien', -- varchar(50)
+    @Phone = '092', -- varchar(20)
+    @Address = 'Binh Thanh', -- varchar(200)
+    @Gender = 'M', -- varchar(1)
+    @DayOfBirth = '2021-01-03 14:06:27' -- date
+
+DELETE dbo.AccountRole WHERE Email = 'TienTien@gmail.com'
+DELETE dbo.Account WHERE Email = 'TienTien@gmail.com'
+

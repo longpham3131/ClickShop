@@ -19,13 +19,20 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.14.0/css/all.min.css"
           integrity="sha512-1PKOgIY59xJ8Co8+NE6FZ+LOAZKjy+KY8iq0G4B3CyeY6wYHN3yt9PW0XpSriVlkMXe40PTKnXrLnZ9+fkDaog=="
           crossorigin="anonymous"/>
-
+    <!-- Scrollbar Custom CSS -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/malihu-custom-scrollbar-plugin/3.1.5/jquery.mCustomScrollbar.min.css">
     <!-- MAIN CSS  -->
     <link rel="stylesheet" href="<%=request.getContextPath()%>/Views/Web/css/main.css">
+    <link rel="stylesheet" href="<%=request.getContextPath()%>/Views/Web/css/StyleSideBar.css">
 </head>
 
 <body>
+<div class="loader-wrapper">
+    <span class="loader"><span class="loader-inner"></span></span>
+</div>
+<div class="overlay"></div>
 <c:import url="../commom/header.jsp"> </c:import>
+<c:import url="../commom/sideBar.jsp"> </c:import>
 <section class="product">
     <div class="product__head d-flex bg-light p-3">
         <p>Trang chủ /</p>
@@ -41,7 +48,7 @@
             <div class="d-none d-lg-block d-xl-block col-lg-2 pl-4">
                 <div class="wrapper">
                     <!-- Sidebar -->
-                    <nav id="sidebar">
+                    <nav>
                         <ul class="list-unstyled components">
 
                             <li>
@@ -312,7 +319,7 @@
 
 
                     <div class="row">
-                        <c:forEach items="${listPhantrang}" var="row">
+                        <c:forEach items="${listSanpham}" var="row">
                             <div class="col- 12 col-md-6 col-lg-4 col-xl-3 product__item">
                                 <form action="<%=request.getContextPath()%>/chooseProduct" method="post">
                                     <button type="submit" style="    background: transparent; border: none;">
@@ -378,9 +385,6 @@
     </div>
 </section>
 
-<div class="loader-wrapper">
-    <span class="loader"><span class="loader-inner"></span></span>
-</div>
 
 
 <c:import url="../commom/footer.jsp"> </c:import>
@@ -393,11 +397,8 @@
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-ho+j7jyWK8fNQe+A12Hb8AhRq26LrZ/JpcUGGOn+Y7RsweNrtN/tE3MoK7ZeZDyx"
         crossorigin="anonymous"></script>
-<script>
-    $(window).on("load", function () {
-        $(".loader-wrapper").fadeOut("slow");
-    });
-</script>
+<!-- jQuery Custom Scroller CDN -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/malihu-custom-scrollbar-plugin/3.1.5/jquery.mCustomScrollbar.concat.min.js"></script>
 <a href="#" class="backToTop cd-top text-replace js-cd-top"></a>
 <script src="<%=request.getContextPath()%>/Views/Web/js/main.js"></script>
 <script src="<%=request.getContextPath()%>/Views/Web/js/util.js"></script>
@@ -405,20 +406,38 @@
 <script src="<%=request.getContextPath()%>/Views/Web/js/sanPham.js"></script>
 <script src="<%=request.getContextPath()%>/Views/Web/js/DanhSachSanPham.js"></script>
 <script src="<%=request.getContextPath()%>/Views/Web/js/checkOut.js"></script>
+<script src="<%=request.getContextPath()%>/Views/Web/js/searchNameProduct.js"></script>
 
 <script>
+    $(window).on("load", function () {
+        $(".loader-wrapper").fadeOut("slow");
+    });
+</script>
+<script>
     let listGia = document.querySelectorAll(".priceProduct");
-    console.log(listGia);
     for (i = 0; i < listGia.length; i++) {
         listGia[i].innerHTML = new Intl.NumberFormat('vn-VN', { style: 'currency', currency: 'VND' }).format(parseInt(listGia[i].innerHTML));
     }
-    // listGia.map( ()  => {
-    //     console.log(listGia.innerHTML);
-    //     // listGia[index].innerHTML = new Intl.NumberFormat('vn-VN', { style: 'currency', currency: 'VND' }).format(parseInt(listGia[index].innerHTML));
-    // })
-    //
 </script>
+<script type="text/javascript">
+    $(document).ready(function () {
+        $("#sidebar").mCustomScrollbar({
+            theme: "minimal"
+        });
 
+        $('#dismiss, .overlay').on('click', function () {
+            $('#sidebar').removeClass('active');
+            $('.overlay').removeClass('active');
+        });
+
+        $('#sidebarCollapse').on('click', function () {
+            $('#sidebar').addClass('active');
+            $('.overlay').addClass('active');
+            $('.collapse.in').toggleClass('in');
+            $('a[aria-expanded=true]').attr('aria-expanded', 'false');
+        });
+    });
+</script>
 </body>
 
 </html>

@@ -5,22 +5,11 @@
 <html lang="en">
 
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-    <!-- BS4 CSS  -->
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css"
-          integrity="sha384-TX8t27EcRE3e/ihU7zmQxVncDAy5uIKz4rEkgIXeMed4M0jlfIDPvg6uqKI2xXr2" crossorigin="anonymous">
-    <!-- FONT AWESOME  -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.14.0/css/all.min.css"
-          integrity="sha512-1PKOgIY59xJ8Co8+NE6FZ+LOAZKjy+KY8iq0G4B3CyeY6wYHN3yt9PW0XpSriVlkMXe40PTKnXrLnZ9+fkDaog=="
-          crossorigin="anonymous"/>
-    <%--    Animation --%>
-    <link rel="stylesheet"
-            href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
-    <!-- MAIN CSS  -->
-    <link rel="stylesheet" href="<%=request.getContextPath()%>/Views/Web/css/main.css">
-</head
+    <link
+            rel="stylesheet"
+            href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"
+    />
+</head>
 
 <body>
 <header>
@@ -146,7 +135,6 @@
                                         <div class="dropdown__content col-2">
                                             <a class="dropdown-item" href="#">
                                                 <form action="<%=request.getContextPath()%>/filter-Product" method="post">
-
                                                     <button type="submit" style=" outline: none; background: transparent; border: none;">
                                                         CHELSEA BOOT
                                                     </button>
@@ -319,11 +307,13 @@
                            title="Tài khoản"> ${email} </a>
                         <a href="#" aria-label="Giỏ hàng" title="Giỏ hàng" data-toggle="modal" data-target="#myModal"><i
                                 class="fa fa-shopping-cart"></i></a>
+
+                        <a href="#" title="Tìm kiếm" id="sidebarCollapse">  <i class="fa fa-search"></i></a>
+                        Số dư: <span id="txtCoin" class="pl-1"> ${coin}</span>
                         <form action="<%=request.getContextPath()%>/fill-All-Display" method="post" class="px-2">
                             <input type="hidden" value="1" name="logout">
                             <button type="submit" title="Dang xuat"> <i class="fa fa-sign-out-alt"></i> </button>
                         </form>
-                        Số dư: <span id="txtCoin" class="pl-1"> ${coin}</span>
 
                     </c:when>
                     <c:otherwise>
@@ -331,6 +321,7 @@
                            title="Tài khoản"> <i></i><i class="fa fa-user"></i> </a>
                         <a href="#" aria-label="Giỏ hàng" title="Giỏ hàng" data-toggle="modal" data-target="#myModal"><i
                                 class="fa fa-shopping-cart"></i></a>
+                        <a href="#" title="Tìm kiếm" id="sidebarCollapse">  <i class="fa fa-search"></i></a>
                     </c:otherwise>
                 </c:choose>
 <%--                <a href="#" aria-label="Tìm kiếm" title="Tìm kiếm"><i class="fa fa-search"></i></a>--%>
@@ -410,19 +401,5 @@
         </div>
     </div>
 </header>
-
-
-<!-- Thư viện hỗ trợ Jquery -->
-<script src="https://code.jquery.com/jquery-3.5.1.min.js"
-        integrity="sha256-9/aliU8dGd2tb6OSsuzixeV4y/faTqgFtohetphbbj0=" crossorigin="anonymous"></script>
-
-<!-- BS4 JS  -->
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.bundle.min.js"
-        integrity="sha384-ho+j7jyWK8fNQe+A12Hb8AhRq26LrZ/JpcUGGOn+Y7RsweNrtN/tE3MoK7ZeZDyx"
-        crossorigin="anonymous"></script>
-<script>
-    document.getElementById("txtCoin").innerHTML = new Intl.NumberFormat('vn-VN', { style: 'currency', currency: 'VND' }).format(parseInt(document.getElementById("txtCoin").innerHTML));
-</script>
 </body>
-
 </html>

@@ -386,7 +386,6 @@ public class queryDAO {
         }
         return null;
     }
-
     public boolean insertProduct(String subcategory, String name, String img ,int unitprice,
                                  String gender, String description, String available) {
 

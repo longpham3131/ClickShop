@@ -78,5 +78,4 @@ public class Article1 {
 		ImgPath = imgpath;
 	}
 
-
 }

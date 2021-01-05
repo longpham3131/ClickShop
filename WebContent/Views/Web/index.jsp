@@ -15,24 +15,25 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.14.0/css/all.min.css"
           integrity="sha512-1PKOgIY59xJ8Co8+NE6FZ+LOAZKjy+KY8iq0G4B3CyeY6wYHN3yt9PW0XpSriVlkMXe40PTKnXrLnZ9+fkDaog=="
           crossorigin="anonymous"/>
+    <!-- Scrollbar Custom CSS -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/malihu-custom-scrollbar-plugin/3.1.5/jquery.mCustomScrollbar.min.css">
     <!-- Link Swiper's CSS -->
     <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css">
     <!-- OWL  CSS  -->
     <link rel="stylesheet" href="<%=request.getContextPath()%>/Views/Web/css/owl.carousel.min.css">
     <!-- MAIN CSS  -->
     <link rel="stylesheet" href="<%=request.getContextPath()%>/Views/Web/css/main.css">
+    <link rel="stylesheet" href="<%=request.getContextPath()%>/Views/Web/css/StyleSideBar.css">
 
 </head>
 
 <body>
-<%--<h1>${kq} </h1>--%>
-
-
 <div class="loader-wrapper">
     <span class="loader"><span class="loader-inner"></span></span>
 </div>
-
+<div class="overlay"></div>
 <c:import url="./commom/header.jsp"> </c:import>
+<c:import url="./commom/sideBar.jsp"> </c:import>
 <section class="carousel">
     <div class="owl-carousel owl-theme">
         <div class="item"><img src="<%=request.getContextPath()%>/Views/Web/image_product/banner__carousel_2.jpg"
@@ -128,7 +129,9 @@
     </div>
 
 </section>
+
 <c:import url="./commom/footer.jsp"> </c:import>
+
 
 
 <!-- Thư viện hỗ trợ Jquery -->
@@ -139,17 +142,42 @@
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-ho+j7jyWK8fNQe+A12Hb8AhRq26LrZ/JpcUGGOn+Y7RsweNrtN/tE3MoK7ZeZDyx"
         crossorigin="anonymous"></script>
+<!-- jQuery Custom Scroller CDN -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/malihu-custom-scrollbar-plugin/3.1.5/jquery.mCustomScrollbar.concat.min.js"></script>
+
 
 <script src="<%=request.getContextPath()%>/Views/Web/js/sanPham.js"></script>
 <script src="<%=request.getContextPath()%>/Views/Web/js/DanhSachSanPham.js"></script>
 <script src="<%=request.getContextPath()%>/Views/Web/js/checkOut.js"></script>
+<script src="<%=request.getContextPath()%>/Views/Web/js/searchNameProduct.js"></script>
 <script>
     let listGia = document.querySelectorAll(".priceProduct");
-    console.log(listGia);
     for (i = 0; i < listGia.length; i++) {
         listGia[i].innerHTML = new Intl.NumberFormat('vn-VN', { style: 'currency', currency: 'VND' }).format(parseInt(listGia[i].innerHTML));
     }
 </script>
+
+<script type="text/javascript">
+    $(document).ready(function () {
+        $("#sidebar").mCustomScrollbar({
+            theme: "minimal"
+        });
+
+        $('#dismiss, .overlay').on('click', function () {
+            $('#sidebar').removeClass('active');
+            $('.overlay').removeClass('active');
+        });
+
+        $('#sidebarCollapse').on('click', function () {
+            $('#sidebar').addClass('active');
+            $('.overlay').addClass('active');
+            $('.collapse.in').toggleClass('in');
+            $('a[aria-expanded=true]').attr('aria-expanded', 'false');
+        });
+    });
+</script>
+
+
 <c:if test="${kq == 1}">
 
 <%--Xóa giỏ hàng sau khi đặt hàng thành công --%>
@@ -166,6 +194,7 @@
         <%  session.setAttribute("kq", "0"); %>
 <script> alert("Đặt hàng thất bại"); </script>
 </c:if>
+
 <script>
     $(window).on("load", function () {
         $(".loader-wrapper").fadeOut("slow");
@@ -188,7 +217,6 @@
 </script>
 <!-- Swiper JS -->
 <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
-
 <!-- Initialize Swiper -->
 <script>
     var swiper = new Swiper('.swiper-container', {
