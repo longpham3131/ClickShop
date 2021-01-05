@@ -55,33 +55,33 @@ public class order extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
         HttpSession session = request.getSession();
+        queryDAO dao = new queryDAO();
         try {
             String dem = (String) request.getParameter("dem");
             System.out.print("+++++++++++: " + request.getAttribute("kq"));
-            if (Integer.parseInt(dem) > 0 ) {
-                queryDAO dao = new queryDAO();
-
+            if (Integer.parseInt(dem) > 0) {
                 String email = (String) request.getParameter("email");
                 String id = dao.idByEmail(email);
                 String address = (String) request.getParameter("address");
                 String phone = (String) request.getParameter("phone");
                 String name = (String) request.getParameter("name");
-                System.out.print("truoc dem");
-                int d = Integer.parseInt(dem);
 
-                if ((d > 0)) {
-                    String[] giaSP = new String[d + 1];
-                    String[] maSP = new String[d + 1];
-                    String[] soLuong = new String[d + 1];
-                    int sub = 0;
-                    for (int i = 0; i < d; i++) {
-                        maSP[i] = (String) request.getParameter("maSP" + i);
-                        soLuong[i] = (String) request.getParameter("soLuong" + i);
-                        giaSP[i] = (String) request.getParameter("giaSP" + i);
-                        System.out.println("\n ID USER:"+id +"...");
-                        sub = sub + (Integer.parseInt(giaSP[i]) * Integer.parseInt(soLuong[i]));
-                        System.out.println("---"+maSP[i] + "--" + soLuong[i] + "--" + giaSP[i]);
-                    }
+              //  System.out.print("truoc dem");
+
+                int d = Integer.parseInt(dem);
+                String[] giaSP = new String[d + 1];
+                String[] maSP = new String[d + 1];
+                String[] soLuong = new String[d + 1];
+                int sub = 0;
+                for (int i = 0; i < d; i++) {
+                    maSP[i] = (String) request.getParameter("maSP" + i);
+                    soLuong[i] = (String) request.getParameter("soLuong" + i);
+                    giaSP[i] = (String) request.getParameter("giaSP" + i);
+                    System.out.println("\n ID USER:" + id + "...");
+                    sub = sub + (Integer.parseInt(giaSP[i]) * Integer.parseInt(soLuong[i]));
+                    System.out.println("---" + maSP[i] + "--" + soLuong[i] + "--" + giaSP[i]);
+                }
+                if(sub < Integer.parseInt( dao.getCoin(email))) {  // du tien
                     String orderId = dao.initOrder(id, String.valueOf(sub), address, phone, name); // add 1
                     if (orderId != null) {
 
@@ -101,27 +101,28 @@ public class order extends HttpServlet {
                         mess = mess + "</tbody> </table>";
                         //tru tien
                         dao.truCoin(email, String.valueOf(sub));
-                        String mycoib= dao.getCoin(email);
+                        String mycoib = dao.getCoin(email);
                         session.setAttribute("coin", mycoib);
                         EmailUtility.sendEmail(host, port, user, pass, email, "ClickShop Order", mess);
                     }
+                    session.setAttribute("kq", "1");
+                    response.sendRedirect(request.getContextPath() + "/fill-All-Display"); // thanh cong
                 }
-               // System.out.print("FSDFSDFSDF");
-                session.setAttribute("kq", "1");
-                response.sendRedirect(request.getContextPath()+"/fill-All-Display");
-                //   fillAllDisplay a = new fillAllDisplay();
-                //   a.doPost(request, response);
-            }
-            else
-            {
-                System.out.println(")))))))))))))))))))" );
+                else
+                {
+                    request.setAttribute("loi", "mn");
+                    checkout x = new checkout();
+                    x.doPost(request,response);
+                }
+            } else {
+                System.out.println("Sai");
                 session.setAttribute("kq", "-1");
                 fillAllDisplay a = new fillAllDisplay();
                 a.doPost(request, response);
             }
         } catch (Exception e) {
             System.out.println("Go catch -----" + e);
-            response.sendRedirect(request.getContextPath()+"/fill-All-Display");
+            response.sendRedirect(request.getContextPath() + "/fill-All-Display");
             session.setAttribute("kq", "-1");
         }
     }
