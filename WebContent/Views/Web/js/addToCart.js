@@ -73,7 +73,9 @@ function themSPMoi(){
 
         }
         else{
-            dssp.themSP(sanPhamMoi);
+            if(sanPhamMoi.soLuong <= sanPhamMoi.soLuongKho){
+                dssp.themSP(sanPhamMoi);
+            }
         }
     }
 }

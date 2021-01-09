@@ -12,7 +12,22 @@ function getMyEle(ele) {
 demSoSanPham()
 
 function demSoSanPham() {
-    document.getElementById("soLuongSanPham").innerHTML = tbl.rows.length - 1;
+
+    var soSP = document.getElementsByClassName("soLuongSanPham");
+
+    var  btnThanhToan = document.getElementsByClassName("btnThanhToan");
+    for(let i = 0 ; i < btnThanhToan.length; i++){
+        btnThanhToan[i].disabled = true;
+    }
+    for(let i = 0 ; i < soSP.length; i++){
+        soSP[i].innerHTML = tbl.rows.length - 1;
+
+    }
+    if(tbl.rows.length - 1 > 0){
+        for(let i = 0 ; i < btnThanhToan.length; i++){
+            btnThanhToan[i].disabled = false;
+        }
+    }
 }
 
 
@@ -36,24 +51,21 @@ function tinhTongTienGioHang() {
     for(var i = 0; i < tien1SP.length; i++){
         tienGioHang += tien1SP[i];
     }
-    document.getElementById("totalPrice").innerHTML = new Intl.NumberFormat('vn-VN', { style: 'currency', currency: 'VND' }).format(tienGioHang);
+    let totalPrice = document.getElementsByClassName("totalPrice");
+    for(let i = 0 ; i < totalPrice.length; i++){
+        totalPrice[i].innerHTML = new Intl.NumberFormat('vn-VN', { style: 'currency', currency: 'VND' }).format( tienGioHang);
+    }
 }
 //Mỗi lần nhấn + - thì cập nhật số lượng{}
 function tangSoLuong(maSP) {
-
     var viTri = dssp.timViTri(maSP);
-
     var soLuongHT = parseInt(dssp.mangSP[viTri].soLuong)
-
     if(soLuongHT < dssp.mangSP[viTri].soLuongKho){
         dssp.mangSP[viTri].soLuong = soLuongHT + 1;
         dssp.capNhat(dssp.mangSP[viTri]);
         setLocalStorage();
         getLocalStorage();
     }
-    // else if(soLuongHT == dssp.mangSP[viTri].soLuongKho){
-    //     getMyEle("textThongBaoSoLuong").innerHTML ="Số lượng đã đạt giới hạn";
-    // }
 }
 function giamSoLuong(maSP) {
     var viTri = dssp.timViTri(maSP);
@@ -79,7 +91,8 @@ function deleteRow(maSP) {
     getLocalStorage();
 }
 function hienThiDSSP(mangSP) {
-    var tbody = getMyEle("tbodySP");
+    // var tbody = getMyEle("tbodySP");
+    var tbody = document.getElementsByClassName("tbodyCart");
     var content = "";
     mangSP.map(function (item, index) {
         content += `
@@ -116,9 +129,13 @@ function hienThiDSSP(mangSP) {
     </tr>
         `;
        })
-    tbody.innerHTML = content;
-    demSoSanPham()
-    tinhTongTienGioHang()
+    for(var i = 0; i < tbody.length; i++){
+        tbody[i].innerHTML = content;
+        demSoSanPham()
+        tinhTongTienGioHang()
+    }
+
+
 }
 
 function inputSP(mangSP) {
