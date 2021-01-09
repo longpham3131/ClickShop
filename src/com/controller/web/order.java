@@ -93,17 +93,20 @@ public class order extends HttpServlet {
 
                         for (int i = 0; i < d; i++) {
                             if (dao.InsertDetailOrder(orderId, maSP[i], soLuong[i], giaSP[i], giaSP[i]) == false)
-                                System.out.println(" SAI ROI, SAI ROI, SAI ROI");
+                               System.out.println(" TRIGGER: VUOT QUA SO LUONG");
                             else {
                                 mess = mess + "<tr> <td>" + i + 1 + "</td> <td>" + maSP[i] + "</td>    <td>" + soLuong[i] + "</td> <td>" + giaSP[i] + "</td> </tr> ";
                             }
                         }
                         mess = mess + "</tbody> </table>";
                         //tru tien
-                        dao.truCoin(email, String.valueOf(sub));
+                        if(dao.orderExist(orderId) != null)
+                        {
+                            dao.truCoin(email, String.valueOf(sub));
+                            EmailUtility.sendEmail(host, port, user, pass, email, "ClickShop Order", mess);
+                        }
                         String mycoib = dao.getCoin(email);
                         session.setAttribute("coin", mycoib);
-                        EmailUtility.sendEmail(host, port, user, pass, email, "ClickShop Order", mess);
                     }
                     session.setAttribute("kq", "1");
                     response.sendRedirect(request.getContextPath() + "/fill-All-Display"); // thanh cong

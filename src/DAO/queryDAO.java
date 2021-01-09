@@ -22,13 +22,10 @@ public class queryDAO {
 //        String sqlBgTran =  "BEGIN TRANSACTION SAVE TRANSACTION Tran_InsertUpdateAccountRole ";
             String sqlExec = "{ Call USP_TaoUser (?,?,?, ?, ?, ?, ?, ?) }";
 //        String sqlCommit = " COMMIT";
-
-
             conn = new MyDB().getConnection();
-
             conn.setAutoCommit(false);
-
             clmt = conn.prepareCall(sqlExec);
+         //   System.out.println("-++++++++++++++0+++++++++++++-");
             clmt.setString(1, email);
             clmt.setString(2, firstName);
             clmt.setString(3, lastName);
@@ -37,8 +34,11 @@ public class queryDAO {
             clmt.setString(6, gender);
             clmt.setString(7, dateBirth);
             clmt.setString(8, role);
+           // System.out.println("-++++++++++++++1+++++++++++++-");
             clmt.execute();
+           // System.out.println("-++++++++++++++2+++++++++++++-");
             conn.commit();
+          //  System.out.println("-++++++++++++++3+++++++++++-");
             return true;
         } catch (Exception e) {
             System.out.println(e);
@@ -155,23 +155,25 @@ public class queryDAO {
 
     public boolean updateAccount(String email, String firstName, String lastName,
                                  String phone, String address, String gender, String dateBirth) {
-        Connection conn1 = null;
-        CallableStatement cs = null;
+      //  Connection conn1 = null;
+      //  CallableStatement cs = null;
         try {
             String query = "{Call USP_CapNhatUser(?,?,?,?,?,?,?)}";
 
-            conn1 = new MyDB().getConnection();
-            cs = conn1.prepareCall(query);
-            cs.setString(1, email);
-            cs.setString(2, firstName);
-            cs.setString(3, lastName);
-            cs.setString(4, phone);
-            cs.setString(5, address);
-            cs.setString(6, gender);
-            cs.setString(7, dateBirth);
-            cs.execute();
+            conn = new MyDB().getConnection();
+            conn.setAutoCommit(false);
+            clmt = conn.prepareCall(query);
+            clmt.setString(1, email);
+            clmt.setString(2, firstName);
+            clmt.setString(3, lastName);
+            clmt.setString(4, phone);
+            clmt.setString(5, address);
+            clmt.setString(6, gender);
+            clmt.setString(7, dateBirth);
+            clmt.execute();
+            conn.commit();
+            System.out.println("------------------------------------");
             return true;
-
         } catch (Exception e) {
             System.out.println(e);
         }
@@ -388,7 +390,6 @@ public class queryDAO {
     }
     public boolean insertProduct(String subcategory, String name, String img ,int unitprice,
                                  String gender, String description, String available) {
-
         Connection conn1 = null;
         CallableStatement clsm = null;
         ResultSet rs = null;
@@ -410,7 +411,6 @@ public class queryDAO {
         } catch (Exception e) {
             System.out.println(e);
         }
-
         return false;
     }
 
@@ -807,8 +807,11 @@ public class queryDAO {
         PreparedStatement ps1 = null, ps2 = null;
         ResultSet rs = null;
         try {
-            String query = "update PurchaseOrder set Status='Processing' WHERE PurchaseOrderId='" + OrtherID + "'";
-            String query2 = "insert into Shipper  values('" + OrtherID + "', '" + shipperID + "', 'Picking')";
+            String query = "update PurchaseOrder set Status='Processing'" +
+                          " WHERE PurchaseOrderId='" + OrtherID + "'";
+            String query2 = "insert into Shipper " +
+                    "values('" + OrtherID + "', '" + shipperID + "', 'Picking')";
+
             conn1 = new MyDB().getConnection();
             conn2 = new MyDB().getConnection();
 
@@ -868,7 +871,11 @@ public class queryDAO {
         PreparedStatement ps1 = null;
         ResultSet rs = null;
         try {
-            String query = "update Shipper set Status='Shipping' WHERE PurchaseOrderId='" + OrtherID + "'";
+
+            String query = "update Shipper set Status='Shipping'" +
+                    " WHERE PurchaseOrderId='" + OrtherID + "'";
+
+
             conn1 = new MyDB().getConnection();
 
             ps1 = conn1.prepareStatement(query);
@@ -925,11 +932,15 @@ public class queryDAO {
         PreparedStatement ps1 = null, ps2 = null;
         ResultSet rs = null;
         try {
-            String query = "update PurchaseOrder set Status='Completed' WHERE PurchaseOrderId='" + OrtherID + "'";
-            if (Status.equals("Cancel"))
-                query = "update PurchaseOrder set  Status='Completed', CancelInvoice='False' WHERE PurchaseOrderId='" + OrtherID + "'";
 
+            String query = "update PurchaseOrder set Status='Completed' " +
+                            "WHERE PurchaseOrderId='" + OrtherID + "'";
+            if (Status.equals("Cancel"))
+                query = "update PurchaseOrder set  Status='Completed', CancelInvoice='False'" +
+                        " WHERE PurchaseOrderId='" + OrtherID + "'";
             String query2 = "delete from Shipper WHERE PurchaseOrderId='" + OrtherID + "'";
+
+
             conn1 = new MyDB().getConnection();
             conn2 = new MyDB().getConnection();
 
@@ -1007,7 +1018,9 @@ public class queryDAO {
         PreparedStatement ps1 = null;
         ResultSet rs = null;
         try {
-            String query = "update Shipper set Status='" + status + "' WHERE PurchaseOrderId='" + orderid + "'";
+            String query = "update Shipper set Status='"+status+"'" +
+                    " WHERE PurchaseOrderId='" + orderid + "'";
+
             conn1 = new MyDB().getConnection();
 
             ps1 = conn1.prepareStatement(query);
@@ -1046,9 +1059,12 @@ public class queryDAO {
 
     public String initOrder(String accid, String Subtotal, String address, String phone, String name) {
         try {
+
             System.out.println(accid+Subtotal+address+phone+name);
-            String queery = "insert into PurchaseOrder OUTPUT Inserted.PurchaseOrderId VALUES ('"+accid+"','"+Subtotal+"','"+address+"'," +
+            String queery = "insert into PurchaseOrder OUTPUT Inserted.PurchaseOrderId" +
+                    " VALUES ('"+accid+"','"+Subtotal+"','"+address+"'," +
                     "'"+phone+"','Init',GETDATE(),'"+name+"','true')";
+
             conn = new MyDB().getConnection();
 //            conn.setAutoCommit(false);
 //            clmt = conn.prepareCall(queery);
@@ -1074,6 +1090,7 @@ public class queryDAO {
     public boolean InsertDetailOrder(String PurchaseOrderId, String ProductId, String Quantity, String Cost, String UnitPrice) {
         try {
             String sub = String.valueOf(Integer.parseInt(UnitPrice)*Integer.parseInt(Quantity));
+
             String sqlExec = "insert into PurchaseOrderDetail VALUES(? ,? ,? ,? ,? ,?) ";
 
             conn = new MyDB().getConnection();
@@ -1230,6 +1247,23 @@ public class queryDAO {
         } catch (Exception e) {
             return null; }
     }
+
+    public String orderExist(String orderID)
+    {
+        String query = "SELECT PurchaseOrderId FROM dbo.PurchaseOrder  WHERE PurchaseOrderId = '"+orderID+"'";
+        try
+        {
+            conn = new MyDB().getConnection();
+            ps = conn.prepareStatement(query);
+            rs = ps.executeQuery();
+            while (rs.next()) {
+                return rs.getString(1);
+            }
+            return null;
+        } catch (Exception e) {
+            return null; }
+    }
+
 
     public void truCoin(String email, String sub) {
         String query = "\n" +

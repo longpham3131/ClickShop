@@ -61,7 +61,7 @@ public class 	updateAccount extends HttpServlet {
 						Bday))
 					tb = "true";
 				else
-					tb = "error";			
+					tb = "error";
 			} catch (Exception e) {
 				System.out.print(e);
 			}
@@ -72,7 +72,7 @@ public class 	updateAccount extends HttpServlet {
 			response.sendRedirect("Views/Admin/login.jsp");
 		
 		request.setAttribute("from", "update");
-		request.setAttribute("thongbao", tb);
+		//request.setAttribute("thongbao", tb);
 		fillAllAccount a = new fillAllAccount();
 		a.doPost(request, response);
 	}

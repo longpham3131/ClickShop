@@ -90,8 +90,8 @@
 </section>
 <section class="banner position-relative">
     <div class="banner__content">
-        <h4>THE WOLF</h4>
-        <h2>THE BASIC COLLECTION</h2>
+        <h4>THE CLICK SHOP</h4>
+        <h2>BASIC COLLECTION</h2>
         <form action="<%=request.getContextPath()%>/fill-All-Sanpham" method="post">
             <button type="submit" class="btn btn-dark">
                 XEM THÊM
@@ -99,14 +99,14 @@
         </form>
     </div>
 </section>
-<section class="story text-center container">
-    <h2 class="p-5">
-        THE BASIC COLLECTION | A STORY OF THE WOLF
-    </h2>
-    <iframe width="100%" height="600" src="https://www.youtube.com/embed/wBS9QH6qCUQ" frameborder="0"
-            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-            allowfullscreen></iframe>
-</section>
+<%--<section class="story text-center container">--%>
+<%--    <h2 class="p-5">--%>
+<%--        THE BASIC COLLECTION | A STORY OF THE WOLF--%>
+<%--    </h2>--%>
+<%--    <iframe width="100%" height="600" src="https://www.youtube.com/embed/wBS9QH6qCUQ" frameborder="0"--%>
+<%--            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"--%>
+<%--            allowfullscreen></iframe>--%>
+<%--</section>--%>
 <section class="outfit container">
     <h4 class="pb-2"><a href="#">Click Shop Founder</a></h4>
     <div class="swiper-container">
