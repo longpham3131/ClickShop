@@ -7,25 +7,15 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-    <!-- BOOSTRAP CSS -->
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css"
-          integrity="sha384-TX8t27EcRE3e/ihU7zmQxVncDAy5uIKz4rEkgIXeMed4M0jlfIDPvg6uqKI2xXr2" crossorigin="anonymous">
-    <!-- FONT AWESOME  -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.14.0/css/all.min.css"
-          integrity="sha512-1PKOgIY59xJ8Co8+NE6FZ+LOAZKjy+KY8iq0G4B3CyeY6wYHN3yt9PW0XpSriVlkMXe40PTKnXrLnZ9+fkDaog=="
-          crossorigin="anonymous"/>
-    <link rel="stylesheet" href="<%=request.getContextPath()%>/Views/Web/css/main.css">
+    <title>Trang mua hàng</title>
+    <c:import url="../global/linkCSS.jsp"> </c:import>
 </head>
 
 <body>
-<%--<div class="loader-wrapper">--%>
-<%--    <span class="loader"><span class="loader-inner"></span></span>--%>
-<%--</div>--%>
 <c:import url="../commom/header.jsp"> </c:import>
+<c:import url="../commom/sideBar.jsp"> </c:import>
 
-
-<div class="row product-detail-wrapper">
+<div class="row product-detail-wrapper pt-4">
     <div class="col-md-12 col-sm-12 col-xs-12">
         <div class="row product-detail-main pr_style_01">
             <div class="col-md-8 col-sm-12 col-xs-12">
@@ -48,7 +38,7 @@
                 </div>
 
 
-                <form id="add-item-form" action="/cart/add" method="post" class="variants clearfix">
+                <form id="add-item-form"  method="post" class="variants clearfix">
                     <div class="select clearfix d-none">
                         <div class="selector-wrapper"><label for="product-select-option-0">Màu sắc</label><span
                                 class="custom-dropdown custom-dropdown--white"><select
@@ -211,24 +201,16 @@
 </div>
 
 <c:import url="../commom/footer.jsp"> </c:import>
-<!-- BOOSTRAP JS -->
-<%--<script>--%>
-<%--    $(window).on("load", function () {--%>
-<%--        $(".loader-wrapper").fadeOut("slow");--%>
-<%--    });--%>
-<%--</script>--%>
-<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
-        integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
-        crossorigin="anonymous"></script>
 
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.bundle.min.js"
-        integrity="sha384-ho+j7jyWK8fNQe+A12Hb8AhRq26LrZ/JpcUGGOn+Y7RsweNrtN/tE3MoK7ZeZDyx"
-        crossorigin="anonymous"></script>
+<c:import url="../global/linkScript.jsp"> </c:import>
 
 <script src="<%=request.getContextPath()%>/Views/Web/js/sanPham.js"></script>
 <script src="<%=request.getContextPath()%>/Views/Web/js/DanhSachSanPham.js"></script>
 <script src="<%=request.getContextPath()%>/Views/Web/js/addToCart.js"></script>
 <script src="<%=request.getContextPath()%>/Views/Web/js/checkOut.js"></script>
+
+
+
 
 </body>
 

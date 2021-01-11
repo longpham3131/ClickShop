@@ -2,35 +2,19 @@
          pageEncoding="UTF-8" %>
 
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
-
-
 <!DOCTYPE html>
 <html lang="en">
 
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Trang Sản phẩm</title>
 
-    <!-- BS4 CSS  -->
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css"
-          integrity="sha384-TX8t27EcRE3e/ihU7zmQxVncDAy5uIKz4rEkgIXeMed4M0jlfIDPvg6uqKI2xXr2" crossorigin="anonymous">
-    <!-- FONT AWESOME  -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.14.0/css/all.min.css"
-          integrity="sha512-1PKOgIY59xJ8Co8+NE6FZ+LOAZKjy+KY8iq0G4B3CyeY6wYHN3yt9PW0XpSriVlkMXe40PTKnXrLnZ9+fkDaog=="
-          crossorigin="anonymous"/>
-    <!-- Scrollbar Custom CSS -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/malihu-custom-scrollbar-plugin/3.1.5/jquery.mCustomScrollbar.min.css">
-    <!-- MAIN CSS  -->
-    <link rel="stylesheet" href="<%=request.getContextPath()%>/Views/Web/css/main.css">
-    <link rel="stylesheet" href="<%=request.getContextPath()%>/Views/Web/css/StyleSideBar.css">
+    <c:import url="../global/linkCSS.jsp"> </c:import>
 </head>
 
 <body>
-<div class="loader-wrapper">
-    <span class="loader"><span class="loader-inner"></span></span>
-</div>
-<div class="overlay"></div>
+
 <c:import url="../commom/header.jsp"> </c:import>
 <c:import url="../commom/sideBar.jsp"> </c:import>
 <section class="product">
@@ -38,7 +22,7 @@
         <p>Trang chủ /</p>
         <form action="<%=request.getContextPath()%>//fill-All-Sanpham" method="post">
             <button type="submit" class="btnDanhMuc">
-                Danh mục
+                Tất cả sản phẩm
             </button>
         </form>
 
@@ -389,55 +373,21 @@
 
 <c:import url="../commom/footer.jsp"> </c:import>
 
-<!-- Thư viện hỗ trợ Jquery -->
-<script src="https://code.jquery.com/jquery-3.5.1.min.js"
-        integrity="sha256-9/aliU8dGd2tb6OSsuzixeV4y/faTqgFtohetphbbj0=" crossorigin="anonymous"></script>
-
-<!-- BS4 JS  -->
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.bundle.min.js"
-        integrity="sha384-ho+j7jyWK8fNQe+A12Hb8AhRq26LrZ/JpcUGGOn+Y7RsweNrtN/tE3MoK7ZeZDyx"
-        crossorigin="anonymous"></script>
-<!-- jQuery Custom Scroller CDN -->
-<script src="https://cdnjs.cloudflare.com/ajax/libs/malihu-custom-scrollbar-plugin/3.1.5/jquery.mCustomScrollbar.concat.min.js"></script>
-<a href="#" class="backToTop cd-top text-replace js-cd-top"></a>
-<script src="<%=request.getContextPath()%>/Views/Web/js/main.js"></script>
-<script src="<%=request.getContextPath()%>/Views/Web/js/util.js"></script>
+<c:import url="../global/linkScript.jsp"> </c:import>
 
 <script src="<%=request.getContextPath()%>/Views/Web/js/sanPham.js"></script>
 <script src="<%=request.getContextPath()%>/Views/Web/js/DanhSachSanPham.js"></script>
 <script src="<%=request.getContextPath()%>/Views/Web/js/checkOut.js"></script>
 <script src="<%=request.getContextPath()%>/Views/Web/js/searchNameProduct.js"></script>
 
-<script>
-    $(window).on("load", function () {
-        $(".loader-wrapper").fadeOut("slow");
-    });
-</script>
+<%--Định dạng tiền tệ --%>
 <script>
     let listGia = document.querySelectorAll(".priceProduct");
     for (i = 0; i < listGia.length; i++) {
         listGia[i].innerHTML = new Intl.NumberFormat('vn-VN', { style: 'currency', currency: 'VND' }).format(parseInt(listGia[i].innerHTML));
     }
 </script>
-<script type="text/javascript">
-    $(document).ready(function () {
-        $("#sidebar").mCustomScrollbar({
-            theme: "minimal"
-        });
 
-        $('#dismiss, .overlay').on('click', function () {
-            $('#sidebar').removeClass('active');
-            $('.overlay').removeClass('active');
-        });
-
-        $('#sidebarCollapse').on('click', function () {
-            $('#sidebar').addClass('active');
-            $('.overlay').addClass('active');
-            $('.collapse.in').toggleClass('in');
-            $('a[aria-expanded=true]').attr('aria-expanded', 'false');
-        });
-    });
-</script>
 </body>
 
 </html>

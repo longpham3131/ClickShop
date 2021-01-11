@@ -1,5 +1,6 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+         pageEncoding="UTF-8" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
-<%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -74,7 +75,7 @@
 					</span>
 
                 <span class="login100-form-title p-b-34 p-t-27">
-						Login
+					Đăng nhập
 					</span>
 
                 <div class="wrap-input100 validate-input" data-validate="Enter username">
@@ -91,19 +92,19 @@
 
                 <div class="container-login100-form-btn mt-4">
                     <button class="login100-form-btn" type="submit">
-                        Login
+                        Đăng nhập
                     </button>
                 </div>
             </form>
             <!-- Button to Open the Modal -->
             <div class="text-center">
                 <button type="button" style="background-color: transparent; padding: 10px 0; color: white" data-toggle="modal" data-target="#myModal">
-                    Register
+                    Đăng ký
                 </button>
             </div>
             <div class="text-center">
                 <button type="button" style="background-color: transparent; color: white " data-toggle="modal" data-target="#myForgot">
-                    Forgot Password
+                    Quên mật khẩu
                 </button>
             </div>
 
@@ -119,7 +120,7 @@
             <form action="${pageContext.request.contextPath}/registed" method="post">
                 <!-- Modal Header -->
                 <div class="modal-header">
-                    <h4 class="modal-title">Register</h4>
+                    <h4 class="modal-title">Đăng ký</h4>
                     <button type="button" class="close" data-dismiss="modal">&times;</button>
                 </div>
                 <!-- Modal body -->
@@ -127,36 +128,36 @@
                     <div class="form-row">
                         <div class="form-group col-6">
                             <label for="inpEmail">Email:</label>
-                            <input type="email" class="form-control" id="inpEmail" name="email" placeholder="Email" value="${email}">
+                            <input type="email" class="form-control" id="inpEmail" name="email"  value="${email}">
                         </div>
 
                         <div class="form-group col-6">
-                            <label for="inpPass">Password:</label>
+                            <label for="inpPass">Mật khẩu:</label>
                             <input type="password" class="form-control" id="inpPass" name="passw"
-                                   placeholder="Password">
+                                   >
                         </div>
                     </div>
 
                     <div class="form-row">
                         <div class="form-group col-6">
-                            <label>First name:</label>
+                            <label>Họ:</label>
                             <input type="text" class="form-control" name="inpFname"  value="${firstname}"
-                                   placeholder="First name">
+                                  >
 
                         </div>
                         <div class="form-group col-6">
-                            <label for="inpLname">Last name:</label>
+                            <label for="inpLname">Tên:</label>
                             <input type="text" class="form-control" name="Lname" id="inpLname" value="${lastname}"
-                                   placeholder="Last name"></div>
+                                 ></div>
 
                     </div>
                     <div class="form-row">
                         <div class="form-group col-6">
-                            <label for="DOfB">Day of birth</label>
+                            <label for="DOfB">Ngày sinh</label>
                             <input type="date" class="form-control" id="DOfB" name="Bday" value="${Bday}">
                         </div>
                         <div class="form-group col-6">
-                            <label for="Gender">Gender</label>
+                            <label for="Gender">Giới tính</label>
                             <select name="gender" id="Gender" class="form-control" name="gender">
                                 <!-- <%
                                 String[] sex = {"M", "F"};
@@ -177,21 +178,21 @@
                             <%
                                 }
                             %> -->
-                                <option value="Male">Male</option>
-                                <option value="Female">Female</option>
+                                <option value="Male">Nam</option>
+                                <option value="Female">Nữ</option>
 
                             </select></div>
                     </div>
                     <div class="form-row">
                         <div class="form-group col-6">
-                            <label for="inpPhone">Phone:</label>
+                            <label for="inpPhone">Số điện thoại:</label>
                             <input type="tel" class="form-control" id="inpPhone" name="phone" value="${phone}"
-                                   placeholder="Phone number">
+                                   >
                         </div>
                         <div class="form-group col-6">
-                            <label for="inpAddress">Address:</label>
+                            <label for="inpAddress">Địa chỉ:</label>
                             <input type="text" class="form-control" name="address" id="inpAddress" value="${address}"
-                                   placeholder="Address">
+                                   >
                         </div>
                     </div>
 
@@ -199,9 +200,9 @@
                 <!-- Modal footer -->
                 <div class="modal-footer">
 
-                    <button type="submit" class="btn btn-success">Add</button>
+                    <button type="submit" class="btn btn-success">Đăng ký</button>
 
-                    <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+                    <button type="button" class="btn btn-danger" data-dismiss="modal">Đóng</button>
                 </div>
             </form>
         </div>
@@ -213,22 +214,22 @@
             <form action="${pageContext.request.contextPath}/forgot" method="post">
                 <!-- Modal Header -->
                 <div class="modal-header">
-                    <h4 class="modal-title">Forgot Password</h4>
+                    <h4 class="modal-title">Quên mật khẩu</h4>
                     <button type="button" class="close" data-dismiss="modal">&times;</button>
                 </div>
                 <!-- Modal body -->
                 <div class="modal-body">
                     <div class="form-row">
                         <div class="form-group col-6">
-                            <label for="DOfB">Your email:</label>
+                            <label for="DOfB">Email đã đăng ký:</label>
                             <input type="text" class="form-control" id="mail" name="email">
                         </div>
                     </div>
                 </div>
                 <!-- Modal footer -->
                 <div class="modal-footer">
-                    <button type="submit" class="btn btn-success">Send code</button>
-                    <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+                    <button type="submit" class="btn btn-success">Gửi mã</button>
+                    <button type="button" class="btn btn-danger" data-dismiss="modal">Đóng</button>
                 </div>
             </form>
         </div>

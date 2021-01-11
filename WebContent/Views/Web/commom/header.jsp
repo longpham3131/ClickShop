@@ -1,19 +1,12 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
          pageEncoding="UTF-8" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
-<!DOCTYPE html>
-<html lang="en">
-
-<head>
-    <link
-            rel="stylesheet"
-            href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"
-    />
-</head>
-
-<body>
+<div class="loader-wrapper">
+    <span class="loader"><span class="loader-inner"></span></span>
+</div>
+<div class="overlay"></div>
 <header>
-<%--    <h1> ${email}</h1>--%>
+    <%--    <h1> ${email}</h1>--%>
     <%--  Check Login and Role --%>
     <%
         String email = (String) session.getAttribute("email");
@@ -22,15 +15,25 @@
         if (email == null)
             email = "login";
     %>
-
     <div class="">
         <div class="header__top d-flex justify-content-between align-items-center">
-            <div class="header__logo">
-                <a href="<%=request.getContextPath()%>/fill-All-Display">
-                    <img src="<%=request.getContextPath()%>/Views/Web/image_product/logo.png" alt="">
-                </a>
+            <c:choose>
+                <c:when test="${email != null}">
+                    <div class="header__logo" >
+                        <a href="<%=request.getContextPath()%>/fill-All-Display">
+                            <img src="<%=request.getContextPath()%>/Views/Web/image_product/logo.png" alt="">
+                        </a>
+                    </div>
+                </c:when>
+                <c:otherwise>
+                    <div class="header__logo" style="flex-grow: 0;" >
+                        <a href="<%=request.getContextPath()%>/fill-All-Display">
+                            <img src="<%=request.getContextPath()%>/Views/Web/image_product/logo.png" alt="">
+                        </a>
+                    </div>
+                </c:otherwise>
+            </c:choose>
 
-            </div>
             <div class="header__nav">
                 <nav class="navbar navbar-expand-lg">
                     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown"
@@ -50,7 +53,8 @@
                                     <div class="row">
                                         <div class="dropdown__content col-2">
                                             <a class="dropdown-item" href="#">
-                                                <form action="<%=request.getContextPath()%>/filter-Product" method="post">
+                                                <form action="<%=request.getContextPath()%>/filter-Product"
+                                                      method="post">
                                                     <button type="submit"
                                                             style=" outline: none;   background: transparent; border: none;">
                                                         CHELSEA BOOT
@@ -59,40 +63,50 @@
                                                 </form>
                                             </a>
                                             <a class="dropdown-item" href="#">
-                                                <form action="<%=request.getContextPath()%>/filter-Product" method="post">
-                                                    <button type="submit" style=" outline: none; background: transparent; border: none;">
+                                                <form action="<%=request.getContextPath()%>/filter-Product"
+                                                      method="post">
+                                                    <button type="submit"
+                                                            style=" outline: none; background: transparent; border: none;">
                                                         DERBY
                                                     </button>
                                                     <input type="hidden" value="DERBY" name="Name"/>
                                                 </form>
                                             </a>
                                             <a class="dropdown-item" href="#">
-                                                <form action="<%=request.getContextPath()%>/filter-Product" method="post">
-                                                    <button type="submit" style=" outline: none; background: transparent; border: none;">
+                                                <form action="<%=request.getContextPath()%>/filter-Product"
+                                                      method="post">
+                                                    <button type="submit"
+                                                            style=" outline: none; background: transparent; border: none;">
                                                         HARNESS BOOT
                                                     </button>
                                                     <input type="hidden" value="Harness Boots" name="Name"/>
                                                 </form>
                                             </a>
                                             <a class="dropdown-item" href="#">
-                                                <form action="<%=request.getContextPath()%>/filter-Product" method="post">
-                                                    <button type="submit" style=" outline: none; background: transparent; border: none;">
+                                                <form action="<%=request.getContextPath()%>/filter-Product"
+                                                      method="post">
+                                                    <button type="submit"
+                                                            style=" outline: none; background: transparent; border: none;">
                                                         ZIP BOOT
                                                     </button>
                                                     <input type="hidden" value="Zip Boots" name="Name"/>
                                                 </form>
                                             </a>
                                             <a class="dropdown-item" href="#">
-                                                <form action="<%=request.getContextPath()%>/filter-Product" method="post">
-                                                    <button type="submit" style=" outline: none; background: transparent; border: none;">
+                                                <form action="<%=request.getContextPath()%>/filter-Product"
+                                                      method="post">
+                                                    <button type="submit"
+                                                            style=" outline: none; background: transparent; border: none;">
                                                         COMBAT BOOT
                                                     </button>
                                                     <input type="hidden" value="Combat Boots - Men" name="Name"/>
                                                 </form>
                                             </a>
                                             <a class="dropdown-item" href="#">
-                                                <form action="<%=request.getContextPath()%>/filter-Product" method="post">
-                                                    <button type="submit" style=" outline: none; background: transparent; border: none;">
+                                                <form action="<%=request.getContextPath()%>/filter-Product"
+                                                      method="post">
+                                                    <button type="submit"
+                                                            style=" outline: none; background: transparent; border: none;">
                                                         OXFORD
                                                     </button>
                                                     <input type="hidden" value="OXFORD" name="Name"/>
@@ -134,8 +148,10 @@
                                     <div class="row">
                                         <div class="dropdown__content col-2">
                                             <a class="dropdown-item" href="#">
-                                                <form action="<%=request.getContextPath()%>/filter-Product" method="post">
-                                                    <button type="submit" style=" outline: none; background: transparent; border: none;">
+                                                <form action="<%=request.getContextPath()%>/filter-Product"
+                                                      method="post">
+                                                    <button type="submit"
+                                                            style=" outline: none; background: transparent; border: none;">
                                                         CHELSEA BOOT
                                                     </button>
                                                     <input type="hidden" value="Chealsea Boots - Women" name="Name"/>
@@ -143,9 +159,11 @@
                                             </a>
                                             <%--                                        <a class="dropdown-item" href="#">DERBY</a>--%>
                                             <a class="dropdown-item" href="#">
-                                                <form action="<%=request.getContextPath()%>/filter-Product" method="post">
+                                                <form action="<%=request.getContextPath()%>/filter-Product"
+                                                      method="post">
 
-                                                    <button type="submit" style=" outline: none; background: transparent; border: none;">
+                                                    <button type="submit"
+                                                            style=" outline: none; background: transparent; border: none;">
                                                         COMBAT BOOT
                                                     </button>
                                                     <input type="hidden" value="Combat Boots - Women" name="Name"/>
@@ -178,20 +196,25 @@
                                    data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
                                     TEE(UNISEX)
                                 </a>
-                                <div class="dropdown-menu  nav-item__dropdown animate__animated animate__fadeInLeftBig" aria-labelledby="dropdown__Tee">
+                                <div class="dropdown-menu  nav-item__dropdown animate__animated animate__fadeInLeftBig"
+                                     aria-labelledby="dropdown__Tee">
                                     <div class="row">
                                         <div class="dropdown__content col-2">
                                             <a class="dropdown-item" href="#">
-                                                <form action="<%=request.getContextPath()%>/filter-Product" method="post">
-                                                    <button type="submit" style=" outline: none; background: transparent; border: none;">
+                                                <form action="<%=request.getContextPath()%>/filter-Product"
+                                                      method="post">
+                                                    <button type="submit"
+                                                            style=" outline: none; background: transparent; border: none;">
                                                         T-SHIRT
                                                     </button>
                                                     <input type="hidden" value="T-SHIRT" name="Name"/>
                                                 </form>
                                             </a>
                                             <a class="dropdown-item" href="#">
-                                                <form action="<%=request.getContextPath()%>/filter-Product" method="post">
-                                                    <button type="submit" style=" outline: none; background: transparent; border: none;">
+                                                <form action="<%=request.getContextPath()%>/filter-Product"
+                                                      method="post">
+                                                    <button type="submit"
+                                                            style=" outline: none; background: transparent; border: none;">
                                                         SHIRT
                                                     </button>
                                                     <input type="hidden" value="SHIRT" name="Name"/>
@@ -224,52 +247,65 @@
                                    data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
                                     PHỤ KIỆN
                                 </a>
-                                <div class="dropdown-menu nav-item__dropdown animate__animated animate__fadeInLeftBig" aria-labelledby="dropdown__phuKien">
+                                <div class="dropdown-menu nav-item__dropdown animate__animated animate__fadeInLeftBig"
+                                     aria-labelledby="dropdown__phuKien">
                                     <div class="row">
                                         <div class="dropdown__content col-2">
                                             <a class="dropdown-item" href="#">
-                                                <form action="<%=request.getContextPath()%>/filter-Product" method="post">
-                                                    <button type="submit" style=" outline: none; background: transparent; border: none;">
+                                                <form action="<%=request.getContextPath()%>/filter-Product"
+                                                      method="post">
+                                                    <button type="submit"
+                                                            style=" outline: none; background: transparent; border: none;">
                                                         BELT
                                                     </button>
                                                     <input type="hidden" value="BELT" name="Name"/>
                                                 </form>
                                             </a>
                                             <a class="dropdown-item" href="#">
-                                                <form action="<%=request.getContextPath()%>/filter-Product" method="post">
-                                                    <button type="submit" style=" outline: none; background: transparent; border: none;">
+                                                <form action="<%=request.getContextPath()%>/filter-Product"
+                                                      method="post">
+                                                    <button type="submit"
+                                                            style=" outline: none; background: transparent; border: none;">
                                                         BRACELET
                                                     </button>
                                                     <input type="hidden" value="BRACELET" name="Name"/>
                                                 </form>
                                             </a>
                                             <a class="dropdown-item" href="#">
-                                                <form action="<%=request.getContextPath()%>/filter-Product" method="post">
-                                                    <button type="submit" style=" outline: none; background: transparent; border: none;">
+                                                <form action="<%=request.getContextPath()%>/filter-Product"
+                                                      method="post">
+                                                    <button type="submit"
+                                                            style=" outline: none; background: transparent; border: none;">
                                                         CHAIN
                                                     </button>
                                                     <input type="hidden" value="CHAIN" name="Name"/>
                                                 </form>
                                             </a>
                                             <a class="dropdown-item" href="#">
-                                                <form action="<%=request.getContextPath()%>/filter-Product" method="post">
-                                                    <button type="submit" style=" outline: none; background: transparent; border: none;">
+                                                <form action="<%=request.getContextPath()%>/filter-Product"
+                                                      method="post">
+                                                    <button type="submit"
+                                                            style=" outline: none; background: transparent; border: none;">
                                                         BANDANA
                                                     </button>
                                                     <input type="hidden" value="BANDANA" name="Name"/>
                                                 </form>
                                             </a>
                                             <a class="dropdown-item" href="#">
-                                                <form action="<%=request.getContextPath()%>/filter-Product" method="post">
-                                                    <button type="submit" style=" outline: none; background: transparent; border: none;">
+                                                <form action="<%=request.getContextPath()%>/filter-Product"
+                                                      method="post">
+                                                    <button type="submit"
+                                                            style=" outline: none; background: transparent; border: none;">
                                                         NECKLACE
                                                     </button>
                                                     <input type="hidden" value="NECKLACE" name="Name"/>
                                                 </form>
                                             </a>
                                             <a class="dropdown-item" href="#">
-                                                <form action="<%=request.getContextPath()%>/filter-Product" method="post">
-                                                    <button type="submit" style=" outline: none; background: transparent; border: none;">
+                                                <form action="<%=request.getContextPath()%>/filter-Product"
+                                                      method="post">
+                                                    <button type="submit"
+                                                            style=" outline: none; background: transparent; border: none;">
                                                         BUCKET HAT
                                                     </button>
                                                     <input type="hidden" value="BUCKET HAT" name="Name"/>
@@ -303,28 +339,35 @@
             <div class="header__icons d-flex  align-items-center">
                 <c:choose>
                     <c:when test="${email != null}">
-                        <a href="<%=request.getContextPath()%>/my-profile" aria-label="Tài khoản"
-                           title="Tài khoản"> ${email} </a>
+                        <div class="pr-3">
+                            <a class="font-weight-bold" style="font-size: 15px;"
+                               href="<%=request.getContextPath()%>/my-profile" aria-label="Tài khoản"
+                               title="Tài khoản"> ${email} </a>
+                            <p> Số dư: <span id="txtCoin" class="pl-1"> ${coin}</span></p>
+
+                        </div>
                         <a href="#" aria-label="Giỏ hàng" title="Giỏ hàng" data-toggle="modal" data-target="#myModal"><i
                                 class="fa fa-shopping-cart"></i></a>
 
-                        <a href="#" title="Tìm kiếm" id="sidebarCollapse">  <i class="fa fa-search"></i></a>
-                        Số dư: <span id="txtCoin" class="pl-1"> ${coin}</span>
+                        <a href="#" title="Tìm kiếm" id="sidebarCollapse"> <i class="fa fa-search"></i></a>
+
                         <form action="<%=request.getContextPath()%>/fill-All-Display" method="post" class="px-2">
                             <input type="hidden" value="1" name="logout">
-                            <button type="submit" title="Dang xuat"> <i class="fa fa-sign-out-alt"></i> </button>
+                            <button type="submit" title="Dang xuat"><i class="fa fa-sign-out-alt"></i></button>
                         </form>
-
+                        <script>
+                            document.getElementById("txtCoin").innerHTML = new Intl.NumberFormat('vn-VN', { style: 'currency', currency: 'VND' }).format(document.getElementById("txtCoin").innerHTML);
+                        </script>
                     </c:when>
                     <c:otherwise>
                         <a href="<%=request.getContextPath()%>/login-all" aria-label="Tài khoản"
                            title="Tài khoản"> <i></i><i class="fa fa-user"></i> </a>
                         <a href="#" aria-label="Giỏ hàng" title="Giỏ hàng" data-toggle="modal" data-target="#myModal"><i
                                 class="fa fa-shopping-cart"></i></a>
-                        <a href="#" title="Tìm kiếm" id="sidebarCollapse">  <i class="fa fa-search"></i></a>
+                        <a href="#" title="Tìm kiếm" id="sidebarCollapse"> <i class="fa fa-search"></i></a>
                     </c:otherwise>
                 </c:choose>
-<%--                <a href="#" aria-label="Tìm kiếm" title="Tìm kiếm"><i class="fa fa-search"></i></a>--%>
+                <%--                <a href="#" aria-label="Tìm kiếm" title="Tìm kiếm"><i class="fa fa-search"></i></a>--%>
 
             </div>
 
@@ -350,7 +393,7 @@
                         <div class="d-sm-flex justify-content-end mb-4">
 
                             <h4 class="mt-sm-0 mt-3">Hiện tại có :
-                                <span id="soLuongSanPham">0</span> sản phẩm
+                                <span class="soLuongSanPham">0</span> sản phẩm
                             </h4>
                         </div>
                         <table class="timetable_sub" id="tableOrder">
@@ -363,12 +406,12 @@
                                 <th>Xóa</th>
                             </tr>
                             </thead>
-                            <tbody id="tbodySP">
+                            <tbody class="tbodyCart">
 
                             </tbody>
                         </table>
                         <div class="text-right pt-3">
-                            <h3>Tổng tiền: <span id="totalPrice">0đ</span></h3>
+                            <h3>Tổng tiền: <span class="totalPrice">0đ</span></h3>
                             <div id="divIp">
                             </div>
                         </div>
@@ -381,7 +424,7 @@
                                 <a href="<%=request.getContextPath()%>/check-out">
 
                                     <button type="summit"
-                                            class="btn btn-success">Thanh
+                                            class="btn btn-success btnThanhToan">Thanh
                                         Toán
                                     </button>
                                 </a>
@@ -401,5 +444,3 @@
         </div>
     </div>
 </header>
-</body>
-</html>

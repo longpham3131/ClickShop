@@ -2,6 +2,7 @@ package com.controller.web;
 
 import DAO.queryDAO;
 import com.controller.admin.shipped;
+import com.model.Article1;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -11,6 +12,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import java.io.IOException;
+import java.util.List;
 
 /**
  * Servlet implementation class fillAllAccount
@@ -39,6 +41,8 @@ public class chooseProduct extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
         queryDAO dao = new queryDAO();
+        List<Article1> listAllPro = dao.sanpham();
+        request.setAttribute("listAllPro", listAllPro);
 
         String productId  = request.getParameter("ProductId");
         String name  =  request.getParameter("Name");

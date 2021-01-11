@@ -11,22 +11,14 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Giỏ hàng của bạn</title>
-    <!-- BS4 CSS  -->
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css"
-          integrity="sha384-TX8t27EcRE3e/ihU7zmQxVncDAy5uIKz4rEkgIXeMed4M0jlfIDPvg6uqKI2xXr2" crossorigin="anonymous">
-    <!-- FONT AWESOME  -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.14.0/css/all.min.css"
-          integrity="sha512-1PKOgIY59xJ8Co8+NE6FZ+LOAZKjy+KY8iq0G4B3CyeY6wYHN3yt9PW0XpSriVlkMXe40PTKnXrLnZ9+fkDaog=="
-          crossorigin="anonymous"/>
-
-    <!-- MAIN CSS  -->
-    <link rel="stylesheet" href="<%=request.getContextPath()%>/Views/Web/css/main.css">
+    <c:import url="../global/linkCSS.jsp"> </c:import>
 </head>
-
 <body>
-<%--<c:import url="../commom/header.jsp"> </c:import>--%>
+<c:import url="../commom/header.jsp"> </c:import>
+<c:import url="../commom/sideBar.jsp"> </c:import>
 <!--checkout-->
-<c:if test="${loi == 'mn'}"> <script> alert("Deo du tien")</script></c:if>
+<c:if test="${loi == 'mn'}"> <script> alert("Giá trị đơn hàng vượt quá số dư")</script></c:if>
+
 <section class="checkout_wthree py-sm-5 py-3">
     <div class="container">
         <div class="check_w3ls">
@@ -34,7 +26,7 @@
                 <h4>Giỏ hàng của bạn
                 </h4>
                 <h4 class="mt-sm-0 mt-3">Hiện tại có :
-                    <span id="soLuongSanPham">3 </span> sản phẩm
+                    <span class="soLuongSanPham">3 </span> sản phẩm
                 </h4>
             </div>
             <div class="checkout-right">
@@ -48,11 +40,9 @@
                         <th>Xóa</th>
                     </tr>
                     </thead>
-                    <tbody id="tbodySP">
+                    <tbody class="tbodyCart">
                     </tbody>
                 </table>
-
-<%--                <h1>${i} , ${y} , ${str}</h1>--%>
             </div>
             <div class="row checkout-left mt-5">
                 <div class="col-md-8 address_form">
@@ -96,7 +86,7 @@
                                     </c:forEach>
                                 </div>
                                 <div class="wrap-btnCheckOut text-right">
-                                    <button type="submit"  class="btn btn-success" data-toggle="modal" data-target="#myModal">Thanh toán</button>
+                                    <button type="submit"  class="btn btn-success btnThanhToan" data-toggle="modal" data-target="#myModal">Thanh toán</button>
                                     <!-- The Modal -->
                                     <div class="modal fade" id="myModal">
                                         <div class="modal-dialog">
@@ -126,22 +116,9 @@
     </div>
 </section>
 <c:import url="../commom/footer.jsp"> </c:import>
-<div class="loader-wrapper">
-    <span class="loader"><span class="loader-inner"></span></span>
-</div>
-<!--//checkout-->
-<!-- BOOSTRAP JS -->
-<script src="https://code.jquery.com/jquery-3.5.1.min.js"
-        integrity="sha256-9/aliU8dGd2tb6OSsuzixeV4y/faTqgFtohetphbbj0=" crossorigin="anonymous"></script>
 
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.bundle.min.js"
-        integrity="sha384-ho+j7jyWK8fNQe+A12Hb8AhRq26LrZ/JpcUGGOn+Y7RsweNrtN/tE3MoK7ZeZDyx"
-        crossorigin="anonymous"></script>
-<script>
-    $(window).on("load",function(){
-        $(".loader-wrapper").fadeOut("slow");
-    });
-</script>
+<c:import url="../global/linkScript.jsp"> </c:import>
+
 <script src="<%=request.getContextPath()%>/Views/Web/js/sanPham.js"></script>
 <script src="<%=request.getContextPath()%>/Views/Web/js/DanhSachSanPham.js"></script>
 <script src="<%=request.getContextPath()%>/Views/Web/js/checkOut.js"></script>
