@@ -64,6 +64,7 @@
 <c:if test="${kqDangki == 'email'}"><script>  alert("Lỗi đắng kí: Email is null"); </script> </c:if>
 <c:if test="${kqDangki == 'pass'}"><script>  alert("Lỗi đắng kí: Pass is null"); </script> </c:if>
 <c:if test="${kqDangki == 'phone'}"><script>  alert("Lỗi đắng kí: Phone is null"); </script> </c:if>
+<c:if test="${kqDangki == 'conpass'}"><script>  alert("Lỗi đắng kí: Mật khẩu nhập lại không đúng"); </script> </c:if>
 <%--<h1> -- <%=request.getAttribute("Message")%> ---</h1>--%>
 <div class="limiter">
     <div class="container-login100" style="background-image: url('<%=request.getContextPath()%>/Views/Web/image_product/banner__carousel_2.jpg');">
@@ -126,15 +127,21 @@
                 <!-- Modal body -->
                 <div class="modal-body">
                     <div class="form-row">
-                        <div class="form-group col-6">
+                        <div class="form-group col-4">
                             <label for="inpEmail">Email:</label>
                             <input type="email" class="form-control" id="inpEmail" name="email"  value="${email}">
                         </div>
 
-                        <div class="form-group col-6">
+                        <div class="form-group col-4">
                             <label for="inpPass">Mật khẩu:</label>
                             <input type="password" class="form-control" id="inpPass" name="passw"
                                    >
+                        </div>
+
+                        <div class="form-group col-4">
+                            <label for="inpPass">Nhập lại mật khẩu:</label>
+                            <input type="password" class="form-control" id="inpConfirmPass" name="conpassw"
+                            >
                         </div>
                     </div>
 
