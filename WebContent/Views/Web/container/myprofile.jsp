@@ -25,6 +25,9 @@
 <c:if test="${kqupdate == '1'}"><script>  alert("Đổi password thành công"); </script> </c:if>
 <c:if test="${kqupdate == '2'}"><script>  alert("Cập nhật thông tin thành công"); </script> </c:if>
 <c:if test="${kqupdate == '0'}"><script>  alert("Opps! Đã xảy ra lỗi"); </script> </c:if>
+<c:if test="${kqupdate == 'old'}"><script>  alert("Mật khẩu không đúng"); </script> </c:if>
+<c:if test="${kqupdate == 'confirm'}"><script>  alert("Confirm password không chính xác"); </script> </c:if>
+
 <style>
     .profilePage .nav-pills .nav-link.active{
         color: #fff;
@@ -101,10 +104,22 @@
                         <form action="<%=request.getContextPath()%>/changepass" method="post">
                             <input type="hidden" value="${email}" name="email">
                             <div class="col-sm-3">
+                                <label for="staticEmail">Old pass</label>
+                            </div>
+                            <div class="col-sm-8">
+                                <input type="password" name="oldpass"  class="form-control" style="border-color: #1d2124">
+                            </div>
+                            <div class="col-sm-3">
                                 <label for="staticEmail">New pass</label>
                             </div>
                             <div class="col-sm-8">
                                 <input type="password" name="newpass"  class="form-control" style="border-color: #1d2124">
+                            </div>
+                            <div class="col-sm-6">
+                                <label for="staticEmail">Confirm new pass</label>
+                            </div>
+                            <div class="col-sm-8">
+                                <input type="password" name="confirmnewpass"  class="form-control" style="border-color: #1d2124">
                             </div>
                             <input type="submit" value="Đổi pass" style="margin-left: 15px; margin-top: 10px; margin-bottom: 10px;">
                         </form>
