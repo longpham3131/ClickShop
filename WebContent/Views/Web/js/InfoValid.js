@@ -13,7 +13,7 @@ getELE("DOfB").onblur = dOfBirthValidate;
 getELE("inpPhone").onblur = phoneValidate;
 getELE("inpAddress").onblur = addressValidate;
 
-export function emailValidate(){
+function emailValidate(){
     var email = getELE("inpEmail").value;
     if(validation.checkEmpty(email, getELE("tbEmail"), "Email không được trống !!!")
         && validation.checkEmail(email, getELE("tbEmail"), "Email không hợp lệ!!!")){
@@ -21,7 +21,7 @@ export function emailValidate(){
     }
     return  false;
 }
-export function fNameValidate(){
+function fNameValidate(){
     var ho = getELE("inpFname").value;
     if(validation.checkEmpty(ho, getELE("tbHo"), "Họ không được trống !!!")
         && validation.checkLetters(ho, getELE("tbHo"), "Họ phải là chữ")){
