@@ -7,6 +7,7 @@ import com.model.*;
 import java.sql.ResultSet;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 
 import javax.servlet.RequestDispatcher;
 
@@ -24,8 +25,8 @@ import DAO.queryDAO;
  */
 @WebServlet("/ship")
 public class shipped extends HttpServlet {
-	private static final long serialVersionUID = 1L;
-       
+    private static final long serialVersionUID = 1L;
+
     /**
      * @see HttpServlet#HttpServlet()
      */
@@ -38,56 +39,64 @@ public class shipped extends HttpServlet {
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
      * methods.
      *
-     * @param request servlet request
+     * @param request  servlet request
      * @param response servlet response
      * @throws ServletException if a servlet-specific error occurs
-     * @throws IOException if an I/O error occurs
+     * @throws IOException      if an I/O error occurs
      */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-    	 response.setContentType("text/html;charset=UTF-8");
-        queryDAO dao = new queryDAO();
+        response.setContentType("text/html;charset=UTF-8");
+        HttpSession session = request.getSession();
+        if (Objects.equals((String) session.getAttribute("Check_Authentic_Final_Using"), "Administrator") == true) {
 
-         List<Shipper> list = dao.shipperList();
+            queryDAO dao = new queryDAO();
 
-         List<OrtherNoShipper> list2 = dao.initOrderList();
-         List<DetailOrder> list2_1 = dao.OrtherDetailNoShip();
+            List<Shipper> list = dao.shipperList();
 
-         List<Shipping> list3 = dao.shippingList();
-          List<DetailOrder> list3_1 = dao.OrtherDetailShipping();
+            List<OrtherNoShipper> list2 = dao.initOrderList();
+            List<DetailOrder> list2_1 = dao.OrtherDetailNoShip();
 
-         List<PickingUp> list4 = dao.pickupList();
-        List<DetailOrder> list4_1 = dao.OrtherDetailPicking();
+            List<Shipping> list3 = dao.shippingList();
+            List<DetailOrder> list3_1 = dao.OrtherDetailShipping();
 
-        request.setAttribute("listShipper", list);
+            List<PickingUp> list4 = dao.pickupList();
+            List<DetailOrder> list4_1 = dao.OrtherDetailPicking();
 
-        request.setAttribute("listInitOrder", list2);
-        request.setAttribute("listNoShipDetail", list2_1);
+            request.setAttribute("listShipper", list);
 
-        request.setAttribute("listShipping", list3);
-        request.setAttribute("listShippingDetail", list3_1);
+            request.setAttribute("listInitOrder", list2);
+            request.setAttribute("listNoShipDetail", list2_1);
 
-        request.setAttribute("listPicking", list4);
-        request.setAttribute("listPickDetail", list4_1);
-        
-        request.setAttribute("from", request.getAttribute("from"));
- 		request.setAttribute("thongbao", request.getAttribute("thongbao"));
+            request.setAttribute("listShipping", list3);
+            request.setAttribute("listShippingDetail", list3_1);
 
-        RequestDispatcher rq= request.getRequestDispatcher("Views/Admin/container/ship.jsp");
- 		rq.forward(request, response);
+            request.setAttribute("listPicking", list4);
+            request.setAttribute("listPickDetail", list4_1);
+
+            request.setAttribute("from", request.getAttribute("from"));
+            request.setAttribute("thongbao", request.getAttribute("thongbao"));
+
+            RequestDispatcher rq = request.getRequestDispatcher("Views/Admin/container/ship.jsp");
+            rq.forward(request, response);
+        } else {
+            request.setAttribute("error", "Bạn không có quyền truy cập vào trang.");
+            RequestDispatcher rq = request.getRequestDispatcher("Views/error.jsp");
+            rq.forward(request, response);
+        }
 
     }
-    
-    
-	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		 processRequest(request, response);
-		 }
 
-	/**
-	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
-	 */
-	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		processRequest(request, response);
 
-	}
+    protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        processRequest(request, response);
+    }
+
+    /**
+     * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
+     */
+    protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        processRequest(request, response);
+
+    }
 
 }

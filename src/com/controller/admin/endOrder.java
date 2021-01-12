@@ -7,6 +7,7 @@ import com.model.*;
 import java.sql.ResultSet;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 
 import javax.servlet.RequestDispatcher;
 
@@ -46,33 +47,39 @@ public class endOrder extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
         queryDAO dao = new queryDAO();
-
-        String OrtherID = (String) request.getParameter("OrtherID");
-        String Status = (String) request.getParameter("Status");
         HttpSession session = request.getSession();
-        String endedThisOrder= (String) session.getAttribute("endedThisOrder");
-        if ( OrtherID.equals(endedThisOrder) == false) {
-            if (dao.endOrder(OrtherID, Status))
-            {
-                session.setAttribute("endedThisOrder", OrtherID);
+        if (Objects.equals((String) session.getAttribute("Check_Authentic_Final_Using"), "Administrator") == true) {
+
+            String OrtherID = (String) request.getParameter("OrtherID");
+            String Status = (String) request.getParameter("Status");
+            String endedThisOrder = (String) session.getAttribute("endedThisOrder");
+            if (OrtherID.equals(endedThisOrder) == false) {
+                if (dao.endOrder(OrtherID, Status)) {
+                    session.setAttribute("endedThisOrder", OrtherID);
+                    shipped ob = new shipped();
+                    ob.doPost(request, response);
+                }
+            } else {
                 shipped ob = new shipped();
                 ob.doPost(request, response);
             }
-        }
-        else {
-            shipped ob = new shipped();
-            ob.doPost(request, response);
+        } else {
+            request.setAttribute("error", "Bạn không có quyền truy cập vào trang.");
+            RequestDispatcher rq = request.getRequestDispatcher("Views/error.jsp");
+            rq.forward(request, response);
         }
     }
 
-    protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+    protected void doGet(HttpServletRequest request, HttpServletResponse response) throws
+            ServletException, IOException {
         processRequest(request, response);
     }
 
     /**
      * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
      */
-    protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+    protected void doPost(HttpServletRequest request, HttpServletResponse response) throws
+            ServletException, IOException {
         processRequest(request, response);
 
     }
