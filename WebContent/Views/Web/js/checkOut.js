@@ -1,8 +1,11 @@
 var dssp = new DanhSachSanPham();
 
-var tbl = document.getElementById("tableOrder");
+var tbl = document.getElementsByClassName("tableOrder");
 
 var txtQuantity = document.querySelectorAll(".quantity-Order");
+
+
+
 
 getLocalStorage();
 function getMyEle(ele) {
@@ -20,10 +23,10 @@ function demSoSanPham() {
         btnThanhToan[i].disabled = true;
     }
     for(let i = 0 ; i < soSP.length; i++){
-        soSP[i].innerHTML = tbl.rows.length - 1;
+        soSP[i].innerHTML = tbl[0].rows.length - 1;
 
     }
-    if(tbl.rows.length - 1 > 0){
+    if(tbl[0].rows.length - 1 > 0){
         for(let i = 0 ; i < btnThanhToan.length; i++){
             btnThanhToan[i].disabled = false;
         }
@@ -38,9 +41,13 @@ function tinhTongTien1SP() {
     dssp.mangSP.map(function(item){
         tien1SP.push(item.soLuong * item.giaSP);
     })
-    for (var i = 1; i < tbl.rows.length; i++) {
-        tbl.rows[i].cells[3].innerHTML = new Intl.NumberFormat('vn-VN', { style: 'currency', currency: 'VND' }).format(tien1SP[i-1]);;
+    for(let indexTable = 0; indexTable < tbl.length; indexTable++){
+        for (var i = 1; i < tbl[indexTable].rows.length; i++) {
+            tbl[indexTable].rows[i].cells[3].innerHTML = new Intl.NumberFormat('vn-VN', { style: 'currency', currency: 'VND' }).format(tien1SP[i-1]);
+        }
     }
+
+
     return tien1SP;
 }
 

@@ -66,7 +66,6 @@ public class order extends HttpServlet {
                 String phone = (String) request.getParameter("phone");
                 String name = (String) request.getParameter("name");
 
-              //  System.out.print("truoc dem");
 
                 int d = Integer.parseInt(dem);
                 String[] giaSP = new String[d + 1];

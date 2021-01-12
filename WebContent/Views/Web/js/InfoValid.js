@@ -13,7 +13,7 @@ getELE("DOfB").onblur = dOfBirthValidate;
 getELE("inpPhone").onblur = phoneValidate;
 getELE("inpAddress").onblur = addressValidate;
 
-function emailValidate(){
+export function emailValidate(){
     var email = getELE("inpEmail").value;
     if(validation.checkEmpty(email, getELE("tbEmail"), "Email không được trống !!!")
         && validation.checkEmail(email, getELE("tbEmail"), "Email không hợp lệ!!!")){
@@ -21,7 +21,7 @@ function emailValidate(){
     }
     return  false;
 }
-function fNameValidate(){
+export function fNameValidate(){
     var ho = getELE("inpFname").value;
     if(validation.checkEmpty(ho, getELE("tbHo"), "Họ không được trống !!!")
         && validation.checkLetters(ho, getELE("tbHo"), "Họ phải là chữ")){
@@ -57,6 +57,13 @@ function dOfBirthValidate(){
     return  false;
 
 }
+function addressValidate(){
+    var diaChi = getELE("inpAddress").value;
+    if(validation.checkEmpty(diaChi, getELE("tbDiaChi"), "Địa chỉ không được trống !!!")){
+        return true;
+    }
+    return  false;
+}
 function phoneValidate(){
     var soDienThoai = getELE("inpPhone").value;
     if(validation.checkEmpty(soDienThoai, getELE("tbSDT"), "Số điện thoại không được trống !!!")
@@ -66,13 +73,7 @@ function phoneValidate(){
     }
     return  false;
 }
-function addressValidate(){
-    var diaChi = getELE("inpAddress").value;
-    if(validation.checkEmpty(diaChi, getELE("tbDiaChi"), "Địa chỉ không được trống !!!")){
-        return true;
-    }
-    return  false;
-}
+
 
 
 document.getElementById("btnSubmitRegister").addEventListener("click",function (event) {

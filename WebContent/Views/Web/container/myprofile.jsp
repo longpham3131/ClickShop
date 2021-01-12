@@ -13,24 +13,15 @@
 <title>Trang tài khoản</title>
 <c:import url="../global/linkCSS.jsp"> </c:import>
 <body>
-<<<<<<< HEAD
+
 <c:if test="${kqupdate == '1'}"><script>  alert("Đổi password thành công"); </script> </c:if>
 <c:if test="${kqupdate == '2'}"><script>  alert("Cập nhật thông tin thành công"); </script> </c:if>
 <c:if test="${kqupdate == '0'}"><script>  alert("Opps! Đã xảy ra lỗi"); </script> </c:if>
 <c:if test="${kqupdate == 'old'}"><script>  alert("Mật khẩu không đúng"); </script> </c:if>
 <c:if test="${kqupdate == 'confirm'}"><script>  alert("Confirm password không chính xác"); </script> </c:if>
 
-=======
-<c:if test="${kqupdate == '1'}">
-    <script>  alert("Đổi password thành công"); </script>
-</c:if>
-<c:if test="${kqupdate == '2'}">
-    <script>  alert("Cập nhật thông tin thành công"); </script>
-</c:if>
-<c:if test="${kqupdate == '0'}">
-    <script>  alert("Opps! Đã xảy ra lỗi"); </script>
-</c:if>
->>>>>>> 6fc3c034cfa625673057f15cebf7b1c75f73e3f0
+
+
 <style>
     .profilePage .nav-pills .nav-link.active {
         color: #fff;
@@ -47,8 +38,13 @@
 <div class="row p-4 profilePage">
     <div class="col-3">
         <div class="nav flex-column nav-pills" id="v-pills-tab" role="tablist" aria-orientation="vertical">
+
             <a class="nav-link active" id="v-pills-profile-tab" data-toggle="pill" href="#v-pills-profile" role="tab"
                aria-controls="v-pills-profile" aria-selected="false">Thông tin cá nhân</a>
+
+            <a class="nav-link" id="v-pills-passwd-tab" data-toggle="pill" href="#v-pills-passwd" role="tab"
+               aria-controls="v-pills-passwd" aria-selected="false">Đổi mật khẩu</a>
+
             <a class="nav-link " id="v-pills-home-tab" data-toggle="pill" href="#v-pills-home" role="tab"
                aria-controls="v-pills-home" aria-selected="true">Lịch sử đơn hàng</a>
 
@@ -106,40 +102,46 @@
                             <button type="submit" form="formUpdateUser" class=" button dark btn-addtocart addtocart-modal" name="change"
                                     style="background-color: #5a6268; color: white";> Cập nhật thông tin
                             </button>
-                            <button type="button" class=" button dark btn-addtocart addtocart-modal" name="change"
-                                    data-toggle="modal" data-target="#changepass"
-                                    style="background-color: #5a6268; color: white"> Đổi password
-                            </button>
                         </div>
 
                     </c:forEach>
                 </div>
             </div>
-            <div class="modal fade" id="changepass">
-                <div class="modal-dialog">
-                    <div class="modal-content">
-                        <form action="<%=request.getContextPath()%>/changepass" method="post">
-                            <input type="hidden" value="${email}" name="email">
-                            <div class="col-sm-3">
-                                <label for="staticEmail">Old pass</label>
-                            </div>
+            <div class="tab-pane fade" id="v-pills-passwd" role="tabpanel"
+                 aria-labelledby="v-pills-profile-tab">
+                <div class="text-center">
+                    <h4>Đổi mật khẩu</h4>
+                </div>
+                <div class="profile__user container col-9">
+                    <form action="<%=request.getContextPath()%>/changepass" method="post" id="formChangePass">
+                        <input type="hidden" value="${email}" name="email">
+                        <div class="form-group row">
+                            <label for="oldPass" class="col-sm-4 col-form-label">Mật khẩu cũ:</label>
                             <div class="col-sm-8">
-                                <input type="password" name="oldpass"  class="form-control" style="border-color: #1d2124">
+                                <input type="password"  class="form-control" id="oldPass"
+                                       name="oldpass">
                             </div>
-                            <div class="col-sm-3">
-                                <label for="staticEmail">New pass</label>
-                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <label for="newPass" class="col-sm-4 col-form-label">Mật khẩu mới:</label>
                             <div class="col-sm-8">
-                                <input type="password" name="newpass"  class="form-control" style="border-color: #1d2124">
+                                <input type="password"  class="form-control" id="newPass"
+                                       name="newpass">
                             </div>
-                            <div class="col-sm-6">
-                                <label for="staticEmail">Confirm new pass</label>
-                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <label for="confirmnewpass" class="col-sm-4 col-form-label">Nhập lại mật khẩu mới:</label>
                             <div class="col-sm-8">
-                                <input type="password" name="confirmnewpass"  class="form-control" style="border-color: #1d2124">
+                                <input type="password"  class="form-control" id="confirmnewpass"
+                                       name="confirmnewpass">
                             </div>
-                            <input type="submit" value="Đổi pass" style="margin-left: 15px; margin-top: 10px; margin-bottom: 10px;">
-                        </form>
+                        </div>
+
+                    </form>
+                    <div class="text-right">
+                        <button type="submit" form="formChangePass" class=" button dark btn-addtocart addtocart-modal"
+                                style="background-color: #5a6268; color: white";> Đổi mật khẩu
+                        </button>
                     </div>
                 </div>
             </div>

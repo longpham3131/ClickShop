@@ -396,7 +396,7 @@
                                 <span class="soLuongSanPham">0</span> sản phẩm
                             </h4>
                         </div>
-                        <table class="timetable_sub" id="tableOrder">
+                        <table class="timetable_sub tableOrder" >
                             <thead>
                             <tr>
                                 <th>Sản phẩm</th>
@@ -412,8 +412,7 @@
                         </table>
                         <div class="text-right pt-3">
                             <h3>Tổng tiền: <span class="totalPrice">0đ</span></h3>
-                            <div id="divIp">
-                            </div>
+
                         </div>
                     </div>
                     <!-- Modal footer -->
