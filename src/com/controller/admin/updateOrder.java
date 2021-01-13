@@ -41,7 +41,7 @@ public class updateOrder extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		HttpSession session = request.getSession();
 		if (Objects.equals((String) session.getAttribute("Check_Authentic_Final_Using"), "Administrator") == true) {
-			String purchaseorderid = request.getParameter("purchaseorderid");
+			String purchaseorderid = request.getParameter("purorderid");
 			String address = request.getParameter("address");
 			String phone = request.getParameter("phone");
 			// System.out.println(DateTimeNow);

@@ -493,7 +493,7 @@ public class queryDAO {
 
     // ------------------ START ORDER ---------------//
     public List<OrderList> donhang(int index) {
-        String query = "SELECT * FROM dbo.OV_OrderView";
+        String query = "SELECT VIE.*, Pur.Status,  Pur.CancelInvoice  FROM dbo.OV_OrderView VIE, PurchaseOrder Pur WHERE VIE.PurchaseOrderId = Pur.PurchaseOrderId";
         List<OrderList> listDon = new ArrayList<OrderList>();
         try {
 
@@ -503,7 +503,7 @@ public class queryDAO {
             rs = stmt.executeQuery(query);
             while (rs.next()) {
                 listDon.add(new OrderList(rs.getString(1), rs.getString(2), rs.getString(3), rs.getString(4),
-                        rs.getString(5), rs.getString(6)));
+                        rs.getString(5), rs.getString(6), rs.getString(7),  rs.getString(8)));
             }
             return listDon;
         } catch (Exception e) {
@@ -1279,4 +1279,21 @@ public class queryDAO {
         catch (Exception e) {}
     }
 
+
+    // block order day ne
+    public boolean blockOrder(String id) {
+        try {
+            String query2 = "update PurchaseOrder set CancelInvoice='0', Status='Completed' WHERE PurchaseOrderId='" + id + "'" ;
+            System.out.println(query2);
+            conn = new MyDB().getConnection();
+            System.out.println(query2);
+            ps = conn.prepareStatement(query2);
+            ps.executeUpdate();
+
+            return true;
+        } catch (Exception e) {
+            System.out.println(e);
+        }
+        return false;
+    }
 }
