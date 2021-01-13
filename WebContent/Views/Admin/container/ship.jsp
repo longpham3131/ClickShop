@@ -16,6 +16,10 @@
             href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i"
             rel="stylesheet">
 
+    <link
+            rel="stylesheet"
+            href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"
+    />
     <!-- Custom styles for this template-->
 
     <link
@@ -161,7 +165,7 @@
                 <div id="viewTableNoShipper">
                     <c:import url="ship/noshipper.jsp"/>
                 </div>
-                <div id="viewTablePickup">
+                <div id="viewTablePickup" >
                     <c:import url="ship/pickup.jsp"/>
                 </div>
                 <div id="viewTableShipping">
