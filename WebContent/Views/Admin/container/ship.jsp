@@ -70,7 +70,7 @@
 
                                     <div class="col-auto">
                                         <%--											<i class="fas fa-dollar-sign fa-2x text-gray-300"></i>--%>
-                                        <button onclick="chonTableHienThi(1)">View</button>
+                                        <button class="btn btn-info" onclick="chonTableHienThi(1)">Hiển thị</button>
                                     </div>
                                 </div>
                             </div>
@@ -95,7 +95,7 @@
 
                                     <div class="col-auto">
 <%--                                        <i class="fas fa-calendar fa-2x text-gray-300"></i>--%>
-										<button onclick="chonTableHienThi(2)">View</button>
+										<button class="btn btn-info" onclick="chonTableHienThi(2)">Hiển thị</button>
                                     </div>
                                 </div>
                             </div>
@@ -119,7 +119,7 @@
 
                                     <div class="col-auto">
 <%--                                        <i class="fas fa-calendar fa-2x text-gray-300"></i>--%>
-										<button onclick="chonTableHienThi(3)">View</button>
+										<button class="btn btn-info" onclick="chonTableHienThi(3)">Hiển thị</button>
                                     </div>
                                 </div>
                             </div>
@@ -144,7 +144,7 @@
 
                                     <div class="col-auto">
 <%--                                        <i class="fas fa-calendar fa-2x text-gray-300"></i>--%>
-										<button onclick="chonTableHienThi(4)">View</button>
+										<button class="btn btn-info" onclick="chonTableHienThi(4)">Hiển thị</button>
                                     </div>
                                 </div>
                             </div>

@@ -228,8 +228,8 @@
                                                         </div>
 
                                                         <div class="modal-footer">
-                                                            <input type="submit" value="Block!"
-                                                                   class="btn btn-warning"
+                                                            <input type="submit" value="Xác nhận"
+                                                                   class="btn btn-success"
                                                                    form="blockform${row.purchaseOrderId}"/>
                                                             <button type="button" class="btn btn-danger"
                                                                     data-dismiss="modal">Đóng
