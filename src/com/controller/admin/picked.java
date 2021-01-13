@@ -51,7 +51,7 @@ public class picked extends HttpServlet {
 
             queryDAO dao = new queryDAO();
 
-            String OrtherID = (String) request.getParameter("OrtherID");
+            String OrtherID = request.getParameter("OrtherIDx");
            String pickedOrder = (String) session.getAttribute("pickedOrder");
 
             System.out.println("Picked:  " + OrtherID + " vs " + pickedOrder);

@@ -270,17 +270,19 @@
                                                 <div class="col-sm-8">
                                                     <input type="text" Quantity readonly
                                                            class="form-control-plaintext"
-
                                                            value="${listPkg.shipperID}">
                                                 </div>
                                             </div>
-                                            <form action="<%=request.getContextPath()%>/shippicked" method="post" id="shippickedForm">
-                                                <input type="hidden" value="${listPkg.orderID}" name="OrtherID"/>
+                                            <form action="<%=request.getContextPath()%>/shippicked" method="post" id="shippickedFormx">
+                                                <input type="text" value="${listPkg.orderID}" name="OrtherIDx">
+                                                <input type="submit" value="bấm ở đây">
+<%--                                                Neu dung cai test nay thi dc    --%>
+<%--                                                Con dung button theo id o duoi thì nó action vào cái form của row đầu tiên   --%>
                                             </form>
                                         </div>
                                         <!-- Modal footer -->
                                         <div class="modal-footer">
-                                            <button type="submit" form="shippickedForm" class="btn btn-success">Đồng ý</button>
+                                            <button type="submit" form="shippickedFormx" class="btn btn-success">Đừng bấm ở đây</button>
                                             <button type="button" class="btn btn-danger"
                                                     data-dismiss="modal">Đóng
                                             </button>
