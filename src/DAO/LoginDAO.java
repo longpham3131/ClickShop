@@ -60,12 +60,21 @@ public class LoginDAO {
     public String login(String email, String pass)
     {
         try {
-            String query= "SELECT [dbo].[KienTraDangNhap] ('"+email+"','"+pass+"')";
+			String query2 = "SELECT isAvailable FROM Account WHERE Email = '"+email+"'";
+			Connection conn2 = new  MyDB().getConnection();
+			PreparedStatement ps2 = conn2.prepareStatement(query2);
+			ResultSet rs2 = ps2.executeQuery();
+			System.out.println("ALAAAA");
+			if (rs2.next())
+			{
+				if (rs2.getString(1).equals("0"))
+					return "BAN";
+				System.out.println(rs2.getString(1) );
+			}
 
+            String query= "SELECT [dbo].[KienTraDangNhap] ('"+email+"','"+pass+"')";
             conn = new  MyDB().getConnection();
             ps = conn.prepareStatement(query);
-          //  ps.setString(1, email);
-          //  ps.setString(2, pass);
             rs = ps.executeQuery();
 
             while(rs.next())

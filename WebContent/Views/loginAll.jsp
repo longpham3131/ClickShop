@@ -80,6 +80,13 @@
 <c:if test="${kqDangki == 'conpass'}">
     <script>  alert("Lỗi đắng kí: Mật khẩu nhập lại không đúng"); </script>
 </c:if>
+
+<c:if test="${kqlogin == 'BAN'}">
+    <script>  alert("Người dùng đã bị cấm"); </script>
+</c:if>
+<%--<c:if test="${kqlogin == 'CHECK'}">--%>
+<%--    <script>  alert("Sai thông tin đăng nhập"); </script>--%>
+<%--</c:if>--%>
 <%--<h1> -- <%=request.getAttribute("Message")%> ---</h1>--%>
 <div class="limiter">
     <div class="container-login100"

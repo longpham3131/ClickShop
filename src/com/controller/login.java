@@ -43,33 +43,45 @@ public class login extends HttpServlet {
 
         LoginDAO loginDAO = new LoginDAO();
         String kq = loginDAO.login(email, password);
-        if (kq != null) {              // need session.get(email) <<<<<<<<<<<<<<<<<<<<<<<
-            HttpSession session = request.getSession();
-            session.setAttribute("check", "true");
-            session.setAttribute("email", email);
-            session.setAttribute("role", kq);
-            queryDAO dao = new queryDAO();
-            String id= dao.idByEmail(email);
-            String mycoib= dao.getCoin(email);
-            session.setAttribute("AccId", id);
-            session.setAttribute("coin", mycoib);
-            session.setAttribute("Check_Authentic_Final_Using", kq);
-            if (kq.equals("Administrator")) {
-                url = "Views/Admin/container/home.jsp";
+        if(email != null) {
+            if (kq.equals("BAN")) {
+                request.setAttribute("kqlogin", "BAN");
                 RequestDispatcher rq = request.getRequestDispatcher(url);
                 rq.forward(request, response);
-            } else if (kq.equals("USER")) {
-                fillAllDisplay zx10r = new fillAllDisplay();
-                System.out.print("8888"+kq);
-                zx10r.doPost(request, response);
-              //  url = "Views/Web/index.jsp";
-            } else if (kq.equals("Shipper")) {
-                goShipper s1000rr = new goShipper();
-                s1000rr.doPost(request,response);
+            } else {
+                if (kq != null) {              // need session.get(email) <<<<<<<<<<<<<<<<<<<<<<<
+                    HttpSession session = request.getSession();
+                    session.setAttribute("check", "true");
+                    session.setAttribute("email", email);
+                    session.setAttribute("role", kq);
+                    queryDAO dao = new queryDAO();
+                    String id = dao.idByEmail(email);
+                    String mycoib = dao.getCoin(email);
+                    session.setAttribute("AccId", id);
+                    session.setAttribute("coin", mycoib);
+                    session.setAttribute("Check_Authentic_Final_Using", kq);
+                    if (kq.equals("Administrator")) {
+                        url = "Views/Admin/container/home.jsp";
+                        RequestDispatcher rq = request.getRequestDispatcher(url);
+                        rq.forward(request, response);
+                    } else if (kq.equals("USER")) {
+                        fillAllDisplay zx10r = new fillAllDisplay();
+                        System.out.print("8888" + kq);
+                        zx10r.doPost(request, response);
+                        //  url = "Views/Web/index.jsp";
+                    } else if (kq.equals("Shipper")) {
+                        goShipper s1000rr = new goShipper();
+                        s1000rr.doPost(request, response);
+                    }
+                } else {
+                    request.setAttribute("kqlogin", "CHECK");
+                    RequestDispatcher rq = request.getRequestDispatcher(url);
+                    rq.forward(request, response);
+                }
             }
-        } else {
+        } else
+        {  // request.setAttribute("kqlogin", "EMAIL");
             RequestDispatcher rq = request.getRequestDispatcher(url);
-            rq.forward(request, response);
-        }
+            rq.forward(request, response);}
     }
 }
