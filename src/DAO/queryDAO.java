@@ -7,6 +7,8 @@ import java.util.List;
 import DB.MyDB;
 import com.model.*;
 
+import javax.validation.constraints.Null;
+
 public class queryDAO {
 
     Connection conn = null;
@@ -14,6 +16,7 @@ public class queryDAO {
     PreparedStatement ps = null;
     CallableStatement clmt = null;
     ResultSet rs = null;
+    ResultSet rs2 = null;
 
     public boolean insertAccount(String email, String firstName, String lastName,
                                  String phone, String address, String gender, String dateBirth, String role) {
@@ -25,7 +28,7 @@ public class queryDAO {
             conn = new MyDB().getConnection();
             conn.setAutoCommit(false);
             clmt = conn.prepareCall(sqlExec);
-         //   System.out.println("-++++++++++++++0+++++++++++++-");
+            //   System.out.println("-++++++++++++++0+++++++++++++-");
             clmt.setString(1, email);
             clmt.setString(2, firstName);
             clmt.setString(3, lastName);
@@ -34,11 +37,11 @@ public class queryDAO {
             clmt.setString(6, gender);
             clmt.setString(7, dateBirth);
             clmt.setString(8, role);
-           // System.out.println("-++++++++++++++1+++++++++++++-");
+            // System.out.println("-++++++++++++++1+++++++++++++-");
             clmt.execute();
-           // System.out.println("-++++++++++++++2+++++++++++++-");
+            // System.out.println("-++++++++++++++2+++++++++++++-");
             conn.commit();
-          //  System.out.println("-++++++++++++++3+++++++++++-");
+            //  System.out.println("-++++++++++++++3+++++++++++-");
             return true;
         } catch (Exception e) {
             System.out.println(e);
@@ -155,8 +158,8 @@ public class queryDAO {
 
     public boolean updateAccount(String email, String firstName, String lastName,
                                  String phone, String address, String gender, String dateBirth) {
-      //  Connection conn1 = null;
-      //  CallableStatement cs = null;
+        //  Connection conn1 = null;
+        //  CallableStatement cs = null;
         try {
             String query = "{Call USP_CapNhatUser(?,?,?,?,?,?,?)}";
 
@@ -361,8 +364,19 @@ public class queryDAO {
             stmt = conn.createStatement();
             rs = stmt.executeQuery(query);
             while (rs.next()) {
+                Connection conn2 = null;
+                List<ProductSize> listprodsz = new ArrayList<ProductSize>();
+                String query2 = "SELECT pz.ProductSizeId,pz.Size,pz.Available FROM ProductSize pz WHERE ProductID =" + rs.getString(1);
+                conn2 = new MyDB().getConnection();
+                Statement stmt2 = null;
+                stmt2 = conn2.createStatement();
+
+                rs2 = stmt2.executeQuery(query2);
+                while (rs2.next()) {
+                    listprodsz.add(new ProductSize(rs2.getString(1), rs2.getString(2), rs2.getString(3)));
+                }
                 list1.add(new Article1(rs.getString(1), rs.getString(2), rs.getString(3), rs.getString(4),
-                        rs.getString(5), rs.getString(6), rs.getString(7),rs.getString(8)));
+                        rs.getString(5), rs.getString(6), rs.getString(7), rs.getString(8), listprodsz));
             }
             return list1;
         } catch (Exception e) {
@@ -388,7 +402,24 @@ public class queryDAO {
         }
         return null;
     }
-    public boolean insertProduct(String subcategory, String name, String img ,int unitprice,
+
+    public String getProductSizeId(String productId, String name, String available) {
+        String query = "Select pz.ProductSizeId,pz.Size,pz.Available  from ProductSize pz where ProductID =" + productId + "  and Size ='" + name + "' and Available = " + available;
+        String data = "";
+        try {
+            conn = new MyDB().getConnection();
+            ps = conn.prepareStatement(query);
+            rs = ps.executeQuery();
+            while (rs.next()) {
+                data = rs.getString(1);
+            }
+            return data;
+        } catch (Exception e) {
+        }
+        return null;
+    }
+
+    public boolean insertProduct(String subcategory, String name, String img, int unitprice,
                                  String gender, String description, String available) {
         Connection conn1 = null;
         CallableStatement clsm = null;
@@ -414,6 +445,58 @@ public class queryDAO {
         return false;
     }
 
+    public boolean insertProductSize(String productSizeId, String name, String available) {
+        Connection conn1 = null;
+        CallableStatement clsm = null;
+        ResultSet rs = null;
+        try {
+            String query = "{ Call PSP_ThemSizeSanPham(?,?,?)}";
+            conn1 = new MyDB().getConnection();
+            clsm = conn1.prepareCall(query);
+            clsm.setString(1, productSizeId);
+            clsm.setString(2, name);
+            clsm.setString(3, available);
+            clsm.execute();
+            return true;
+        } catch (Exception e) {
+            System.out.println(e);
+        }
+        return false;
+    }
+
+    public boolean deleteProductSize(String productsizeid) {
+        try {
+            String query = "delete from ProductSize where ProductSizeId =" + productsizeid;
+            conn = new MyDB().getConnection();
+            System.out.println(query);
+            ps = conn.prepareStatement(query);
+            ps.executeUpdate();
+
+            return true;
+        } catch (Exception e) {
+            System.out.println(e);
+        }
+        return false;
+    }
+
+    public List<ProductSize> getAllSizeById(String productid) {
+        List<ProductSize> listprodsz = new ArrayList<ProductSize>();
+        String query = "select * from Productsize where ProductID =" + productid;
+        try {
+
+            Statement stmt = null;
+            stmt = conn.createStatement();
+            rs = stmt.executeQuery(query);
+            while (rs.next()) {
+
+                listprodsz.add(new ProductSize(rs.getString(1).trim(),rs.getString(3).trim(), rs.getString(4).trim()));
+
+            }
+            return listprodsz;
+        } catch (Exception e) {
+        }
+        return null;
+    }
 
     public boolean productExists(String productid) {
         String query = "select * from Product where ProductId=?";
@@ -489,6 +572,25 @@ public class queryDAO {
         }
         return false;
     }
+
+    public boolean updateProductSize(String productSizeId, String name, String available) {
+        Connection conn1 = null;
+        CallableStatement clsm = null;
+        ResultSet rs = null;
+        try {
+            String query = "{ Call PSP_CapNhatSizeSanPham(?,?,?)}";
+            conn1 = new MyDB().getConnection();
+            clsm = conn1.prepareCall(query);
+            clsm.setString(1, productSizeId);
+            clsm.setString(2, name);
+            clsm.setString(3, available);
+            clsm.execute();
+            return true;
+        } catch (Exception e) {
+            System.out.println(e);
+        }
+        return false;
+    }
     // ------------------ END PRODUCT ---------------//
 
     // ------------------ START ORDER ---------------//
@@ -532,7 +634,8 @@ public class queryDAO {
         return false;
     }
 
-    public boolean updateOrderDetail(String purchaseorderdetailid, String purchaseorder, String productid, String quantity, String unitprice,
+    public boolean updateOrderDetail(String purchaseorderdetailid, String purchaseorder, String productid, String
+            quantity, String unitprice,
                                      String subtotal) {
         Connection conn1 = null;
         CallableStatement clmst = null;
@@ -808,7 +911,7 @@ public class queryDAO {
         ResultSet rs = null;
         try {
             String query = "update PurchaseOrder set Status='Processing'" +
-                          " WHERE PurchaseOrderId='" + OrtherID + "'";
+                    " WHERE PurchaseOrderId='" + OrtherID + "'";
             String query2 = "insert into Shipper " +
                     "values('" + OrtherID + "', '" + shipperID + "', 'Picking')";
 
@@ -934,7 +1037,7 @@ public class queryDAO {
         try {
 
             String query = "update PurchaseOrder set Status='Completed' " +
-                            "WHERE PurchaseOrderId='" + OrtherID + "'";
+                    "WHERE PurchaseOrderId='" + OrtherID + "'";
             if (Status.equals("Cancel"))
                 query = "update PurchaseOrder set  Status='Completed', CancelInvoice='False'" +
                         " WHERE PurchaseOrderId='" + OrtherID + "'";
@@ -1018,7 +1121,7 @@ public class queryDAO {
         PreparedStatement ps1 = null;
         ResultSet rs = null;
         try {
-            String query = "update Shipper set Status='"+status+"'" +
+            String query = "update Shipper set Status='" + status + "'" +
                     " WHERE PurchaseOrderId='" + orderid + "'";
 
             conn1 = new MyDB().getConnection();
@@ -1060,10 +1163,10 @@ public class queryDAO {
     public String initOrder(String accid, String Subtotal, String address, String phone, String name) {
         try {
 
-            System.out.println(accid+Subtotal+address+phone+name);
+            System.out.println(accid + Subtotal + address + phone + name);
             String queery = "insert into PurchaseOrder OUTPUT Inserted.PurchaseOrderId" +
-                    " VALUES ('"+accid+"','"+Subtotal+"','"+address+"'," +
-                    "'"+phone+"','Init',GETDATE(),'"+name+"','true')";
+                    " VALUES ('" + accid + "','" + Subtotal + "','" + address + "'," +
+                    "'" + phone + "','Init',GETDATE(),'" + name + "','true')";
 
             conn = new MyDB().getConnection();
 //            conn.setAutoCommit(false);
@@ -1087,9 +1190,11 @@ public class queryDAO {
         }
         return null;
     }
-    public boolean InsertDetailOrder(String PurchaseOrderId, String ProductId, String Quantity, String Cost, String UnitPrice) {
+
+    public boolean InsertDetailOrder(String PurchaseOrderId, String ProductId, String Quantity, String Cost, String
+            UnitPrice) {
         try {
-            String sub = String.valueOf(Integer.parseInt(UnitPrice)*Integer.parseInt(Quantity));
+            String sub = String.valueOf(Integer.parseInt(UnitPrice) * Integer.parseInt(Quantity));
 
             String sqlExec = "insert into PurchaseOrderDetail VALUES(? ,? ,? ,? ,? ,?) ";
 
@@ -1104,18 +1209,18 @@ public class queryDAO {
             clmt.setString(6, sub);
             clmt.execute();
             conn.commit();
-        //    System.out.println("dcm loi hoai 1");
-            String query2= "Update Product \n" +
-                    "set Available = (Available-"+Quantity+") where ProductId='"+ProductId+"'";
+            //    System.out.println("dcm loi hoai 1");
+            String query2 = "Update Product \n" +
+                    "set Available = (Available-" + Quantity + ") where ProductId='" + ProductId + "'";
             conn = new MyDB().getConnection();
-          //  System.out.println("dcm loi hoai 2");
+            //  System.out.println("dcm loi hoai 2");
             ps = conn.prepareStatement(query2);
-         //   System.out.println("dcm loi hoai 3");
+            //   System.out.println("dcm loi hoai 3");
             ps.executeUpdate();
-        //    System.out.println("dcm loi hoai 4");
+            //    System.out.println("dcm loi hoai 4");
             return true;
         } catch (Exception e) {
-     //       System.out.println("dcm loi hoai 1");
+            //       System.out.println("dcm loi hoai 1");
             System.out.println(e);
             return false;
         }
@@ -1125,7 +1230,7 @@ public class queryDAO {
     public List<TrackOrder> trackShip(String id) {
         String query = "SELECT  PO.AccountId ,PO.PurchaseOrderId, PO.SubTotal, S.Status\n" +
                 "FROM PurchaseOrder PO, Shipper S\n" +
-                "WHERE  PO.AccountId = '"+id+"' AND PO.PurchaseOrderId=S.PurchaseOrderId";
+                "WHERE  PO.AccountId = '" + id + "' AND PO.PurchaseOrderId=S.PurchaseOrderId";
         List<TrackOrder> list = new ArrayList();
         try {
             conn = new MyDB().getConnection();
@@ -1139,10 +1244,11 @@ public class queryDAO {
         }
         return null;
     }
+
     public List<TrackOrder> trackOrder(String id) {
-        String query =  "SELECT  PO.AccountId ,PO.PurchaseOrderId, PO.SubTotal, PO.Status\n" +
+        String query = "SELECT  PO.AccountId ,PO.PurchaseOrderId, PO.SubTotal, PO.Status\n" +
                 "FROM PurchaseOrder PO\n" +
-                "WHERE  PO.AccountId = '"+id+"' ";
+                "WHERE  PO.AccountId = '" + id + "' ";
         List<TrackOrder> list = new ArrayList();
         try {
             conn = new MyDB().getConnection();
@@ -1156,10 +1262,11 @@ public class queryDAO {
         }
         return null;
     }
+
     public List<TrackAllOrder> trackingAllById(String id) {
         String query = "SELECT  PO.AccountId ,PO.PurchaseOrderId, Pro.Name, P.Quantity, P.Subtotal, PO.Status\n" +
                 "    FROM PurchaseOrderDetail P, Product Pro, PurchaseOrder PO\n" +
-                "    WHERE PRO.ProductId = P.ProductId AND  PO.PurchaseOrderId = P.PurchaseOrderId AND PO.AccountId = '"+id+"' ";
+                "    WHERE PRO.ProductId = P.ProductId AND  PO.PurchaseOrderId = P.PurchaseOrderId AND PO.AccountId = '" + id + "' ";
         List<TrackAllOrder> list = new ArrayList();
         try {
             conn = new MyDB().getConnection();
@@ -1175,11 +1282,12 @@ public class queryDAO {
         }
         return null;
     }
+
     public List<TrackAllOrder> trackShippingById(String id) {
         String query = "SELECT  PO.AccountId ,PO.PurchaseOrderId, Pro.Name, P.Quantity, P.Subtotal, S.Status\n" +
                 "FROM PurchaseOrderDetail P, Product Pro, PurchaseOrder PO, Shipper S\n" +
                 "WHERE PRO.ProductId = P.ProductId AND  PO.PurchaseOrderId = P.PurchaseOrderId \n" +
-                "AND PO.AccountId = '"+id+"' AND S.PurchaseOrderId = P.PurchaseOrderId";
+                "AND PO.AccountId = '" + id + "' AND S.PurchaseOrderId = P.PurchaseOrderId";
         List<TrackAllOrder> list = new ArrayList();
         try {
             conn = new MyDB().getConnection();
@@ -1202,7 +1310,7 @@ public class queryDAO {
         PreparedStatement ps1 = null;
         ResultSet rs = null;
         try {
-            String query = "Update Account set Password='"+newpass+"' Where Email = '"+email+"'";
+            String query = "Update Account set Password='" + newpass + "' Where Email = '" + email + "'";
             System.out.println(query);
             conn1 = new MyDB().getConnection();
             ps1 = conn1.prepareStatement(query);
@@ -1214,10 +1322,10 @@ public class queryDAO {
         return false;
     }
 
-    public String GetQuanityAvai (String ProductID) {
+    public String GetQuanityAvai(String ProductID) {
         String query = "SELECT Available\n" +
                 "FROM Product\n" +
-                "WHERE  ProductId = '"+ProductID+"'";
+                "WHERE  ProductId = '" + ProductID + "'";
         try {
             conn = new MyDB().getConnection();
             ps = conn.prepareStatement(query);
@@ -1230,13 +1338,12 @@ public class queryDAO {
         }
         return null;
     }
-    public String getCoin(String email)
-    {
+
+    public String getCoin(String email) {
         String query = "SELECT A.coin\r\n"
                 + "	FROM Account A \r\n"
                 + "	WHERE A.Email= '" + email + "' \r\n";
-        try
-        {
+        try {
             conn = new MyDB().getConnection();
             ps = conn.prepareStatement(query);
             rs = ps.executeQuery();
@@ -1245,14 +1352,13 @@ public class queryDAO {
             }
             return null;
         } catch (Exception e) {
-            return null; }
+            return null;
+        }
     }
 
-    public String orderExist(String orderID)
-    {
-        String query = "SELECT PurchaseOrderId FROM dbo.PurchaseOrder  WHERE PurchaseOrderId = '"+orderID+"'";
-        try
-        {
+    public String orderExist(String orderID) {
+        String query = "SELECT PurchaseOrderId FROM dbo.PurchaseOrder  WHERE PurchaseOrderId = '" + orderID + "'";
+        try {
             conn = new MyDB().getConnection();
             ps = conn.prepareStatement(query);
             rs = ps.executeQuery();
@@ -1261,7 +1367,8 @@ public class queryDAO {
             }
             return null;
         } catch (Exception e) {
-            return null; }
+            return null;
+        }
     }
 
 
@@ -1275,8 +1382,8 @@ public class queryDAO {
             conn = new MyDB().getConnection();
             ps = conn.prepareStatement(query);
             ps.executeQuery();
+        } catch (Exception e) {
         }
-        catch (Exception e) {}
     }
 
 }

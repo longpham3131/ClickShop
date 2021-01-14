@@ -1,5 +1,7 @@
 package com.model;
 
+import java.util.List;
+
 public class Article1 {
 	private String ProductId;
 	private String SubCategoryId;
@@ -9,8 +11,9 @@ public class Article1 {
 	private String Description;
 	private String Available;
 	private String ImgPath;
+	private List<ProductSize> Size;
 	public Article1(String productId, String subcategoryId, String name, String unitprice, String gender,
-			String description, String available, String imgpath) {
+			String description, String available, String imgpath, List<ProductSize> size) {
 		ProductId = productId;
 		SubCategoryId = subcategoryId;
 		Name = name;
@@ -19,7 +22,7 @@ public class Article1 {
 		Description = description;
 		Available = available;
 		ImgPath = imgpath;
-
+		Size = size;
 	}
 	public String getProductId() {
 		return ProductId;
@@ -76,6 +79,13 @@ public class Article1 {
 	}
 	public void setImgPath(String imgpath) {
 		ImgPath = imgpath;
+	}
+
+	public List<ProductSize> getSize() {
+		return Size;
+	}
+	public void setSize(List<ProductSize> size) {
+		Size = size;
 	}
 
 }
