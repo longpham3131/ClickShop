@@ -10,6 +10,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import DAO.LoginDAO;
 import DAO.queryDAO;
 
 /**
@@ -30,23 +31,45 @@ public class changepass extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         String email = request.getParameter("email");
-        String pass = request.getParameter("newpass");
-        System.out.println(".."+email+pass);
+        String oldpass = request.getParameter("oldpass");
+        String newpass = request.getParameter("newpass");
+        String confirmnewpasspass = request.getParameter("confirmnewpass");
+        System.out.println(".."+email+newpass);
         try {
             String tb = "1";
             queryDAO qD = new queryDAO();
-            if (qD.resetPassword(email, pass)) {
-                request.setAttribute("kqupdate", tb);
-
-                myProfile a = new myProfile();
-                a.doPost(request, response);
-            } else {
-                tb = "0";
+            LoginDAO loginDAO = new LoginDAO();
+            System.out.println(email+oldpass+newpass+confirmnewpasspass);
+            if(loginDAO.login(email, oldpass) != null) {
+                if(newpass.equals(confirmnewpasspass)) {
+                    if (qD.resetPassword(email, newpass)) {
+                        request.setAttribute("kqupdate", tb);
+                        myProfile a = new myProfile();
+                        a.doPost(request, response);
+                    } else {
+                        tb = "0";
+                        request.setAttribute("kq", "true");
+                        request.setAttribute("kqupdate", tb);
+                        myProfile a = new myProfile();
+                        a.doPost(request, response);
+                    }
+                }
+                else {
+                    tb = "confirm";
+                    request.setAttribute("kq", "true");
+                    request.setAttribute("kqupdate", tb);
+                    myProfile a = new myProfile();
+                    a.doPost(request, response);
+                }
+            }
+            else {
+                tb = "old";
                 request.setAttribute("kq", "true");
                 request.setAttribute("kqupdate", tb);
                 myProfile a = new myProfile();
                 a.doPost(request, response);
             }
+
         } catch (Exception e) {
             System.out.print(e);
         }

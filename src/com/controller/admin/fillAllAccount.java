@@ -66,9 +66,10 @@ public class fillAllAccount extends HttpServlet {
             rq.forward(request, response);
         }
         else{
-            response.sendRedirect(request.getContextPath() + "/login-all");
+            request.setAttribute("error","Bạn không có quyền truy cập vào trang.");
+            RequestDispatcher rq = request.getRequestDispatcher("Views/error.jsp");
+            rq.forward(request, response);
         }
-
     }
     
     

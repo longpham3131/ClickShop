@@ -17,7 +17,9 @@
 <c:import url="../commom/header.jsp"> </c:import>
 <c:import url="../commom/sideBar.jsp"> </c:import>
 <!--checkout-->
-<c:if test="${loi == 'mn'}"> <script> alert("Giá trị đơn hàng vượt quá số dư")</script></c:if>
+<c:if test="${loi == 'mn'}">
+    <script> alert("Giá trị đơn hàng vượt quá số dư")</script>
+</c:if>
 
 <section class="checkout_wthree py-sm-5 py-3">
     <div class="container">
@@ -30,7 +32,7 @@
                 </h4>
             </div>
             <div class="checkout-right">
-                <table class="timetable_sub" id="tableOrder">
+                <table class="timetable_sub tableOrder">
                     <thead>
                     <tr>
                         <th>Sản phẩm</th>
@@ -48,53 +50,56 @@
                 <div class="col-md-8 address_form">
                     <h4>Địa chỉ giao hàng</h4>
                     <form action="<%=request.getContextPath()%>/order" method="post"
-                          class="creditly-card-form shopf-sear-headinfo_form">
+                          class="creditly-card-form shopf-sear-headinfo_form" id="orderForm">
                         <div class="creditly-wrapper wrapper">
                             <div class="information-wrapper">
                                 <div class="first-row form-group">
                                     <c:forEach items="${fillTextBox}" var="info">
-                                    <div class="controls">
-                                        <label class="control-label">Họ và tên: </label>
-                                        <input class="billing-address-name form-control" type="text" name="name"
-                                              value="${info.firstName} ${info.lastName} ">
-                                    </div>
-                                    <div class="card_number_grids">
-                                        <div class="card_number_grid_left">
-                                            <div class="controls">
+                                        <div class="card_number_grid_right">
+                                            <div class="form-group">
+                                                <label class="control-label ">Email: </label>
+                                                <input class="form-control mb-0" type="email" placeholder="Email"
+                                                       name="email" value="${email}" readonly>
+                                            </div>
+                                            <div class="form-group">
+                                                <label class="control-label">Họ và tên: </label>
+                                                <input class="form-control mb-0" type="text" name="name"
+                                                       id="inpFname"
+                                                       value="${info.firstName} ${info.lastName} ">
+                                                <span class="animate__animated animate__fadeIn" style="display: none;"
+                                                      id="tbHo"></span>
+                                            </div>
+                                            <div class="form-group">
                                                 <label class="control-label">Số điện thoại :</label>
-                                                <input class="form-control" type="text" placeholder="Số điện thoại" name="phone" value="${info.phone}">
+                                                <input class="form-control mb-0" type="text"
+                                                       name="phone" value="${info.phone}" id="inpPhone">
+                                                <span class="animate__animated animate__fadeIn"
+                                                      style="display: none;" id="tbSDT"></span>
                                             </div>
-                                        </div>
-                                        <div class="card_number_grid_right">
-                                            <div class="controls">
-                                                <label class="control-label">Email: </label>
-                                                <input class="form-control" type="email" placeholder="Email" name="email" value="${email}" readonly>
-                                            </div>
-                                        </div>
-
-                                        <div class="card_number_grid_right">
-                                            <div class="controls">
+                                            <div class="form-group">
                                                 <label class="control-label">Địa chỉ: </label>
-                                                <input class="form-control" type="text" placeholder="Địa chỉ" name="address"  value="${info.address}">
+                                                <input class="form-control mb-0" type="text" placeholder="Địa chỉ"
+                                                       name="address" value="${info.address}" id="inpAddress">
+                                                <span class="animate__animated animate__fadeIn"
+                                                      style="display: none;" id="tbDiaChi"></span>
                                             </div>
                                         </div>
-
-                                        <div id="divIp">
-                                        </div>
-
-                                    </div>
+                                        <div id="divIp"></div>
                                     </c:forEach>
                                 </div>
                                 <div class="wrap-btnCheckOut text-right">
-                                    <button type="submit"  class="btn btn-success btnThanhToan" data-toggle="modal" data-target="#myModal">Thanh toán</button>
+                                    <button type="button" id="btnOrderSubmit" class="btn btn-success btnThanhToan">Thanh
+                                        toán
+                                    </button>
                                     <!-- The Modal -->
-                                    <div class="modal fade" id="myModal">
+                                    <div class="modal fade" id="myOrder">
                                         <div class="modal-dialog">
                                             <div class="modal-content">
                                                 <!-- Modal Header -->
                                                 <div class="modal-header">
                                                     <h4 class="modal-title">Thông báo</h4>
-                                                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                                                    <button type="button" class="close" data-dismiss="modal">&times;
+                                                    </button>
                                                 </div>
                                                 <!-- Modal body -->
                                                 <div class="modal-body">
@@ -109,7 +114,7 @@
                     </form>
                 </div>
                 <div class="col-md-4">
-                    <h2>Tổng tiền: <span id="totalPrice">0đ</span></h2>
+                    <h2>Tổng tiền: <span class="totalPrice">0đ</span></h2>
                 </div>
             </div>
         </div>
@@ -123,6 +128,8 @@
 <script src="<%=request.getContextPath()%>/Views/Web/js/DanhSachSanPham.js"></script>
 <script src="<%=request.getContextPath()%>/Views/Web/js/checkOut.js"></script>
 
+<script src="<%=request.getContextPath()%>/Views/Global/Validation.js"></script>
+<script src="<%=request.getContextPath()%>/Views/Web/js/orderValid.js"></script>
 
 
 </body>

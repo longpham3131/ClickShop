@@ -12,14 +12,15 @@ import javax.servlet.http.HttpSession;
 import java.io.IOException;
 import java.util.Objects;
 
+
 /**
  * Servlet implementation class deleteAccount
  */
-@WebServlet("/unblock-product")
-public class unblockProduct extends HttpServlet {
+@WebServlet("/cancel-order")
+public class cancelOrder extends HttpServlet {
     private static final long serialVersionUID = 1L;
 
-    public unblockProduct() {
+    public cancelOrder() {
         super();
     }
 
@@ -29,40 +30,38 @@ public class unblockProduct extends HttpServlet {
 
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        HttpSession session = request.getSession();
-        if (Objects.equals((String) session.getAttribute("Check_Authentic_Final_Using"), "Administrator") == true) {
 
-            String id = request.getParameter("id");
+        HttpSession session = request.getSession(false);
+        if (Objects.equals((String) session.getAttribute("Check_Authentic_Final_Using"), "Administrator") == true) {
+            String id = request.getParameter("purchaseOrderId");
             String tb = "";
             if (id == "")
                 tb = "input";
             else {
                 try {
                     queryDAO qD = new queryDAO();
-                    if (qD.productIDExists(id)) {
-                        if (qD.unBlockProduct(id))
+                        if (qD.blockOrder(id))
                             tb = "true";
                         else
                             tb = "error";
-                    } else
-                        tb = "notFound";
                 } catch (Exception e) {
                     System.out.print(e);
                 }
             }
+
             if (session == null)
                 response.sendRedirect("Views/Admin/login.jsp");
 
-            request.setAttribute("from", "unblock");
+            request.setAttribute("from", "block");
             request.setAttribute("thongbao", tb);
-            fillAllProduct a = new fillAllProduct();
+            fillAllOrder a = new fillAllOrder();
             a.doPost(request, response);
-            // response.sendRedirect("Views/Admin/container/account.jsp");
+
         } else {
             request.setAttribute("error", "Bạn không có quyền truy cập vào trang.");
             RequestDispatcher rq = request.getRequestDispatcher("Views/error.jsp");
             rq.forward(request, response);
         }
-
     }
+
 }

@@ -7,8 +7,10 @@ public class OrderList {
 	private String SubTotal;
 	private String Address;
 	private String Phone;
+	private String  Status;
+	private String  Cancel;
 	public OrderList(){}
-	public OrderList(String purchaseOrderId, String createdDate, String accountId, String subTotal, String address, String phone)
+	public OrderList(String purchaseOrderId, String createdDate, String accountId, String subTotal, String address, String phone, String status, String cancel)
 	{
 		PurchaseOrderId = purchaseOrderId;
 		CreatedDate = createdDate;
@@ -16,6 +18,24 @@ public class OrderList {
 		SubTotal = subTotal;
 		Address = address;
 		Phone = phone;
+		Status = status;
+		Cancel=cancel;
+	}
+
+	public String getCancel() {
+		return Cancel;
+	}
+
+	public void setCancel(String cancel) {
+		Cancel = cancel;
+	}
+
+	public String getStatus() {
+		return Status;
+	}
+
+	public void setStatus(String status) {
+		Status = status;
 	}
 
 	public String getPurchaseOrderId() {

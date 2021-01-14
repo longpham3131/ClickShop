@@ -16,6 +16,10 @@
             href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i"
             rel="stylesheet">
 
+    <link
+            rel="stylesheet"
+            href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"
+    />
     <!-- Custom styles for this template-->
 
     <link
@@ -70,7 +74,7 @@
 
                                     <div class="col-auto">
                                         <%--											<i class="fas fa-dollar-sign fa-2x text-gray-300"></i>--%>
-                                        <button onclick="chonTableHienThi(1)">View</button>
+                                        <button class="btn btn-info" onclick="chonTableHienThi(1)">Hiển thị</button>
                                     </div>
                                 </div>
                             </div>
@@ -95,7 +99,7 @@
 
                                     <div class="col-auto">
 <%--                                        <i class="fas fa-calendar fa-2x text-gray-300"></i>--%>
-										<button onclick="chonTableHienThi(2)">View</button>
+										<button class="btn btn-info" onclick="chonTableHienThi(2)">Hiển thị</button>
                                     </div>
                                 </div>
                             </div>
@@ -119,7 +123,7 @@
 
                                     <div class="col-auto">
 <%--                                        <i class="fas fa-calendar fa-2x text-gray-300"></i>--%>
-										<button onclick="chonTableHienThi(3)">View</button>
+										<button class="btn btn-info" onclick="chonTableHienThi(3)">Hiển thị</button>
                                     </div>
                                 </div>
                             </div>
@@ -144,7 +148,7 @@
 
                                     <div class="col-auto">
 <%--                                        <i class="fas fa-calendar fa-2x text-gray-300"></i>--%>
-										<button onclick="chonTableHienThi(4)">View</button>
+										<button class="btn btn-info" onclick="chonTableHienThi(4)">Hiển thị</button>
                                     </div>
                                 </div>
                             </div>
@@ -161,7 +165,7 @@
                 <div id="viewTableNoShipper">
                     <c:import url="ship/noshipper.jsp"/>
                 </div>
-                <div id="viewTablePickup">
+                <div id="viewTablePickup" >
                     <c:import url="ship/pickup.jsp"/>
                 </div>
                 <div id="viewTableShipping">

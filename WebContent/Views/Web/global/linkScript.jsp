@@ -75,3 +75,13 @@
     });
 </script>
 
+<%--Định dạng tiền sản phẩm --%>
+<script>
+    let listGia = document.querySelectorAll(".priceProduct");
+    for (i = 0; i < listGia.length; i++) {
+        listGia[i].innerHTML = new Intl.NumberFormat('vn-VN', {
+            style: 'currency',
+            currency: 'VND'
+        }).format(parseInt(listGia[i].innerHTML));
+    }
+</script>

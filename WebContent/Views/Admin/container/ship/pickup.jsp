@@ -1,17 +1,11 @@
-<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-         pageEncoding="ISO-8859-1" %>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+         pageEncoding="UTF-8" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
-<!DOCTYPE html>
-<html>
-<head>
-    <meta charset="ISO-8859-1">
-    <title>Insert title here</title>
-</head>
-<body>
-<div class="card shadow mb-4">
+
+
+<div class="card shadow mb-4 ">
     <div class="card-header py-3">
-        <h6 class="m-0 font-weight-bold text-primary">Shipper chua lay
-            hang</h6>
+        <h6 class="m-0 font-weight-bold text-primary"></h6>
     </div>
     <div class="card-body">
         <div class="table-responsive">
@@ -19,10 +13,10 @@
                    cellspacing="0">
                 <thead>
                 <tr>
-                    <th>Orther ID</th>
-                    <th>Shipper ID</th>
-                    <th>Status</th>
-                    <th>Actions</th>
+                    <th>Mã đơn hàng</th>
+                    <th>Mã shipper</th>
+                    <th>Trạng thái đơn hàng</th>
+                    <th>Thao tác</th>
                 </tr>
                 </thead>
 
@@ -47,13 +41,13 @@
                                 <i class="fa fa-cart-arrow-down"></i>
                             </button>
 
-                            <div class="modal" id="mypick3${listPkg.orderID}">
-                                <div class="modal-dialog">
+                            <div class="modal fade" id="mypick3${listPkg.orderID}">
+                                <div class="modal-dialog modal-lg">
                                     <div class="modal-content">
 
                                         <!-- Modal Header -->
                                         <div class="modal-header">
-                                            <h4 class="modal-title">Orther Detail</h4>
+                                            <h4 class="modal-title">Chi tiết đơn hàng</h4>
                                             <button type="button" class="close"
                                                     data-dismiss="modal">&times;
                                             </button>
@@ -62,12 +56,11 @@
                                         <div class="modal-body">
                                             <div class="form-group row">
                                                 <label for="staticID"
-                                                       class="col-sm-4 col-form-label">Orther ID
-                                                    :</label>
+                                                       class="col-sm-4 col-form-label">Mã đơn hàng:</label>
                                                 <div class="col-sm-8">
                                                     <input type="text" Quantity readonly
                                                            class="form-control-plaintext"
-                                                           id="staticID"
+
                                                            value="${listPkg.orderID}">
                                                 </div>
                                             </div>
@@ -79,14 +72,14 @@
                                                 <div class="col-sm-8">
                                                     <input type="text" readonly
                                                            class="form-control-plaintext"
-                                                           id="staticEmail"
+
                                                            value="${listPkg.email}">
                                                 </div>
                                             </div>
 
                                             <div class="form-group row">
                                                 <label for="staticEmail"
-                                                       class="col-sm-4 col-form-label">Address
+                                                       class="col-sm-4 col-form-label">Địa chỉ nhận hàng
                                                     :</label>
                                                 <div class="col-sm-8">
                                                     <input type="text" readonly
@@ -97,47 +90,52 @@
 
                                             <div class="form-group row">
                                                 <label for="staticEmail"
-                                                       class="col-sm-4 col-form-label">Phone
+                                                       class="col-sm-4 col-form-label">Số điện thoại khách hàng
                                                     :</label>
                                                 <div class="col-sm-8">
                                                     <input type="text" readonly
                                                            class="form-control-plaintext"
-                                                           value="${listPkg.phone}.">
+                                                           value="${listPkg.phone}">
                                                 </div>
                                             </div>
+                                            <table class="table table-bordered" id="orther detail" width="100%"
+                                                   cellspacing="0">
+                                                <thead>
+                                                <tr>
+                                                    <th>Mã sản phẩm</th>
+                                                    <th>Tên sản phẩm</th>
+                                                    <th>Số lượng</th>
+                                                    <th>Đơn giá</th>
+                                                </tr>
+                                                </thead>
+                                                <!----------Noi-dung-------- -->
+                                                <tbody>
+                                                <c:set var="sum" value="0"/>
+                                                <c:forEach items="${listPickDetail}" var="listPick3" varStatus="loop">
+                                                    <c:if test="${listPkg.orderID == listPick3.orderID}">
+                                                        <tr>
+                                                            <td>${listPick3.productID}</td>
+                                                            <td>${listPick3.name}</td>
+                                                            <td>${listPick3.quanity}</td>
+                                                            <td>${listPick3.subTotal}</td>
+                                                            <c:set var="tien" value="${listPick3.subTotal}"/>
+                                                            <c:set var="sum" value="${sum + tien}"/>
+                                                        </tr>
+                                                    </c:if>
+                                                </c:forEach>
+                                                </tbody>
+                                            </table>
+
+                                            <div class="text-right">
+                                                Tổng tiền đơn hàng: ${sum}
+                                            </div>
                                         </div>
-                                        <table class="table table-bordered" id="orther detail" width="100%"
-                                               cellspacing="0">
-                                            <thead>
-                                            <tr>
-                                                <th>Product ID</th>
-                                                <th>Name</th>
-                                                <th>Quantity</th>
-                                                <th>Sub Total</th>
-                                            </tr>
-                                            </thead>
-                                            <!----------Noi-dung-------- -->
-                                            <tbody>
-                                            <c:set var="sum" value="0"/>
-                                            <c:forEach items="${listPickDetail}" var="listPick3" varStatus="loop">
-                                                <c:if test="${listPkg.orderID == listPick3.orderID}">
-                                                    <tr>123
-                                                        <td>${listPick3.productID}</td>
-                                                        <td>${listPick3.name}</td>
-                                                        <td>${listPick3.quanity}</td>
-                                                        <td>${listPick3.subTotal}</td>
-                                                        <c:set var="tien" value="${listPick3.subTotal}"/>
-                                                        <c:set var="sum" value="${sum + tien}"/>
-                                                    </tr>
-                                                </c:if>
-                                            </c:forEach>
-                                            </tbody>
-                                        </table>
-                                        SubTolal: ${sum}
+
+
                                         <!-- Modal footer -->
                                         <div class="modal-footer">
                                             <button type="button" class="btn btn-danger"
-                                                    data-dismiss="modal">Close
+                                                    data-dismiss="modal">Đóng
                                             </button>
                                         </div>
 
@@ -145,7 +143,7 @@
                                 </div>
                             </div>
 
-                            <div class="modal" id="myShipperinTable3${listPkg.shipperID}">
+                            <div class="modal fade" id="myShipperinTable3${listPkg.shipperID}">
                                 <c:forEach items="${listShipper}" var="listSp" varStatus="loop">
                                     <c:if test="${listSp.getAccountId() == listPkg.shipperID}">
                                         <div class="modal-dialog">
@@ -153,7 +151,7 @@
 
                                                 <!-- Modal Header -->
                                                 <div class="modal-header">
-                                                    <h4 class="modal-title">Profile Shipper</h4>
+                                                    <h4 class="modal-title">Thông tin Shipper</h4>
                                                     <button type="button" class="close"
                                                             data-dismiss="modal">&times;
                                                     </button>
@@ -162,12 +160,12 @@
                                                 <div class="modal-body">
                                                     <div class="form-group row">
                                                         <label for="staticID"
-                                                               class="col-sm-4 col-form-label">Account ID
+                                                               class="col-sm-4 col-form-label">Mã tài khoản
                                                             :</label>
                                                         <div class="col-sm-8">
                                                             <input type="text" readonly
                                                                    class="form-control-plaintext"
-                                                                   id="staticID"
+
                                                                    value="${listSp.accountId}">
                                                         </div>
                                                     </div>
@@ -184,7 +182,7 @@
                                                     </div>
                                                     <div class="form-group row">
                                                         <label for="staticName"
-                                                               class="col-sm-4 col-form-label">Name
+                                                               class="col-sm-4 col-form-label">Họ và tên
                                                             :</label>
                                                         <div class="col-sm-8">
                                                             <input type="text" readonly
@@ -195,7 +193,7 @@
                                                     </div>
                                                     <div class="form-group row">
                                                         <label for="staticPhone"
-                                                               class="col-sm-4 col-form-label">Phone
+                                                               class="col-sm-4 col-form-label">Số điện thoại
                                                             :</label>
                                                         <div class="col-sm-8">
                                                             <input type="text" readonly
@@ -206,7 +204,7 @@
                                                     </div>
                                                     <div class="form-group row">
                                                         <label for="staticAddress"
-                                                               class="col-sm-4 col-form-label">Address
+                                                               class="col-sm-4 col-form-label">Địa chỉ
                                                             :</label>
                                                         <div class="col-sm-8">
                                                             <input type="text" readonly
@@ -217,7 +215,7 @@
                                                     </div>
                                                     <div class="form-group row">
                                                         <label for="staticGender"
-                                                               class="col-sm-4 col-form-label">Gender
+                                                               class="col-sm-4 col-form-label">Giới tính
                                                             :</label>
                                                         <div class="col-sm-8">
                                                             <input type="text" readonly
@@ -231,7 +229,7 @@
                                                 <!-- Modal footer -->
                                                 <div class="modal-footer">
                                                     <button type="button" class="btn btn-danger"
-                                                            data-dismiss="modal">Close
+                                                            data-dismiss="modal">Đóng
                                                     </button>
                                                 </div>
                                             </div>
@@ -241,13 +239,13 @@
                                 </c:forEach>
                             </div>
 
-                            <div class="modal" id="CheckPick${listPkg.orderID}">
+                            <div class="modal fade" id="CheckPick${listPkg.orderID}">
                                 <div class="modal-dialog">
                                     <div class="modal-content">
 
                                         <!-- Modal Header -->
                                         <div class="modal-header">
-                                            <h4 class="modal-title">Xac nhan da dua hang cho shipper</h4>
+                                            <h4 class="modal-title">Xác nhận đã giao hàng cho shipper</h4>
                                             <button type="button" class="close"
                                                     data-dismiss="modal">&times;
                                             </button>
@@ -256,7 +254,7 @@
                                         <div class="modal-body">
                                             <div class="form-group row">
                                                 <label for="staticID"
-                                                       class="col-sm-4 col-form-label">Orther ID
+                                                       class="col-sm-4 col-form-label">Mã đơn hàng
                                                     :</label>
                                                 <div class="col-sm-8">
                                                     <input type="text" Quantity readonly
@@ -267,25 +265,24 @@
                                             </div>
                                             <div class="form-group row">
                                                 <label for="staticID"
-                                                       class="col-sm-4 col-form-label">Shipper ID
+                                                       class="col-sm-4 col-form-label">Mã Shipper
                                                     :</label>
                                                 <div class="col-sm-8">
                                                     <input type="text" Quantity readonly
                                                            class="form-control-plaintext"
-                                                           id="staticID"
                                                            value="${listPkg.shipperID}">
                                                 </div>
                                             </div>
-                                            <form action="<%=request.getContextPath()%>/shippicked" method="post">
-                                                <input type="hidden" value="${listPkg.orderID}" name="OrtherID"/>
-                                                <input type="submit" value="Dong y"
-                                                       style="background-color: #357ebd; color: white">
+                                            <form action="<%=request.getContextPath()%>/shippicked" method="post" id="shippickedForm${listPkg.orderID}">
+                                                <input type="hidden" value="${listPkg.orderID}" name="OrtherIDx">
+
                                             </form>
                                         </div>
                                         <!-- Modal footer -->
                                         <div class="modal-footer">
+                                            <button type="submit" form="shippickedForm${listPkg.orderID}" class="btn btn-success">Đồng ý</button>
                                             <button type="button" class="btn btn-danger"
-                                                    data-dismiss="modal">Close
+                                                    data-dismiss="modal">Đóng
                                             </button>
                                         </div>
                                     </div>
@@ -303,6 +300,3 @@
     </div>
 
 </div>
-
-</body>
-</html>

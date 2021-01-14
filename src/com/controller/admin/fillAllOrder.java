@@ -1,6 +1,7 @@
 package com.controller.admin;
 
 import java.io.IOException;
+
 import com.model.Article;
 import com.model.Article1;
 import com.model.OrderList;
@@ -8,6 +9,7 @@ import com.model.OrderList;
 import java.sql.ResultSet;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -46,26 +48,34 @@ public class fillAllOrder extends HttpServlet {
      */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        response.setContentType("text/html;charset=UTF-8");
-        String txt = request.getParameter("index");
-        int index = 0;
-        if (txt == null) {
-            index = 1;
-        } else {
-            index = Integer.parseInt(txt);
-        }
-        queryDAO dao = new queryDAO();
-        List<OrderList> listDon = dao.donhang(index);
-        System.out.print(" xx");
+        HttpSession session = request.getSession();
+        if (Objects.equals((String) session.getAttribute("Check_Authentic_Final_Using"), "Administrator") == true) {
 
-        request.setAttribute("listOrder", listDon);
-        request.setAttribute("from", request.getAttribute("from"));
-        request.setAttribute("thongbao", request.getAttribute("thongbao"));
-        RequestDispatcher rq = request.getRequestDispatcher("Views/Admin/container/order.jsp");
-        rq.forward(request, response);
+            response.setContentType("text/html;charset=UTF-8");
+            String txt = request.getParameter("index");
+            int index = 0;
+            if (txt == null) {
+                index = 1;
+            } else {
+                index = Integer.parseInt(txt);
+            }
+            queryDAO dao = new queryDAO();
+            List<OrderList> listDon = dao.donhang(index);
+            System.out.print(" xx");
+
+            request.setAttribute("listOrder", listDon);
+            request.setAttribute("from", request.getAttribute("from"));
+            request.setAttribute("thongbao", request.getAttribute("thongbao"));
+            RequestDispatcher rq = request.getRequestDispatcher("Views/Admin/container/order.jsp");
+            rq.forward(request, response);
 //         request.setAttribute("listProduct",list1);
 //         RequestDispatcher rs = request.getRequestDispatcher("Views/Admin/container/product.jsp");
 //         rs.forward(request, response);
+        } else {
+            request.setAttribute("error", "Bạn không có quyền truy cập vào trang.");
+            RequestDispatcher rq = request.getRequestDispatcher("Views/error.jsp");
+            rq.forward(request, response);
+        }
     }
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
@@ -75,7 +85,7 @@ public class fillAllOrder extends HttpServlet {
 
     /**
      * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse
-     *      response)
+     * response)
      */
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {

@@ -51,8 +51,10 @@ public class fillDashBoard extends HttpServlet {
             RequestDispatcher rq = request.getRequestDispatcher("Views/Admin/container/home.jsp");
             rq.forward(request, response);
         }
-    	 else{
-                 response.sendRedirect(request.getContextPath() + "/login-all");
+        else{
+            request.setAttribute("error","Bạn không có quyền truy cập vào trang.");
+            RequestDispatcher rq = request.getRequestDispatcher("Views/error.jsp");
+            rq.forward(request, response);
         }
     }
 

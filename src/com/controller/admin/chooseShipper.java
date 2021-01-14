@@ -7,6 +7,7 @@ import com.model.*;
 import java.sql.ResultSet;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 
 import javax.servlet.RequestDispatcher;
 
@@ -46,40 +47,48 @@ public class chooseShipper extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
         queryDAO dao = new queryDAO();
-
-        String chooseS = (String) request.getParameter("chooseShipper");
-        String shipperID = (String) request.getParameter("shipperID");
-        String OrtherID = (String) request.getParameter("OrtherID");
         HttpSession session = request.getSession();
-        String fixShipper= (String) session.getAttribute("fixShipper");
-        System.out.println("Aloo " + chooseS + "   " + OrtherID + " vs " + fixShipper);
-        if ( OrtherID.equals(fixShipper) == false)
-        // fix a bug, but that make a new bug ( khi cho order quay ve trang thai cu trong database,
-        // sesssion se k nhan ra va bo qua action nay
-        {
-            if (dao.convertNoShipToPickup(shipperID, OrtherID))       // thuc hien up date va chuyen table //
+        if (Objects.equals((String) session.getAttribute("Check_Authentic_Final_Using"), "Administrator") == true) {
+
+            String chooseS = (String) request.getParameter("chooseShipper");
+            String shipperID = (String) request.getParameter("shipperID");
+            String OrtherID = (String) request.getParameter("OrtherID");
+            String fixShipper = (String) session.getAttribute("fixShipper");
+            System.out.println("Aloo " + chooseS + "   " + OrtherID + " vs " + fixShipper);
+            if (OrtherID.equals(fixShipper) == false)
+            // fix a bug, but that make a new bug ( khi cho order quay ve trang thai cu trong database,
+            // sesssion se k nhan ra va bo qua action nay
             {
-                session.setAttribute("fixShipper", OrtherID);
+                if (dao.convertNoShipToPickup(shipperID, OrtherID))       // thuc hien up date va chuyen table //
+                {
+                    session.setAttribute("fixShipper", OrtherID);
+                    shipped ob = new shipped();
+                    ob.doPost(request, response);
+                }
+            } else {
                 shipped ob = new shipped();
                 ob.doPost(request, response);
             }
         }
-        else {
-            shipped ob = new shipped();
-            ob.doPost(request, response);
+        else{
+                request.setAttribute("error", "Bạn không có quyền truy cập vào trang.");
+                RequestDispatcher rq = request.getRequestDispatcher("Views/error.jsp");
+                rq.forward(request, response);
+            }
         }
+
+        protected void doGet (HttpServletRequest request, HttpServletResponse response) throws
+        ServletException, IOException {
+            processRequest(request, response);
+        }
+
+        /**
+         * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
+         */
+        protected void doPost (HttpServletRequest request, HttpServletResponse response) throws
+        ServletException, IOException {
+            processRequest(request, response);
+
+        }
+
     }
-
-    protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        processRequest(request, response);
-    }
-
-    /**
-     * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
-     */
-    protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        processRequest(request, response);
-
-    }
-
-}

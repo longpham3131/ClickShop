@@ -33,6 +33,7 @@ public class register extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         String email = request.getParameter("email");
         String pass = request.getParameter("passw");
+        String conpasswpass = request.getParameter("conpassw");
         String firstname = request.getParameter("inpFname");
         String lastname = request.getParameter("Lname");
         String phone = request.getParameter("phone");
@@ -49,6 +50,8 @@ public class register extends HttpServlet {
             er = "email";
         if(pass == null || pass=="")
             er = "pass";
+        if(pass.equals(conpasswpass) == false)
+            er = "conpass";
         System.out.print(er);
         if(er == "-1") {
             queryDAO qD = new queryDAO();

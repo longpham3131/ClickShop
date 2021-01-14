@@ -7,6 +7,7 @@ import com.model.*;
 import java.sql.ResultSet;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 
 import javax.servlet.RequestDispatcher;
 
@@ -45,24 +46,30 @@ public class picked extends HttpServlet {
      */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
-        queryDAO dao = new queryDAO();
-
-        String OrtherID = (String) request.getParameter("OrtherID");
         HttpSession session = request.getSession();
-        String pickedOrder= (String) session.getAttribute("pickedOrder");
+        if (Objects.equals((String) session.getAttribute("Check_Authentic_Final_Using"), "Administrator") == true) {
 
-        System.out.println("Picked:  " + OrtherID + " vs " + pickedOrder);
-        if ( OrtherID.equals(pickedOrder) == false) {
-            if (dao.Shipperpicked(OrtherID))       // Update dbo.Shipper:  Picking -> Shipping //
-            {
-                session.setAttribute("pickedOrder", OrtherID);
+            queryDAO dao = new queryDAO();
+
+            String OrtherID = request.getParameter("OrtherIDx");
+           String pickedOrder = (String) session.getAttribute("pickedOrder");
+
+            System.out.println("Picked:  " + OrtherID + " vs " + pickedOrder);
+            if (OrtherID.equals(pickedOrder) == false) {
+                if (dao.Shipperpicked(OrtherID))       // Update dbo.Shipper:  Picking -> Shipping //
+                {
+                    session.setAttribute("pickedOrder", OrtherID);
+                    shipped ob = new shipped();
+                    ob.doPost(request, response);
+                }
+            } else {
                 shipped ob = new shipped();
                 ob.doPost(request, response);
             }
-        }
-        else {
-            shipped ob = new shipped();
-            ob.doPost(request, response);
+        } else {
+            request.setAttribute("error", "Bạn không có quyền truy cập vào trang.");
+            RequestDispatcher rq = request.getRequestDispatcher("Views/error.jsp");
+            rq.forward(request, response);
         }
     }
 

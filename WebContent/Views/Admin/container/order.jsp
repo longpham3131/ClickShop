@@ -1,8 +1,8 @@
-<%@page import="com.model.Article"%>
-<%@page import="java.sql.ResultSet"%>
+<%@page import="com.model.Article" %>
+<%@page import="java.sql.ResultSet" %>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-         pageEncoding="UTF-8"%>
-<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+         pageEncoding="UTF-8" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -12,7 +12,7 @@
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title>?<c:out value="${thongbao }" />-<c:out value="${ from}" />
+    <title>?<c:out value="${thongbao }"/>-<c:out value="${ from}"/>
     </title>
     <!-- Custom fonts for this template-->
 
@@ -30,13 +30,7 @@
     <jsp:useBean id="a" class="DAO.queryDAO" scope="request"></jsp:useBean>
 </head>
 <body>
-<!--  Check authentic --!>
-<!-- Servlet return true if complete login authentication
-You can't access this page if you use link-url and not login -->
-<%-- 	<c:if test="${check != 'true'}">
-		<c:redirect url="/admin" />
-	</c:if> --%>
-<!--  Check authenASDtic --!>
+
 
 <!---- nhan thong bao phan hoi ---->
 <c:if test="${from == 'insert'}">
@@ -105,7 +99,7 @@ You can't access this page if you use link-url and not login -->
 <div id="wrapper">
 
 
-    <c:import url="../commom/sidebar.jsp" />
+    <c:import url="../commom/sidebar.jsp"/>
 
 
     <!-- Content Wrapper -->
@@ -114,7 +108,7 @@ You can't access this page if you use link-url and not login -->
         <!-- LEFT PAGE -->
         <div id="content">
 
-            <c:import url="../commom/header.jsp" />
+            <c:import url="../commom/header.jsp"/>
 
             <!-- -------------------- MAIN CONTAIN ---------------- -->
             <form action="${pageContext.request.contextPath}/fill-All-Order"
@@ -137,9 +131,11 @@ You can't access this page if you use link-url and not login -->
                                 <th>ID đơn hàng</th>
                                 <th>Ngày tạo</th>
                                 <th>Email</th>
-                                <th>Sub </th>
+                                <th>Sub</th>
                                 <th>Địa chỉ</th>
                                 <th>Số điện thoại</th>
+                                <th>Trạng thái</th>
+                                <th>Action</th>
                             </tr>
                             </thead>
 
@@ -147,12 +143,105 @@ You can't access this page if you use link-url and not login -->
                             <tbody>
                             <c:forEach items="${listOrder}" var="row">
                                 <tr>
-                                    <td><c:out value="${row.purchaseOrderId}" /></td>
+                                    <td><c:out value="${row.purchaseOrderId}"/></td>
                                     <td>${row.createdDate}</td>
                                     <td>${row.getAccountId()}</td>
                                     <td>${row.subTotal}</td>
                                     <td>${row.address}</td>
                                     <td>${row.phone}</td>
+                                    <c:if test="${row.cancel == 1}">
+                                            <td>${row.status}</td>
+                                    </c:if>
+                                    <c:if test="${row.cancel == 0}">
+                                        <td style="background-color: #5a6268">${row.status}</td>
+                                    </c:if>
+                                    <td>
+                                        <!-- PUPDATE ỎDER -->
+                                        <button type="button" class="btn btn-primary" title="Sửa thông tin"
+                                                data-toggle="modal"
+                                                data-target="#editOdrder${row.purchaseOrderId}"><i
+                                                class="fa fa-edit"></i>
+                                        </button>
+                                        <!-- CANCEL ORDER-->
+                                        <div class="modal fade" id="editOdrder${row.purchaseOrderId}">
+                                            <div class="modal-dialog modal-dialog-centered">
+                                                <div class="modal-content">
+
+                                                    <!-- Modal Header -->
+                                                    <div class="modal-header">
+                                                        <h4 class="modal-title">Cập nhật thông tin</h4>
+                                                        <button type="button" class="close"
+                                                                data-dismiss="modal">&times;
+                                                        </button>
+                                                    </div>
+
+                                                    <!-- Modal body -->
+                                                    <div class="modal-body">
+                                                        <form action="${pageContext.request.contextPath}/update-order"
+                                                              method="post" id="formEdit${row.purchaseOrderId}">
+                                                            <div class="form-group">
+                                                                <label for="inpPhone">Số điện thoại :</label> <input
+                                                                    type="tel" id="inpPhone"
+                                                                    class="form-control"
+                                                                    value="${row.phone}" name="phone">
+                                                            </div>
+                                                            <div class="form-group">
+                                                                <label for="inpAddress">Địa chỉ :</label> <input
+                                                                    type="text" id="inpAddress"
+                                                                    class="form-control"
+                                                                    value="${row.address}" name="address">
+                                                            </div>
+                                                            <input type="hidden" value="${row.purchaseOrderId}"
+                                                                   name="purorderid">
+                                                        </form>
+                                                    </div>
+                                                    <!-- Modal footer -->
+                                                    <div class="modal-footer">
+                                                        <button type="submit" class="btn btn-success"
+                                                                form="formEdit${row.purchaseOrderId}">
+                                                            Cập nhật
+                                                        </button>
+                                                        <button type="button" class="btn btn-danger"
+                                                                data-dismiss="modal">Đóng
+                                                        </button>
+                                                    </div>
+
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <c:if test="${row.status == 'Init'}">
+                                            <button type="button" class="btn btn-dark" title="Cancel Order"
+                                                    data-toggle="modal"
+                                                    data-target="#cancelorder${row.purchaseOrderId}"><i
+                                                    class="fa fa-lock"></i>
+                                            </button>
+                                            <div class="modal fade" id="cancelorder${row.purchaseOrderId}">
+                                                <div class="modal-dialog">
+                                                    <div class="modal-content">
+                                                        <div class="modal-body">
+                                                            <form action="${pageContext.request.contextPath}/cancel-order"
+                                                                  method="post" id="blockform${row.purchaseOrderId}">
+                                                                <h4 class="modal-title">Chuyển đơn  ${row.purchaseOrderId} sang trạng thái cancel? </h4>
+                                                                <input type="hidden" name="purchaseOrderId"
+                                                                       value="${row.purchaseOrderId}"/>
+                                                            </form>
+                                                        </div>
+
+                                                        <div class="modal-footer">
+                                                            <input type="submit" value="Xác nhận"
+                                                                   class="btn btn-success"
+                                                                   form="blockform${row.purchaseOrderId}"/>
+                                                            <button type="button" class="btn btn-danger"
+                                                                    data-dismiss="modal">Đóng
+                                                            </button>
+                                                        </div>
+
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </c:if>
+                                        <!-- The Modal -->
+                                    </td>
                                 </tr>
                             </c:forEach>
                             </tbody>
@@ -164,41 +253,41 @@ You can't access this page if you use link-url and not login -->
 
             <!-------------- Them xoa sua !!! Can Design lai !! ------------ -->
 
-<%--            <ul class="nav nav-tabs" id="myTab" role="tablist">--%>
-<%--                <li class="nav-item"><a class="nav-link active" id="home-tab"--%>
-<%--                                        data-toggle="tab" href="#insert" role="tab" aria-controls="home"--%>
-<%--                                        aria-selected="true">Thêm</a></li>--%>
+            <%--            <ul class="nav nav-tabs" id="myTab" role="tablist">--%>
+            <%--                <li class="nav-item"><a class="nav-link active" id="home-tab"--%>
+            <%--                                        data-toggle="tab" href="#insert" role="tab" aria-controls="home"--%>
+            <%--                                        aria-selected="true">Thêm</a></li>--%>
 
-<%--                <li class="nav-item"><a class="nav-link" id="profile-tab"--%>
-<%--                                        data-toggle="tab" href="#update" role="tab"--%>
-<%--                                        aria-controls="profile" aria-selected="false">Cập nhật</a></li>--%>
+            <%--                <li class="nav-item"><a class="nav-link" id="profile-tab"--%>
+            <%--                                        data-toggle="tab" href="#update" role="tab"--%>
+            <%--                                        aria-controls="profile" aria-selected="false">Cập nhật</a></li>--%>
 
-<%--                &lt;%&ndash; <li class="nav-item"><a class="nav-link" id="contact-tab"--%>
-<%--                    data-toggle="tab" href="#delete" role="tab"--%>
-<%--                    aria-controls="contact" aria-selected="false">Delete</a></li> &ndash;%&gt;--%>
-<%--            </ul>--%>
+            <%--                &lt;%&ndash; <li class="nav-item"><a class="nav-link" id="contact-tab"--%>
+            <%--                    data-toggle="tab" href="#delete" role="tab"--%>
+            <%--                    aria-controls="contact" aria-selected="false">Delete</a></li> &ndash;%&gt;--%>
+            <%--            </ul>--%>
 
-<%--            <div class="tab-content" id="myTabContent">--%>
-<%--                <div class="tab-pane fade show active" id="insert" role="tabpanel"--%>
-<%--                     aria-labelledby="home-tab">--%>
-<%--                    <c:import url="product/insert.jsp"></c:import>--%>
-<%--                </div>--%>
-<%--                <div class="tab-pane fade" id="update" role="tabpanel"--%>
-<%--                     aria-labelledby="profile-tab">--%>
-<%--                    <c:import url="product/update.jsp"></c:import>--%>
-<%--                </div>--%>
-<%--                &lt;%&ndash; <div class="tab-pane fade" id="delete" role="tabpanel"--%>
-<%--                    aria-labelledby="contact-tab">--%>
-<%--                    <c:import url="product/delete.jsp"></c:import>--%>
-<%--                </div>  &ndash;%&gt;--%>
+            <%--            <div class="tab-content" id="myTabContent">--%>
+            <%--                <div class="tab-pane fade show active" id="insert" role="tabpanel"--%>
+            <%--                     aria-labelledby="home-tab">--%>
+            <%--                    <c:import url="product/insert.jsp"></c:import>--%>
+            <%--                </div>--%>
+            <%--                <div class="tab-pane fade" id="update" role="tabpanel"--%>
+            <%--                     aria-labelledby="profile-tab">--%>
+            <%--                    <c:import url="product/update.jsp"></c:import>--%>
+            <%--                </div>--%>
+            <%--                &lt;%&ndash; <div class="tab-pane fade" id="delete" role="tabpanel"--%>
+            <%--                    aria-labelledby="contact-tab">--%>
+            <%--                    <c:import url="product/delete.jsp"></c:import>--%>
+            <%--                </div>  &ndash;%&gt;--%>
 
-<%--                <!--------------END Them xoa sua  ------------ -->--%>
+            <%--                <!--------------END Them xoa sua  ------------ -->--%>
 
 
-<%--                <!-- Footer -->--%>
-<%--                <c:import url="../commom/footer.html" />--%>
-<%--                <!-- End of Footer -->--%>
-<%--            </div>--%>
+            <%--                <!-- Footer -->--%>
+            <%--                <c:import url="../commom/footer.html" />--%>
+            <%--                <!-- End of Footer -->--%>
+            <%--            </div>--%>
             <!-- End of Content Wrapper -->
         </div>
 
@@ -227,8 +316,8 @@ You can't access this page if you use link-url and not login -->
                     <div class="modal-footer">
                         <button class="btn btn-secondary" type="button"
                                 data-dismiss="modal">Hủy
-                    </button>
-                    <a class="btn btn-primary" href="../login.jsp">Đăng xuất</a>
+                        </button>
+                        <a class="btn btn-primary" href="../login.jsp">Đăng xuất</a>
                     </div>
                 </div>
             </div>
