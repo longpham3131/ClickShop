@@ -30,9 +30,9 @@
                     <h1 id="pro-name">${name}</h1>
                     <p class="pb-2">Mã sản phẩm: <span id="pro_sku">${productId}</span></p>
                     <p>Còn lại: <span id="pro_quan" class="idproduct"></span></p>
-<c:forEach items="${listsize}" var="size">
-                                <input type="hidden" class="hiddenqty" id="hdip${size.getSize()}" value=${size.getAvailable()}>
-                            </c:forEach>
+                    <c:forEach items="${listsize}" var="size">
+                        <input type="hidden" class="hiddenqty" id="hdip${size.getSize()}" value=${size.getAvailable()}>
+                    </c:forEach>
                 </div>
                 <div class="product-price" id="price-preview">
                     <span class="pro-price" id="price-view"></span>
@@ -89,7 +89,7 @@
 
                     <div class="selector-actions">
                         <div class="size-area clearfix">
-                        <lable>Size: </lable>
+                            <lable>Size:</lable>
                             <c:forEach items="${listsize}" var="size">
                                 <label class="labelsize">${size.getSize()}</label>
                             </c:forEach>
