@@ -2,7 +2,7 @@
          pageEncoding="UTF-8" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 
-<div class="card shadow mb-4">
+<div class="card shadow mb-4 ">
     <div class="card-header py-3">
         <h4 class="m-0 font-weight-bold text-primary">Những đơn hàng đang giao</h4>
     </div>

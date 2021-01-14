@@ -3,6 +3,7 @@ package com.controller.web;
 import DAO.queryDAO;
 import com.controller.admin.shipped;
 import com.model.Article1;
+import com.model.ProductSize;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -45,17 +46,19 @@ public class chooseProduct extends HttpServlet {
         request.setAttribute("listAllPro", listAllPro);
 
         String productId  = request.getParameter("ProductId");
+
+        List<ProductSize> listprodsize = dao.getAllSizeById(productId);
+
         String name  =  request.getParameter("Name");
         String unitprice  = request.getParameter("UnitPrice");
         String imagePath  =request.getParameter("ImagePath");
         String description  =  request.getParameter("Description");
-        String quan =  request.getParameter("Quannity");
         request.setAttribute("productId", productId);
+        request.setAttribute("listsize", listprodsize);
         request.setAttribute("name", name);
         request.setAttribute("unitprice", unitprice);
         request.setAttribute("imagepath", imagePath);
         request.setAttribute("description", description);
-        request.setAttribute("Quannity", quan);
         RequestDispatcher rq = request.getRequestDispatcher("Views/Web/container/productDetail.jsp");
         rq.forward(request, response);
     }

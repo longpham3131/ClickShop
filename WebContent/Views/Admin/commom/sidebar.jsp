@@ -25,7 +25,6 @@
 
     <!-- Divider -->
     <hr class="sidebar-divider my-0">
-
     <!-- Nav Item - Dashboard -->
     <li class="nav-item active"><a class="nav-link" href="<%= request.getContextPath()%>/dashboard">
         <i class="fas fa-fw fa-tachometer-alt"></i> <span>Dashboard</span>
@@ -54,21 +53,7 @@
             </div>
         </div>
     </li>
-    <li class="nav-item">
-        <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseUtilities" aria-expanded="false" aria-controls="collapseUtilities">
-            <i class="fas fa-fw fa-wrench"></i>
-            <span>DEV ONLY</span>
-        </a>
-        <div id="collapseUtilities" class="collapse" aria-labelledby="headingUtilities" data-parent="#accordionSidebar" style="">
-            <div class="bg-white py-2 collapse-inner rounded">
-                <h6 class="collapse-header">edit database</h6>
-                <a class="collapse-item" href="utilities-color.html">Accoount</a>
-                <a class="collapse-item" href="utilities-border.html">Product</a>
-                <a class="collapse-item" href="utilities-animation.html">Order</a>
-                <a class="collapse-item" href="utilities-other.html">Category</a>
-            </div>
-        </div>
-    </li>
+
 
 
     <!-- Divider -->

@@ -106,11 +106,11 @@ function hienThiDSSP(mangSP) {
  <tr class="rem1">
 
         <td class="invert-image">
-            <a href="../container/productDetail.jsp">
-                <img src="${item.anhSP}" alt=" " class="img-responsive">
+ 
+            <div>
+            <img src="${item.anhSP}" alt=" " class="img-responsive w-50" style="margin: 0 auto;">
                 <div>${item.tenSP}</div>
-
-            </a>
+</div>
         </td>
         <td class="invert">
             <div class="quantity">

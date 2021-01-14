@@ -28,9 +28,11 @@
             <div class="col-md-4 col-sm-12 col-xs-12 product-content-desc" id="detail-product">
                 <div class="product-title">
                     <h1 id="pro-name">${name}</h1>
-                    <p class="pb-2" >Mã sản phẩm: <span id="pro_sku" >${productId}</span> </p>
-                    <p>Còn lại: <span id="pro_quan">${Quannity}</span> </p>
-
+                    <p class="pb-2">Mã sản phẩm: <span id="pro_sku">${productId}</span></p>
+                    <p>Còn lại: <span id="pro_quan" class="idproduct"></span></p>
+                    <c:forEach items="${listsize}" var="size">
+                        <input type="hidden" class="hiddenqty" id="hdip${size.getSize()}" value=${size.getAvailable()}>
+                    </c:forEach>
                 </div>
                 <div class="product-price" id="price-preview">
                     <span class="pro-price" id="price-view"></span>
@@ -38,7 +40,7 @@
                 </div>
 
 
-                <form id="add-item-form"  method="post" class="variants clearfix">
+                <form id="add-item-form" method="post" class="variants clearfix">
                     <div class="select clearfix d-none">
                         <div class="selector-wrapper"><label for="product-select-option-0">Màu sắc</label><span
                                 class="custom-dropdown custom-dropdown--white"><select
@@ -84,8 +86,14 @@
                        data-target="#myModal">
                     </a>
 
-                    <div class="selector-actions">
 
+                    <div class="selector-actions">
+                        <div class="size-area clearfix">
+                            <lable>Size:</lable>
+                            <c:forEach items="${listsize}" var="size">
+                                <label class="labelsize">${size.getSize()}</label>
+                            </c:forEach>
+                        </div>
                         <div class="quantity-area clearfix">
                             <input type="button" value="-" id="btnMinus" class="qty-btn">
                             <input type="text" id="quantity" name="quantity" value="1" min="1"
@@ -209,7 +217,7 @@
 <script src="<%=request.getContextPath()%>/Views/Web/js/addToCart.js"></script>
 <script src="<%=request.getContextPath()%>/Views/Web/js/checkOut.js"></script>
 
-
+<script src="<%=request.getContextPath()%>/Views/Web/js/SizeAvailable.js"></script>
 
 
 </body>

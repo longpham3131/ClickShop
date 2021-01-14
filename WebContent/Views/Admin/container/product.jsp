@@ -278,13 +278,13 @@ You can't access this page if you use link-url and not login -->
                                                             <div class="modal-body">
 
                                                                 <div class="form-group row">
-                                                                    <label for="prodid"
+                                                                    <label for="prodid${row.getName()}"
                                                                            class="col-sm-4 col-form-label">ID Sản phẩm
                                                                         :</label>
                                                                     <div class="col-sm-8">
                                                                         <input type="text" readonly
                                                                                class="form-control-plaintext"
-                                                                               id="prodid"
+                                                                               id="prodid${row.getName()}"
                                                                                value="${row.productId}">
                                                                     </div>
 
@@ -297,7 +297,7 @@ You can't access this page if you use link-url and not login -->
                                                                                id="namelb"
                                                                                value="${row.getName()}">
                                                                     </div>
-                                                                    <label for="cateidlb"
+                                                                    <label for="cateidlb${row.getName()}"
                                                                            class="col-sm-4 col-form-label">Loại sản
                                                                         phẩm:</label>
                                                                     <div class="col-sm-8">
@@ -305,7 +305,7 @@ You can't access this page if you use link-url and not login -->
                                                                             <c:if test="${row.getSubCategoryId() == cate.getCategoryId()}">
                                                                                 <input type="text" readonly
                                                                                        class="form-control-plaintext"
-                                                                                       id="cateidlb"
+                                                                                       id="cateidlb${row.getName()}"
                                                                                        value="${cate.getName()}">
                                                                             </c:if>
                                                                         </c:forEach>
@@ -365,13 +365,13 @@ You can't access this page if you use link-url and not login -->
                                                                              class="img-fluid">
 
                                                                     </div>
-                                                                    <label for="availb"
+                                                                    <label for="availb${row.productId}"
                                                                            class="col-sm-4 col-form-label">Số
                                                                         lượng:</label>
                                                                     <div class="col-sm-8">
                                                                         <input type="text" readonly
                                                                                class="form-control-plaintext"
-                                                                               id="availb"
+                                                                               id="availb${row.productId}"
                                                                                value="${row.getAvailable()}">
                                                                     </div>
                                                                 </div>
@@ -412,36 +412,38 @@ You can't access this page if you use link-url and not login -->
                                                                 <form action="${pageContext.request.contextPath}/update-product"
                                                                       method="post" id="formEdit${row.productId}">
                                                                     <div class="form-group row">
-                                                                        <label for="prodidEdit"
+                                                                        <label for="prodidEdit${row.productId}"
                                                                                class="col-sm-4 col-form-label">ID Sản
                                                                             phẩm:</label>
                                                                         <div class="col-sm-8">
                                                                             <input type="text"
                                                                                    class="form-control-plaintext"
-                                                                                   id="prodidEdit" readonly
+                                                                                   id="prodidEdit${row.productId}"
+                                                                                   readonly
                                                                                    value="${row.productId}"
                                                                                    name="productid">
                                                                         </div>
                                                                     </div>
                                                                     <div class="form-group row">
-                                                                        <label for="nameProEdit"
+                                                                        <label for="nameProEdit${row.productId}"
                                                                                class="col-sm-4 col-form-label">Tên sản
                                                                             phẩm :</label>
                                                                         <div class="col-sm-8">
                                                                             <input type="text"
                                                                                    class="form-control"
-                                                                                   id="nameProEdit"
+                                                                                   id="nameProEdit${row.productId}"
                                                                                    value="${row.getName()}"
                                                                                    name="name">
                                                                         </div>
                                                                     </div>
                                                                     <div class="form-group row">
-                                                                        <label for="subCateIdEdit"
+                                                                        <label for="subCateIdEdit${row.productId}"
                                                                                class="col-sm-4 col-form-label">Loại sản
                                                                             phẩm :</label>
                                                                         <div class="col-sm-8">
 
-                                                                            <select id="subCateIdEdit" multiple
+                                                                            <select id="subCateIdEdit${row.productId}"
+                                                                                    multiple
                                                                                     class="form-control"
                                                                                     name="subcategory">
                                                                                 <c:forEach items="${listCategory}"
@@ -499,19 +501,19 @@ You can't access this page if you use link-url and not login -->
                                                                         </div>
                                                                     </div>
                                                                     <div class="form-group row">
-                                                                        <label for="priceProEdit"
+                                                                        <label for="priceProEdit${row.productId}"
                                                                                class="col-sm-4 col-form-label">Đơn Giá
                                                                             :</label>
                                                                         <div class="col-sm-8">
                                                                             <input type="text"
                                                                                    class="form-control"
-                                                                                   id="priceProEdit"
+                                                                                   id="priceProEdit${row.productId}"
                                                                                    value="${row.getUnitPrice()}"
                                                                                    name="unitprice">
                                                                         </div>
                                                                     </div>
                                                                     <div class="form-group row">
-                                                                        <label for="deslb"
+                                                                        <label for="deslb${row.productId}"
                                                                                class="col-sm-4 col-form-label">Mô
                                                                             tả:</label>
                                                                         <div class="col-sm-8">
@@ -527,24 +529,25 @@ You can't access this page if you use link-url and not login -->
                                                                         </div>
                                                                     </div>
                                                                     <div class="form-group row">
-                                                                        <label for="imgPathEdit"
+                                                                        <label for="imgPathEdit${row.productId}"
                                                                                class="col-sm-4 col-form-label">Link ảnh
                                                                             :</label>
                                                                         <div class="col-sm-8">
-                                                                            <input type="file" id="imgPathEdit"
+                                                                            <input type="file"
+                                                                                   id="imgPathEdit${row.productId}"
                                                                                    class="form-control-file" name="img">
                                                                             <input type="hidden" name="imgPathTempt"
                                                                                    value="${row.getImgPath()}">
                                                                         </div>
                                                                     </div>
                                                                     <div class="form-group row">
-                                                                        <label for="availEdit"
+                                                                        <label for="availEdit${row.productId}"
                                                                                class="col-sm-4 col-form-label">Số
                                                                             lượng:</label>
                                                                         <div class="col-sm-8">
                                                                             <input type="number"
                                                                                    class="form-control"
-                                                                                   id="availEdit"
+                                                                                   id="availEdit${row.productId}"
                                                                                    value="${row.getAvailable()}"
                                                                                    name="available">
                                                                         </div>
@@ -593,6 +596,94 @@ You can't access this page if you use link-url and not login -->
                                                     <%--                                                        </div>--%>
                                                     <%--                                                    </div>--%>
                                                     <%--                                                </div>--%>
+                                                <button type="button" class="btn btn-success btnclick opentable"
+                                                        title="Size"
+                                                        id="${row.productId}"
+                                                        data-toggle="modal"
+                                                        data-target="#Size${row.productId}"><i class="fas fa-boxes"></i>
+                                                </button>
+
+
+                                                <div class="modal" id="Size${row.productId}">
+                                                    <div class="modal-dialog">
+                                                        <div class="modal-content">
+                                                            <div class="modal-header">
+                                                                <h4 class="modal-title">Chỉnh sửa size và số lượng</h4>
+                                                                <button type="button" class="close"
+                                                                        data-dismiss="modal">&times;
+                                                                </button>
+                                                            </div>
+                                                            <div class="modal-body">
+                                                                <table class="table table-bordered"
+                                                                       width="100%" cellspacing="0"
+                                                                       id="Mytable${row.productId}">
+                                                                    <thead>
+                                                                    <tr>
+
+                                                                        <th>Size</th>
+                                                                        <th>Available</th>
+                                                                        <td>Xóa</td>
+                                                                    </tr>
+                                                                    <thead>
+                                                                    <tbody>
+                                                                    <c:forEach items="${row.getSize()}" var="eachsize">
+                                                                        <tr>
+                                                                            <td>
+                                                                                <input maxlength="4" size="4"
+                                                                                       value="${eachsize.getSizeId()}"
+                                                                                       type="hidden"
+                                                                                       class="form-control-plaintext check"
+
+                                                                                       name="fname"
+                                                                                >
+                                                                                <input maxlength="4" size="4"
+                                                                                       value="${eachsize.getSize()}"
+                                                                                       type="text"
+                                                                                       class="form-control-plaintext check"
+
+                                                                                       name="fname"
+                                                                                >
+                                                                            </td>
+                                                                            <td>
+                                                                                <input maxlength="4" size="4"
+                                                                                       value="${eachsize.getAvailable()}"
+                                                                                       type="text"
+                                                                                       class="form-control-plaintext check"
+                                                                                       name="fname"
+                                                                                >
+                                                                            </td>
+                                                                            <td>
+                                                                                <button type="button"
+                                                                                        class="btn btn-success deletesize"
+                                                                                >
+                                                                                    <i class="fas fa-trash delete"></i>
+                                                                                </button>
+                                                                            </td>
+                                                                        </tr>
+                                                                    </c:forEach>
+                                                                    </tbody>
+                                                                </table>
+                                                            </div>
+                                                            <div class="modal-footer">
+                                                                <button type="button"
+                                                                        class="saveandsubmit"
+                                                                        value="Submit">
+                                                                    Save and Update
+                                                                </button>
+                                                                <button type="button"
+                                                                        class="addsize"
+                                                                        id="${row.productId}"
+                                                                        value="Submit">
+                                                                    Thêm Size
+                                                                </button>
+
+                                                            </div>
+
+                                                        </div>
+
+                                                    </div>
+
+                                                </div>
                                             </td>
                                         </tr>
                                     </c:when>
@@ -626,26 +717,26 @@ You can't access this page if you use link-url and not login -->
                                                             <div class="modal-body">
 
                                                                 <div class="form-group row">
-                                                                    <label for="prodid"
+                                                                    <label for="prodid${row.productId}"
                                                                            class="col-sm-4 col-form-label">ID Sản phẩm
                                                                         :</label>
                                                                     <div class="col-sm-8">
                                                                         <input type="text" readonly
                                                                                class="form-control-plaintext"
-                                                                               id="prodid"
+                                                                               id="prodid${row.productId}"
                                                                                value="${row.productId}">
                                                                     </div>
 
-                                                                    <label for="namelb"
+                                                                    <label for="namelb${row.productId}"
                                                                            class="col-sm-4 col-form-label">Tên sản phẩm
                                                                         :</label>
                                                                     <div class="col-sm-8">
                                                                         <input type="text" readonly
                                                                                class="form-control-plaintext"
-                                                                               id="namelb"
+                                                                               id="namelb${row.productId}"
                                                                                value="${row.getName()}">
                                                                     </div>
-                                                                    <label for="cateidlb"
+                                                                    <label for="cateidlb${row.productId}"
                                                                            class="col-sm-4 col-form-label">Loại sản
                                                                         phẩm:</label>
                                                                     <div class="col-sm-8">
@@ -653,7 +744,7 @@ You can't access this page if you use link-url and not login -->
                                                                             <c:if test="${row.getSubCategoryId() == cate.getCategoryId()}">
                                                                                 <input type="text" readonly
                                                                                        class="form-control-plaintext"
-                                                                                       id="cateidlb"
+                                                                                       id="cateidlb${row.productId}"
                                                                                        value="${cate.getName()}">
                                                                             </c:if>
                                                                         </c:forEach>
@@ -683,13 +774,13 @@ You can't access this page if you use link-url and not login -->
                                                                             </c:otherwise>
                                                                         </c:choose>
                                                                     </div>
-                                                                    <label for="pricelb"
+                                                                    <label for="pricelb${row.productId}"
                                                                            class="col-sm-4 col-form-label">Đơn Giá
                                                                         :</label>
                                                                     <div class="col-sm-8">
                                                                         <input type="text" readonly
                                                                                class="form-control-plaintext"
-                                                                               id="pricelb"
+                                                                               id="pricelb${row.productId}"
                                                                                value="${row.getUnitPrice()}">
                                                                     </div>
 
@@ -814,11 +905,12 @@ You can't access this page if you use link-url and not login -->
                                                                         </div>
                                                                     </div>
                                                                     <div class="form-group row">
-                                                                        <label for="genderEdit"
+                                                                        <label for="genderEdit${row.productId}"
                                                                                class="col-sm-4 col-form-label"> Đối
                                                                             tượng:</label>
                                                                         <div class="col-sm-8">
-                                                                            <select id="genderEdit" class="form-control"
+                                                                            <select id="genderEdit${row.productId}"
+                                                                                    class="form-control"
                                                                                     name="gender">
                                                                                 <c:choose>
                                                                                     <c:when test="${row.getGender() == '0' }">
@@ -1028,6 +1120,8 @@ You can't access this page if you use link-url and not login -->
     <script
             src="<%=request.getContextPath()%>/Views/Admin/js/demo/datatables-demo.js"></script>
 
+    <script
+            src="<%=request.getContextPath()%>/Views/Admin/js/admin-product.js"></script>
 
     <!-- Page level custom scripts -->
 
