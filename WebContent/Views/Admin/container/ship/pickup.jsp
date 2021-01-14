@@ -273,14 +273,16 @@
                                                            value="${listPkg.shipperID}">
                                                 </div>
                                             </div>
-                                            <form action="<%=request.getContextPath()%>/shippicked" method="post" id="shippickedForm${listPkg.orderID}">
+                                            <form action="<%=request.getContextPath()%>/shippicked" method="post"
+                                                  id="shippickedForm${listPkg.orderID}">
                                                 <input type="text" value="${listPkg.orderID}" name="OrtherIDx">
-
                                             </form>
                                         </div>
                                         <!-- Modal footer -->
                                         <div class="modal-footer">
-                                            <button type="submit" form="shippickedForm${listPkg.orderID}" class="btn btn-success">Đồng ý</button>
+                                            <button type="submit" form="shippickedForm${listPkg.orderID}"
+                                                    class="btn btn-success">Đồng ý
+                                            </button>
                                             <button type="button" class="btn btn-danger"
                                                     data-dismiss="modal">Đóng
                                             </button>
@@ -288,9 +290,7 @@
                                     </div>
                                 </div>
                             </div>
-
                         </td>
-
                     </tr>
                 </c:forEach>
 
