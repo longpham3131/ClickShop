@@ -5,7 +5,7 @@
     <span class="loader"><span class="loader-inner"></span></span>
 </div>
 <div class="overlay"></div>
-<header>
+<header id="myHeader">
     <%--    <h1> ${email}</h1>--%>
     <%--  Check Login and Role --%>
     <%
@@ -48,9 +48,9 @@
                                    data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
                                     GIÀY NAM
                                 </a>
-                                <div class="dropdown-menu dropdown__giaynam nav-item__dropdown animate__animated animate__fadeInLeftBig "
-                                     aria-labelledby="dropdown__giaynam">
-                                    <div class="row">
+                                <div class="dropdown-menu  animate__animated animate__slideInDown"
+                                     aria-labelledby="dropdown__giaynam" aria-expanded="true">
+                                    <div class="d-flex">
                                         <div class="dropdown__content col-2">
                                             <a class="dropdown-item" href="#">
                                                 <form action="<%=request.getContextPath()%>/filter-Product"
@@ -137,15 +137,14 @@
                                     </div>
                                 </div>
                             </li>
-
                             <li class="nav-item dropdown no__relative">
                                 <a class="nav-link dropdown-toggle" href="#" id="dropdown__giaynu" role="button"
                                    data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                     GIÀY NỮ
                                 </a>
-                                <div class="dropdown-menu dropdown__giaynu nav-item__dropdown animate__animated animate__fadeInLeftBig"
+                                <div class="dropdown-menu  animate__animated animate__slideInDown"
                                      aria-labelledby="dropdown__giaynu">
-                                    <div class="row">
+                                    <div class="d-flex">
                                         <div class="dropdown__content col-2">
                                             <a class="dropdown-item" href="#">
                                                 <form action="<%=request.getContextPath()%>/filter-Product"
@@ -157,7 +156,7 @@
                                                     <input type="hidden" value="Chealsea Boots - Women" name="Name"/>
                                                 </form>
                                             </a>
-                                            <%--                                        <a class="dropdown-item" href="#">DERBY</a>--%>
+
                                             <a class="dropdown-item" href="#">
                                                 <form action="<%=request.getContextPath()%>/filter-Product"
                                                       method="post">
@@ -171,7 +170,7 @@
                                             </a>
                                         </div>
                                         <div class="dropdown__image col-10">
-                                            <div class="row">
+                                            <div class="d-flex">
                                                 <div class="col-4">
                                                     <img src="<%=request.getContextPath()%>/Views/Web/image_product/dropdown__nu_1.png"
                                                          alt="Responsive image">
@@ -190,15 +189,14 @@
                                     </div>
                                 </div>
                             </li>
-
                             <li class="nav-item dropdown no__relative">
                                 <a class="nav-link dropdown-toggle" href="#" id="dropdown__Tee" role="button"
                                    data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
                                     TEE(UNISEX)
                                 </a>
-                                <div class="dropdown-menu  nav-item__dropdown animate__animated animate__fadeInLeftBig"
+                                <div class="dropdown-menu   animate__animated animate__slideInDown"
                                      aria-labelledby="dropdown__Tee">
-                                    <div class="row">
+                                    <div class="d-flex">
                                         <div class="dropdown__content col-2">
                                             <a class="dropdown-item" href="#">
                                                 <form action="<%=request.getContextPath()%>/filter-Product"
@@ -222,7 +220,7 @@
                                             </a>
                                         </div>
                                         <div class="dropdown__image col-10">
-                                            <div class="row">
+                                            <div class="d-flex">
                                                 <div class="col-4">
                                                     <img src="<%=request.getContextPath()%>/Views/Web/image_product/dropdown__tee_1.jpg"
                                                          alt="Responsive image">
@@ -247,9 +245,9 @@
                                    data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
                                     PHỤ KIỆN
                                 </a>
-                                <div class="dropdown-menu nav-item__dropdown animate__animated animate__fadeInLeftBig"
+                                <div class="dropdown-menu  animate__animated animate__slideInDown"
                                      aria-labelledby="dropdown__phuKien">
-                                    <div class="row">
+                                    <div class="d-flex">
                                         <div class="dropdown__content col-2">
                                             <a class="dropdown-item" href="#">
                                                 <form action="<%=request.getContextPath()%>/filter-Product"
@@ -313,7 +311,7 @@
                                             </a>
                                         </div>
                                         <div class="dropdown__image col-10">
-                                            <div class="row">
+                                            <div class="d-flex">
                                                 <div class="col-4">
                                                     <img src="<%=request.getContextPath()%>/Views/Web/image_product/dropdown__belt_1.jpg"
                                                          alt="Responsive image">
@@ -331,15 +329,15 @@
                                     </div>
                                 </div>
                             </li>
-
                         </ul>
                     </div>
                 </nav>
             </div>
+
             <div class="header__icons d-flex  align-items-center">
                 <c:choose>
                     <c:when test="${email != null}">
-                        <div class="pr-3">
+                        <div class="pr-3  text-light">
                             <a class="font-weight-bold" style="font-size: 15px;"
                                href="<%=request.getContextPath()%>/my-profile" aria-label="Tài khoản"
                                title="Tài khoản"> ${email} </a>
@@ -347,13 +345,13 @@
 
                         </div>
                         <a href="#" aria-label="Giỏ hàng" title="Giỏ hàng" data-toggle="modal" data-target="#myModal"><i
-                                class="fa fa-shopping-cart"></i></a>
+                                class="fa fa-shopping-cart  "></i></a>
 
                         <a href="#" title="Tìm kiếm" id="sidebarCollapse"> <i class="fa fa-search"></i></a>
 
                         <form action="<%=request.getContextPath()%>/fill-All-Display" method="post" class="px-2">
                             <input type="hidden" value="1" name="logout">
-                            <button type="submit" title="Dang xuat"><i class="fa fa-sign-out-alt"></i></button>
+                            <button type="submit" title="Dang xuat"><i class="fa fa-sign-out-alt "></i></button>
                         </form>
                         <script>
                             document.getElementById("txtCoin").innerHTML = new Intl.NumberFormat('vn-VN', { style: 'currency', currency: 'VND' }).format(document.getElementById("txtCoin").innerHTML);

@@ -13,7 +13,7 @@
     <c:import url="../global/linkCSS.jsp"> </c:import>
 </head>
 
-<body>
+<body class="position-relative">
 
 <c:import url="../commom/header.jsp"> </c:import>
 <c:import url="../commom/sideBar.jsp"> </c:import>
@@ -37,7 +37,7 @@
     </div>
     <div class="product__main pt-2">
         <div class="row">
-            <div class="d-none d-lg-block d-xl-block col-lg-1 pl-4">
+            <div class="d-none d-lg-block d-xl-block col-lg-2 pl-4">
                 <div class="wrapper">
                     <!-- Sidebar -->
                     <nav>
@@ -209,7 +209,7 @@
 
                 </div>
             </div>
-            <div class="col-12 col-lg-11">
+            <div class="col-12 col-lg-10">
                 <div class="product__type text-center">
                     <div class="product__catagories d-md-block d-lg-none d-xl-none">
                         <div class="title-bl" href="#thongTinSP" data-toggle="collapse">

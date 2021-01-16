@@ -13,7 +13,7 @@
     <title>Giỏ hàng của bạn</title>
     <c:import url="../global/linkCSS.jsp"> </c:import>
 </head>
-<body>
+<body class="position-relative">
 <c:import url="../commom/header.jsp"> </c:import>
 <c:import url="../commom/sideBar.jsp"> </c:import>
 <!--checkout-->

@@ -12,7 +12,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Trang tài khoản</title>
 <c:import url="../global/linkCSS.jsp"> </c:import>
-<body>
+<body class="position-relative">
 
 <c:if test="${kqupdate == '1'}"><script>  alert("Đổi password thành công"); </script> </c:if>
 <c:if test="${kqupdate == '2'}"><script>  alert("Cập nhật thông tin thành công"); </script> </c:if>

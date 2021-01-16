@@ -11,11 +11,11 @@
     <c:import url="../global/linkCSS.jsp"> </c:import>
 </head>
 
-<body>
+<body class="position-relative">
 <c:import url="../commom/header.jsp"> </c:import>
 <c:import url="../commom/sideBar.jsp"> </c:import>
 
-<div class="row product-detail-wrapper pt-4">
+<div class="row product-detail-wrapper pt-4" >
     <div class="col-md-12 col-sm-12 col-xs-12">
         <div class="row product-detail-main pr_style_01">
             <div class="col-md-8 col-sm-12 col-xs-12">
@@ -51,7 +51,7 @@
                         <div class="size-area clearfix">
                             <input type="hidden" id="pro_size" >
                             <c:forEach items="${listsize}" var="size">
-                                <label class="labelsize" onclick="getAvailable('${size.getSize()}')" style="width: 100px; text-align: center; border: 1px solid;" >${size.getSize()}</label>
+                                <label class="labelsize" onclick="getAvailable('${size.getSize()}')" style="width: 100px; text-align: center; border: 1px solid; transition: all,0.5s;" >${size.getSize()}</label>
                             </c:forEach>
                         </div>
                         <div class="quantity-area clearfix">
