@@ -64,8 +64,8 @@ function tinhTongTienGioHang() {
     }
 }
 //Mỗi lần nhấn + - thì cập nhật số lượng{}
-function tangSoLuong(maSP) {
-    var viTri = dssp.timViTri(maSP);
+function tangSoLuong(maSP, sizeSP) {
+    var viTri = dssp.timViTri(maSP, sizeSP);
     var soLuongHT = parseInt(dssp.mangSP[viTri].soLuong)
     if(soLuongHT < dssp.mangSP[viTri].soLuongKho){
         dssp.mangSP[viTri].soLuong = soLuongHT + 1;
@@ -74,12 +74,12 @@ function tangSoLuong(maSP) {
         getLocalStorage();
     }
 }
-function giamSoLuong(maSP) {
-    var viTri = dssp.timViTri(maSP);
+function giamSoLuong(maSP, sizeSP) {
+    var viTri = dssp.timViTri(maSP, sizeSP);
     var soLuongHT = parseInt(dssp.mangSP[viTri].soLuong)
     dssp.mangSP[viTri].soLuong = soLuongHT - 1;
     if(dssp.mangSP[viTri].soLuong < 1){
-        deleteRow(maSP);
+        deleteRow(maSP,  sizeSP);
         // getMyEle("textThongBaoSoLuong").innerHTML = "";
         demSoSanPham();
     }
@@ -92,8 +92,8 @@ function giamSoLuong(maSP) {
 }
 
 
-function deleteRow(maSP) {
-    dssp.xoaSP(maSP);
+function deleteRow(maSP, sizeSP) {
+    dssp.xoaSP(maSP,sizeSP);
     setLocalStorage();
     getLocalStorage();
 }
@@ -109,18 +109,19 @@ function hienThiDSSP(mangSP) {
  
             <div>
             <img src="${item.anhSP}" alt=" " class="img-responsive w-50" style="margin: 0 auto;">
-                <div>${item.tenSP}</div>
+                <div>${item.tenSP}  </div>
+                <div>Size ${item.sizeSP}</div>
 </div>
         </td>
         <td class="invert">
             <div class="quantity">
                 <div class="quantity-select">
 
-                    <button class ="btn btn-light" onclick="giamSoLuong('${item.maSP}')"><i class="fa fa-minus"></i></button>
+                    <button class ="btn btn-light" onclick="giamSoLuong('${item.maSP}','${item.sizeSP}')"><i class="fa fa-minus"></i></button>
                     <div class="entry value">
                         <span class="quantity-Order">${item.soLuong}</span>
                     </div>
-                    <button class ="btn btn-light" onclick="tangSoLuong('${item.maSP}')"><i class="fa fa-plus"></i></button>
+                    <button class ="btn btn-light" onclick="tangSoLuong('${item.maSP}','${item.sizeSP}')"><i class="fa fa-plus"></i></button>
 
                 </div>
                  
@@ -131,7 +132,7 @@ function hienThiDSSP(mangSP) {
         <td class="invert d-none">${item.giaSP}</td>
         <td></td>
         <td class="invert">
-            <button class="btn__DeleteRow btn btn-danger" type="button" onclick="deleteRow('${item.maSP}')"><i class="fa fa-times"></i> </button>
+            <button class="btn__DeleteRow btn btn-danger" type="button" onclick="deleteRow('${item.maSP}','${item.sizeSP}')"><i class="fa fa-times"></i> </button>
         </td>
     </tr>
         `;

@@ -29,9 +29,9 @@
                 <div class="product-title">
                     <h1 id="pro-name">${name}</h1>
                     <p class="pb-2">Mã sản phẩm: <span id="pro_sku">${productId}</span></p>
-                    <p>Còn lại: <span id="pro_quan" class="idproduct"></span></p>
+                    <p>Còn lại: <span id="pro_quan" class="idproduct">Chưa chọn size</span></p>
                     <c:forEach items="${listsize}" var="size">
-                        <input type="hidden" class="hiddenqty" id="hdip${size.getSize()}" value=${size.getAvailable()}>
+                        <input type="hidden"  id="${size.getSize()}" value=${size.getAvailable()}>
                     </c:forEach>
                 </div>
                 <div class="product-price" id="price-preview">
@@ -41,46 +41,6 @@
 
 
                 <form id="add-item-form" method="post" class="variants clearfix">
-                    <div class="select clearfix d-none">
-                        <div class="selector-wrapper"><label for="product-select-option-0">Màu sắc</label><span
-                                class="custom-dropdown custom-dropdown--white"><select
-                                class="single-option-selector custom-dropdown__select custom-dropdown__select--white"
-                                data-option="option1" id="product-select-option-0">
-                                        <option value="BLACK">BLACK</option>
-                                    </select></span></div>
-                        <div class="selector-wrapper"><label for="product-select-option-1">Kích thước</label><span
-                                class="custom-dropdown custom-dropdown--white"><select
-                                class="single-option-selector custom-dropdown__select custom-dropdown__select--white"
-                                data-option="option2" id="product-select-option-1">
-                                        <option value="38 EU">38 EU</option>
-                                        <option value="39 EU">39 EU</option>
-                                        <option value="40 EU">40 EU</option>
-                                        <option value="41 EU">41 EU</option>
-                                        <option value="42 EU">42 EU</option>
-                                        <option value="43 EU">43 EU</option>
-                                        <option value="44 EU">44 EU</option>
-                                        <option value="45 EU">45 EU</option>
-                                    </select></span></div>
-                        <select id="product-select" name="id" style="display:none;">
-
-                            <option value="1061011849">BLACK / 38 EU - 1,700,000₫</option>
-
-                            <option value="1061011850">BLACK / 39 EU - 1,700,000₫</option>
-
-                            <option value="1061011851">BLACK / 40 EU - 1,700,000₫</option>
-
-                            <option value="1061011852">BLACK / 41 EU - 1,700,000₫</option>
-
-                            <option value="1061011853">BLACK / 42 EU - 1,700,000₫</option>
-
-                            <option value="1061011854">BLACK / 43 EU - 1,700,000₫</option>
-
-                            <option value="1061011855">BLACK / 44 EU - 1,700,000₫</option>
-
-                            <option value="1061011856">BLACK / 45 EU - 1,700,000₫</option>
-
-                        </select>
-                    </div>
 
                     <a style="display:block;margin:10px 0" href="javascript:void(0)" class="" data-toggle="modal"
                        data-target="#myModal">
@@ -89,9 +49,9 @@
 
                     <div class="selector-actions">
                         <div class="size-area clearfix">
-                            <lable>Size:</lable>
+                            <input type="hidden" id="pro_size" >
                             <c:forEach items="${listsize}" var="size">
-                                <label class="labelsize">${size.getSize()}</label>
+                                <label class="labelsize" onclick="getAvailable('${size.getSize()}')" style="width: 100px; text-align: center; border: 1px solid;" >${size.getSize()}</label>
                             </c:forEach>
                         </div>
                         <div class="quantity-area clearfix">
@@ -104,28 +64,10 @@
                         <div class="wrap-addcart clearfix">
                             <button type="button" id="add-to-cart"
                                     class="add-to-cartProduct button dark btn-addtocart addtocart-modal" name="add"
-                                    data-toggle="modal" data-target="#myModal">Thêm
-                                vào
-                                giỏ
-                            </button>
-
-                            <button type="button" id="buy-now"
-                                    class="add-to-cartProduct button dark btn-addtocart addtocart-modal hidden d-none"
-                                    name="add" style="display: inline-block;">Mua ngay
+                                 > Hãy chọn size cho sản phẩm
                             </button>
                         </div>
 
-                    </div>
-
-                    <div class="product-action-bottom visible-xs d-none">
-                        <div class="input-bottom">
-                            <input id="quan-input" type="number" value="1" min="1">
-                        </div>
-                        <button type="button" id="add-to-cartbottom"
-                                class="add-to-cartProduct add-cart-bottom button dark addtocart-modal" name="add">Thêm
-                            vào
-                            giỏ
-                        </button>
                     </div>
                 </form>
                 <hr class="hrcs">
@@ -217,7 +159,7 @@
 <script src="<%=request.getContextPath()%>/Views/Web/js/addToCart.js"></script>
 <script src="<%=request.getContextPath()%>/Views/Web/js/checkOut.js"></script>
 
-<script src="<%=request.getContextPath()%>/Views/Web/js/SizeAvailable.js"></script>
+<%--<script src="<%=request.getContextPath()%>/Views/Web/js/SizeAvailable.js"></script>--%>
 
 
 </body>

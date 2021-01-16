@@ -1,4 +1,4 @@
-let listTenSP = document.querySelectorAll(".nameProduct");
+var listTenSP = document.querySelectorAll(".nameProduct");
 document.getElementById("searchPro").onkeyup = () => {
     let chuoiTK = document.getElementById("searchPro").value;
 

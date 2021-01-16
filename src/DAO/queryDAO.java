@@ -7,7 +7,7 @@ import java.util.List;
 import DB.MyDB;
 import com.model.*;
 
-import javax.validation.constraints.Null;
+
 
 public class queryDAO {
 
