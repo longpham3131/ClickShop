@@ -200,14 +200,14 @@ You can't access this page if you use link-url and not login -->
                                             </div>
                                         </div>
                                         <div class="form-group row">
-                                            <label for="quantityAdd"
-                                                   class="col-sm-4 col-form-label">Số lượng kho
-                                                :</label>
+<%--                                            <label for="quantityAdd"--%>
+<%--                                                   class="col-sm-4 col-form-label">Số lượng kho--%>
+<%--                                                :</label>--%>
                                             <div class="col-sm-8">
-                                                <input type="text"
+                                                <input type="hidden"
                                                        class="form-control"
                                                        id="quantityAdd"
-                                                       value=""
+                                                       value="0"
                                                        name="available">
                                             </div>
                                         </div>
@@ -541,12 +541,12 @@ You can't access this page if you use link-url and not login -->
                                                                         </div>
                                                                     </div>
                                                                     <div class="form-group row">
-                                                                        <label for="availEdit${row.productId}"
-                                                                               class="col-sm-4 col-form-label">Số
-                                                                            lượng:</label>
+<%--                                                                        <label for="availEdit${row.productId}"--%>
+<%--                                                                               class="col-sm-4 col-form-label">Số--%>
+<%--                                                                            lượng:</label>--%>
                                                                         <div class="col-sm-8">
-                                                                            <input type="number"
-                                                                                   class="form-control"
+                                                                            <input type="hidden"
+                                                                                   class="form-control d-none"
                                                                                    id="availEdit${row.productId}"
                                                                                    value="${row.getAvailable()}"
                                                                                    name="available">
@@ -569,33 +569,6 @@ You can't access this page if you use link-url and not login -->
                                                         </div>
                                                     </div>
                                                 </div>
-                                                    <%--                                                <button type="button" class="btn btn-dark" title="Block"--%>
-                                                    <%--                                                        data-toggle="modal"--%>
-                                                    <%--                                                        data-target="#blockProduct${row.getProductId()}"><i--%>
-                                                    <%--                                                        class="fa fa-lock"></i>--%>
-                                                    <%--                                                </button>--%>
-                                                <!-- The Modal -->
-
-                                                    <%--                                                <div class="modal" id="blockProduct${row.getProductId()}">--%>
-                                                    <%--                                                    <div class="modal-dialog">--%>
-                                                    <%--                                                        <div class="modal-content">--%>
-                                                    <%--                                                            <div class="modal-body">--%>
-                                                    <%--                                                                <form action="${pageContext.request.contextPath}/block-product"--%>
-                                                    <%--                                                                      method="post">--%>
-                                                    <%--                                                                    <h4 class="modal-title">Bạn có chắc muốn Block--%>
-                                                    <%--                                                                        sản phẩm :${row.getName()} </h4>--%>
-                                                    <%--                                                                    <input type="hidden" name="id"--%>
-                                                    <%--                                                                           value="${row.productId}"/>--%>
-                                                    <%--                                                                    <input type="submit" value="Block!"--%>
-                                                    <%--                                                                           class="btn btn-warning"/>--%>
-                                                    <%--                                                                    <button type="button" class="btn btn-danger"--%>
-                                                    <%--                                                                            data-dismiss="modal">Đóng--%>
-                                                    <%--                                                                    </button>--%>
-                                                    <%--                                                                </form>--%>
-                                                    <%--                                                            </div>--%>
-                                                    <%--                                                        </div>--%>
-                                                    <%--                                                    </div>--%>
-                                                    <%--                                                </div>--%>
                                                 <button type="button" class="btn btn-success btnclick opentable"
                                                         title="Size"
                                                         id="${row.productId}"
@@ -604,7 +577,7 @@ You can't access this page if you use link-url and not login -->
                                                 </button>
 
 
-                                                <div class="modal" id="Size${row.productId}">
+                                                <div class="modal fade" id="Size${row.productId}">
                                                     <div class="modal-dialog">
                                                         <div class="modal-content">
                                                             <div class="modal-header">
@@ -621,8 +594,8 @@ You can't access this page if you use link-url and not login -->
                                                                     <tr>
 
                                                                         <th>Size</th>
-                                                                        <th>Available</th>
-                                                                        <td>Xóa</td>
+                                                                        <th>Số lượng</th>
+                                                                        <td>Thao tác</td>
                                                                     </tr>
                                                                     <thead>
                                                                     <tbody>
@@ -632,14 +605,14 @@ You can't access this page if you use link-url and not login -->
                                                                                 <input maxlength="4" size="4"
                                                                                        value="${eachsize.getSizeId()}"
                                                                                        type="hidden"
-                                                                                       class="form-control-plaintext check"
+                                                                                       class="form-control check"
 
                                                                                        name="fname"
                                                                                 >
                                                                                 <input maxlength="4" size="4"
                                                                                        value="${eachsize.getSize()}"
                                                                                        type="text"
-                                                                                       class="form-control-plaintext check"
+                                                                                       class="form-control check"
 
                                                                                        name="fname"
                                                                                 >
@@ -648,13 +621,13 @@ You can't access this page if you use link-url and not login -->
                                                                                 <input maxlength="4" size="4"
                                                                                        value="${eachsize.getAvailable()}"
                                                                                        type="text"
-                                                                                       class="form-control-plaintext check"
+                                                                                       class="form-control check"
                                                                                        name="fname"
                                                                                 >
                                                                             </td>
                                                                             <td>
                                                                                 <button type="button"
-                                                                                        class="btn btn-success deletesize"
+                                                                                        class="btn btn-danger deletesize"
                                                                                 >
                                                                                     <i class="fas fa-trash delete"></i>
                                                                                 </button>
@@ -666,12 +639,12 @@ You can't access this page if you use link-url and not login -->
                                                             </div>
                                                             <div class="modal-footer">
                                                                 <button type="button"
-                                                                        class="saveandsubmit"
+                                                                        class="saveandsubmit btn btn-success"
                                                                         value="Submit">
-                                                                    Save and Update
+                                                                    Cập nhật
                                                                 </button>
                                                                 <button type="button"
-                                                                        class="addsize"
+                                                                        class="addsize btn btn-warning"
                                                                         id="${row.productId}"
                                                                         value="Submit">
                                                                     Thêm Size
@@ -790,10 +763,10 @@ You can't access this page if you use link-url and not login -->
                                                                     <div class="col-sm-8">
                                                                         <input type="hidden" readonly
                                                                                class="form-control-plaintext"
-                                                                               id="hidenip"
+
                                                                                value="${row.getDescription()}">
                                                                         <textarea class="form-control"
-                                                                                  id="deslb"
+
                                                                                   value="${row.getDescription()}"
                                                                                   readonly>${row.getDescription()} </textarea>
                                                                     </div>
@@ -830,7 +803,7 @@ You can't access this page if you use link-url and not login -->
                                                         </div>
                                                     </div>
                                                 </div>
-                                                <button type="button" class="btn btn-primary" title="Edit"
+                                                <button type="button" class="btn btn-primary" title="Chỉnh sửa"
                                                         data-toggle="modal"
                                                         data-target="#productedit${row.productId}"><i
                                                         class="fa fa-edit"></i></button>
@@ -978,11 +951,11 @@ You can't access this page if you use link-url and not login -->
                                                                         </div>
                                                                     </div>
                                                                     <div class="form-group row">
-                                                                        <label for="availEdit"
-                                                                               class="col-sm-4 col-form-label">Số
-                                                                            lượng:</label>
+<%--                                                                        <label for="availEdit"--%>
+<%--                                                                               class="col-sm-4 col-form-label">Số--%>
+<%--                                                                            lượng:</label>--%>
                                                                         <div class="col-sm-8">
-                                                                            <input type="number"
+                                                                            <input type="hidden"
                                                                                    class="form-control"
                                                                                    id="availEdit"
                                                                                    value="${row.getAvailable()}"
@@ -1006,33 +979,95 @@ You can't access this page if you use link-url and not login -->
                                                         </div>
                                                     </div>
                                                 </div>
-                                                    <%--                                                <button type="button" class="btn btn-dark" title="Block"--%>
-                                                    <%--                                                        data-toggle="modal"--%>
-                                                    <%--                                                        data-target="#blockProduct${row.getProductId()}"><i--%>
-                                                    <%--                                                        class="fa fa-lock"></i>--%>
-                                                    <%--                                                </button>--%>
-                                                <!-- The Modal -->
 
-                                                    <%--                                                <div class="modal" id="blockProduct${row.getProductId()}">--%>
-                                                    <%--                                                    <div class="modal-dialog">--%>
-                                                    <%--                                                        <div class="modal-content">--%>
-                                                    <%--                                                            <div class="modal-body">--%>
-                                                    <%--                                                                <form action="${pageContext.request.contextPath}/block-product"--%>
-                                                    <%--                                                                      method="post">--%>
-                                                    <%--                                                                    <h4 class="modal-title">Bạn có chắc muốn Block--%>
-                                                    <%--                                                                        sản phẩm :${row.getName()} </h4>--%>
-                                                    <%--                                                                    <input type="hidden" name="id"--%>
-                                                    <%--                                                                           value="${row.productId}"/>--%>
-                                                    <%--                                                                    <input type="submit" value="Block!"--%>
-                                                    <%--                                                                           class="btn btn-warning"/>--%>
-                                                    <%--                                                                    <button type="button" class="btn btn-danger"--%>
-                                                    <%--                                                                            data-dismiss="modal">Đóng--%>
-                                                    <%--                                                                    </button>--%>
-                                                    <%--                                                                </form>--%>
-                                                    <%--                                                            </div>--%>
-                                                    <%--                                                        </div>--%>
-                                                    <%--                                                    </div>--%>
-                                                    <%--                                                </div>--%>
+                                                <button type="button" class="btn btn-success btnclick opentable"
+                                                        title="Size"
+                                                        id="${row.productId}"
+                                                        data-toggle="modal"
+                                                        data-target="#Size${row.productId}"><i class="fas fa-boxes"></i>
+                                                </button>
+
+
+                                                <div class="modal fade" id="Size${row.productId}">
+                                                    <div class="modal-dialog">
+                                                        <div class="modal-content">
+                                                            <div class="modal-header">
+                                                                <h4 class="modal-title">Chỉnh sửa size và số lượng</h4>
+                                                                <button type="button" class="close"
+                                                                        data-dismiss="modal">&times;
+                                                                </button>
+                                                            </div>
+                                                            <div class="modal-body">
+                                                                <table class="table table-bordered"
+                                                                       width="100%" cellspacing="0"
+                                                                       id="Mytable${row.productId}">
+                                                                    <thead>
+                                                                    <tr>
+
+                                                                        <th>Size</th>
+                                                                        <th>Số lượng</th>
+                                                                        <td>Thao tác</td>
+                                                                    </tr>
+                                                                    <thead>
+                                                                    <tbody>
+                                                                    <c:forEach items="${row.getSize()}" var="eachsize">
+                                                                        <tr>
+                                                                            <td>
+                                                                                <input maxlength="4" size="4"
+                                                                                       value="${eachsize.getSizeId()}"
+                                                                                       type="hidden"
+                                                                                       class="form-control check"
+
+                                                                                       name="fname"
+                                                                                >
+                                                                                <input maxlength="4" size="4"
+                                                                                       value="${eachsize.getSize()}"
+                                                                                       type="text"
+                                                                                       class="form-control check"
+
+                                                                                       name="fname"
+                                                                                >
+                                                                            </td>
+                                                                            <td>
+                                                                                <input maxlength="4" size="4"
+                                                                                       value="${eachsize.getAvailable()}"
+                                                                                       type="text"
+                                                                                       class="form-control check"
+                                                                                       name="fname"
+                                                                                >
+                                                                            </td>
+                                                                            <td>
+                                                                                <button type="button"
+                                                                                        class="btn btn-danger deletesize"
+                                                                                >
+                                                                                    <i class="fas fa-trash delete"></i>
+                                                                                </button>
+                                                                            </td>
+                                                                        </tr>
+                                                                    </c:forEach>
+                                                                    </tbody>
+                                                                </table>
+                                                            </div>
+                                                            <div class="modal-footer">
+                                                                <button type="button"
+                                                                        class="saveandsubmit btn btn-success"
+                                                                        value="Submit">
+                                                                    Cập nhật
+                                                                </button>
+                                                                <button type="button"
+                                                                        class="addsize btn btn-warning"
+                                                                        id="${row.productId}"
+                                                                        value="Submit">
+                                                                    Thêm Size
+                                                                </button>
+
+                                                            </div>
+
+                                                        </div>
+
+                                                    </div>
+
+                                                </div>
                                             </td>
                                         </tr>
 
