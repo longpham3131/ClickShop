@@ -3,32 +3,17 @@ package com.controller.admin;
 import java.io.BufferedReader;
 import java.io.IOException;
 
-import java.util.Collections;
-import java.util.LinkedHashMap;
 import java.util.List;
-import java.util.Set;
 
-import javax.inject.Inject;
-import javax.ws.rs.DELETE;
-import javax.ws.rs.GET;
-import javax.ws.rs.POST;
-import javax.ws.rs.Path;
-
-import javax.ws.rs.core.MediaType;
-import javax.ws.rs.core.Response;
-import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
-import javax.websocket.Session;
+
 
 import DAO.queryDAO;
 import DAO.HttpUtil;
-import DAO.LoginDAO;
-import DAO.queryDAO;
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
 import com.model.Api_data;
