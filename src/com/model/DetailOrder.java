@@ -6,14 +6,24 @@ public class DetailOrder {
     private String Name;
     private String Quanity;
     private String SubTotal;
+    private String Size;
 
-    public DetailOrder(String orderID, String productID, String name, String quanity, String subTotal) {
+    public DetailOrder(String orderID, String productID, String name, String quanity, String subTotal, String size) {
         OrderID = orderID;
         ProductID = productID;
         SubTotal = subTotal;
         Name = name;
         Quanity = quanity;
+        Size = size;
         //System.out.print(" ==88 " +ProductID+" ss==");
+    }
+
+    public String getSize() {
+        return Size;
+    }
+
+    public void setSize(String size) {
+        Size = size;
     }
 
     public String getOrderID() {

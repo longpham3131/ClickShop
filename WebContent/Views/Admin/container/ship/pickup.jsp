@@ -105,6 +105,7 @@
                                                     <th>Mã sản phẩm</th>
                                                     <th>Tên sản phẩm</th>
                                                     <th>Số lượng</th>
+                                                    <th>Size</th>
                                                     <th>Đơn giá</th>
                                                 </tr>
                                                 </thead>
@@ -117,6 +118,7 @@
                                                             <td>${listPick3.productID}</td>
                                                             <td>${listPick3.name}</td>
                                                             <td>${listPick3.quanity}</td>
+                                                            <td>${listPick3.size} </td>
                                                             <td>${listPick3.subTotal}</td>
                                                             <c:set var="tien" value="${listPick3.subTotal}"/>
                                                             <c:set var="sum" value="${sum + tien}"/>

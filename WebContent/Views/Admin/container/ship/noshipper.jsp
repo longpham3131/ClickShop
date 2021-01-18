@@ -105,6 +105,7 @@
                                                     <th>Mã sản phẩm </th>
                                                     <th>Tên sản phẩm</th>
                                                     <th>Số lượng</th>
+                                                    <th>Size</th>
                                                     <th>Đơn giá</th>
                                                 </tr>
                                                 </thead>
@@ -117,6 +118,7 @@
                                                             <td>${listSpg.productID}</td>
                                                             <td>${listSpg.name}</td>
                                                             <td>${listSpg.quanity}</td>
+                                                            <td>${listSpg.size} </td>
                                                             <td>${listSpg.subTotal}</td>
                                                             <c:set var="tien" value="${listSpg.subTotal}"/>
                                                             <c:set var="sum" value="${sum + tien}"/>

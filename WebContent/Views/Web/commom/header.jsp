@@ -412,7 +412,7 @@
                             <h3>Tổng tiền: <span class="totalPrice">0đ</span></h3>
 
                         </div>
-                        <div id="divIp"></div>
+
                     </div>
                     <!-- Modal footer -->
                     <div class="modal-footer">

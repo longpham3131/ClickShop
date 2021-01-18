@@ -106,6 +106,7 @@
                                                             <th>Mã sản phẩm</th>
                                                             <th>Tên sản phẩm</th>
                                                             <th>Số lượng</th>
+                                                            <th>Size</th>
                                                             <th>Đơn giá</th>
                                                         </tr>
                                                         </thead>
@@ -119,6 +120,7 @@
                                                                     <td>${listShiping.productID}</td>
                                                                     <td>${listShiping.name}</td>
                                                                     <td>${listShiping.quanity}</td>
+                                                                    <td>${listShiping.size} </td>
                                                                     <td>${listShiping.subTotal}</td>
                                                                     <c:set var="tien" value="${listShiping.subTotal}"/>
                                                                     <c:set var="sum" value="${sum + tien}"/>

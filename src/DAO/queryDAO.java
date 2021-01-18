@@ -895,7 +895,7 @@ public class queryDAO {
             rs = stmt.executeQuery(query);
             while (rs.next()) {
                 list.add(new DetailOrder(rs.getString(1), rs.getString(2), rs.getString(3), rs.getString(4),
-                        rs.getString(5)));
+                        rs.getString(5), rs.getString(6)));
             }
             //System.out.println("Contents of list ::" + list);
             return list;
@@ -961,7 +961,7 @@ public class queryDAO {
             rs = stmt.executeQuery(query);
             while (rs.next()) {
                 list.add(new DetailOrder(rs.getString(1), rs.getString(2), rs.getString(3), rs.getString(4),
-                        rs.getString(5)));
+                        rs.getString(5), rs.getString(6)));
             }
             return list;
         } catch (Exception e) {
@@ -1021,7 +1021,7 @@ public class queryDAO {
             rs = stmt.executeQuery(query);
             while (rs.next()) {
                 list.add(new DetailOrder(rs.getString(1), rs.getString(2), rs.getString(3), rs.getString(4),
-                        rs.getString(5)));
+                        rs.getString(5),rs.getString(6)));
             }
             //System.out.println("Contents of list ::" + list);
             return list;
@@ -1192,11 +1192,11 @@ public class queryDAO {
     }
 
     public boolean InsertDetailOrder(String PurchaseOrderId, String ProductId, String Quantity, String Cost, String
-            UnitPrice) {
+            UnitPrice, String size) {
         try {
             String sub = String.valueOf(Integer.parseInt(UnitPrice) * Integer.parseInt(Quantity));
 
-            String sqlExec = "insert into PurchaseOrderDetail VALUES(? ,? ,? ,? ,? ,?) ";
+            String sqlExec = "insert into PurchaseOrderDetail VALUES(? ,? ,? ,? ,? ,?,?) ";
 
             conn = new MyDB().getConnection();
             conn.setAutoCommit(false);
@@ -1207,11 +1207,14 @@ public class queryDAO {
             clmt.setString(4, Cost);
             clmt.setString(5, UnitPrice);
             clmt.setString(6, sub);
+            clmt.setString(7, size);
             clmt.execute();
             conn.commit();
             //    System.out.println("dcm loi hoai 1");
-            String query2 = "Update Product \n" +
-                    "set Available = (Available-" + Quantity + ") where ProductId='" + ProductId + "'";
+          //  String query2 = "Update Product \n" +
+           //         "set Available = (Available-" + Quantity + ") where ProductId='" + ProductId + "'";
+            String query2 = "Update ProductSize \n" +
+                    "set Available = (Available-" + Quantity + ") where ProductId='" + ProductId + "' and [Size] = '"+size+"'";
             conn = new MyDB().getConnection();
             //  System.out.println("dcm loi hoai 2");
             ps = conn.prepareStatement(query2);

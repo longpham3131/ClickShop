@@ -58,27 +58,31 @@ public class order extends HttpServlet {
         queryDAO dao = new queryDAO();
         try {
             String dem = (String) request.getParameter("dem");
-            System.out.print("+++++++++++: " + request.getAttribute("kq"));
+          //  System.out.print("+++++++++++: " + request.getAttribute("kq"));
+            System.out.print("++++++  -1  ++++: "+dem);
             if (Integer.parseInt(dem) > 0) {
+                System.out.print("++++++  0  ++++: ");
                 String email = (String) request.getParameter("email");
                 String id = dao.idByEmail(email);
                 String address = (String) request.getParameter("address");
                 String phone = (String) request.getParameter("phone");
                 String name = (String) request.getParameter("name");
 
-
+                System.out.print("++++++  1  ++++: ");
                 int d = Integer.parseInt(dem);
                 String[] giaSP = new String[d + 1];
                 String[] maSP = new String[d + 1];
                 String[] soLuong = new String[d + 1];
+                String[] size = new String[d+1];
                 int sub = 0;
                 for (int i = 0; i < d; i++) {
                     maSP[i] = (String) request.getParameter("maSP" + i);
                     soLuong[i] = (String) request.getParameter("soLuong" + i);
                     giaSP[i] = (String) request.getParameter("giaSP" + i);
+                    size[i] = (String) request.getParameter("sizeSP"+i);
                     System.out.println("\n ID USER:" + id + "...");
                     sub = sub + (Integer.parseInt(giaSP[i]) * Integer.parseInt(soLuong[i]));
-                    System.out.println("---" + maSP[i] + "--" + soLuong[i] + "--" + giaSP[i]);
+                    System.out.println("---" + maSP[i] + "--" + soLuong[i] + "--" + giaSP[i] + "-- "+size[i] + "--");
                 }
                 if(sub < Integer.parseInt( dao.getCoin(email))) {  // du tien
                     String orderId = dao.initOrder(id, String.valueOf(sub), address, phone, name); // add 1
@@ -87,14 +91,14 @@ public class order extends HttpServlet {
                         String mess = "This is your order: <br>Order Id: " + orderId +
                                 "<table style=\"border: 2px solid black;\">" +
                                 "<thead>" +
-                                "<th scope=\"col\">STT</th> <th scope=\"col\">Product Id</th scope=\"col\"> <th>Quanity</th>  <th scope=\"col\">Price</th>" +
+                                "<th scope=\"col\">STT</th> <th scope=\"col\">Product Id</th scope=\"col\"> <th>Quanity</th>  <th scope=\"col\">Price</th> <th scope=\"col\">Size</th>" +
                                 "</thead> <tbody>";
 
                         for (int i = 0; i < d; i++) {
-                            if (dao.InsertDetailOrder(orderId, maSP[i], soLuong[i], giaSP[i], giaSP[i]) == false)
+                            if (dao.InsertDetailOrder(orderId, maSP[i], soLuong[i], giaSP[i], giaSP[i], size[i]) == false)
                                System.out.println(" TRIGGER: VUOT QUA SO LUONG");
                             else {
-                                mess = mess + "<tr> <td>" + i + 1 + "</td> <td>" + maSP[i] + "</td>    <td>" + soLuong[i] + "</td> <td>" + giaSP[i] + "</td> </tr> ";
+                                mess = mess + "<tr> <td>" + i + 1 + "</td> <td>" + maSP[i] + "</td>    <td>" + soLuong[i] + "</td> <td>" + giaSP[i] + "</td> <td>" + size[i] + "</td> </tr> ";
                             }
                         }
                         mess = mess + "</tbody> </table>";
