@@ -13,7 +13,7 @@
 
 </head>
 
-<body>
+<body class="position-relative">
 <c:import url="./commom/header.jsp"> </c:import>
 <c:import url="./commom/sideBar.jsp"> </c:import>
 <section class="carousel">
