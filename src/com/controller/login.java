@@ -62,8 +62,10 @@ public class login extends HttpServlet {
                     session.setAttribute("Check_Authentic_Final_Using", kq);
                     if (kq.equals("Administrator")) {
                         url = "Views/Admin/container/home.jsp";
+                        System.out.println("...."+url);
                         RequestDispatcher rq = request.getRequestDispatcher(url);
                         rq.forward(request, response);
+
                     } else if (kq.equals("USER")) {
                         fillAllDisplay zx10r = new fillAllDisplay();
                         System.out.print("8888" + kq);

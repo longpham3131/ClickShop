@@ -157,9 +157,11 @@ function inputSP(mangSP) {
            <input type="hidden" value="${item.giaSP}" name="giaSP${i}">
         `;
         i++;
+
        })
      content += ` <input type="hidden" value="${i}" name="dem">`;
     div.innerHTML = content;
+
 }
 
 
