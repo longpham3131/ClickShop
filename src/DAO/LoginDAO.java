@@ -71,7 +71,7 @@ public class LoginDAO {
 					return "BAN";
 				System.out.println(rs2.getString(1) );
 			}
-
+			System.out.println("DAdasD         f");
             String query= "SELECT [dbo].[KienTraDangNhap] ('"+email+"','"+pass+"')";
             conn = new  MyDB().getConnection();
             ps = conn.prepareStatement(query);

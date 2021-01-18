@@ -2,6 +2,7 @@ package com.controller;
 
 import DAO.LoginDAO;
 import DAO.queryDAO;
+import com.controller.admin.fillDashBoard;
 import com.controller.admin.shipped;
 import com.controller.shipper.goShipper;
 import com.controller.web.fillAllDisplay;
@@ -60,10 +61,14 @@ public class login extends HttpServlet {
                     session.setAttribute("AccId", id);
                     session.setAttribute("coin", mycoib);
                     session.setAttribute("Check_Authentic_Final_Using", kq);
+                    System.out.println("......"+kq+".......");
                     if (kq.equals("Administrator")) {
+                        System.out.println("....vl ");
                         url = "Views/Admin/container/home.jsp";
                         RequestDispatcher rq = request.getRequestDispatcher(url);
                         rq.forward(request, response);
+//                        fillDashBoard z1000 = new fillDashBoard();
+//                        z1000.doPost(request,response);
                     } else if (kq.equals("USER")) {
                         fillAllDisplay zx10r = new fillAllDisplay();
                         System.out.print("8888" + kq);
