@@ -27,6 +27,9 @@
         </form>
     </div>
     <div class="p-3">
+        <h1>
+            <%=request.getAttribute("tenCata") %>
+        </h1>
         <form action="myservlet.do" method="POST">
             <select name="myselect" class="form-control ml-auto col-2" id="myselect" onchange="this.form.submit()">
                 <option value="1">Sản phẩm nổi bật</option>
