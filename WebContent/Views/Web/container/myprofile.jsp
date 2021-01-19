@@ -104,6 +104,13 @@
                             </button>
                         </div>
 
+                        <form action="<%=request.getContextPath()%>/use-voucher" method="post">
+                            <input type="hidden" name="myemail" value="${info.email}">
+                          Mã Vouchde:  <input type="text" name="code">
+                            <input type="submit" value="Đồng ý">
+                            <h5>${useVou}</h5>
+                        </form>
+
                     </c:forEach>
                 </div>
             </div>

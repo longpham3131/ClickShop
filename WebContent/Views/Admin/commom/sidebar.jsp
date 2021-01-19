@@ -50,6 +50,7 @@
                 <a class="collapse-item" href="<%= request.getContextPath()%>/fill-All-Product">Hàng hóa</a>
                 <a class="collapse-item" href="<%= request.getContextPath()%>/fill-All-Order">Đơn hàng</a>
                 <a class="collapse-item" href="<%= request.getContextPath()%>/ship">Vận chuyển</a>
+                <a class="collapse-item" href="<%= request.getContextPath()%>/voucher">Voucher</a>
             </div>
         </div>
     </li>

@@ -8,7 +8,6 @@ import DB.MyDB;
 import com.model.*;
 
 
-
 public class queryDAO {
 
     Connection conn = null;
@@ -489,7 +488,7 @@ public class queryDAO {
             rs = stmt.executeQuery(query);
             while (rs.next()) {
 
-                listprodsz.add(new ProductSize(rs.getString(1).trim(),rs.getString(3).trim(), rs.getString(4).trim()));
+                listprodsz.add(new ProductSize(rs.getString(1).trim(), rs.getString(3).trim(), rs.getString(4).trim()));
 
             }
             return listprodsz;
@@ -605,7 +604,7 @@ public class queryDAO {
             rs = stmt.executeQuery(query);
             while (rs.next()) {
                 listDon.add(new OrderList(rs.getString(1), rs.getString(2), rs.getString(3), rs.getString(4),
-                        rs.getString(5), rs.getString(6), rs.getString(7),  rs.getString(8)));
+                        rs.getString(5), rs.getString(6), rs.getString(7), rs.getString(8)));
             }
             return listDon;
         } catch (Exception e) {
@@ -1021,7 +1020,7 @@ public class queryDAO {
             rs = stmt.executeQuery(query);
             while (rs.next()) {
                 list.add(new DetailOrder(rs.getString(1), rs.getString(2), rs.getString(3), rs.getString(4),
-                        rs.getString(5),rs.getString(6)));
+                        rs.getString(5), rs.getString(6)));
             }
             //System.out.println("Contents of list ::" + list);
             return list;
@@ -1211,10 +1210,10 @@ public class queryDAO {
             clmt.execute();
             conn.commit();
             //    System.out.println("dcm loi hoai 1");
-          //  String query2 = "Update Product \n" +
-           //         "set Available = (Available-" + Quantity + ") where ProductId='" + ProductId + "'";
+            //  String query2 = "Update Product \n" +
+            //         "set Available = (Available-" + Quantity + ") where ProductId='" + ProductId + "'";
             String query2 = "Update ProductSize \n" +
-                    "set Available = (Available-" + Quantity + ") where ProductId='" + ProductId + "' and [Size] = '"+size+"'";
+                    "set Available = (Available-" + Quantity + ") where ProductId='" + ProductId + "' and [Size] = '" + size + "'";
             conn = new MyDB().getConnection();
             //  System.out.println("dcm loi hoai 2");
             ps = conn.prepareStatement(query2);
@@ -1393,7 +1392,7 @@ public class queryDAO {
     // block order day ne
     public boolean blockOrder(String id) {
         try {
-            String query2 = "update PurchaseOrder set CancelInvoice='0', Status='Completed' WHERE PurchaseOrderId='" + id + "'" ;
+            String query2 = "update PurchaseOrder set CancelInvoice='0', Status='Completed' WHERE PurchaseOrderId='" + id + "'";
             System.out.println(query2);
             conn = new MyDB().getConnection();
             System.out.println(query2);
@@ -1401,6 +1400,174 @@ public class queryDAO {
             ps.executeUpdate();
 
             return true;
+        } catch (Exception e) {
+            System.out.println(e);
+        }
+        return false;
+    }
+
+
+    public boolean insertVoucher(String code, String coin) {
+        try {
+            String query2 = "INSERT INTO [dbo].[voucher]   ([code]\n" +
+                    "           ,[coin]\n" +
+                    "           ,[status]) values ('" + code + "', '" + coin + "','1')";
+            conn = new MyDB().getConnection();
+            ps = conn.prepareStatement(query2);
+            ps.executeUpdate();
+            return true;
+        } catch (Exception e) {
+            System.out.println(e);
+        }
+        return false;
+    }
+
+    public int statusVoucher(String code) {
+        try {
+            String query2 = "select status from [dbo].[voucher]  where code='" + code + "'";
+            conn = new MyDB().getConnection();
+            ps = conn.prepareStatement(query2);
+            rs = ps.executeQuery();
+            while (rs.next()) {
+                System.out.println(rs.getString(1));
+                return rs.getInt(1);
+            }
+        } catch (Exception e) {
+            System.out.println(e);
+        }
+        return 0;
+    }
+
+    public String coinVoucher(String code) {
+        try {
+            String query2 = "select coin from [dbo].[voucher]  where code='" + code + "'";
+            conn = new MyDB().getConnection();
+            ps = conn.prepareStatement(query2);
+            rs = ps.executeQuery();
+            while (rs.next()) {
+                return rs.getString(1);
+            }
+        } catch (Exception e) {
+            System.out.println(e);
+        }
+        return null;
+    }
+
+    public boolean trueVoucher(String code) {
+        try {
+            String query2 = "select * from [dbo].[voucher]  where code='" + code + "'";
+            conn = new MyDB().getConnection();
+            ps = conn.prepareStatement(query2);
+            rs = ps.executeQuery();
+            while (rs.next()) {
+                return true;
+            }
+        } catch (Exception e) {
+            System.out.println(e);
+        }
+        return false;
+    }
+
+    public List<Voucher> voucherList() {
+        String query = "SELECT * FROM  Voucher";
+        List<Voucher> list = new ArrayList<Voucher>();
+        try {
+            conn = new MyDB().getConnection();
+            ps = conn.prepareStatement(query);
+            rs = ps.executeQuery();
+            String st;
+            while (rs.next()) {
+                if (rs.getInt(3) == 1)
+                    st = "Có hiệu lực";
+                else if (rs.getInt(3) == 0)
+                    st = "Không hiệu lực";
+                else
+                    st = "Đã được sử dụng";
+                list.add(new Voucher(rs.getString(1), rs.getString(2), st));
+            }
+            return list;
+        } catch (Exception e) {
+        }
+        return null;
+    }
+
+    public boolean avaiVoucher(String code) {
+        try {
+            String query2 = "update Voucher set Status='1' WHERE code='" + code + "'";
+            conn = new MyDB().getConnection();
+            ps = conn.prepareStatement(query2);
+            ps.executeUpdate();
+            return true;
+        } catch (Exception e) {
+            System.out.println(e);
+        }
+        return false;
+    }
+
+    public boolean blockVoucher(String code) {
+        try {
+            String query2 = "update Voucher set Status='0' WHERE code='" + code + "'";
+            conn = new MyDB().getConnection();
+            ps = conn.prepareStatement(query2);
+            ps.executeUpdate();
+            return true;
+        } catch (Exception e) {
+            System.out.println(e);
+        }
+        return false;
+    }
+
+    public boolean deleteVoucher(String code) {
+        try {
+            String query2 = "delete Voucher WHERE code='" + code + "'";
+            conn = new MyDB().getConnection();
+            ps = conn.prepareStatement(query2);
+            ps.executeUpdate();
+            return true;
+        } catch (Exception e) {
+            System.out.println(e);
+        }
+        return false;
+    }
+
+    public boolean useVoucher(String code, String mail) {
+        try {
+            String query1 = "select coin from [dbo].[voucher]  where code='" + code + "'";
+            conn = new MyDB().getConnection();
+            ps = conn.prepareStatement(query1);
+            rs = ps.executeQuery();
+
+            if (rs.next()) {
+               String coin = rs.getString(1);
+                String query2 = "update Account set coin = coin+ "+coin+" WHERE Email='" + mail + "'";
+                conn = new MyDB().getConnection();
+                ps = conn.prepareStatement(query2);
+                ps.executeUpdate();
+
+                String query3 = "update Voucher set status = '-1' where code='" + code + "'";
+                conn = new MyDB().getConnection();
+                ps = conn.prepareStatement(query3);
+                ps.executeUpdate();
+                System.out.println(query2);
+                return true;
+            }
+        } catch (Exception e) {
+            System.out.println(e);
+        }
+
+        return false;
+    }
+
+
+    public boolean VoucherAvai(String code) {
+        try {
+            String query2 = "select * from [dbo].[voucher]  where code='" + code + "' AND status='1'";
+            conn = new MyDB().getConnection();
+            ps = conn.prepareStatement(query2);
+            rs = ps.executeQuery();
+            while (rs.next()) {
+                return true;
+            }
         } catch (Exception e) {
             System.out.println(e);
         }
