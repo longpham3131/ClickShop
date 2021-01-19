@@ -12,7 +12,7 @@
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title>?<c:out value="${thongbao }"/>-<c:out value="${ from}"/>
+    <title>Trang đơn hàng
     </title>
     <!-- Custom fonts for this template-->
 

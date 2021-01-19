@@ -27,7 +27,7 @@
 
                     <tr>
                         <td>${listIO.orderID}</td>
-                        <td>${listIO.subTotal}</td>
+                        <td class="priceProduct">${listIO.subTotal}</td>
                         <td>${listIO.address}</td>
                         <td>
                             <button type="button" class="btn btn-info" title="Xem chi tiết"
@@ -119,7 +119,7 @@
                                                             <td>${listSpg.name}</td>
                                                             <td>${listSpg.quanity}</td>
                                                             <td>${listSpg.size} </td>
-                                                            <td>${listSpg.subTotal}</td>
+                                                            <td class="priceProduct">${listSpg.subTotal}</td>
                                                             <c:set var="tien" value="${listSpg.subTotal}"/>
                                                             <c:set var="sum" value="${sum + tien}"/>
                                                         </tr>
@@ -127,7 +127,7 @@
                                                 </c:forEach>
                                                 </tbody>
                                             </table>
-                                            <div class="text-right"> Tổng tiền:  ${sum}</div>
+                                            <div class="text-right " > Tổng tiền: <span class="priceProduct">${sum}</span> </div>
                                         </div>
 
 

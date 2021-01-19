@@ -12,7 +12,7 @@
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title>?<c:out value="${thongbao }"/>-<c:out value="${ from}"/>
+    <title>Trang sản phẩm
     </title>
     <!-- CusStom fonts for this template-->
 
@@ -256,7 +256,7 @@ You can't access this page if you use link-url and not login -->
                                                      class="img-fluid ">
                                             </td>
                                             <td class="w-25">${row.name}</td>
-                                            <td>${row.getUnitPrice()}</td>
+                                            <td class="priceProduct">${row.getUnitPrice()}</td>
                                             <td>${row.available}</td>
                                             <td>
                                                 <button type="button" class="btn btn-info" title="Detail"
@@ -335,14 +335,15 @@ You can't access this page if you use link-url and not login -->
                                                                             </c:otherwise>
                                                                         </c:choose>
                                                                     </div>
-                                                                    <label for="pricelb"
+                                                                    <label
                                                                            class="col-sm-4 col-form-label">Đơn Giá
                                                                         :</label>
                                                                     <div class="col-sm-8">
-                                                                        <input type="text" readonly
-                                                                               class="form-control-plaintext"
-                                                                               id="pricelb"
-                                                                               value="${row.getUnitPrice()}">
+                                                                        <span class="priceProduct">${row.getUnitPrice()}</span>
+<%--                                                                        <input type="text" readonly--%>
+<%--                                                                               class="form-control-plaintext priceProduct"--%>
+<%--                                                                               id="pricelb"--%>
+<%--                                                                               value="${row.getUnitPrice()}">--%>
                                                                     </div>
 
                                                                     <label for="deslb"
@@ -1160,6 +1161,14 @@ You can't access this page if you use link-url and not login -->
 
     <!-- Page level custom scripts -->
 
-
+        <script>
+            let listGia = document.querySelectorAll(".priceProduct");
+            for (i = 0; i < listGia.length; i++) {
+                listGia[i].innerHTML = new Intl.NumberFormat('vn-VN', {
+                    style: 'currency',
+                    currency: 'VND'
+                }).format(parseInt(listGia[i].innerHTML));
+            }
+        </script>
 </body>
 </html>

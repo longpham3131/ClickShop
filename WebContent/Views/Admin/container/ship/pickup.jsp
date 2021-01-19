@@ -119,7 +119,7 @@
                                                             <td>${listPick3.name}</td>
                                                             <td>${listPick3.quanity}</td>
                                                             <td>${listPick3.size} </td>
-                                                            <td>${listPick3.subTotal}</td>
+                                                            <td class="priceProduct">${listPick3.subTotal}</td>
                                                             <c:set var="tien" value="${listPick3.subTotal}"/>
                                                             <c:set var="sum" value="${sum + tien}"/>
                                                         </tr>
@@ -129,7 +129,7 @@
                                             </table>
 
                                             <div class="text-right">
-                                                Tổng tiền đơn hàng: ${sum}
+                                                Tổng tiền đơn hàng:  <span class="priceProduct"> ${sum} </span>
                                             </div>
                                         </div>
 

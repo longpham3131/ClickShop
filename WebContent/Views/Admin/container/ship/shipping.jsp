@@ -121,7 +121,7 @@
                                                                     <td>${listShiping.name}</td>
                                                                     <td>${listShiping.quanity}</td>
                                                                     <td>${listShiping.size} </td>
-                                                                    <td>${listShiping.subTotal}</td>
+                                                                    <td class="priceProduct">${listShiping.subTotal}</td>
                                                                     <c:set var="tien" value="${listShiping.subTotal}"/>
                                                                     <c:set var="sum" value="${sum + tien}"/>
                                                                 </tr>
@@ -129,7 +129,7 @@
                                                         </c:forEach>
                                                         </tbody>
                                                     </table>
-                                                    <div class="text-right">Tổng tiền: ${sum}</div>
+                                                    <div class="text-right">Tổng tiền: <span class="priceProduct">${sum}</span> </div>
                                                 </div>
 
 
@@ -391,7 +391,7 @@
                                                                     <td>${listShiping.productID}</td>
                                                                     <td>${listShiping.name}</td>
                                                                     <td>${listShiping.quanity}</td>
-                                                                    <td>${listShiping.subTotal}</td>
+                                                                    <td class="priceProduct">${listShiping.subTotal}</td>
                                                                     <c:set var="tien" value="${listShiping.subTotal}"/>
                                                                     <c:set var="sum" value="${sum + tien}"/>
                                                                 </tr>
@@ -399,7 +399,7 @@
                                                         </c:forEach>
                                                         </tbody>
                                                     </table>
-                                                    <div class="text-right">Tổng tiền: ${sum}</div>
+                                                    <div class="text-right">Tổng tiền: <span class="priceProduct">${sum}</span> </div>
                                                 </div>
                                                 <!-- Modal footer -->
                                                 <div class="modal-footer">
@@ -655,7 +655,7 @@
                                                                     <td>${listShiping.productID}</td>
                                                                     <td>${listShiping.name}</td>
                                                                     <td>${listShiping.quanity}</td>
-                                                                    <td>${listShiping.subTotal}</td>
+                                                                    <td class="priceProduct">${listShiping.subTotal}</td>
                                                                     <c:set var="tien" value="${listShiping.subTotal}"/>
                                                                     <c:set var="sum" value="${sum + tien}"/>
                                                                 </tr>
@@ -663,7 +663,7 @@
                                                         </c:forEach>
                                                         </tbody>
                                                     </table>
-                                                    <div class="text-right">Tổng tiền: ${sum}</div>
+                                                    <div class="text-right">Tổng tiền: <span class="priceProduct"> ${sum}</span></div>
                                                 </div>
 
 

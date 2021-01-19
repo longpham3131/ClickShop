@@ -7,7 +7,7 @@
 <html>
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
-    <title>Tài khoản</title>
+    <title>Trang Tài khoản</title>
     <!-- Custom fonts for this template-->
     <link
             href="<%=request.getContextPath()%>/Views/Admin/vendor/fontawesome-free/css/all.min.css"

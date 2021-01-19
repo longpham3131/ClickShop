@@ -7,7 +7,7 @@
 <html>
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
-    <title>Tài khoản</title>
+    <title>Trang vận chuyển</title>
     <!-- Custom fonts for this template-->
     <link
             href="<%=request.getContextPath()%>/Views/Admin/vendor/fontawesome-free/css/all.min.css"
@@ -250,5 +250,14 @@
     <script
             src="<%=request.getContextPath()%>/Views/Admin/js/tableShipView.js"></script>
 
+        <script>
+            let listGia = document.querySelectorAll(".priceProduct");
+            for (i = 0; i < listGia.length; i++) {
+                listGia[i].innerHTML = new Intl.NumberFormat('vn-VN', {
+                    style: 'currency',
+                    currency: 'VND'
+                }).format(parseInt(listGia[i].innerHTML));
+            }
+        </script>
 </body>
 </html>
