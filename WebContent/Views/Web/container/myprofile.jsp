@@ -14,6 +14,9 @@
 <c:import url="../global/linkCSS.jsp"> </c:import>
 <body class="position-relative">
 
+<c:import url="../commom/header.jsp"> </c:import>
+<c:import url="../commom/sideBar.jsp"> </c:import>
+
 <c:if test="${kqupdate == '1'}"><script>  alert("Đổi password thành công"); </script> </c:if>
 <c:if test="${kqupdate == '2'}"><script>  alert("Cập nhật thông tin thành công"); </script> </c:if>
 <c:if test="${kqupdate == '0'}"><script>  alert("Opps! Đã xảy ra lỗi"); </script> </c:if>
@@ -33,8 +36,6 @@
     }
 </style>
 
-<c:import url="../commom/header.jsp"> </c:import>
-<c:import url="../commom/sideBar.jsp"> </c:import>
 <div class="row p-4 profilePage">
     <div class="col-3">
         <div class="nav flex-column nav-pills" id="v-pills-tab" role="tablist" aria-orientation="vertical">
@@ -44,6 +45,9 @@
 
             <a class="nav-link" id="v-pills-passwd-tab" data-toggle="pill" href="#v-pills-passwd" role="tab"
                aria-controls="v-pills-passwd" aria-selected="false">Đổi mật khẩu</a>
+
+            <a class="nav-link" id="v-pills-voucher-tab" data-toggle="pill" href="#v-pills-voucher" role="tab"
+               aria-controls="v-pills-passwd" aria-selected="false">Voucher</a>
 
             <a class="nav-link " id="v-pills-home-tab" data-toggle="pill" href="#v-pills-home" role="tab"
                aria-controls="v-pills-home" aria-selected="true">Lịch sử đơn hàng</a>
@@ -55,7 +59,7 @@
         <div class="tab-content" id="v-pills-tabContent">
             <div class="tab-pane fade  show active" id="v-pills-profile" role="tabpanel"
                  aria-labelledby="v-pills-profile-tab">
-                <div class="text-center">
+                <div class="text-center pb-3">
                     <h4>Thông tin cá nhân</h4>
                 </div>
                 <div class="profile__user container col-9">
@@ -104,19 +108,14 @@
                             </button>
                         </div>
 
-                        <form action="<%=request.getContextPath()%>/use-voucher" method="post">
-                            <input type="hidden" name="myemail" value="${info.email}">
-                          Mã Vouchde:  <input type="text" name="code">
-                            <input type="submit" value="Đồng ý">
-                            <h5>${useVou}</h5>
-                        </form>
+
 
                     </c:forEach>
                 </div>
             </div>
             <div class="tab-pane fade" id="v-pills-passwd" role="tabpanel"
                  aria-labelledby="v-pills-profile-tab">
-                <div class="text-center">
+                <div class="text-center pb-3">
                     <h4>Đổi mật khẩu</h4>
                 </div>
                 <div class="profile__user container col-9">
@@ -151,6 +150,34 @@
                         </button>
                     </div>
                 </div>
+            </div>
+            <div class="tab-pane fade" id="v-pills-voucher">
+                <div class="text-center pb-3">
+                    <h4>Sử dụng voucher</h4>
+                </div>
+                <div class="container col-9">
+                    <c:forEach items="${myinfo}" var="info">
+                        <form action="<%=request.getContextPath()%>/use-voucher" method="post" id="formVoucher">
+                            <div class="form-group row">
+                                <label for="inpVoucher" class="col-sm-4 col-form-label">Mã Vouchde:  </label>
+                                <div class="col-sm-8">
+                                    <input type="hidden" name="myemail" value="${info.email}">
+                                    <input type="text" class="form-control" id="inpVoucher" name="code">
+                                    <div class="mt-2">
+                                        <span >${useVou}</span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="text-right">
+                                <button type="submit"  class=" button dark btn-addtocart addtocart-modal"
+                                        style="background-color: #5a6268; color: white";> Sử dụng
+                                </button>
+                            </div>
+                        </form>
+                    </c:forEach>
+
+                </div>
+
             </div>
             <div class="tab-pane fade" id="v-pills-home" role="tabpanel" aria-labelledby="v-pills-home-tab">
                 <%--TAT CA DON HANG CUA BAN--%>

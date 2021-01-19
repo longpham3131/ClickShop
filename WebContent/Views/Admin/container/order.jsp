@@ -210,10 +210,9 @@
                                             </div>
                                         </div>
                                         <c:if test="${row.status == 'Init'}">
-                                            <button type="button" class="btn btn-dark" title="Cancel Order"
+                                            <button type="button" class="btn btn-danger" title="Cancel Order"
                                                     data-toggle="modal"
-                                                    data-target="#cancelorder${row.purchaseOrderId}"><i
-                                                    class="fa fa-lock"></i>
+                                                    data-target="#cancelorder${row.purchaseOrderId}"><i class="fa fa-times"></i></i>
                                             </button>
                                             <div class="modal fade" id="cancelorder${row.purchaseOrderId}">
                                                 <div class="modal-dialog">

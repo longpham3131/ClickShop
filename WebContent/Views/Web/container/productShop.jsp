@@ -20,17 +20,24 @@
 <section class="product">
     <div class="product__head d-flex bg-light p-3">
         <p>Trang chủ /</p>
-        <form action="<%=request.getContextPath()%>//fill-All-Sanpham" method="post">
+        <form action="<%=request.getContextPath()%>//fill-All-Sanpham" method="post" class="pl-2">
             <button type="submit" class="btnDanhMuc">
-                Tất cả sản phẩm
+                Tất cả sản phẩm /
             </button>
         </form>
+        <c:choose>
+            <c:when test="${ tenCata == 'Tất cả sản phẩm' }">
+                <p class="pl-2"></p>
+            </c:when>
+            <c:otherwise>
+                <p class="pl-2"><%=request.getAttribute("tenCata") %> </p>
+            </c:otherwise>
+        </c:choose>
+
     </div>
-    <div class="p-3">
-        <h1>
-            <%=request.getAttribute("tenCata") %>
-        </h1>
-        <form action="<%=request.getContextPath()%>/sort-Product" method="POST">
+    <div class="p-3 ">
+
+        <form action="<%=request.getContextPath()%>/sort-Product" method="POST" >
             <input type="hidden" value="<%=request.getAttribute("tenCata") %>" name="Name"/>
             <select name="Type" class="form-control ml-auto col-2" id="myselect" onchange="this.form.submit()">
                 <option value="1">Sản phẩm nổi bật</option>

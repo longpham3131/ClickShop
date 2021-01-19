@@ -95,7 +95,7 @@
             <form class="login100-form validate-form" action="${pageContext.request.contextPath}/login-all"
                   method="post">
 					<span class="login100-form-logo">
-						<i class="zmdi zmdi-landscape"></i>
+						<img src="<%=request.getContextPath()%>/Views/Web/image_product/logo.png" alt="">
 					</span>
 
                 <span class="login100-form-title p-b-34 p-t-27">
@@ -103,12 +103,12 @@
 					</span>
 
                 <div class="wrap-input100 validate-input" data-validate="Enter username">
-                    <input class="input100" type="text" name="id" placeholder="Username" value=<%= id%>>
+                    <input class="input100" type="text" name="id" placeholder="Tài khoản" value=<%= id%>>
                     <span class="focus-input100" data-placeholder="&#xf207;"></span>
                 </div>
 
                 <div class="wrap-input100 validate-input" data-validate="Enter password">
-                    <input class="input100" type="password" name="password" placeholder="Password">
+                    <input class="input100" type="password" name="password" placeholder="Mật khẩu">
                     <span class="focus-input100" data-placeholder="&#xf191;"></span>
                 </div>
 

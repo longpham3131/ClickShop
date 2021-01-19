@@ -12,7 +12,7 @@
         id="accordionSidebar">
 
     <!-- Sidebar - Brand -->
-    <a
+    <div
             class="sidebar-brand d-flex align-items-center justify-content-center"
             href="../container/home.jsp">
         <div class="sidebar-brand-icon rotate-n-15">
@@ -21,7 +21,7 @@
         <div class="sidebar-brand-text mx-3">
             Quản Lý
         </div>
-    </a>
+    </div>
 
     <!-- Divider -->
     <hr class="sidebar-divider my-0">

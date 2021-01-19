@@ -58,31 +58,81 @@
             <c:import url="../commom/header.jsp"/>
 
             <!-- -------------------- MAIN CONTAIN ---------------- -->
-            <form action="${pageContext.request.contextPath}/voucher"
-                  method="post">
-                <input type="submit" value="Refresh data">
-            </form>
-            <div>
-                <form action="${pageContext.request.contextPath}/action-voucher" method="post">
-                    <h4> Tạo Voucher </h4>
-                    Nhập mã muốn tạo:
-                    <input type="text" value="" name="newcode">
-                    <input type="number" value="100000" name="coin">
-                    <input type="hidden" value="new" name="type">
-                    <input type="submit" value="Tạo">
-                </form>
+            <div class="card shadow mb-4">
+                <div class="card-header py-3">
+                    <h6 class="m-0 font-weight-bold text-primary"
+                        style="display: inline; float: left; padding-top: 6px">Danh sách Voucher</h6>
+                    <!-- Refresh Databa -->
+                    <div style=" padding-left: 5%; display: inline; width: 30%; float: left">
+                        <form action="${pageContext.request.contextPath}/voucher"
+                              method="post">
+                            <button type="submit" class="btn btn-warning"><i class="fa fa-undo"></i> Tải lại bảng
+                            </button>
+                        </form>
+                    </div>
+
+                    <!-- Button to Open the Modal -->
+                    <button type="button" class="btn btn-success" style="width: 15%; display:inline; float: right;"
+                            data-toggle="modal"
+                            data-target="#addVoucher">
+                        <i class="fa fa-plus mr-2"></i> Thêm voucher
+                    </button>
+                </div>
             </div>
-            <br>
-            <div>
-                <form action="${pageContext.request.contextPath}/action-voucher" method="post">
-                    <h4> Kiểm tra voucher </h4>
-                    Nhập mã muốn kiểm tra
-                    <input type="text" value="" name="checkcode">
-                    <input type="hidden" value="check" name="type">
-                    <input type="submit" value="Kiểm tra">
-                    <p>${kqcoin} <br>${kqstatus}</p>
-                </form>
+
+
+            <!-- The Modal -->
+            <div class="modal fade" id="addVoucher">
+                <div class="modal-dialog modal-dialog-centered">
+                    <div class="modal-content">
+
+                        <!-- Modal Header -->
+                        <div class="modal-header">
+                            <h4 class="modal-title">Thêm Voucher</h4>
+                            <button type="button" class="close" data-dismiss="modal">&times;</button>
+                        </div>
+
+                        <!-- Modal body -->
+                        <div class="modal-body">
+                            <form action="${pageContext.request.contextPath}/action-voucher" method="post" id="addVoucherForm">
+                                <div class="form-group row">
+                                    <label for="inpVoucher" class="col-sm-4 col-form-label">Mã Vouchde:  </label>
+                                    <div class="col-sm-8">
+                                        <input type="text"  class="form-control"  id="inpVoucher" value="" name="newcode">
+
+                                    </div>
+                                </div>
+                                <div class="form-group row">
+                                    <label for="inpValue" class="col-sm-4 col-form-label">Giá trị voucher:  </label>
+                                    <div class="col-sm-8">
+                                        <input type="number" class="form-control" id="inpValue" value="100000" name="coin">
+
+                                    </div>
+                                </div>
+                                <input type="hidden" class="form-control" value="new" name="type">
+                            </form>
+                        </div>
+
+                        <!-- Modal footer -->
+                        <div class="modal-footer">
+                            <button form="addVoucherForm" type="submit" class="btn btn-success"> Thêm</button>
+                            <button type="button" class="btn btn-danger" data-dismiss="modal">Đóng</button>
+                        </div>
+
+                    </div>
+                </div>
             </div>
+
+<%--            <div>--%>
+<%--                <form action="${pageContext.request.contextPath}/action-voucher" method="post">--%>
+<%--                    <h4> Kiểm tra voucher </h4>--%>
+<%--                    Nhập mã muốn kiểm tra--%>
+<%--                    <input type="text" value="" name="checkcode">--%>
+<%--                    <input type="hidden" value="check" name="type">--%>
+<%--                    <input type="submit" value="Kiểm tra">--%>
+<%--                    <p>${kqcoin} <br>${kqstatus}</p>--%>
+<%--                </form>--%>
+<%--            </div>--%>
 
 
             <div class="card-body">
@@ -104,22 +154,21 @@
                                 <td>${vou.code}</td>
                                 <td>${vou.coin} </td>
                                 <td>${vou.status} </td>
-                                <td>
-                                    <form action="${pageContext.request.contextPath}/action-voucher" method="post">
+                                <td class="d-flex ">
+                                    <form action="${pageContext.request.contextPath}/action-voucher" method="post" class="pr-3">
                                         <input type="hidden" value="${vou.code}" name="code">
                                         <input type="hidden" value="1" name="type">
-                                        <input type="submit" class="btn btn-primary" value="1">
-
+                                        <button type="submit" title="Tái kích hoạt voucher" class="btn btn-success"> <i class="fa fa-check"></i></button>
                                     </form>
-                                    <form action="${pageContext.request.contextPath}/action-voucher" method="post">
+                                    <form action="${pageContext.request.contextPath}/action-voucher" method="post" class="pr-3">
                                         <input type="hidden" value="${vou.code}" name="code">
                                         <input type="hidden" value="0" name="type">
-                                        <input type="submit" class="btn btn-primary" value="0">
+                                        <button type="submit" title="Vô hiện hóa voucher" class="btn btn-warning"><i class="fab fa-creative-commons-nc"></i></button>
                                     </form>
                                     <form action="${pageContext.request.contextPath}/action-voucher" method="post">
                                         <input type="hidden" value="${vou.code}" name="code">
                                         <input type="hidden" value="-1" name="type">
-                                        <input type="submit" class="btn btn-primary" value="-1">
+                                        <button type="submit" title="Xóa voucher" class="btn btn-danger"> <i class="fa fa-times"></i></button>
                                     </form>
                                 </td>
                             </tr>
