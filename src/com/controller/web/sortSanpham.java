@@ -40,22 +40,41 @@ public class sortSanpham extends HttpServlet {
 	protected void processRequest(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		response.setContentType("text/html;charset=UTF-8");
+		queryDAO dao = new queryDAO();
 		String name  = request.getParameter("Name");
 		String type = request.getParameter("Type");
-		System.out.print(name);
-		queryDAO dao = new queryDAO();
+		String index = request.getParameter("index");
+		if (index ==null)
+		{
+			index ="1";
+		}
+		int	 indexPage = Integer.parseInt(index);
+		int numberPage = dao.getNumberPage();
+		List<Display> listPhantrang = dao.getPaging(indexPage);
+		List<Display> listSapxeptatca = dao.getPagingSort(indexPage,type);
 		List<Display> danhsachSapxep = dao.filterSapxep(name, type);
+		List<Display> danhsachLoc = dao.filterSanpham(name);
+		System.out.println(danhsachLoc);
 		request.setAttribute("tenCata",name);
-//		if (type == "1") {
-//			danhsachSapxep = dao.filterSanpham(name);
-//			request.setAttribute("listSanpham", danhsachSapxep);
-//			System.out.println("da sap xep 123124");
-//		}
-//		else {
-//			danhsachSapxep = dao.filterSapxep(name, type);
-//			request.setAttribute("listSanpham", danhsachSapxep);
-//		}
-		request.setAttribute("listSanpham", danhsachSapxep);
+		System.out.print(name);
+		System.out.println(name.equals("Tat ca san pham"));
+		if (name.equals("Tat ca san pham") == true) {
+			if (type.equals("ASS") == true) {
+				request.setAttribute("listSanpham", listPhantrang);
+			} else {
+				request.setAttribute("listSanpham", listSapxeptatca);
+                request.setAttribute("numberPage", numberPage);
+			}
+		}
+		else {
+			if (type.equals("ASS") == true) {
+				request.setAttribute("listSanpham", danhsachLoc);
+			} else {
+				request.setAttribute("listSanpham", danhsachSapxep);
+			}
+		}
+		request.setAttribute("Type",type);
+//		request.setAttribute("listSanpham", danhsachSapxep);
 		request.setAttribute("from", request.getAttribute("from"));
 		request.setAttribute("thongbao", request.getAttribute("thongbao"));
 		RequestDispatcher rq = request.getRequestDispatcher("Views/Web/container/productShop.jsp");
