@@ -57,12 +57,13 @@ public class sortSanpham extends HttpServlet {
 		System.out.println(danhsachLoc);
 		request.setAttribute("tenCata",name);
 		System.out.print(name);
-		System.out.println(name.equals("Tất cả sản phẩm"));
+		System.out.println(name.equals("Tat ca san pham"));
 		if (name.equals("Tat ca san pham") == true) {
 			if (type.equals("ASS") == true) {
 				request.setAttribute("listSanpham", listPhantrang);
 			} else {
 				request.setAttribute("listSanpham", listSapxeptatca);
+                request.setAttribute("numberPage", numberPage);
 			}
 		}
 		else {
