@@ -42,7 +42,7 @@ public class fillSanpham extends HttpServlet {
 			throws ServletException, IOException {
 		response.setContentType("text/html;charset=UTF-8");
 		String index = request.getParameter("index");
-		String name = "Tất cả sản phẩm";
+		String name = "Tat ca san pham";
 		System.out.print(index);
 		if (index ==null)
 		{

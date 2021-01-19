@@ -40,20 +40,29 @@ public class sortSanpham extends HttpServlet {
 	protected void processRequest(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		response.setContentType("text/html;charset=UTF-8");
+		queryDAO dao = new queryDAO();
 		String name  = request.getParameter("Name");
 		String type = request.getParameter("Type");
-		queryDAO dao = new queryDAO();
+		String index = request.getParameter("index");
+		if (index ==null)
+		{
+			index ="1";
+		}
+		int	 indexPage = Integer.parseInt(index);
+		int numberPage = dao.getNumberPage();
+		List<Display> listPhantrang = dao.getPaging(indexPage);
+		List<Display> listSapxeptatca = dao.getPagingSort(indexPage,type);
 		List<Display> danhsachSapxep = dao.filterSapxep(name, type);
 		List<Display> danhsachLoc = dao.filterSanpham(name);
 		System.out.println(danhsachLoc);
 		request.setAttribute("tenCata",name);
 		System.out.print(name);
 		System.out.println(name.equals("Tất cả sản phẩm"));
-		if (name.equals("Tất cả sản phẩm") == true) {
+		if (name.equals("Tat ca san pham") == true) {
 			if (type.equals("ASS") == true) {
-				request.setAttribute("listSanpham", danhsachLoc);
+				request.setAttribute("listSanpham", listPhantrang);
 			} else {
-				request.setAttribute("listSanpham", danhsachSapxep);
+				request.setAttribute("listSanpham", listSapxeptatca);
 			}
 		}
 		else {

@@ -348,25 +348,29 @@ public class queryDAO {
         return null;
     }
 
-//    public boolean filter(String productid, String name, String unitprice, String imagepath, String description,
-//                                 String subcategoryid, String categoryid) {
-//        Connection conn1 = null, conn2 = null;
-//        PreparedStatement ps1 = null, ps2 = null;
-//        ResultSet rs = null;
-//        try {
-//            String query = "SELECT Product.ProductId, Product.Name,Product.UnitPrice , Image.ImagePath, Product.Description, Product.SubCategoryId , SubCategory.CategoryId " +
-//                    "FROM dbo.Product ,dbo.[Image],dbo.SubCategory " +
-//                    "WHERE Product.ProductId = Image.ProductId AND Product.SubCategoryId = SubCategory.SubCategoryId AND SubCategory.Name = '?'";
-//            System.out.println(query);
-//            conn1 = new MyDB().getConnection();
-//            ps1 = conn1.prepareStatement(query);
-//            ps1.executeUpdate();
-//            return true;
-//        } catch (Exception e) {
-//            System.out.println(e);
-//        }
-//        return false;
-//    }
+    public List<Display> getPagingSort(int index, String sapxep) {
+        String query = "SELECT Product.ProductId, Product.Name, Product.UnitPrice , Image.ImagePath, Product.Description, Product.SubCategoryId , SubCategory.CategoryId, Product.Available\n" +
+                "FROM dbo.Product ,dbo.[Image],dbo.SubCategory\n" +
+                "WHERE Product.ProductId = Image.ProductId AND Product.SubCategoryId = SubCategory.SubCategoryId\n" +
+                "ORDER BY UnitPrice " + sapxep + "\n" +
+                "OFFSET ? ROWS \n" +
+                "FETCH FIRST 12 ROWS ONLY";
+        List<Display> listSapxeptatca = new ArrayList<Display>();
+        try {
+
+            conn = new MyDB().getConnection();
+            ps = conn.prepareStatement(query);
+            ps.setInt(1, (index - 1) * 12);
+            rs = ps.executeQuery();
+            while (rs.next()) {
+                listSapxeptatca.add(new Display(rs.getString(1), rs.getString(2), rs.getString(3), rs.getString(4),
+                        rs.getString(5), rs.getString(6), rs.getString(7)));
+            }
+            return listSapxeptatca;
+        } catch (Exception e) {
+        }
+        return null;
+    }
 
 
     // ------------------ END DISPLAY ---------------//
