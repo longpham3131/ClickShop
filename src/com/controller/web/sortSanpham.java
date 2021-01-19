@@ -42,20 +42,29 @@ public class sortSanpham extends HttpServlet {
 		response.setContentType("text/html;charset=UTF-8");
 		String name  = request.getParameter("Name");
 		String type = request.getParameter("Type");
-		System.out.print(name);
 		queryDAO dao = new queryDAO();
 		List<Display> danhsachSapxep = dao.filterSapxep(name, type);
+		List<Display> danhsachLoc = dao.filterSanpham(name);
+		System.out.println(danhsachLoc);
 		request.setAttribute("tenCata",name);
-//		if (type == "1") {
-//			danhsachSapxep = dao.filterSanpham(name);
-//			request.setAttribute("listSanpham", danhsachSapxep);
-//			System.out.println("da sap xep 123124");
-//		}
-//		else {
-//			danhsachSapxep = dao.filterSapxep(name, type);
-//			request.setAttribute("listSanpham", danhsachSapxep);
-//		}
-		request.setAttribute("listSanpham", danhsachSapxep);
+		System.out.print(name);
+		System.out.println(name.equals("Tất cả sản phẩm"));
+		if (name.equals("Tất cả sản phẩm") == true) {
+			if (type.equals("ASS") == true) {
+				request.setAttribute("listSanpham", danhsachLoc);
+			} else {
+				request.setAttribute("listSanpham", danhsachSapxep);
+			}
+		}
+		else {
+			if (type.equals("ASS") == true) {
+				request.setAttribute("listSanpham", danhsachLoc);
+			} else {
+				request.setAttribute("listSanpham", danhsachSapxep);
+			}
+		}
+		request.setAttribute("Type",type);
+//		request.setAttribute("listSanpham", danhsachSapxep);
 		request.setAttribute("from", request.getAttribute("from"));
 		request.setAttribute("thongbao", request.getAttribute("thongbao"));
 		RequestDispatcher rq = request.getRequestDispatcher("Views/Web/container/productShop.jsp");

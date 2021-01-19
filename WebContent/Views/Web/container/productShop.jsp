@@ -15,6 +15,17 @@
 
 <body class="position-relative">
 
+<!---- nhan thong bao phan hoi ---->
+<c:if test="${from == 'sort'}">
+<c:if test="${(thongbao == 'true')}">
+    <script type="text/javascript">
+        alert('Sắp xếp thành công');
+    </script>
+</c:if>
+</c:if>
+
+
+
 <c:import url="../commom/header.jsp"> </c:import>
 <c:import url="../commom/sideBar.jsp"> </c:import>
 <section class="product">
@@ -33,7 +44,24 @@
         <form action="<%=request.getContextPath()%>/sort-Product" method="POST">
             <input type="hidden" value="<%=request.getAttribute("tenCata") %>" name="Name"/>
             <select name="Type" class="form-control ml-auto col-2" id="myselect" onchange="this.form.submit()">
-                <option value="1">Sản phẩm nổi bật</option>
+<%--                <c:choose>--%>
+<%--                    <c:when Type= "ASC">--%>
+<%--                        <option value="ASS">Sản phẩm nổi bật</option>--%>
+<%--                        <option value="ASC" selected>Giá tăng dần</option>--%>
+<%--                        <option value="DESC">Giá giảm dần</option>--%>
+<%--                    </c:when>--%>
+<%--                    <c:otherwise>--%>
+<%--                        <option value="ASS">Sản phẩm nổi bật</option>--%>
+<%--                        <option value="ASC">Giá tăng dần</option>--%>
+<%--                        <option value="DESC"selected>Giá giảm dần</option>--%>
+<%--                    </c:otherwise>--%>
+<%--                    <c:otherwise>--%>
+<%--                        <option value="ASS" selected>Sản phẩm nổi bật</option>--%>
+<%--                        <option value="ASC">Giá tăng dần</option>--%>
+<%--                        <option value="DESC">Giá giảm dần</option>--%>
+<%--                    </c:otherwise>--%>
+<%--                </c:choose>--%>
+                <option value="ASS">Sản phẩm nổi bật</option>
                 <option value="ASC">Giá tăng dần</option>
                 <option value="DESC">Giá giảm dần</option>
             </select>
