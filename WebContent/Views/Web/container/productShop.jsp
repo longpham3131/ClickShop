@@ -37,7 +37,7 @@
             </button>
         </form>
         <c:choose>
-            <c:when test="${ tenCata == 'Tất cả sản phẩm' }">
+            <c:when test="${ tenCata == 'Tat ca san pham' }">
                 <p class="pl-2"></p>
             </c:when>
             <c:otherwise>
@@ -51,26 +51,23 @@
         <form action="<%=request.getContextPath()%>/sort-Product" method="POST" >
             <input type="hidden" value="<%=request.getAttribute("tenCata") %>" name="Name"/>
             <select name="Type" class="form-control ml-auto col-2" id="myselect" onchange="this.form.submit()">
-<%--                <c:choose>--%>
-<%--                    <c:when Type= "ASC">--%>
-<%--                        <option value="ASS">Sản phẩm nổi bật</option>--%>
-<%--                        <option value="ASC" selected>Giá tăng dần</option>--%>
-<%--                        <option value="DESC">Giá giảm dần</option>--%>
-<%--                    </c:when>--%>
-<%--                    <c:otherwise>--%>
-<%--                        <option value="ASS">Sản phẩm nổi bật</option>--%>
-<%--                        <option value="ASC">Giá tăng dần</option>--%>
-<%--                        <option value="DESC"selected>Giá giảm dần</option>--%>
-<%--                    </c:otherwise>--%>
-<%--                    <c:otherwise>--%>
-<%--                        <option value="ASS" selected>Sản phẩm nổi bật</option>--%>
-<%--                        <option value="ASC">Giá tăng dần</option>--%>
-<%--                        <option value="DESC">Giá giảm dần</option>--%>
-<%--                    </c:otherwise>--%>
-<%--                </c:choose>--%>
-                <option value="ASS">Sản phẩm nổi bật</option>
-                <option value="ASC">Giá tăng dần</option>
-                <option value="DESC">Giá giảm dần</option>
+                <c:choose>
+                    <c:when test="${sortType == 'ASC'}">
+                        <option value="ASS">Sản phẩm nổi bật</option>
+                        <option value="ASC" selected>Giá tăng dần</option>
+                        <option value="DESC">Giá giảm dần</option>
+                    </c:when>
+                    <c:when test="${sortType == 'DESC'}">
+                        <option value="ASS">Sản phẩm nổi bật</option>
+                        <option value="ASC">Giá tăng dần</option>
+                        <option value="DESC"selected>Giá giảm dần</option>
+                    </c:when>
+                    <c:otherwise>
+                        <option value="ASS" selected>Sản phẩm nổi bật</option>
+                        <option value="ASC">Giá tăng dần</option>
+                        <option value="DESC">Giá giảm dần</option>
+                    </c:otherwise>
+                </c:choose>
             </select>
         </form>
     </div>

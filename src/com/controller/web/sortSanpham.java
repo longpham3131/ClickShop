@@ -73,7 +73,7 @@ public class sortSanpham extends HttpServlet {
 				request.setAttribute("listSanpham", danhsachSapxep);
 			}
 		}
-		request.setAttribute("Type",type);
+		request.setAttribute("sortType",type);
 //		request.setAttribute("listSanpham", danhsachSapxep);
 		request.setAttribute("from", request.getAttribute("from"));
 		request.setAttribute("thongbao", request.getAttribute("thongbao"));

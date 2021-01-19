@@ -94,18 +94,20 @@
 
                         <!-- Modal body -->
                         <div class="modal-body">
-                            <form action="${pageContext.request.contextPath}/action-voucher" method="post" id="addVoucherForm">
+                            <form action="${pageContext.request.contextPath}/action-voucher" method="post"
+                                  id="addVoucherForm">
                                 <div class="form-group row">
-                                    <label for="inpVoucher" class="col-sm-4 col-form-label">Mã Vouchde:  </label>
+                                    <label for="inpVoucher" class="col-sm-4 col-form-label">Mã Vouchde: </label>
                                     <div class="col-sm-8">
-                                        <input type="text"  class="form-control"  id="inpVoucher" value="" name="newcode">
+                                        <input type="text" class="form-control" id="inpVoucher" value="" name="newcode">
 
                                     </div>
                                 </div>
                                 <div class="form-group row">
-                                    <label for="inpValue" class="col-sm-4 col-form-label">Giá trị voucher:  </label>
+                                    <label for="inpValue" class="col-sm-4 col-form-label">Giá trị voucher: </label>
                                     <div class="col-sm-8">
-                                        <input type="number" class="form-control" id="inpValue" value="100000" name="coin">
+                                        <input type="number" class="form-control" id="inpValue" value="100000"
+                                               name="coin">
 
                                     </div>
                                 </div>
@@ -123,16 +125,16 @@
                 </div>
             </div>
 
-<%--            <div>--%>
-<%--                <form action="${pageContext.request.contextPath}/action-voucher" method="post">--%>
-<%--                    <h4> Kiểm tra voucher </h4>--%>
-<%--                    Nhập mã muốn kiểm tra--%>
-<%--                    <input type="text" value="" name="checkcode">--%>
-<%--                    <input type="hidden" value="check" name="type">--%>
-<%--                    <input type="submit" value="Kiểm tra">--%>
-<%--                    <p>${kqcoin} <br>${kqstatus}</p>--%>
-<%--                </form>--%>
-<%--            </div>--%>
+            <%--            <div>--%>
+            <%--                <form action="${pageContext.request.contextPath}/action-voucher" method="post">--%>
+            <%--                    <h4> Kiểm tra voucher </h4>--%>
+            <%--                    Nhập mã muốn kiểm tra--%>
+            <%--                    <input type="text" value="" name="checkcode">--%>
+            <%--                    <input type="hidden" value="check" name="type">--%>
+            <%--                    <input type="submit" value="Kiểm tra">--%>
+            <%--                    <p>${kqcoin} <br>${kqstatus}</p>--%>
+            <%--                </form>--%>
+            <%--            </div>--%>
 
 
             <div class="card-body">
@@ -152,23 +154,28 @@
                                    varStatus="loop">
                             <tr>
                                 <td>${vou.code}</td>
-                                <td>${vou.coin} </td>
+                                <td class="priceProduct">${vou.coin} </td>
                                 <td>${vou.status} </td>
                                 <td class="d-flex ">
-                                    <form action="${pageContext.request.contextPath}/action-voucher" method="post" class="pr-3">
+                                    <form action="${pageContext.request.contextPath}/action-voucher" method="post"
+                                          class="pr-3">
                                         <input type="hidden" value="${vou.code}" name="code">
                                         <input type="hidden" value="1" name="type">
-                                        <button type="submit" title="Tái kích hoạt voucher" class="btn btn-success"> <i class="fa fa-check"></i></button>
+                                        <button type="submit" title="Tái kích hoạt voucher" class="btn btn-success"><i
+                                                class="fa fa-check"></i></button>
                                     </form>
-                                    <form action="${pageContext.request.contextPath}/action-voucher" method="post" class="pr-3">
+                                    <form action="${pageContext.request.contextPath}/action-voucher" method="post"
+                                          class="pr-3">
                                         <input type="hidden" value="${vou.code}" name="code">
                                         <input type="hidden" value="0" name="type">
-                                        <button type="submit" title="Vô hiện hóa voucher" class="btn btn-warning"><i class="fab fa-creative-commons-nc"></i></button>
+                                        <button type="submit" title="Vô hiện hóa voucher" class="btn btn-warning"><i
+                                                class="fab fa-creative-commons-nc"></i></button>
                                     </form>
                                     <form action="${pageContext.request.contextPath}/action-voucher" method="post">
                                         <input type="hidden" value="${vou.code}" name="code">
                                         <input type="hidden" value="-1" name="type">
-                                        <button type="submit" title="Xóa voucher" class="btn btn-danger"> <i class="fa fa-times"></i></button>
+                                        <button type="submit" title="Xóa voucher" class="btn btn-danger"><i
+                                                class="fa fa-times"></i></button>
                                     </form>
                                 </td>
                             </tr>
@@ -226,6 +233,16 @@
             <script src="<%= request.getContextPath()%>/Views/Admin/js/demo/chart-area-demo.js"></script>
             <script src="<%= request.getContextPath()%>/Views/Admin/js/demo/datatables-demo.js"></script>
             <script src="<%= request.getContextPath()%>/Views/Admin/js/demo/chart-pie-demo.js"></script>
+
+            <script>
+                let listGia = document.querySelectorAll(".priceProduct");
+                for (i = 0; i < listGia.length; i++) {
+                    listGia[i].innerHTML = new Intl.NumberFormat('vn-VN', {
+                        style: 'currency',
+                        currency: 'VND'
+                    }).format(parseInt(listGia[i].innerHTML));
+                }
+            </script>
 
 </body>
 </html>
