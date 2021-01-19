@@ -34,7 +34,7 @@ public class login extends HttpServlet {
 
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        String url = "Views//loginAll.jsp";
+        String url = "Views/loginAll.jsp";
         HttpSession session1 = request.getSession();
         session1.invalidate();  // khi vao login thi xoa het trc do//-------------- chua lam dc
 
@@ -44,13 +44,15 @@ public class login extends HttpServlet {
 
         LoginDAO loginDAO = new LoginDAO();
         String kq = loginDAO.login(email, password);
+        if (kq == null)
+            kq="fix";
         if(email != null) {
             if (kq.equals("BAN")) {
                 request.setAttribute("kqlogin", "BAN");
                 RequestDispatcher rq = request.getRequestDispatcher(url);
                 rq.forward(request, response);
             } else {
-                if (kq != null) {              // need session.get(email) <<<<<<<<<<<<<<<<<<<<<<<
+                if (!kq.equals("fix")) {              // need session.get(email) <<<<<<<<<<<<<<<<<<<<<<<
                     HttpSession session = request.getSession();
                     session.setAttribute("check", "true");
                     session.setAttribute("email", email);
@@ -79,6 +81,7 @@ public class login extends HttpServlet {
                     }
                 } else {
                     request.setAttribute("kqlogin", "CHECK");
+                    System.out.println(url);
                     RequestDispatcher rq = request.getRequestDispatcher(url);
                     rq.forward(request, response);
                 }

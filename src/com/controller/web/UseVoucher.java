@@ -58,7 +58,7 @@ public class UseVoucher extends HttpServlet {
 
         String mycoib = a.getCoin(email);
         session.setAttribute("coin", mycoib);
-        
+
         // fill lai my profile  //
         queryDAO dao = new queryDAO();
         String id= dao.idByEmail( (String) session.getAttribute("email"));
