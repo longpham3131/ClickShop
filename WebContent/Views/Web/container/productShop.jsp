@@ -30,11 +30,12 @@
         <h1>
             <%=request.getAttribute("tenCata") %>
         </h1>
-        <form action="myservlet.do" method="POST">
-            <select name="myselect" class="form-control ml-auto col-2" id="myselect" onchange="this.form.submit()">
+        <form action="<%=request.getContextPath()%>/sort-Product" method="POST">
+            <input type="hidden" value="<%=request.getAttribute("tenCata") %>" name="Name"/>
+            <select name="Type" class="form-control ml-auto col-2" id="myselect" onchange="this.form.submit()">
                 <option value="1">Sản phẩm nổi bật</option>
-                <option value="2">Giá tăng dần</option>
-                <option value="3">Giá giảm dần</option>
+                <option value="ASC">Giá tăng dần</option>
+                <option value="DESC">Giá giảm dần</option>
             </select>
         </form>
     </div>

@@ -1,7 +1,6 @@
 package com.controller.web;
 
 import DAO.queryDAO;
-import com.model.Article1;
 import com.model.Display;
 
 import javax.servlet.RequestDispatcher;
@@ -16,15 +15,15 @@ import java.util.List;
 /**
  * Servlet implementation class fillAllAccount
  */
-@WebServlet("/fill-All-Sanpham")
-public class fillSanpham extends HttpServlet {
+@WebServlet("/sort-Product")
+public class sortSanpham extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
 
 	/**
 	 * @see HttpServlet#HttpServlet()
 	 */
-	public fillSanpham() {
+	public sortSanpham() {
 		super();
 		// TODO Auto-generated constructor stub
 	}
@@ -41,30 +40,29 @@ public class fillSanpham extends HttpServlet {
 	protected void processRequest(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		response.setContentType("text/html;charset=UTF-8");
-		String index = request.getParameter("index");
-		String name = "Tất cả sản phẩm";
-		System.out.print(index);
-		if (index ==null)
-		{
-			index ="1";
-		}
-		int	 indexPage = Integer.parseInt(index);
+		String name  = request.getParameter("Name");
+		String type = request.getParameter("Type");
+		System.out.print(name);
 		queryDAO dao = new queryDAO();
-		int numberPage = dao.getNumberPage();
-		List<Display> listPhantrang = dao.getPaging(indexPage);
-        List<Article1> listAllPro = dao.sanpham();
+		List<Display> danhsachSapxep = dao.filterSapxep(name, type);
 		request.setAttribute("tenCata",name);
-        request.setAttribute("listAllPro", listAllPro);
-		request.setAttribute("listSanpham", listPhantrang);
-		request.setAttribute("numberPage", numberPage);
+//		if (type == "1") {
+//			danhsachSapxep = dao.filterSanpham(name);
+//			request.setAttribute("listSanpham", danhsachSapxep);
+//			System.out.println("da sap xep 123124");
+//		}
+//		else {
+//			danhsachSapxep = dao.filterSapxep(name, type);
+//			request.setAttribute("listSanpham", danhsachSapxep);
+//		}
+		request.setAttribute("listSanpham", danhsachSapxep);
 		request.setAttribute("from", request.getAttribute("from"));
 		request.setAttribute("thongbao", request.getAttribute("thongbao"));
-		request.setAttribute("myIndex",index);
 		RequestDispatcher rq = request.getRequestDispatcher("Views/Web/container/productShop.jsp");
 		rq.forward(request, response);
 	}
 
-	protected void doGet(HttpServletRequest request, HttpServletResponse response)
+	public void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		processRequest(request, response);
 	}
@@ -73,7 +71,7 @@ public class fillSanpham extends HttpServlet {
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse
 	 *      response)
 	 */
-	protected void doPost(HttpServletRequest request, HttpServletResponse response)
+	public void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 
 		processRequest(request, response);

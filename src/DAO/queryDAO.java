@@ -283,6 +283,26 @@ public class queryDAO {
         }
         return null;
     }
+    public List<Display> filterSapxep(String name,String type) {
+        String query = "SELECT Product.ProductId, Product.Name,Product.UnitPrice , Image.ImagePath, Product.Description, Product.SubCategoryId , SubCategory.CategoryId " +
+                "FROM dbo.Product ,dbo.[Image],dbo.SubCategory " +
+                "WHERE Product.ProductId = Image.ProductId AND Product.SubCategoryId = SubCategory.SubCategoryId AND SubCategory.Name = '" + name + "'"
+                +"ORDER BY UnitPrice " + type;
+        List<Display> listSapxep = new ArrayList<Display>();
+        try {
+
+            conn = new MyDB().getConnection();
+            ps = conn.prepareStatement(query);
+            rs = ps.executeQuery();
+            while (rs.next()) {
+                listSapxep.add(new Display(rs.getString(1), rs.getString(2), rs.getString(3), rs.getString(4),
+                        rs.getString(5), rs.getString(6), rs.getString(7)));
+            }
+            return listSapxep;
+        } catch (Exception e) {
+        }
+        return null;
+    }
 
     public int getNumberPage() {
         String query = "SELECT COUNT(*) FROM dbo.Product ";
