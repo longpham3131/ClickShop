@@ -96,6 +96,10 @@
                 <img src="<%=request.getContextPath()%>/Views/Web/image_product/long.jpg" alt="">
                 <a href="#" data-toggle="modal" data-target="#exampleModal"><span>PHAM HOANG LONG</span></a>
             </div>
+            <div class="swiper-slide">
+                <img src="<%=request.getContextPath()%>/Views/Web/image_product/long.jpg" alt="">
+                <a href="#" data-toggle="modal" data-target="#exampleModal"><span>PHAM HOANG LONG</span></a>
+            </div>
         </div>
         <!-- Add Arrows -->
         <div class="swiper-button-next"></div>

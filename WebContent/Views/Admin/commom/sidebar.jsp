@@ -46,7 +46,7 @@
              data-parent="#accordionSidebar">
             <div class="bg-white py-2 collapse-inner rounded">
                 <h6 class="collapse-header">Custom Components:</h6>
-                <a class="collapse-item" href="<%= request.getContextPath()%>/fill-All-Account">Nhân viên</a>
+                <a class="collapse-item" href="<%= request.getContextPath()%>/fill-All-Account">Tài khoản</a>
                 <a class="collapse-item" href="<%= request.getContextPath()%>/fill-All-Product">Hàng hóa</a>
                 <a class="collapse-item" href="<%= request.getContextPath()%>/fill-All-Order">Đơn hàng</a>
                 <a class="collapse-item" href="<%= request.getContextPath()%>/ship">Vận chuyển</a>

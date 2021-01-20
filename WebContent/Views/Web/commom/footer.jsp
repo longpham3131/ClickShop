@@ -33,6 +33,7 @@
                 <p>Phạm Hoàng Long</p>
                 <p>Phạm Thúc Kha</p>
                 <p>Nguyễn Tuấn Kiệt</p>
+                <p>Lê Thanh Hải</p>
 
             </div>
             <div class="col-3">

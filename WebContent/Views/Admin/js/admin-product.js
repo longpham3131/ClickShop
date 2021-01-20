@@ -64,9 +64,9 @@ $(".addsize").on('click', function (e) {
             rsdata = data;
             idtable = '#table' + id
             var $row = $('<tr>' +
-                '<td>' + '<input maxlength="4" size="4" type="hidden" class="form-control-plaintext check" name="fname" value="' + rsdata + '" />' + '<input maxlength="4" size="4" type="text" class="form-control-plaintext check" name="fname" value="' + 0 + '" />' + '</td>' +
-                '<td>' + '<input maxlength="4" size="4" type="text" class="form-control-plaintext check" name="fname" value="' + 0 + '" />' + '</td>' +
-                '<td>' + '<button type="button"class="btn btn-success deletesize"><i class="fas fa-trash delete"></i></button>' + '</td>' +
+                '<td>' + '<input maxlength="4" size="4" type="hidden" class="form-control check" name="fname" value="' + rsdata + '" />' + '<input maxlength="4" size="4" type="text" class="form-control check" name="fname" value="' + 0 + '" />' + '</td>' +
+                '<td>' + '<input maxlength="4" size="4" type="text" class="form-control check" name="fname" value="' + 0 + '" />' + '</td>' +
+                '<td>' + '<button type="button"class="btn btn-danger deletesize"><i class="fas fa-trash delete"></i></button>' + '</td>' +
                 '</tr>');
             query = '#Mytable' + id + ' > tbody:last-child'
             $(query).append($row);
