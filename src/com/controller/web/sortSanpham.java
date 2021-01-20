@@ -64,6 +64,7 @@ public class sortSanpham extends HttpServlet {
 			} else {
 				request.setAttribute("listSanpham", listSapxeptatca);
                 request.setAttribute("numberPage", numberPage);
+                request.setAttribute("Type",type);
 			}
 		}
 		else {

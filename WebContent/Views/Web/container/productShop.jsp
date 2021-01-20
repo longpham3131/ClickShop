@@ -384,6 +384,7 @@
                                                     style="    background: transparent; border: #ca2819; ">
                                                 <li class="page-item">
                                                     <input type="hidden" value="${i}" name="index"/>
+                                                    <input type="hidden" value="<%=request.getAttribute("Type") %>" name="Type"/>
                                                         ${i}
                                                 </li>
                                             </button>
@@ -396,6 +397,7 @@
                                                     style="    background: transparent; border: #ca2819;">
                                                 <li class="page-item">
                                                     <input type="hidden" value="${i}" name="index"/>
+                                                    <input type="hidden" value="<%=request.getAttribute("Type") %>" name="Type"/>
                                                         ${i}
                                                 </li>
                                             </button>
