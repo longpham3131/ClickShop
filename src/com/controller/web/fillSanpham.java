@@ -43,6 +43,7 @@ public class fillSanpham extends HttpServlet {
 		response.setContentType("text/html;charset=UTF-8");
 		String index = request.getParameter("index");
 		String name = "Tat ca san pham";
+		String type = request.getParameter("Type");
 		System.out.print(index);
 		if (index ==null)
 		{
@@ -53,9 +54,17 @@ public class fillSanpham extends HttpServlet {
 		int numberPage = dao.getNumberPage();
 		List<Display> listPhantrang = dao.getPaging(indexPage);
         List<Article1> listAllPro = dao.sanpham();
+		List<Display> listSapxeptatca = dao.getPagingSort(indexPage,type);
+		if (type != null)
+		{
+			request.setAttribute("Type",type);
+			request.setAttribute("listSanpham", listSapxeptatca);
+		}
+		else {
+			request.setAttribute("listSanpham", listPhantrang);
+		}
 		request.setAttribute("tenCata",name);
-        request.setAttribute("listAllPro", listAllPro);
-		request.setAttribute("listSanpham", listPhantrang);
+//        request.setAttribute("listAllPro", listAllPro);
 		request.setAttribute("numberPage", numberPage);
 		request.setAttribute("from", request.getAttribute("from"));
 		request.setAttribute("thongbao", request.getAttribute("thongbao"));
