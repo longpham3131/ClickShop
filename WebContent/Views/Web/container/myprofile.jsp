@@ -20,8 +20,8 @@
 <c:if test="${kqupdate == '1'}"><script>  alert("Đổi password thành công"); </script> </c:if>
 <c:if test="${kqupdate == '2'}"><script>  alert("Cập nhật thông tin thành công"); </script> </c:if>
 <c:if test="${kqupdate == '0'}"><script>  alert("Opps! Đã xảy ra lỗi"); </script> </c:if>
-<c:if test="${kqupdate == 'old'}"><script>  alert("Mật khẩu không đúng"); </script> </c:if>
-<c:if test="${kqupdate == 'confirm'}"><script>  alert("Confirm password không chính xác"); </script> </c:if>
+<c:if test="${kqupdate == 'old'}"><script>  alert("Mật khẩu cũ không đúng"); </script> </c:if>
+<c:if test="${kqupdate == 'confirm'}"><script>  alert("Nhập lại mật khẩu không chính xác"); </script> </c:if>
 
 
 
@@ -74,28 +74,32 @@
                                 </div>
                             </div>
                             <div class="form-group row">
-                                <label for="inputFirstName" class="col-sm-2 col-form-label">Họ và tên</label>
+                                <label for="inpFname" class="col-sm-2 col-form-label">Họ và tên</label>
                                 <div class="col-sm-4">
-                                    <input type="text" class="form-control" id="inputFirstName" name="myfirstname"
+                                    <input type="text" class="form-control" id="inpFname" name="myfirstname"
                                            value="${info.firstName}">
+                                    <span class="animate__animated animate__fadeIn" style="display: none;"  id="tbHo"></span>
                                 </div>
                                 <div class="col-sm-6">
-                                    <input type="text" class="form-control" id="inputLastName" name="mylastname"
+                                    <input type="text" class="form-control" id="inpLname" name="mylastname"
                                            value="${info.lastName}">
+                                    <span class="animate__animated animate__fadeIn" style="display: none;"  id="tbTen"></span>
                                 </div>
                             </div>
                             <div class="form-group row">
-                                <label for="inputPhone" class="col-sm-2 col-form-label">Số điện thoại</label>
+                                <label for="inpPhone" class="col-sm-2 col-form-label">Số điện thoại</label>
                                 <div class="col-sm-10">
-                                    <input type="tel" class="form-control" id="inputPhone" name="myphone"
+                                    <input type="tel" class="form-control" id="inpPhone" name="myphone"
                                            value="${info.phone}">
+                                    <span class="animate__animated animate__fadeIn" style="display: none;"  id="tbSDT"></span>
                                 </div>
                             </div>
                             <div class="form-group row">
-                                <label for="inputPhone" class="col-sm-2 col-form-label">Địa chỉ</label>
+                                <label for="inpAddress" class="col-sm-2 col-form-label">Địa chỉ</label>
                                 <div class="col-sm-10">
-                                    <input type="tel" class="form-control" id="inputAddress" name="myaddress"
+                                    <input type="tel" class="form-control" id="inpAddress" name="myaddress"
                                            value="${info.address}">
+                                    <span class="animate__animated animate__fadeIn" style="display: none;"  id="tbDiaChi"></span>
                                 </div>
                             </div>
                             <input type="hidden" value="${info.gender}" name="mygender">
@@ -103,7 +107,7 @@
 
                         </form>
                         <div class="text-right">
-                            <button type="submit" form="formUpdateUser" class=" button dark btn-addtocart addtocart-modal" name="change"
+                            <button type="button" id="btnUpdateUser" class=" button dark btn-addtocart addtocart-modal" name="change"
                                     style="background-color: #5a6268; color: white";> Cập nhật thông tin
                             </button>
                         </div>
@@ -129,10 +133,11 @@
                             </div>
                         </div>
                         <div class="form-group row">
-                            <label for="newPass" class="col-sm-4 col-form-label">Mật khẩu mới:</label>
+                            <label for="inpPass" class="col-sm-4 col-form-label">Mật khẩu mới:</label>
                             <div class="col-sm-8">
-                                <input type="password"  class="form-control" id="newPass"
+                                <input type="password"  class="form-control" id="inpPass"
                                        name="newpass">
+                                <span class="animate__animated animate__fadeIn" style="display: none; color: whitesmoke !important;" id="tbMatKhau"></span>
                             </div>
                         </div>
                         <div class="form-group row">
@@ -145,7 +150,7 @@
 
                     </form>
                     <div class="text-right">
-                        <button type="submit" form="formChangePass" class=" button dark btn-addtocart addtocart-modal"
+                        <button type="button"  id="btnChangePass" class=" button dark btn-addtocart addtocart-modal"
                                 style="background-color: #5a6268; color: white";> Đổi mật khẩu
                         </button>
                     </div>
@@ -159,7 +164,7 @@
                     <c:forEach items="${myinfo}" var="info">
                         <form action="<%=request.getContextPath()%>/use-voucher" method="post" id="formVoucher">
                             <div class="form-group row">
-                                <label for="inpVoucher" class="col-sm-4 col-form-label">Mã Vouchde:  </label>
+                                <label for="inpVoucher" class="col-sm-4 col-form-label">Mã Vouchder:  </label>
                                 <div class="col-sm-8">
                                     <input type="hidden" name="myemail" value="${info.email}">
                                     <input type="text" class="form-control" id="inpVoucher" name="code">
@@ -362,5 +367,11 @@
 <script src="<%=request.getContextPath()%>/Views/Web/js/sanPham.js"></script>
 <script src="<%=request.getContextPath()%>/Views/Web/js/DanhSachSanPham.js"></script>
 <script src="<%=request.getContextPath()%>/Views/Web/js/checkOut.js"></script>
+
+
+<%--Main JS --%>
+<script src="<%=request.getContextPath()%>/Views/Global/Validation.js"></script>
+<script src="<%=request.getContextPath()%>/Views/Web/js/profileValid.js"></script>
+<script src="<%=request.getContextPath()%>/Views/Web/js/forgotPassValidation.js"></script>
 </body>
 </html>

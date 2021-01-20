@@ -62,10 +62,11 @@
         overflow: hidden;
         padding: 55px 55px 37px 55px;
         background: #9152f8;
-        background: -webkit-linear-gradient(top, #888, #e84141);
-        background: -o-linear-gradient(top, #888, #e84141);
-        background: -moz-linear-gradient(top, #888, #e84141);
-        background: linear-gradient(top, #888, #e84141);
+        background: -webkit-linear-gradient(bottom, #f7f7f7, #e84141);
+        background: -o-linear-gradient(bottom, #f7f7f7, #e84141);
+        background: -moz-linear-gradient(bottom, #f7f7f7, #e84141);
+        background: linear-gradient(bottom, #f7f7f7, #e84141);
+        box-shadow: 5px 5px #aeaeae;
 
     }
 
@@ -84,18 +85,19 @@
             <h4>Quên mật khẩu</h4>
             <c:choose>
                 <c:when test="${kq == 'true'}">
-                    <form action="${pageContext.request.contextPath}/reset-pass" method="post">
+                    <form action="${pageContext.request.contextPath}/reset-pass" method="post" id="formChangePass">
                         <div class="form-group">
                             <label>Xác thực thành công<br></label>
                         </div>
                         <input type="hidden" name="email" value="${email}">
                         <div class="form-group row">
                             <label for="inpPass" class="col-sm-4 col-form-label">Mật khẩu mới:</label>
-                            <div class="col-sm-4">
+                            <div class="col-sm-6">
                                 <input type="password" name="newpass" class="form-control" id="inpPass">
+                                <span class="animate__animated animate__fadeIn" style="display: none; color: whitesmoke !important;" id="tbMatKhau"></span>
                             </div>
-                            <div class="col-sm-4">
-                                <button type="submit" class="btn btn-success">Xác nhận</button>
+                            <div class="text-right">
+                                <button type="button" class="btn btn-success" id="btnChangePass">Xác nhận</button>
                             </div>
                         </div>
                     </form>
@@ -104,13 +106,13 @@
                     </c:if>
                 </c:when>
                 <c:when test="${kq == 'spam'}">
-                    <form action="${pageContext.request.contextPath}/forgot" method="post">
+                    <form action="${pageContext.request.contextPath}/forgot" method="post" >
                         <div class="form-group text-center">
                             <label>Mã code đã được gửi lại do bạn nhập sai quá nhiều lần   <br></label>
                         </div>
                         <input type="hidden" value="${mail}" , name="email">
                         <div class="form-group text-center">
-                            <button type="submit" class="btn btn-success">Xác nhận</button>
+                            <button type="submit" class="btn btn-success" >Xác nhận</button>
                         </div>
                     </form>
                 </c:when>
@@ -153,6 +155,10 @@
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-ho+j7jyWK8fNQe+A12Hb8AhRq26LrZ/JpcUGGOn+Y7RsweNrtN/tE3MoK7ZeZDyx"
         crossorigin="anonymous"></script>
+
+<%--Main JS --%>
+<script src="<%=request.getContextPath()%>/Views/Global/Validation.js"></script>
+<script src="<%=request.getContextPath()%>/Views/Web/js/forgotPassValidation.js"></script>
 
 </body>
 </html>
