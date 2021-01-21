@@ -6,6 +6,7 @@ import java.util.List;
 
 import DB.MyDB;
 import com.model.*;
+import com.sun.org.apache.bcel.internal.generic.Select;
 
 
 public class queryDAO {
@@ -1061,9 +1062,18 @@ public class queryDAO {
 
             String query = "update PurchaseOrder set Status='Completed' " +
                     "WHERE PurchaseOrderId='" + OrtherID + "'";
-            if (Status.equals("Cancel"))
+            if (Status.equals("Cancel")) {
                 query = "update PurchaseOrder set  Status='Completed', CancelInvoice='False'" +
                         " WHERE PurchaseOrderId='" + OrtherID + "'";
+                String queryCoin = "Select AccountId, SubTotal FROM PurchaseOrder WHERE PurchaseOrderId='" + OrtherID + "'";
+                Connection coincon = new MyDB().getConnection();
+                Statement stmt = null;
+                stmt = coincon.createStatement();
+                ResultSet rsx = stmt.executeQuery(queryCoin);
+                rsx.next();
+                System.out.println("xxx "+rsx.getString(1)+ "  yyy  "+ rsx.getString(2));
+                Congtien(rsx.getString(1), rsx.getString(2));
+            }
             String query2 = "delete from Shipper WHERE PurchaseOrderId='" + OrtherID + "'";
 
 
@@ -1080,6 +1090,20 @@ public class queryDAO {
             System.out.println(e);
         }
         return false;
+    }
+
+    public void Congtien(String accid, String coin) {
+        String query = "\n" +
+                "UPDATE dbo.Account \n" +
+                "\tSET coin = coin+" + coin + "\n" +
+                "\tWHERE AccountId = '" + accid + "'";
+         System.out.println(query);
+        try {
+            conn = new MyDB().getConnection();
+            ps = conn.prepareStatement(query);
+            ps.executeQuery();
+        } catch (Exception e) {
+        }
     }
 
     // ----------- End ship Admin -------------------//
