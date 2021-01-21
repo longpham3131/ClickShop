@@ -52,9 +52,11 @@ public class endOrder extends HttpServlet {
 
             String OrtherID = (String) request.getParameter("OrtherID");
             String Status = (String) request.getParameter("Status");
+            System.out.println("/// "+OrtherID + Status+ "  // ");
             String endedThisOrder = (String) session.getAttribute("endedThisOrder");
             if (OrtherID.equals(endedThisOrder) == false) {
                 if (dao.endOrder(OrtherID, Status)) {
+                    System.out.println("// sau end //");
                     session.setAttribute("endedThisOrder", OrtherID);
                     shipped ob = new shipped();
                     ob.doPost(request, response);
