@@ -63,7 +63,6 @@ public class sortSanpham extends HttpServlet {
 				request.setAttribute("listSanpham", listPhantrang);
 			} else {
 				request.setAttribute("listSanpham", listSapxeptatca);
-                request.setAttribute("numberPage", numberPage);
                 request.setAttribute("Type",type);
 			}
 		}
@@ -78,6 +77,8 @@ public class sortSanpham extends HttpServlet {
 //		request.setAttribute("listSanpham", danhsachSapxep);
 		request.setAttribute("from", request.getAttribute("from"));
 		request.setAttribute("thongbao", request.getAttribute("thongbao"));
+		request.setAttribute("numberPage", numberPage);
+		request.setAttribute("myIndex",index);
 		RequestDispatcher rq = request.getRequestDispatcher("Views/Web/container/productShop.jsp");
 		rq.forward(request, response);
 	}

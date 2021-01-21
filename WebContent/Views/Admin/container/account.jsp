@@ -437,7 +437,7 @@
                                                             <!-- Modal body -->
                                                             <div class="modal-body">
                                                                 <form action="${pageContext.request.contextPath}/update-account"
-                                                                      method="post" id="formEdit">
+                                                                      method="post" id="formEdit${listAcc.accountId}">
 
                                                                     <div class="form-group">
                                                                         <label for="inpEmail">Email :</label>
@@ -515,7 +515,7 @@
 
                                                             <!-- Modal footer -->
                                                             <div class="modal-footer">
-                                                                <button type="submit" class="btn btn-success" form="formEdit">
+                                                                <button type="submit" class="btn btn-success" form="formEdit${listAcc.accountId}">
                                                                     Cập nhật
                                                                 </button>
                                                                 <button type="button" class="btn btn-danger"

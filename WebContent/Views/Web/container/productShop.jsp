@@ -31,7 +31,7 @@
 <section class="product">
     <div class="product__head d-flex bg-light p-3">
         <p>Trang chủ /</p>
-        <form action="<%=request.getContextPath()%>//fill-All-Sanpham" method="post" class="pl-2">
+        <form action="<%=request.getContextPath()%>/fill-All-Sanpham" method="post" class="pl-2">
             <button type="submit" class="btnDanhMuc">
                 Tất cả sản phẩm /
             </button>
@@ -375,6 +375,7 @@
                     </div>
                     <nav aria-label="Page navigation example pt-4">
                         <ul class="pagination pt-3 justify-content-center">
+                            <%=request.getAttribute("Type") %>
                             <c:forEach begin="1" end="${numberPage}" var="i">
                                 <c:choose>
                                     <c:when test="${myIndex ==  i}">
