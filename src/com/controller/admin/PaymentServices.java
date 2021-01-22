@@ -5,23 +5,13 @@
  */
 package com.controller.admin;
 
-import java.util.ArrayList;
-import java.util.List;
-
 import com.model.OrderDetail;
-import com.paypal.api.payments.Amount;
-import com.paypal.api.payments.Details;
-import com.paypal.api.payments.Item;
-import com.paypal.api.payments.ItemList;
-import com.paypal.api.payments.Links;
-import com.paypal.api.payments.Payer;
-import com.paypal.api.payments.PayerInfo;
-import com.paypal.api.payments.Payment;
-import com.paypal.api.payments.PaymentExecution;
-import com.paypal.api.payments.RedirectUrls;
-import com.paypal.api.payments.Transaction;
+import com.paypal.api.payments.*;
 import com.paypal.base.rest.APIContext;
 import com.paypal.base.rest.PayPalRESTException;
+
+import java.util.ArrayList;
+import java.util.List;
 
 public class PaymentServices {
 	private static final String CLIENT_ID = "AdpFE5uzDjkw12pjMNkYIUxvlr1sVYntW2o5jrqxABbHxW-7tcUvl7Otd0KVOEsL_RV8sfDgQlqPn1_z";
@@ -94,9 +84,9 @@ public class PaymentServices {
 
 		Item item = new Item();
 		item.setCurrency("USD");
-		item.setName(orderDetail.getProductName());
-		item.setPrice(orderDetail.getSubtotal());
-		item.setTax(orderDetail.getTax());
+		item.setName("khong quan tam");
+		item.setPrice(orderDetail.getTotal());
+		item.setTax("0");
 		item.setQuantity("1");
 
 		items.add(item);

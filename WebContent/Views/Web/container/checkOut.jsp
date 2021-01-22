@@ -89,8 +89,14 @@
                                 </div>
                                 <div class="wrap-btnCheckOut text-right">
                                     <button type="button" id="btnOrderSubmit" class="btn btn-success btnThanhToan">Thanh
-                                        toán
+                                        toán bằng coin
                                     </button>
+                                    <form action="<%=request.getContextPath()%>/go-paypal" method="post">
+                                        <div id="divIp"></div>
+                                        <input type="text" name="email" value="${email}" readonly>
+                                        <input  type="text" name="phone" value="${info.phone}" data-toggle="inpPhone">
+                                        <input type="submit" value="Thanh toán PayPal">
+                                    </form>
                                     <!-- The Modal -->
                                     <div class="modal fade" id="myOrder">
                                         <div class="modal-dialog">
