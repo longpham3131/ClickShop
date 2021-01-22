@@ -375,6 +375,7 @@
                     </div>
                     <nav aria-label="Page navigation example pt-4">
                         <ul class="pagination pt-3 justify-content-center">
+                            <%=request.getAttribute("Type") %>
                             <c:forEach begin="1" end="${numberPage}" var="i">
                                 <c:choose>
                                     <c:when test="${myIndex ==  i}">

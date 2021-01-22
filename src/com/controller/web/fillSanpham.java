@@ -3,7 +3,7 @@ package com.controller.web;
 import DAO.queryDAO;
 import com.model.Article1;
 import com.model.Display;
-
+import DAO.queryDAO;
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -44,7 +44,11 @@ public class fillSanpham extends HttpServlet {
 		String index = request.getParameter("index");
 		String name = "Tat ca san pham";
 		String type = request.getParameter("Type");
-		System.out.print(index);
+		String s = null;
+		System.out.println(type);
+		System.out.println("-----------------1");
+		System.out.println(index);
+		System.out.println("-----------------2");
 		if (index ==null)
 		{
 			index ="1";
@@ -53,15 +57,26 @@ public class fillSanpham extends HttpServlet {
 		queryDAO dao = new queryDAO();
 		int numberPage = dao.getNumberPage();
 		List<Display> listPhantrang = dao.getPaging(indexPage);
-        List<Article1> listAllPro = dao.sanpham();
-		List<Display> listSapxeptatca = dao.getPagingSort(indexPage,type);
-		if (type != null)
+		List<Article1> listAllPro = dao.sanpham();
+		System.out.println("-----------------5");
+		System.out.println(type);
+		System.out.println(type == null);
+		if (type == null)
 		{
+			type = "null";
+		}
+		if ( ! type.equals("null"))
+		{
+			System.out.println("-----------------6");
 			request.setAttribute("Type",type);
+			List<Display> listSapxeptatca = dao.getPagingSort(indexPage,type);
 			request.setAttribute("listSanpham", listSapxeptatca);
 		}
 		else {
+			System.out.println("-----------------3");
 			request.setAttribute("listSanpham", listPhantrang);
+			request.setAttribute("Type",type);
+			System.out.println("-----------------4");
 		}
 		request.setAttribute("tenCata",name);
 //        request.setAttribute("listAllPro", listAllPro);
