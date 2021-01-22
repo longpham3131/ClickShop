@@ -82,7 +82,7 @@
 </c:if>
 
 <c:if test="${kqlogin == 'BAN'}">
-    <script>  alert("Người dùng đã bị cấm"); </script>
+    <script>  alert("Tài khoản đã bị khóa"); </script>
 </c:if>
 <%--<c:if test="${kqlogin == 'CHECK'}">--%>
 <%--    <script>  alert("Sai thông tin đăng nhập"); </script>--%>
@@ -95,7 +95,9 @@
             <form class="login100-form validate-form" action="${pageContext.request.contextPath}/login-all"
                   method="post">
 					<span class="login100-form-logo">
-						<img src="<%=request.getContextPath()%>/Views/Web/image_product/logo.png" alt="">
+						<a href="<%=request.getContextPath()%>/fill-All-Display">
+                            <img src="<%=request.getContextPath()%>/Views/Web/image_product/logo.png" alt="">
+                        </a>
 					</span>
 
                 <span class="login100-form-title p-b-34 p-t-27">

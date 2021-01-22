@@ -88,7 +88,7 @@ public class order extends HttpServlet {
                     String orderId = dao.initOrder(id, String.valueOf(sub), address, phone, name); // add 1
                     if (orderId != null) {
 
-                        String mess = "This is your order: <br>Order Id: " + orderId +
+                        String mess = "Thank you for order : <br>Order Id: " + orderId +
                                 "<table style=\"border: 2px solid black;\">" +
                                 "<thead>" +
                                 "<th scope=\"col\">STT</th> <th scope=\"col\">Product Id</th scope=\"col\"> <th>Quanity</th>  <th scope=\"col\">Price</th> <th scope=\"col\">Size</th>" +

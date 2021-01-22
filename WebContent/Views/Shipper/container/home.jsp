@@ -134,7 +134,7 @@
                                 <c:if test="${shipid==listPkg.shipperID}">
                                     <tr>
                                         <td>${listPkg.orderID}</td>
-                                        <td>${listPkg.subTotal}</td>
+                                        <td class="priceProduct">${listPkg.subTotal}</td>
                                         <td>${listPkg.address}</td>
                                         <td>
                                             <button type="button" class="btn btn-info" title="Other Detail"
@@ -215,7 +215,7 @@
                                                                             <td>${listPick.productID}</td>
                                                                             <td>${listPick.name}</td>
                                                                             <td>${listPick.quanity}</td>
-                                                                            <td>${listPick.subTotal}</td>
+                                                                            <td class="priceProduct">${listPick.subTotal}</td>
                                                                             <c:set var="tien"
                                                                                    value="${listPick.subTotal}"/>
                                                                             <c:set var="sum" value="${sum + tien}"/>
@@ -224,7 +224,10 @@
                                                                 </c:forEach>
                                                                 </tbody>
                                                             </table>
-                                                            Tổng tiền đơn hàng: ${sum}
+                                                            <div class="text-right">
+                                                                Tổng tiền đơn hàng: <span class="priceProduct">${sum}</span>
+                                                            </div>
+
                                                         </div>
 
                                                         <!-- Modal footer -->
@@ -280,7 +283,7 @@
                                             <td>${listSpg.orderID}</td>
                                             <td>${listSpg.address}</td>
                                             <td>${listSpg.phone}</td>
-                                            <td>${listSpg.subTotal}</td>
+                                            <td class="priceProduct">${listSpg.subTotal}</td>
                                             <td> Đơn hàng đã hủy</td>
                                         </tr>
                                     </c:when>
@@ -300,7 +303,7 @@
                                             <td>${listSpg.orderID}</td>
                                             <td>${listSpg.address}</td>
                                             <td>${listSpg.phone}</td>
-                                            <td>${listSpg.subTotal}</td>
+                                            <td class="priceProduct">${listSpg.subTotal}</td>
                                             <td>
                                                 <button type="button" class="btn btn-info" title="Xem chi tiết"
                                                         data-toggle="modal"
@@ -398,7 +401,7 @@
                                                                                 <td>${listShiping.productID}</td>
                                                                                 <td>${listShiping.name}</td>
                                                                                 <td>${listShiping.quanity}</td>
-                                                                                <td>${listShiping.subTotal}</td>
+                                                                                <td class="priceProduct">${listShiping.subTotal}</td>
                                                                                 <c:set var="tien"
                                                                                        value="${listShiping.subTotal}"/>
                                                                                 <c:set var="sum" value="${sum + tien}"/>
@@ -407,7 +410,10 @@
                                                                     </c:forEach>
                                                                     </tbody>
                                                                 </table>
-                                                                Tổng tiền đơn hàng: ${sum}
+                                                                <div class="text-right">
+                                                                    Tổng tiền đơn hàng: <span  class="priceProduct">${sum}</span>
+                                                                </div>
+
                                                             </div>
 
                                                             <!-- Modal footer -->
@@ -567,7 +573,15 @@
 <!-- Custom scripts for all pages-->
 <script src="<%= request.getContextPath()%>/Views/Admin/js/sb-admin-2.min.js"></script>
 
-
+<script>
+    let listGia = document.querySelectorAll(".priceProduct");
+    for (i = 0; i < listGia.length; i++) {
+        listGia[i].innerHTML = new Intl.NumberFormat('vn-VN', {
+            style: 'currency',
+            currency: 'VND'
+        }).format(parseInt(listGia[i].innerHTML));
+    }
+</script>
 </body>
 
 </html>
