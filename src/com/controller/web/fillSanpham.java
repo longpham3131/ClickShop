@@ -44,18 +44,15 @@ public class fillSanpham extends HttpServlet {
 		String index = request.getParameter("index");
 		String name = "Tat ca san pham";
 		String type = request.getParameter("Type");
-<<<<<<< HEAD
 		String s = null;
 		System.out.println(type);
 		System.out.println("-----------------1");
 		System.out.println(index);
 		System.out.println("-----------------2");
-=======
 		System.out.println("----------------1");
 		System.out.println(type);
 //		System.out.println(type.equals(null));
 		System.out.println(index);
->>>>>>> d3795ebf84abefd84cf70f27d4801564572e108a
 		if (index ==null)
 		{
 			index ="1";
