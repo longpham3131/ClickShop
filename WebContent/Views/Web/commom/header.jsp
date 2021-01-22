@@ -44,6 +44,11 @@
                     <div class="collapse navbar-collapse justify-content-around" id="navbarNavDropdown">
                         <ul class="navbar-nav">
                             <li class="nav-item dropdown no__relative">
+                                <a class="nav-link " href="<%=request.getContextPath()%>/fill-All-Sanpham">
+                                    TẤT CẢ SẢN PHẨM
+                                </a>
+                            </li>
+                            <li class="nav-item dropdown no__relative">
                                 <a class="nav-link dropdown-toggle" href="#" id="dropdown__giaynam" role="button"
                                    data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
                                     GIÀY NAM
@@ -129,8 +134,6 @@
                                                 <div class="col-4">
                                                     <img src="<%=request.getContextPath()%>/Views/Web/image_product/dropdown__nam_3.png"
                                                          alt="">
-
-
                                                 </div>
                                             </div>
                                         </div>

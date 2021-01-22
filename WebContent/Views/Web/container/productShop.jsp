@@ -31,7 +31,7 @@
 <section class="product">
     <div class="product__head d-flex bg-light p-3">
         <p>Trang chủ /</p>
-        <form action="<%=request.getContextPath()%>//fill-All-Sanpham" method="post" class="pl-2">
+        <form action="<%=request.getContextPath()%>/fill-All-Sanpham" method="post" class="pl-2">
             <button type="submit" class="btnDanhMuc">
                 Tất cả sản phẩm /
             </button>
@@ -404,7 +404,6 @@
                                         </form>
                                     </c:otherwise>
                                 </c:choose>
-
                             </c:forEach>
                         </ul>
                     </nav>
