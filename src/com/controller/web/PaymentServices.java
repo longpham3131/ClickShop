@@ -3,28 +3,37 @@
  * @author Nam Ha Minh
  * @copyright https://codeJava.net
  */
-package com.controller.admin;
-
-import com.model.OrderDetail;
-import com.paypal.api.payments.*;
-import com.paypal.base.rest.APIContext;
-import com.paypal.base.rest.PayPalRESTException;
+package com.controller.web;
 
 import java.util.ArrayList;
 import java.util.List;
 
+import com.paypal.api.payments.Amount;
+import com.paypal.api.payments.Details;
+import com.paypal.api.payments.Item;
+import com.paypal.api.payments.ItemList;
+import com.paypal.api.payments.Links;
+import com.paypal.api.payments.Payer;
+import com.paypal.api.payments.PayerInfo;
+import com.paypal.api.payments.Payment;
+import com.paypal.api.payments.PaymentExecution;
+import com.paypal.api.payments.RedirectUrls;
+import com.paypal.api.payments.Transaction;
+import com.paypal.base.rest.APIContext;
+import com.paypal.base.rest.PayPalRESTException;
+
 public class PaymentServices {
-	private static final String CLIENT_ID = "AdpFE5uzDjkw12pjMNkYIUxvlr1sVYntW2o5jrqxABbHxW-7tcUvl7Otd0KVOEsL_RV8sfDgQlqPn1_z";
-	private static final String CLIENT_SECRET = "EJ3XBSzYJH7Zs28pQGkHv_PlqJhxC2xZ_c2hbGgAk09vPV0m7luYrbz7nMCnDIVawKY3I5tADjeb5kAG";
+	private static final String CLIENT_ID = "AeWpNhJLY_mioNSgx3ui7MWuVC6EMB9Qdt3zHH0T5s6EUC9xRn-cYG1PHsvDjY6WPqPtCYCpzgkj_EE7";
+	private static final String CLIENT_SECRET = "EC0FUhda46ekpTd865QRvYr17zG60iTH6ycr1K8n1K_DFbrfUrkqLg4SVuvKZI2SdVol1u9rpdXtkQdz";
 	private static final String MODE = "sandbox";
 
-	public String authorizePayment(OrderDetail orderDetail)
-			throws PayPalRESTException {
+	public String authorizePayment(OrderDetail orderDetail)			
+			throws PayPalRESTException {		
 
 		Payer payer = getPayerInformation();
 		RedirectUrls redirectUrls = getRedirectURLs();
 		List<Transaction> listTransaction = getTransactionInformation(orderDetail);
-
+		
 		Payment requestPayment = new Payment();
 		requestPayment.setTransactions(listTransaction);
 		requestPayment.setRedirectUrls(redirectUrls);
@@ -41,29 +50,29 @@ public class PaymentServices {
 		return getApprovalLink(approvedPayment);
 
 	}
-
+	
 	private Payer getPayerInformation() {
 		Payer payer = new Payer();
 		payer.setPaymentMethod("paypal");
-
+		
 		PayerInfo payerInfo = new PayerInfo();
 		payerInfo.setFirstName("William")
 				 .setLastName("Peterson")
-				 .setEmail("sb-p8m4n4030568@personal.example.com");
-
+				 .setEmail("william.peterson@company.com");
+		
 		payer.setPayerInfo(payerInfo);
-
+		
 		return payer;
 	}
-
+	
 	private RedirectUrls getRedirectURLs() {
 		RedirectUrls redirectUrls = new RedirectUrls();
-		redirectUrls.setCancelUrl("http://localhost:8080/ClickShop_war_exploded");
+		redirectUrls.setCancelUrl("http://localhost:8080/ClickShop_war_exploded/cancel.jsp");
 		redirectUrls.setReturnUrl("http://localhost:8080/ClickShop_war_exploded/review_payment");
-
+		
 		return redirectUrls;
 	}
-
+	
 	private List<Transaction> getTransactionInformation(OrderDetail orderDetail) {
 		Details details = new Details();
 		details.setShipping(orderDetail.getShipping());
@@ -78,38 +87,38 @@ public class PaymentServices {
 		Transaction transaction = new Transaction();
 		transaction.setAmount(amount);
 		transaction.setDescription(orderDetail.getProductName());
-
+		
 		ItemList itemList = new ItemList();
 		List<Item> items = new ArrayList<>();
-
+		
 		Item item = new Item();
 		item.setCurrency("USD");
-		item.setName("khong quan tam");
-		item.setPrice(orderDetail.getTotal());
-		item.setTax("0");
+		item.setName(orderDetail.getProductName());
+		item.setPrice(orderDetail.getSubtotal());
+		item.setTax(orderDetail.getTax());
 		item.setQuantity("1");
-
+		
 		items.add(item);
 		itemList.setItems(items);
 		transaction.setItemList(itemList);
 
 		List<Transaction> listTransaction = new ArrayList<>();
-		listTransaction.add(transaction);
-
+		listTransaction.add(transaction);	
+		
 		return listTransaction;
 	}
-
+	
 	private String getApprovalLink(Payment approvedPayment) {
 		List<Links> links = approvedPayment.getLinks();
 		String approvalLink = null;
-
+		
 		for (Links link : links) {
 			if (link.getRel().equalsIgnoreCase("approval_url")) {
 				approvalLink = link.getHref();
 				break;
 			}
-		}
-
+		}		
+		
 		return approvalLink;
 	}
 
@@ -123,7 +132,7 @@ public class PaymentServices {
 
 		return payment.execute(apiContext, paymentExecution);
 	}
-
+	
 	public Payment getPaymentDetails(String paymentId) throws PayPalRESTException {
 		APIContext apiContext = new APIContext(CLIENT_ID, CLIENT_SECRET, MODE);
 		return Payment.get(apiContext, paymentId);

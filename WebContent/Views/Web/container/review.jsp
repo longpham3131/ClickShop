@@ -16,7 +16,7 @@
     <form action="execute_payment" method="post">
         <table>
             <tr>
-                <td colspan="2"><b>Transaction Details:</b></td>
+                <td colspan="2"><b>Thông tin thanh toán - Transaction Details:</b></td>
                 <td>
                     <input type="hidden" name="paymentId" value="${param.paymentId}" />
                     <input type="hidden" name="PayerID" value="${param.PayerID}" />
@@ -44,7 +44,7 @@
             </tr>
             <tr><td><br/></td></tr>
             <tr>
-                <td colspan="2"><b>Payer Information:</b></td>
+                <td colspan="2"><b>Thông tin chủ thẻ - Payer Information:</b></td>
             </tr>
             <tr>
                 <td>First Name:</td>
@@ -59,33 +59,7 @@
                 <td>${payer.email}</td>
             </tr>
             <tr><td><br/></td></tr>
-            <tr>
-                <td colspan="2"><b>Shipping Address:</b></td>
-            </tr>
-            <tr>
-                <td>Recipient Name:</td>
-                <td>${shippingAddress.recipientName}</td>
-            </tr>
-            <tr>
-                <td>Line 1:</td>
-                <td>${shippingAddress.line1}</td>
-            </tr>
-            <tr>
-                <td>City:</td>
-                <td>${shippingAddress.city}</td>
-            </tr>
-            <tr>
-                <td>State:</td>
-                <td>${shippingAddress.state}</td>
-            </tr>
-            <tr>
-                <td>Country Code:</td>
-                <td>${shippingAddress.countryCode}</td>
-            </tr>
-            <tr>
-                <td>Postal Code:</td>
-                <td>${shippingAddress.postalCode}</td>
-            </tr>
+
             <tr>
                 <td colspan="2" align="center">
                     <input type="submit" value="Pay Now" />
