@@ -264,7 +264,7 @@
                                                         </div>
                                                     </div>
                                                     <div class="form-group row">
-                                                        <label for="staticName"
+                                                        Diagram             <label for="staticName"
                                                                class="col-sm-5 col-form-label">Trạng thái đơn hàng
                                                             :</label>
                                                         <div class="col-sm-7">

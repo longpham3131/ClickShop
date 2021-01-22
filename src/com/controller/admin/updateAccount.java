@@ -53,6 +53,8 @@ public class updateAccount extends HttpServlet {
 			String gender = request.getParameter("gender");
 			String Bday = request.getParameter("Bday");
 
+			System.out.print("---------------- Vao2 roi62 ----- "+gender+" --------------------------------");
+
 			String tb = "";  // thong bao
 			if (email == "" || firstname == "" || lastname == "" || phone == "" || address == "")
 				tb = "input";
@@ -70,7 +72,7 @@ public class updateAccount extends HttpServlet {
 					System.out.print(e);
 				}
 			}
-			System.out.print("Vao2 roi62");
+
 			if (session == null)
 				response.sendRedirect("Views/Admin/login.jsp");
 
