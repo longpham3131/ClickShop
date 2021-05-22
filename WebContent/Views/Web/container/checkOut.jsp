@@ -48,137 +48,265 @@
             </div>
             <div class="row checkout-left mt-5">
                 <div class="col-md-8 address_form">
-                    <h4>Địa chỉ giao hàng</h4>
-                    <form action="<%=request.getContextPath()%>/order" method="post"
-                          class="creditly-card-form shopf-sear-headinfo_form" id="orderForm">
-                        <div class="creditly-wrapper wrapper">
-                            <div class="information-wrapper">
-                                <div class="first-row form-group">
-                                    <c:forEach items="${fillTextBox}" var="info">
-                                        <div class="card_number_grid_right">
-                                            <div class="form-group">
-                                                <label class="control-label ">Email: </label>
-                                                <input class="form-control mb-0" type="email" placeholder="Email"
-                                                       name="email" value="${email}" readonly>
-                                            </div>
-                                            <div class="form-group">
-                                                <label class="control-label">Họ và tên: </label>
-                                                <input class="form-control mb-0" type="text" name="name"
-                                                       id="inpFname"
-                                                       value="${info.firstName} ${info.lastName} ">
-                                                <span class="animate__animated animate__fadeIn" style="display: none;"
-                                                      id="tbHo"></span>
-                                            </div>
-                                            <div class="form-group">
-                                                <label class="control-label">Số điện thoại :</label>
-                                                <input class="form-control mb-0" type="text"
-                                                       name="phone" value="${info.phone}" id="inpPhone">
-                                                <span class="animate__animated animate__fadeIn"
-                                                      style="display: none;" id="tbSDT"></span>
-                                            </div>
-                                            <div class="form-group">
-                                                <label class="control-label">Địa chỉ: </label>
-                                                <input class="form-control mb-0" type="text" placeholder="Địa chỉ"
-                                                       name="address" value="${info.address}" id="inpAddress">
-                                                <span class="animate__animated animate__fadeIn"
-                                                      style="display: none;" id="tbDiaChi"></span>
-                                            </div>
-                                        </div>
-                                        <div id="divIp"></div>
-                                    </c:forEach>
-                                </div>
-                                <div class="wrap-btnCheckOut text-right">
-                                    <button type="button" id="btnOrderSubmit" class="btn btn-success btnThanhToan">Thanh
-                                        toán bằng coin
-                                    </button>
+                    <nav>
+                        <div class="nav nav-tabs" id="nav-tab" role="tablist">
+                            <a class="nav-item nav-link active" id="nav-home-tab" data-toggle="tab" href="#nav-home" role="tab" aria-controls="nav-home" aria-selected="true"><h4 style="color: #127d23; ">Số dư <i class="fa fa-dollar-sign"></i></h4> </a>
+                            <a class="nav-item nav-link" id="nav-profile-tab" data-toggle="tab" href="#nav-profile" role="tab" aria-controls="nav-profile" aria-selected="false"><h4 style="color: #0079C1;">Paypal <i class="fab fa-paypal"></i></h4> </a>
 
-                                    <!-- The Modal -->
-                                    <div class="modal fade" id="myOrder">
-                                        <div class="modal-dialog">
-                                            <div class="modal-content">
-                                                <!-- Modal Header -->
-                                                <div class="modal-header">
-                                                    <h4 class="modal-title">Thông báo</h4>
-                                                    <button type="button" class="close" data-dismiss="modal">&times;
-                                                    </button>
+                        </div>
+                    </nav>
+                    <div class="tab-content" id="nav-tabContent">
+                        <div class="tab-pane fade show active" id="nav-home" role="tabpanel" aria-labelledby="nav-home-tab">
+                            <h4 class="pt-2">Địa chỉ giao hàng</h4>
+                            <form action="<%=request.getContextPath()%>/order" method="post"
+                                  class="creditly-card-form shopf-sear-headinfo_form" id="orderForm">
+                                <div class="creditly-wrapper wrapper">
+                                    <div class="information-wrapper">
+                                        <div class="first-row form-group">
+                                            <c:forEach items="${fillTextBox}" var="info">
+                                                <div class="card_number_grid_right">
+                                                    <div class="form-group">
+                                                        <label class="control-label ">Email: </label>
+                                                        <input class="form-control mb-0" type="email" placeholder="Email"
+                                                               name="email" value="${email}" readonly>
+                                                    </div>
+                                                    <div class="form-group">
+                                                        <label class="control-label">Họ và tên: </label>
+                                                        <input class="form-control mb-0" type="text" name="name"
+                                                               id="inpFname"
+                                                               value="${info.firstName} ${info.lastName} ">
+                                                        <span class="animate__animated animate__fadeIn" style="display: none;"
+                                                              id="tbHo"></span>
+                                                    </div>
+                                                    <div class="form-group">
+                                                        <label class="control-label">Số điện thoại :</label>
+                                                        <input class="form-control mb-0" type="text"
+                                                               name="phone" value="${info.phone}" id="inpPhone">
+                                                        <span class="animate__animated animate__fadeIn"
+                                                              style="display: none;" id="tbSDT"></span>
+                                                    </div>
+                                                    <div class="form-group">
+                                                        <label class="control-label">Địa chỉ: </label>
+                                                        <input class="form-control mb-0" type="text" placeholder="Địa chỉ"
+                                                               name="address" value="${info.address}" id="inpAddress">
+                                                        <span class="animate__animated animate__fadeIn"
+                                                              style="display: none;" id="tbDiaChi"></span>
+                                                    </div>
                                                 </div>
-                                                <!-- Modal body -->
-                                                <div class="modal-body">
-                                                    Chờ tí, đơn hàng đang thực hiện...
+                                                <div id="divIp"></div>
+                                            </c:forEach>
+                                        </div>
+                                        <div class="wrap-btnCheckOut text-right">
+                                            <button type="button" id="btnOrderSubmit" class="btn btn-success btnThanhToan">Thanh
+                                                toán
+                                            </button>
+
+                                          </div>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                        <div class="tab-pane fade" id="nav-profile" role="tabpanel" aria-labelledby="nav-profile-tab">
+                            <h4 class="pt-2">Địa chỉ giao hàng</h4>
+                            <form action="<%=request.getContextPath()%>/authorize-payment" method="post"
+                                  class="creditly-card-form shopf-sear-headinfo_form" id="orderFormPP">
+                                <div class="creditly-wrapper wrapper">
+                                    <div class="information-wrapper">
+                                        <div class="first-row form-group">
+                                            <c:forEach items="${fillTextBox}" var="info">
+                                                <div class="card_number_grid_right">
+                                                    <div class="form-group">
+                                                        <label class="control-label ">Email: </label>
+                                                        <input class="form-control mb-0" type="email" placeholder="Email"
+                                                               name="email" value="${email}" readonly>
+                                                    </div>
+                                                    <div class="form-group">
+                                                        <label class="control-label">Họ và tên: </label>
+                                                        <input class="form-control mb-0" type="text" name="name"
+                                                               id="inpFnamePP"
+                                                               value="${info.firstName} ${info.lastName} ">
+                                                        <span class="animate__animated animate__fadeIn" style="display: none;"
+                                                              id="tbHoPP"></span>
+                                                    </div>
+                                                    <div class="form-group">
+                                                        <label class="control-label">Số điện thoại :</label>
+                                                        <input class="form-control mb-0" type="text"
+                                                               name="phone" value="${info.phone}" id="inpPhonePP">
+                                                        <span class="animate__animated animate__fadeIn"
+                                                              style="display: none;" id="tbSDTPP"></span>
+                                                    </div>
+                                                    <div class="form-group">
+                                                        <label class="control-label">Địa chỉ: </label>
+                                                        <input class="form-control mb-0" type="text" placeholder="Địa chỉ"
+                                                               name="address" value="${info.address}" id="inpAddressPP">
+                                                        <span class="animate__animated animate__fadeIn"
+                                                              style="display: none;" id="tbDiaChiPP"></span>
+                                                    </div>
                                                 </div>
-                                            </div>
+                                                <div id="divIp"></div>
+                                                <div id="divIp2"></div>
+                                            </c:forEach>
+                                        </div>
+                                        <div class="wrap-btnCheckOut text-right">
+                                            <button type="button" id="btnOrderSubmitPP" class="btn btn-success btnThanhToan">Thanh
+                                                toán
+                                            </button>
+
                                         </div>
                                     </div>
                                 </div>
-                            </div>
+                            </form>
                         </div>
-                    </form>
-                    <br>
-                    <br>
-                    <form action="<%=request.getContextPath()%>/authorize-payment" method="post"
-                          class="creditly-card-form shopf-sear-headinfo_form" id="orderForm2">
-                        <div class="creditly-wrapper wrapper">
-                            <div class="information-wrapper">
-                                <div class="first-row form-group">
-                                    <c:forEach items="${fillTextBox}" var="info">
-                                        <div class="card_number_grid_right">
-                                            <div class="form-group">
-                                                <label class="control-label ">Email: </label>
-                                                <input class="form-control mb-0" type="email" placeholder="Email"
-                                                       name="email" value="${email}" readonly>
-                                            </div>
-                                            <div class="form-group">
-                                                <label class="control-label">Họ và tên: </label>
-                                                <input class="form-control mb-0" type="text" name="name"
-                                                       id="inpFname"
-                                                       value="${info.firstName} ${info.lastName} ">
-                                                <span class="animate__animated animate__fadeIn" style="display: none;"
-                                                      id="tbHo"></span>
-                                            </div>
-                                            <div class="form-group">
-                                                <label class="control-label">Số điện thoại :</label>
-                                                <input class="form-control mb-0" type="text"
-                                                       name="phone" value="${info.phone}" id="inpPhone">
-                                                <span class="animate__animated animate__fadeIn"
-                                                      style="display: none;" id="tbSDT"></span>
-                                            </div>
-                                            <div class="form-group">
-                                                <label class="control-label">Địa chỉ: </label>
-                                                <input class="form-control mb-0" type="text" placeholder="Địa chỉ"
-                                                       name="address" value="${info.address}" id="inpAddress">
-                                                <span class="animate__animated animate__fadeIn"
-                                                      style="display: none;" id="tbDiaChi"></span>
-                                            </div>
-                                        </div>
-                                        <div id="divIp"></div>
-                                        <div id="divIp2"></div>
-                                    </c:forEach>
-                                </div>
-                                <div class="wrap-btnCheckOut text-right">
-                                    <button type="submit" id="btnOrderSubmit2" class="btn btn-success btnThanhToan">Thanh
-                                        toán PayPal
+
+                    </div>
+                    <!-- The Modal -->
+                    <div class="modal fade" id="myOrder">
+                        <div class="modal-dialog">
+                            <div class="modal-content">
+                                <!-- Modal Header -->
+                                <div class="modal-header">
+                                    <h4 class="modal-title">Thông báo</h4>
+                                    <button type="button" class="close" data-dismiss="modal">&times;
                                     </button>
-                                    <!-- The Modal -->
-                                    <div class="modal fade" id="myOrder">
-                                        <div class="modal-dialog">
-                                            <div class="modal-content">
-                                                <!-- Modal Header -->
-                                                <div class="modal-header">
-                                                    <h4 class="modal-title">Thông báo</h4>
-                                                    <button type="button" class="close" data-dismiss="modal">&times;
-                                                    </button>
-                                                </div>
-                                                <!-- Modal body -->
-                                                <div class="modal-body">
-                                                    Chờ tí, đơn hàng đang thực hiện...
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
+                                </div>
+                                <!-- Modal body -->
+                                <div class="modal-body">
+                                    Chờ tí, đơn hàng đang thực hiện...
                                 </div>
                             </div>
                         </div>
-                    </form>
+                    </div>
+
+                <%--                    <h4>Địa chỉ giao hàng</h4>--%>
+<%--                    <form action="<%=request.getContextPath()%>/order" method="post"--%>
+<%--                          class="creditly-card-form shopf-sear-headinfo_form" id="orderForm">--%>
+<%--                        <div class="creditly-wrapper wrapper">--%>
+<%--                            <div class="information-wrapper">--%>
+<%--                                <div class="first-row form-group">--%>
+<%--                                    <c:forEach items="${fillTextBox}" var="info">--%>
+<%--                                        <div class="card_number_grid_right">--%>
+<%--                                            <div class="form-group">--%>
+<%--                                                <label class="control-label ">Email: </label>--%>
+<%--                                                <input class="form-control mb-0" type="email" placeholder="Email"--%>
+<%--                                                       name="email" value="${email}" readonly>--%>
+<%--                                            </div>--%>
+<%--                                            <div class="form-group">--%>
+<%--                                                <label class="control-label">Họ và tên: </label>--%>
+<%--                                                <input class="form-control mb-0" type="text" name="name"--%>
+<%--                                                       id="inpFname"--%>
+<%--                                                       value="${info.firstName} ${info.lastName} ">--%>
+<%--                                                <span class="animate__animated animate__fadeIn" style="display: none;"--%>
+<%--                                                      id="tbHo"></span>--%>
+<%--                                            </div>--%>
+<%--                                            <div class="form-group">--%>
+<%--                                                <label class="control-label">Số điện thoại :</label>--%>
+<%--                                                <input class="form-control mb-0" type="text"--%>
+<%--                                                       name="phone" value="${info.phone}" id="inpPhone">--%>
+<%--                                                <span class="animate__animated animate__fadeIn"--%>
+<%--                                                      style="display: none;" id="tbSDT"></span>--%>
+<%--                                            </div>--%>
+<%--                                            <div class="form-group">--%>
+<%--                                                <label class="control-label">Địa chỉ: </label>--%>
+<%--                                                <input class="form-control mb-0" type="text" placeholder="Địa chỉ"--%>
+<%--                                                       name="address" value="${info.address}" id="inpAddress">--%>
+<%--                                                <span class="animate__animated animate__fadeIn"--%>
+<%--                                                      style="display: none;" id="tbDiaChi"></span>--%>
+<%--                                            </div>--%>
+<%--                                        </div>--%>
+<%--                                        <div id="divIp"></div>--%>
+<%--                                    </c:forEach>--%>
+<%--                                </div>--%>
+<%--                                <div class="wrap-btnCheckOut text-right">--%>
+<%--                                    <button type="button" id="btnOrderSubmit" class="btn btn-success btnThanhToan">Thanh--%>
+<%--                                        toán bằng coin--%>
+<%--                                    </button>--%>
+
+<%--                                    <!-- The Modal -->--%>
+<%--                                    <div class="modal fade" id="myOrder">--%>
+<%--                                        <div class="modal-dialog">--%>
+<%--                                            <div class="modal-content">--%>
+<%--                                                <!-- Modal Header -->--%>
+<%--                                                <div class="modal-header">--%>
+<%--                                                    <h4 class="modal-title">Thông báo</h4>--%>
+<%--                                                    <button type="button" class="close" data-dismiss="modal">&times;--%>
+<%--                                                    </button>--%>
+<%--                                                </div>--%>
+<%--                                                <!-- Modal body -->--%>
+<%--                                                <div class="modal-body">--%>
+<%--                                                    Chờ tí, đơn hàng đang thực hiện...--%>
+<%--                                                </div>--%>
+<%--                                            </div>--%>
+<%--                                        </div>--%>
+<%--                                    </div>--%>
+<%--                                </div>--%>
+<%--                            </div>--%>
+<%--                        </div>--%>
+<%--                    </form>--%>
+
+<%--                    <form action="<%=request.getContextPath()%>/authorize-payment" method="post"--%>
+<%--                          class="creditly-card-form shopf-sear-headinfo_form" id="orderForm2">--%>
+<%--                        <div class="creditly-wrapper wrapper">--%>
+<%--                            <div class="information-wrapper">--%>
+<%--                                <div class="first-row form-group">--%>
+<%--                                    <c:forEach items="${fillTextBox}" var="info">--%>
+<%--                                        <div class="card_number_grid_right">--%>
+<%--                                            <div class="form-group">--%>
+<%--                                                <label class="control-label ">Email: </label>--%>
+<%--                                                <input class="form-control mb-0" type="email" placeholder="Email"--%>
+<%--                                                       name="email" value="${email}" readonly>--%>
+<%--                                            </div>--%>
+<%--                                            <div class="form-group">--%>
+<%--                                                <label class="control-label">Họ và tên: </label>--%>
+<%--                                                <input class="form-control mb-0" type="text" name="name"--%>
+<%--                                                       id="inpFname"--%>
+<%--                                                       value="${info.firstName} ${info.lastName} ">--%>
+<%--                                                <span class="animate__animated animate__fadeIn" style="display: none;"--%>
+<%--                                                      id="tbHo"></span>--%>
+<%--                                            </div>--%>
+<%--                                            <div class="form-group">--%>
+<%--                                                <label class="control-label">Số điện thoại :</label>--%>
+<%--                                                <input class="form-control mb-0" type="text"--%>
+<%--                                                       name="phone" value="${info.phone}" id="inpPhone">--%>
+<%--                                                <span class="animate__animated animate__fadeIn"--%>
+<%--                                                      style="display: none;" id="tbSDT"></span>--%>
+<%--                                            </div>--%>
+<%--                                            <div class="form-group">--%>
+<%--                                                <label class="control-label">Địa chỉ: </label>--%>
+<%--                                                <input class="form-control mb-0" type="text" placeholder="Địa chỉ"--%>
+<%--                                                       name="address" value="${info.address}" id="inpAddress">--%>
+<%--                                                <span class="animate__animated animate__fadeIn"--%>
+<%--                                                      style="display: none;" id="tbDiaChi"></span>--%>
+<%--                                            </div>--%>
+<%--                                        </div>--%>
+<%--                                        <div id="divIp"></div>--%>
+<%--                                        <div id="divIp2"></div>--%>
+<%--                                    </c:forEach>--%>
+<%--                                </div>--%>
+<%--                                <div class="wrap-btnCheckOut text-right">--%>
+<%--                                    <button type="submit" id="btnOrderSubmit2" class="btn btn-success btnThanhToan">Thanh--%>
+<%--                                        toán PayPal--%>
+<%--                                    </button>--%>
+<%--                                    <!-- The Modal -->--%>
+<%--                                    <div class="modal fade" id="myOrder">--%>
+<%--                                        <div class="modal-dialog">--%>
+<%--                                            <div class="modal-content">--%>
+<%--                                                <!-- Modal Header -->--%>
+<%--                                                <div class="modal-header">--%>
+<%--                                                    <h4 class="modal-title">Thông báo</h4>--%>
+<%--                                                    <button type="button" class="close" data-dismiss="modal">&times;--%>
+<%--                                                    </button>--%>
+<%--                                                </div>--%>
+<%--                                                <!-- Modal body -->--%>
+<%--                                                <div class="modal-body">--%>
+<%--                                                    Chờ tí, đơn hàng đang thực hiện...--%>
+<%--                                                </div>--%>
+<%--                                            </div>--%>
+<%--                                        </div>--%>
+<%--                                    </div>--%>
+<%--                                </div>--%>
+<%--                            </div>--%>
+<%--                        </div>--%>
+<%--                    </form>--%>
                 </div>
                 <div class="col-md-4">
                     <h2>Tổng tiền: <span class="totalPrice">0đ</span></h2>

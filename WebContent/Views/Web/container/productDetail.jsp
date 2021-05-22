@@ -68,7 +68,7 @@
                                  > Hãy chọn size cho sản phẩm
                             </button>
                         </div>
-
+                        <div id="divIp"></div>
                     </div>
                 </form>
                 <hr class="hrcs">
