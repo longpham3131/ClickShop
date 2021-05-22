@@ -168,6 +168,8 @@ You can't access this page if you use link-url and not login -->
                                                        class="form-control"
                                                        id="priceAdd"
                                                        value=""
+                                                       min="0"
+                                                       onkeypress="return (event.charCode == 8 || event.charCode == 0) ? null : event.charCode >= 48 && event.charCode <= 57"
                                                        name="unitprice">
                                             </div>
                                         </div>
@@ -506,10 +508,12 @@ You can't access this page if you use link-url and not login -->
                                                                                class="col-sm-4 col-form-label">Đơn Giá
                                                                             :</label>
                                                                         <div class="col-sm-8">
-                                                                            <input type="text"
+                                                                            <input type="number"
                                                                                    class="form-control"
                                                                                    id="priceProEdit${row.productId}"
                                                                                    value="${row.getUnitPrice()}"
+                                                                                   min="0"
+                                                                                   onkeypress="return (event.charCode == 8 || event.charCode == 0) ? null : event.charCode >= 48 && event.charCode <= 57"
                                                                                    name="unitprice">
                                                                         </div>
                                                                     </div>
@@ -621,9 +625,11 @@ You can't access this page if you use link-url and not login -->
                                                                             <td>
                                                                                 <input maxlength="4" size="4"
                                                                                        value="${eachsize.getAvailable()}"
-                                                                                       type="text"
+                                                                                       type="number"
                                                                                        class="form-control check"
                                                                                        name="fname"
+                                                                                       min="0"
+                                                                                       onkeypress="return (event.charCode == 8 || event.charCode == 0) ? null : event.charCode >= 48 && event.charCode <= 57"
                                                                                 >
                                                                             </td>
                                                                             <td>

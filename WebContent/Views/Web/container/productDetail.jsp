@@ -57,7 +57,8 @@
                         <div class="quantity-area clearfix">
                             <input type="button" value="-" id="btnMinus" class="qty-btn">
                             <input type="text" id="quantity" name="quantity" value="1" min="1"
-                                   class="quantity-selector">
+                                   class="quantity-selector"
+                                   onkeypress="return (event.charCode == 8 || event.charCode == 0) ? null : event.charCode >= 48 && event.charCode <= 57">
                             <input type="button" value="+" id="btnPlus" class="qty-btn">
                         </div>
                         <p id="textThongBao" class="text-danger py-1"></p>

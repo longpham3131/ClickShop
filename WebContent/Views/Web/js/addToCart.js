@@ -80,7 +80,7 @@ function themSPMoi() {
                 dssp.themSP(sanPhamMoi);
                 $('#myModal').modal('show')
             } else {
-                getMyEle("textThongBao").innerHTML = "Số lượng sản phẩm này đã hết";
+                getMyEle("textThongBao").innerHTML = "Số lượng sản phẩm này không đủ";
             }
         }
     }

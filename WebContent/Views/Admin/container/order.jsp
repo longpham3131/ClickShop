@@ -181,9 +181,12 @@
                                                               method="post" id="formEdit${row.purchaseOrderId}">
                                                             <div class="form-group">
                                                                 <label for="inpPhone">Số điện thoại :</label> <input
-                                                                    type="tel" id="inpPhone"
+                                                                    type="number" id="inpPhone"
                                                                     class="form-control"
-                                                                    value="${row.phone}" name="phone">
+                                                                    value="${row.phone}" name="phone"
+                                                                    min="0"
+                                                                    onkeypress="return (event.charCode == 8 || event.charCode == 0) ? null : event.charCode >= 48 && event.charCode <= 57">
+
                                                             </div>
                                                             <div class="form-group">
                                                                 <label for="inpAddress">Địa chỉ :</label> <input

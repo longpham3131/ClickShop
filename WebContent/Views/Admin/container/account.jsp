@@ -209,7 +209,7 @@
                                     </div>
                                     <div class="form-group">
                                         <label for="addPhone">Số điện thoại :</label>
-                                        <input type="tel" id="addPhone" class="form-control" name="phone">
+                                        <input type="number" id="addPhone" class="form-control" name="phone">
                                     </div>
                                     <div class="form-group">
                                         <label for="addAddress">Địa chỉ :</label>
@@ -499,7 +499,7 @@
 
                                                                     <div class="form-group">
                                                                         <label for="inpPhone">Số điện thoại :</label> <input
-                                                                            type="tel" id="inpPhone"
+                                                                            type="number" id="inpPhone"
                                                                             class="form-control"
                                                                             value="${listAcc.phone}" name="phone">
                                                                     </div>

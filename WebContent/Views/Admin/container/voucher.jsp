@@ -107,7 +107,9 @@
                                     <label for="inpValue" class="col-sm-4 col-form-label">Giá trị voucher: </label>
                                     <div class="col-sm-8">
                                         <input type="number" class="form-control" id="inpValue" value="100000"
-                                               name="coin">
+                                               name="coin"
+                                               min="0"
+                                               onkeypress="return (event.charCode == 8 || event.charCode == 0) ? null : event.charCode >= 48 && event.charCode <= 57">
 
                                     </div>
                                 </div>
