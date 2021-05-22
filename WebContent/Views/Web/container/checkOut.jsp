@@ -148,7 +148,7 @@
                                             </c:forEach>
                                         </div>
                                         <div class="wrap-btnCheckOut text-right">
-                                            <button type="button" id="btnOrderSubmitPP" class="btn btn-success btnThanhToan">Thanh
+                                            <button type="submit" form="orderFormPP" id="btnOrderSubmitPP" class="btn btn-success btnThanhToan">Thanh
                                                 toán
                                             </button>
 

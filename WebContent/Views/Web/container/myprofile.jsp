@@ -89,8 +89,9 @@
                             <div class="form-group row">
                                 <label for="inpPhone" class="col-sm-2 col-form-label">Số điện thoại</label>
                                 <div class="col-sm-10">
-                                    <input type="tel" class="form-control" id="inpPhone" name="myphone"
-                                           value="${info.phone}">
+                                    <input type="number" class="form-control" id="inpPhone" name="myphone"
+                                           value="${info.phone}"
+                                           onkeypress="return (event.charCode == 8 || event.charCode == 0) ? null : event.charCode >= 48 && event.charCode <= 57">
                                     <span class="animate__animated animate__fadeIn" style="display: none;"  id="tbSDT"></span>
                                 </div>
                             </div>
