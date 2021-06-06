@@ -12,7 +12,6 @@ public class MyDB {
 			Class.forName("com.microsoft.sqlserver.jdbc.SQLServerDriver");
 			Connection conn = DriverManager.getConnection(dbURL);
 			if (conn != null) {
-				System.out.println("Connected");
 				return conn;
 			}
 

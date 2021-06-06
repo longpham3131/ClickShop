@@ -22,7 +22,7 @@
     <link
             href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i"
             rel="stylesheet">
-
+    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/r/dt/jq-2.1.4,jszip-2.5.0,pdfmake-0.1.18,dt-1.10.9,af-2.0.0,b-1.0.3,b-colvis-1.0.3,b-html5-1.0.3,b-print-1.0.3,se-1.0.1/datatables.min.css"/>
     <!-- Custom styles for this template-->
 
     <link href="<%= request.getContextPath()%>/Views/Admin/css/sb-admin-2.min.css" rel="stylesheet">
@@ -94,6 +94,7 @@
     session.setAttribute("from", "product");
 %>
 <!-- end of thong bao -->
+
 
 <!-- Page Wrapper -->
 <div id="wrapper">
@@ -251,46 +252,6 @@
                     </div>
                 </div>
             </div>
-            <!-- ---- END Of TABLE -- -->
-
-            <!-------------- Them xoa sua !!! Can Design lai !! ------------ -->
-
-            <%--            <ul class="nav nav-tabs" id="myTab" role="tablist">--%>
-            <%--                <li class="nav-item"><a class="nav-link active" id="home-tab"--%>
-            <%--                                        data-toggle="tab" href="#insert" role="tab" aria-controls="home"--%>
-            <%--                                        aria-selected="true">Thêm</a></li>--%>
-
-            <%--                <li class="nav-item"><a class="nav-link" id="profile-tab"--%>
-            <%--                                        data-toggle="tab" href="#update" role="tab"--%>
-            <%--                                        aria-controls="profile" aria-selected="false">Cập nhật</a></li>--%>
-
-            <%--                &lt;%&ndash; <li class="nav-item"><a class="nav-link" id="contact-tab"--%>
-            <%--                    data-toggle="tab" href="#delete" role="tab"--%>
-            <%--                    aria-controls="contact" aria-selected="false">Delete</a></li> &ndash;%&gt;--%>
-            <%--            </ul>--%>
-
-            <%--            <div class="tab-content" id="myTabContent">--%>
-            <%--                <div class="tab-pane fade show active" id="insert" role="tabpanel"--%>
-            <%--                     aria-labelledby="home-tab">--%>
-            <%--                    <c:import url="product/insert.jsp"></c:import>--%>
-            <%--                </div>--%>
-            <%--                <div class="tab-pane fade" id="update" role="tabpanel"--%>
-            <%--                     aria-labelledby="profile-tab">--%>
-            <%--                    <c:import url="product/update.jsp"></c:import>--%>
-            <%--                </div>--%>
-            <%--                &lt;%&ndash; <div class="tab-pane fade" id="delete" role="tabpanel"--%>
-            <%--                    aria-labelledby="contact-tab">--%>
-            <%--                    <c:import url="product/delete.jsp"></c:import>--%>
-            <%--                </div>  &ndash;%&gt;--%>
-
-            <%--                <!--------------END Them xoa sua  ------------ -->--%>
-
-
-            <%--                <!-- Footer -->--%>
-            <%--                <c:import url="../commom/footer.html" />--%>
-            <%--                <!-- End of Footer -->--%>
-            <%--            </div>--%>
-            <!-- End of Content Wrapper -->
         </div>
 
 
@@ -326,8 +287,9 @@
         </div>
         <!-- Bootstrap core JavaScript-->
 
-        <script src="<%= request.getContextPath()%>/Views/Admin/	vendor/jquery/jquery.min.js"></script>
+        <script src="<%= request.getContextPath()%>/Views/Admin/vendor/jquery/jquery.min.js"></script>
         <script src="<%= request.getContextPath()%>/Views/Admin/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.0/jquery.min.js"></script>
 
         <!-- Core plugin JavaScript-->
         <script src="<%= request.getContextPath()%>/Views/Admin/vendor/jquery-easing/jquery.easing.min.js"></script>
@@ -336,14 +298,24 @@
         <script src="<%= request.getContextPath()%>/Views/Admin/js/sb-admin-2.min.js"></script>
 
         <!-- Page level plugins -->
-        <script src="<%= request.getContextPath()%>/Views/Admin/vendor/chart.js/Chart.min.js"></script>
+<%--        <script src="<%= request.getContextPath()%>/Views/Admin/vendor/chart.js/Chart.min.js"></script>--%>
         <script src="<%= request.getContextPath()%>/Views/Admin/vendor/datatables/jquery.dataTables.min.js"></script>
         <script src="<%= request.getContextPath()%>/Views/Admin/vendor/datatables/dataTables.bootstrap4.min.js"></script>
-
+        <script type="text/javascript" src="https://cdn.datatables.net/r/dt/jq-2.1.4,jszip-2.5.0,pdfmake-0.1.18,dt-1.10.9,af-2.0.0,b-1.0.3,b-colvis-1.0.3,b-html5-1.0.3,b-print-1.0.3,se-1.0.1/datatables.min.js"></script>
+        <script type="text/javascript" >
+            $(document).ready(function() {
+                $('#dataTable').DataTable( {
+                    dom: 'lBfrtip',
+                    buttons: [
+                        'excel',
+                    ],
+                } );
+            } );
+        </script>
         <!-- Page level custom scripts -->
-        <script src="<%= request.getContextPath()%>/Views/Admin/js/demo/chart-area-demo.js"></script>
+<%--        <script src="<%= request.getContextPath()%>/Views/Admin/js/demo/chart-area-demo.js"></script>--%>
         <script src="<%= request.getContextPath()%>/Views/Admin/js/demo/datatables-demo.js"></script>
-        <script src="<%= request.getContextPath()%>/Views/Admin/js/demo/chart-pie-demo.js"></script>
+<%--        <script src="<%= request.getContextPath()%>/Views/Admin/js/demo/chart-pie-demo.js"></script>--%>
 
 </body>
 </html>

@@ -65,9 +65,7 @@
 <c:if test="${kqDangki == true}">
     <script>  alert("Đăng kí thành công"); </script>
 </c:if>
-<c:if test="${kqDangki == 'loi'}">
-    <script>  alert("Lỗi"); </script>
-</c:if>
+
 <c:if test="${kqDangki == 'email'}">
     <script>  alert("Lỗi đắng kí: Email is null"); </script>
 </c:if>
@@ -110,7 +108,7 @@
                 </div>
 
                 <div class="wrap-input100 validate-input" data-validate="Enter password">
-                    <input class="input100" type="password" name="password" placeholder="Mật khẩu">
+                    <input class="input100" value="clickshop123aA@" type="password" name="password" placeholder="Mật khẩu">
                     <span class="focus-input100" data-placeholder="&#xf191;"></span>
                 </div>
 
@@ -124,7 +122,7 @@
             <!-- Button to Open the Modal -->
             <div class="text-center">
                 <button type="button" style="background-color: transparent; padding: 10px 0; color: white"
-                        data-toggle="modal" data-target="#myModal">
+                        data-toggle="modal" data-target="#myModal" id="BtnAddUser">
                     Đăng ký
                 </button>
             </div>
@@ -144,6 +142,7 @@
 <div class="modal fade" id="myModal">
     <div class="modal-dialog modal-lg modal-dialog-centered">
         <div class="modal-content">
+
             <form action="${pageContext.request.contextPath}/registed" method="post" id="formRegister">
                 <!-- Modal Header -->
                 <div class="modal-header">
@@ -198,18 +197,24 @@
                         <div class="form-group col-6">
                             <label for="Gender">Giới tính</label>
                             <select name="gender" id="Gender" class="form-control" name="gender">
-                                <option value="M">Nam</option>
-                                <option value="F">Nữ</option>
+                                <option value="M" ${gender == M ? 'selected="selected"' : ''}>Nam</option>
+                                <option value="F" ${gender == F ? 'selected="selected"' : ''}>Nữ</option>
                             </select>
                         </div>
                     </div>
                     <div class="form-row">
                         <div class="form-group col-12">
                             <label for="inpAddress">Địa chỉ:</label>
-                            <textarea  class="form-control" name="address" id="inpAddress" rows="4" cols="50" alue="${address}"></textarea>
+                            <textarea  class="form-control" name="address" id="inpAddress" rows="4" cols="50" value="${address}">${address}</textarea>
                             <span class="animate__animated animate__fadeIn" style="display: none;"  id="tbDiaChi"></span>
                         </div>
                     </div>
+                </div>
+                <hr class="w-100"/>
+                <div class="text-center p-3">
+                    <c:if test="${kqDangki == 'loi'}">
+                        <h5 style="color: red;">${errorDescription}</h5>
+                    </c:if>
                 </div>
             </form>
             <!-- Modal footer -->
@@ -278,6 +283,8 @@
 <script src="<%=request.getContextPath()%>/Views/Global/Validation.js"></script>
 <script src="<%=request.getContextPath()%>/Views/Web/js/InfoValid.js"></script>
 
-
+<c:if test="${kqDangki == 'loi'}">
+    <script>   document.getElementById("BtnAddUser").click(); </script>
+</c:if>
 </body>
 </html>

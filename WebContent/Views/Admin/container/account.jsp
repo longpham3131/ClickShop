@@ -6,7 +6,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+    <meta charset="UTF-8">
     <title>Trang Tài khoản</title>
     <!-- Custom fonts for this template-->
     <link
@@ -15,6 +15,7 @@
     <link
             href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i"
             rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/r/dt/jq-2.1.4,jszip-2.5.0,pdfmake-0.1.18,dt-1.10.9,af-2.0.0,b-1.0.3,b-colvis-1.0.3,b-html5-1.0.3,b-print-1.0.3,se-1.0.1/datatables.min.css"/>
 
     <!-- Custom styles Sfor this template-->
 
@@ -27,86 +28,7 @@
 <body>
 
 
-<!---- nhan thong bao phan hoi ---->
-<c:if test="${from == 'insert'}">
-    <c:if test="${(thongbao == 'true') && (from=='insert')}">
-        <script type="text/javascript">
-            alert('Thêm: Thành công!!!');
-        </script>
-    </c:if>
-    <c:if test="${(thongbao == 'error') && (from=='insert')}">
-        <script type="text/javascript">
-            alert('Thêm thất bại : Tuổi của nhân viên phải lớn hơn 18');
-        </script>
-    </c:if>
-    <c:if test="${(thongbao == 'input') && (from=='insert')}">
-        <script type="text/javascript">
-            alert('Thêm: lỗi nhập liệu!!!');
-        </script>
-    </c:if>
-</c:if>
-<c:if test="${from == 'update'}">
-    <c:if test="${(thongbao == 'true')}">
-        <script type="text/javascript">
-            alert('Cập nhật: Thành công!!!');
-        </script>
-    </c:if>
-    <c:if test="${(thongbao == 'error') }">
-        <script type="text/javascript">
-            alert('Cập nhật: Tuổi nhân viên phải lớn hơn 18');
-        </script>
-    </c:if>
-    <c:if test="${(thongbao == 'input')}">
-        <script type="text/javascript">
-            alert('Cập nhật: input not true');
-        </script>
-    </c:if>
-</c:if>
-<!-- delete -->
-<c:if test="${from == 'delete'}">
-    <c:if test="${(thongbao == 'true') && (from=='delete')}">
-        <script type="text/javascript">
-            alert('Block/Unblock Thành công !!!');
-        </script>
-    </c:if>
-    <c:if test="${(thongbao == 'error') && (from=='delete')}">
-        <script type="text/javascript">
-            alert('Block/Unblock: Thất bại');
-        </script>
-    </c:if>
-    <c:if test="${(thongbao == 'input') && (from=='delete')}">
-        <script type="text/javascript">
-            alert('Block/Unblock: Hãy nhập đầy đủ dữ liệu');
-        </script>
-    </c:if>
-    <c:if test="${(thongbao == 'notFound') && (from=='delete')}">
-        <script type="text/javascript">
-            alert('Block/Unblock: Không tìm thấy email này');
-        </script>
-    </c:if>
-</c:if>
-<c:if test="${from == 'reset'}">
-    <c:if test="${(thongbao == 'true')}">
-        <script type="text/javascript">
-            alert('Reset : thành công!!!');
-        </script>
-    </c:if>
-    <c:if test="${(thongbao == 'error')}">
-        <script type="text/javascript">
-            alert('Reset : lỗi!!!');
-        </script>
-    </c:if>
-    <c:if test="${(thongbao == 'input')}">
-        <script type="text/javascript">
-            alert('Reset : Hãy nhập đầy đủ dữ liệu');
-        </script>
-    </c:if>
-    <c:if test="${(thongbao == 'notFound') && (from=='delete')}">
-        <script type="text/javascript">
-            alert('Reset: Không tìm thấy email này');
-        </script>
-    </c:if>
-</c:if>
+
 <%
     session.setAttribute("from", "acc");
 %>
@@ -142,7 +64,7 @@
                     <!-- Button to Open the Modal -->
                     <button type="button" class="btn btn-success" style="width: 15%; display:inline; float: right;"
                             data-toggle="modal"
-                            data-target="#addUser">
+                            data-target="#addUser" id="BtnShowModalAddUser">
                         <i class="fa fa-plus mr-2"></i> Thêm tài khoản
                     </button>
                 </div>
@@ -160,82 +82,171 @@
 
                             <!-- Modal body -->
                             <div class="modal-body">
-                                <form action="${pageContext.request.contextPath}/insert-account" id="formAdd"
-                                      method="post">
-                                    <div class="form-group">
-                                        <label for="addEmail">Email :</label>
-                                        <input type="email" id="addEmail" class="form-control" name="email">
-                                    </div>
-                                    <div class="form-row">
-                                        <div class="form-group col-6">
-                                            <label for="addFname">Họ :</label>
-                                            <input type="text" id="addFname" class="form-control" name="firstname">
-                                        </div>
-                                        <div class="form-group col-6">
-                                            <label for="addLname">Tên :</label>
-                                            <input type="text" id="addLname" class="form-control" name="lastname">
-                                        </div>
-                                    </div>
-                                    <div class="form-row">
-                                        <div class="form-group col-6">
-                                            <label for="addGender">Giới tính :</label>
-                                            <select name="gender" id="addGender" class="form-control" name="gender">
-                                                <%
-                                                    String[] sex = {"M", "F"};
-                                                    for (int s = 0; s < 2; s++) {
-                                                %>
-                                                <option value="<%=sex[s]%>">
+                                <c:choose>
+                                    <c:when test="${(thongbao == 'error') && (from=='insert')}">
+                                        <form action="${pageContext.request.contextPath}/insert-account" id="formAdd"
+                                              method="post">
+                                            <div class="form-group">
+                                                <label for="addEmail">Email :</label>
+                                                <input type="email" value="<c:out value="${emailError}"/>"  class="form-control" name="email">
+                                            </div>
+                                            <div class="form-row">
+                                                <div class="form-group col-6">
+                                                    <label for="addFname">Họ :</label>
+                                                    <input type="text" value="<c:out value="${firstnameError}"/>" class="form-control" name="firstname">
+                                                </div>
+                                                <div class="form-group col-6">
+                                                    <label for="addLname">Tên :</label>
+                                                    <input type="text" value="<c:out value="${lastnameError}"/>" class="form-control" name="lastname">
+                                                </div>
+                                            </div>
+                                            <div class="form-row">
+                                                <div class="form-group col-6">
+                                                    <label for="addGender">Giới tính :</label>
+                                                    <select name="gender"  class="form-control" name="gender">
+                                                        <%
+                                                            String[] sex = {"M", "F"};
+                                                            for (int s = 0; s < 2; s++) {
+                                                        %>
+                                                        <option value="<%=sex[s]%>" ${genderError== sex[s] ? 'selected="selected"' : ''}>
+                                                            <%
+                                                                if (s == 0) {
+                                                            %>Nam<%
+                                                            }
+                                                        %>
+                                                            <%
+                                                                if (s == 1) {
+                                                            %>Nữ<%
+                                                            }
+                                                        %>
+                                                        </option>
+                                                        <%
+                                                            }
+                                                        %>
+
+                                                    </select>
+                                                </div>
+                                                <div class="form-group col-6">
+                                                    <label for="addDOfB">Ngày sinh :</label>
+                                                    <input type="date" value="<c:out value="${BdayError}"/>" class="form-control"  name="Bday">
+                                                </div>
+                                            </div>
+                                            <div class="form-group">
+                                                <label for="addPhone">Số điện thoại :</label>
+                                                <input type="number"  value="<c:out value="${phoneError}"/>" class="form-control" class="form-control" name="phone">
+                                            </div>
+                                            <div class="form-group">
+                                                <label for="addAddress">Địa chỉ :</label>
+                                                <input type="text" value="<c:out value="${addressError}"/>" class="form-control"  class="form-control" name="address">
+                                            </div>
+
+
+                                            <div class="form-group">
+                                                <label for="addRole">Loại tài khoản :</label>
+                                                <select name="role"  class="form-control" name="role">
                                                     <%
-                                                        if (s == 0) {
-                                                    %>Nam<%
-                                                    }
-                                                %>
+                                                        String[] Role = {"USER", "SALER", "ADMINISTRATOR", "SHIPPER"};
+                                                        for (int role = 0; role < 4; role++) {
+                                                    %>
+                                                    <option value="<%=Role[role]%>" ${roleError== Role[role] ? 'selected="selected"' : ''}>
+                                                        <%=Role[role]%>
+                                                    </option>
                                                     <%
-                                                        if (s == 1) {
-                                                    %>Nữ<%
-                                                    }
-                                                %>
-                                                </option>
-                                                <%
-                                                    }
-                                                %>
-
-                                            </select>
-                                        </div>
-                                        <div class="form-group col-6">
-                                            <label for="addDOfB">Ngày sinh :</label>
-                                            <input type="date" class="form-control" id="addDOfB" name="Bday">
-                                        </div>
-                                    </div>
-                                    <div class="form-group">
-                                        <label for="addPhone">Số điện thoại :</label>
-                                        <input type="number" id="addPhone" class="form-control" name="phone">
-                                    </div>
-                                    <div class="form-group">
-                                        <label for="addAddress">Địa chỉ :</label>
-                                        <input type="text" id="addAddress" class="form-control" name="address">
-                                    </div>
-
-
-                                    <div class="form-group">
-                                        <label for="addRole">Loại tài khoản :</label>
-                                        <select name="role" id="addRole" class="form-control" name="role">
-                                            <%
-                                                String[] Role = {"USER", "SALER", "ADMINISTRATOR", "SHIPPER"};
-                                                for (int role = 0; role < 4; role++) {
-                                            %>
-                                            <option value="<%=Role[role]%>">
-                                                <%=Role[role]%>
-                                            </option>
-                                            <%
-                                                }
-                                            %>
-                                        </select>
-                                    </div>
+                                                        }
+                                                    %>
+                                                </select>
+                                            </div>
 
 
 
-                                </form>
+                                        </form>
+                                    </c:when>
+                                    <c:otherwise>
+                                        <form action="${pageContext.request.contextPath}/insert-account" id="formAdd"
+                                              method="post">
+                                            <div class="form-group">
+                                                <label for="addEmail">Email :</label>
+                                                <input type="email" id="addEmail" class="form-control" name="email">
+                                            </div>
+                                            <div class="form-row">
+                                                <div class="form-group col-6">
+                                                    <label for="addFname">Họ :</label>
+                                                    <input type="text" id="addFname" class="form-control" name="firstname">
+                                                </div>
+                                                <div class="form-group col-6">
+                                                    <label for="addLname">Tên :</label>
+                                                    <input type="text" id="addLname" class="form-control" name="lastname">
+                                                </div>
+                                            </div>
+                                            <div class="form-row">
+                                                <div class="form-group col-6">
+                                                    <label for="addGender">Giới tính :</label>
+                                                    <select name="gender" id="addGender" class="form-control" name="gender">
+                                                        <%
+                                                            String[] sex = {"M", "F"};
+                                                            for (int s = 0; s < 2; s++) {
+                                                        %>
+                                                        <option value="<%=sex[s]%>">
+                                                            <%
+                                                                if (s == 0) {
+                                                            %>Nam<%
+                                                            }
+                                                        %>
+                                                            <%
+                                                                if (s == 1) {
+                                                            %>Nữ<%
+                                                            }
+                                                        %>
+                                                        </option>
+                                                        <%
+                                                            }
+                                                        %>
+
+                                                    </select>
+                                                </div>
+                                                <div class="form-group col-6">
+                                                    <label for="addDOfB">Ngày sinh :</label>
+                                                    <input type="date" class="form-control" id="addDOfB" name="Bday">
+                                                </div>
+                                            </div>
+                                            <div class="form-group">
+                                                <label for="addPhone">Số điện thoại :</label>
+                                                <input type="number" id="addPhone" class="form-control" name="phone">
+                                            </div>
+                                            <div class="form-group">
+                                                <label for="addAddress">Địa chỉ :</label>
+                                                <input type="text" id="addAddress" class="form-control" name="address">
+                                            </div>
+
+
+                                            <div class="form-group">
+                                                <label for="addRole">Loại tài khoản :</label>
+                                                <select name="role" id="addRole" class="form-control" name="role">
+                                                    <%
+                                                        String[] Role = {"USER", "SALER", "ADMINISTRATOR", "SHIPPER"};
+                                                        for (int role = 0; role < 4; role++) {
+                                                    %>
+                                                    <option value="<%=Role[role]%>">
+                                                        <%=Role[role]%>
+                                                    </option>
+                                                    <%
+                                                        }
+                                                    %>
+                                                </select>
+                                            </div>
+
+
+
+                                        </form>
+                                    </c:otherwise>
+
+
+                                </c:choose>
+                                <div class="text-center">
+                                    <c:if test="${(thongbao == 'error') && (from=='insert')}">
+                                        <p style="color: red;">${errorDescription}</p>
+                                    </c:if>
+                                </div>
                             </div>
                             <!-- Modal footer -->
                             <div class="modal-footer">
@@ -657,18 +668,105 @@
 
     <!-- Page level plugins -->
     <script
-            src="<%=request.getContextPath()%>/Views/Admin/vendor/chart.js/Chart.min.js"></script>
-    <script
             src="<%=request.getContextPath()%>/Views/Admin/vendor/datatables/jquery.dataTables.min.js"></script>
     <script
             src="<%=request.getContextPath()%>/Views/Admin/vendor/datatables/dataTables.bootstrap4.min.js"></script>
 
     <!-- Page level custom scripts -->
-    <script
-            src="<%=request.getContextPath()%>/Views/Admin/js/demo/chart-area-demo.js"></script>
+<%--    Exoport File --%>
     <script
             src="<%=request.getContextPath()%>/Views/Admin/js/demo/datatables-demo.js"></script>
-    <script
-            src="<%=request.getContextPath()%>/Views/Admin/js/demo/chart-pie-demo.js"></script>
+        <script type="text/javascript" src="https://cdn.datatables.net/r/dt/jq-2.1.4,jszip-2.5.0,pdfmake-0.1.18,dt-1.10.9,af-2.0.0,b-1.0.3,b-colvis-1.0.3,b-html5-1.0.3,b-print-1.0.3,se-1.0.1/datatables.min.js"></script>
+        <script type="text/javascript" >
+            $(document).ready(function() {
+                $('#dataTable').DataTable( {
+                    dom: 'lBfrtip',
+                    buttons: [
+                        'excel',
+                    ],
+                } );
+            } );
+        </script>
+        <!---- nhan thong bao phan hoi ---->
+        <c:if test="${from == 'insert'}">
+        <c:if test="${(thongbao == 'true') && (from=='insert')}">
+        <script type="text/javascript">
+            alert('Thêm: Thành công!!!');
+        </script>
+        </c:if>
+        <c:if test="${(thongbao == 'error') && (from=='insert')}">
+        <script type="text/javascript">
+            document.getElementById("BtnShowModalAddUser").click();
+
+        </script>
+        </c:if>
+        <c:if test="${(thongbao == 'input') && (from=='insert')}">
+        <script type="text/javascript">
+            alert('Thêm: lỗi nhập liệu!!!');
+        </script>
+        </c:if>
+        </c:if>
+        <c:if test="${from == 'update'}">
+        <c:if test="${(thongbao == 'true')}">
+        <script type="text/javascript">
+            alert('Cập nhật: Thành công!!!');
+        </script>
+        </c:if>
+        <c:if test="${(thongbao == 'error') }">
+        <script type="text/javascript">
+            alert('Cập nhật: Tuổi nhân viên phải lớn hơn 18');
+        </script>
+        </c:if>
+        <c:if test="${(thongbao == 'input')}">
+        <script type="text/javascript">
+            alert('Cập nhật: input not true');
+        </script>
+        </c:if>
+        </c:if>
+        <!-- delete -->
+        <c:if test="${from == 'delete'}">
+        <c:if test="${(thongbao == 'true') && (from=='delete')}">
+        <script type="text/javascript">
+            alert('Block/Unblock Thành công !!!');
+        </script>
+        </c:if>
+        <c:if test="${(thongbao == 'error') && (from=='delete')}">
+        <script type="text/javascript">
+            alert('Block/Unblock: Thất bại');
+        </script>
+        </c:if>
+        <c:if test="${(thongbao == 'input') && (from=='delete')}">
+        <script type="text/javascript">
+            alert('Block/Unblock: Hãy nhập đầy đủ dữ liệu');
+        </script>
+        </c:if>
+        <c:if test="${(thongbao == 'notFound') && (from=='delete')}">
+        <script type="text/javascript">
+            alert('Block/Unblock: Không tìm thấy email này');
+        </script>
+        </c:if>
+        </c:if>
+        <c:if test="${from == 'reset'}">
+        <c:if test="${(thongbao == 'true')}">
+        <script type="text/javascript">
+            alert('Reset : thành công!!!');
+        </script>
+        </c:if>
+        <c:if test="${(thongbao == 'error')}">
+        <script type="text/javascript">
+            alert('Reset : lỗi!!!');
+        </script>
+        </c:if>
+        <c:if test="${(thongbao == 'input')}">
+        <script type="text/javascript">
+            alert('Reset : Hãy nhập đầy đủ dữ liệu');
+        </script>
+        </c:if>
+        <c:if test="${(thongbao == 'notFound') && (from=='delete')}">
+        <script type="text/javascript">
+            alert('Reset: Không tìm thấy email này');
+        </script>
+        </c:if>
+        </c:if>
 </body>
 </html>

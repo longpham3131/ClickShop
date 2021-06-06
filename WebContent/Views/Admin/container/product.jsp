@@ -24,6 +24,7 @@
             rel="stylesheet">
 
     <!-- Custom styles for this template-->
+    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/r/dt/jq-2.1.4,jszip-2.5.0,pdfmake-0.1.18,dt-1.10.9,af-2.0.0,b-1.0.3,b-colvis-1.0.3,b-html5-1.0.3,b-print-1.0.3,se-1.0.1/datatables.min.css"/>
 
     <link href="<%= request.getContextPath()%>/Views/Admin/css/sb-admin-2.min.css" rel="stylesheet">
 
@@ -39,40 +40,8 @@ You can't access this page if you use link-url and not login -->
 
 
 <!---- nhan thong bao phan hoi ---->
-<c:if test="${from == 'insert'}">
-    <c:if test="${(thongbao == 'true') && (from=='insert')}">
-        <script type="text/javascript">
-            alert('Thêm: Thành công!!!');
-        </script>
-    </c:if>
-    <c:if test="${(thongbao == 'error') && (from=='insert')}">
-        <script type="text/javascript">
-            alert('Thêm thất bại');
-        </script>
-    </c:if>
-    <c:if test="${(thongbao == 'input') && (from=='insert')}">
-        <script type="text/javascript">
-            alert('Thêm: lỗi nhập liệu!!!');
-        </script>
-    </c:if>
-</c:if>
-<c:if test="${from == 'update'}">
-    <c:if test="${(thongbao == 'true')}">
-        <script type="text/javascript">
-            alert('Cập nhật: Thành công!!!');
-        </script>
-    </c:if>
-    <c:if test="${(thongbao == 'error') }">
-        <script type="text/javascript">
-            alert('Cập nhật: Tuổi nhân viên phải lớn hơn 18');
-        </script>
-    </c:if>
-    <c:if test="${(thongbao == 'input')}">
-        <script type="text/javascript">
-            alert('Cập nhật: input not true');
-        </script>
-    </c:if>
-</c:if>
+
+
 <!-- delete -->
 <%
     session.setAttribute("from", "product");
@@ -104,7 +73,8 @@ You can't access this page if you use link-url and not login -->
                     <!-- Button to Open the Modal -->
                     <button type="button" class="btn btn-success" style="width: 15%; display:inline; float: right;"
                             data-toggle="modal"
-                            data-target="#addProduct">
+                            data-target="#addProduct" id="BtnShowModalAddProduct">
+
                         <i class="fa fa-plus mr-2"></i> Thêm sản phẩm
                     </button>
                     <div class="modal fade" id="addProduct">
@@ -120,105 +90,215 @@ You can't access this page if you use link-url and not login -->
                                 </div>
                                 <!-- Modal body -->
                                 <div class="modal-body">
-                                    <form action="${pageContext.request.contextPath}/insert-product"
-                                          method="post" id="formAdd">
-                                        <div class="form-group row">
-                                            <label for="nameAdd"
-                                                   class="col-sm-4 col-form-label">Tên sản phẩm
-                                                :</label>
-                                            <div class="col-sm-8">
-                                                <input type="text" class="form-control" id="nameAdd" name="name">
-                                            </div>
-                                        </div>
-                                        <div class="form-group">
-                                            <label for="cateidlbAdd">Loại sản phẩm :</label>
+                                    <c:choose>
+                                        <c:when test="${(thongbao == 'error') && (from=='insert')}">
+                                            <form action="${pageContext.request.contextPath}/insert-product"
+                                                  method="post" id="formAdd">
+                                                <div class="form-group row">
+                                                    <label for="nameAdd"
+                                                           class="col-sm-4 col-form-label">Tên sản phẩm
+                                                        :</label>
+                                                    <div class="col-sm-8">
+                                                        <input type="text"  value="<c:out value="${nameError}"/>"  class="form-control"  name="name">
+                                                    </div>
+                                                </div>
+                                                <div class="form-group">
+                                                    <label for="cateidlbAdd">Loại sản phẩm :</label>
 
-                                            <select id="cateidlbAdd" multiple class="form-control"
-                                                    name="subcategory">
+                                                    <select  multiple class="form-control"
+                                                            name="subcategory">
 
-                                                <c:forEach items="${listCategory}" var="cate">
-                                                    <option value="${cate.getCategoryId()}"
-                                                    >
-                                                            ${cate.getName()}
-                                                    </option>
+                                                        <c:forEach items="${listCategory}" var="cate">
+                                                            <option value="${cate.getCategoryId()}" ${cate.getCategoryId() == subcategoryError ? 'selected="selected"' : ''}
+                                                            >
+                                                                    ${cate.getName()}
+                                                            </option>
 
-                                                </c:forEach>
+                                                        </c:forEach>
 
-                                            </select>
-                                        </div>
-                                        <div class="form-group row">
-                                            <label for="genderAdd"
-                                                   class="col-sm-4 col-form-label">Đổi tượng:</label>
-                                            <div class="col-sm-8">
-                                                <select class="form-control" id="genderAdd" name="gender">
-                                                    <option value="0">Nam</option>
-                                                    <option value="1">Nữ</option>
-                                                    <option value="2">Cả hai</option>
-                                                </select>
+                                                    </select>
+                                                </div>
+                                                <div class="form-group row">
+                                                    <label for="genderAdd"
+                                                           class="col-sm-4 col-form-label">Đổi tượng:</label>
+                                                    <div class="col-sm-8">
+                                                        <select class="form-control"  name="gender">
+                                                            <option value="0" ${genderError== 0 ? 'selected="selected"' : ''}>Nam</option>
+                                                            <option value="1" ${genderError== 1 ? 'selected="selected"' : ''}>Nữ</option>
+                                                            <option value="2" ${genderError== 2 ? 'selected="selected"' : ''}>Cả hai</option>
+                                                        </select>
 
-                                            </div>
-                                        </div>
+                                                    </div>
+                                                </div>
 
-                                        <div class="form-group row">
-                                            <label for="priceAdd"
-                                                   class="col-sm-4 col-form-label">Đơn giá
-                                                :</label>
-                                            <div class="col-sm-8">
-                                                <input type="number"
-                                                       class="form-control"
-                                                       id="priceAdd"
-                                                       value=""
-                                                       min="0"
-                                                       onkeypress="return (event.charCode == 8 || event.charCode == 0) ? null : event.charCode >= 48 && event.charCode <= 57"
-                                                       name="unitprice">
-                                            </div>
-                                        </div>
-                                        <div class="form-group row">
-                                            <label for="deslb"
-                                                   class="col-sm-4 col-form-label">Mô tả sản phẩm
-                                                :</label>
-                                            <div class="col-sm-8">
-                                                <input type="hidden"
-                                                       class="form-control"
-                                                       id="addProdip"
-                                                       value=""
-                                                       name="description">
+                                                <div class="form-group row">
+                                                    <label for="priceAdd"
+                                                           class="col-sm-4 col-form-label">Đơn giá
+                                                        :</label>
+                                                    <div class="col-sm-8">
+                                                        <input type="number"
+                                                               class="form-control"
 
+                                                               value="<c:out value="${unitpriceError}"/>"
+                                                               min="0"
+                                                               onkeypress="return (event.charCode == 8 || event.charCode == 0) ? null : event.charCode >= 48 && event.charCode <= 57"
+                                                               name="unitprice">
+                                                    </div>
+                                                </div>
+                                                <div class="form-group row">
+                                                    <label for="deslb"
+                                                           class="col-sm-4 col-form-label">Mô tả sản phẩm
+                                                        :</label>
+                                                    <div class="col-sm-8">
+                                                        <input type="hidden"
+                                                               class="form-control"
 
-                                                <textarea class="form-control"
-                                                          id="addProd"
-                                                          rows="3" placeholder="What's up?"
-                                                          onkeyup="myFunction('addProdip','addProd')"
-                                                > </textarea>
-                                            </div>
-                                        </div>
-                                        <div class="form-group row">
-                                            <label for="imgPathAdd"
-                                                   class="col-sm-4 col-form-label">Link ảnh
-                                                :</label>
-                                            <div class="col-sm-8">
-                                                <input type="file" class="form-control-file" id="imgPath" name="img">
-                                                <input type="hidden" id="imgPathAdd">
-                                            </div>
-                                        </div>
-                                        <div class="form-group row">
-<%--                                            <label for="quantityAdd"--%>
-<%--                                                   class="col-sm-4 col-form-label">Số lượng kho--%>
-<%--                                                :</label>--%>
-                                            <div class="col-sm-8">
-                                                <input type="hidden"
-                                                       class="form-control"
-                                                       id="quantityAdd"
-                                                       value="0"
-                                                       name="available">
-                                            </div>
-                                        </div>
+                                                               value=""
+                                                               name="description">
 
 
-                                    </form>
+                                                        <textarea class="form-control"
+
+                                                                  rows="3" placeholder="What's up?"
+                                                                  onkeyup="myFunction('addProdip','addProd')"
+                                                        >${descriptionError}</textarea>
+                                                    </div>
+                                                </div>
+                                                <div class="form-group row">
+                                                    <label for="imgPathAdd"
+                                                           class="col-sm-4 col-form-label">Link ảnh
+                                                        :</label>
+                                                    <div class="col-sm-8">
+                                                        <input type="file" class="form-control-file"  name="img">
+                                                        <input type="hidden" >
+                                                    </div>
+                                                </div>
+                                                <div class="form-group row">
+                                                        <%--                                            <label for="quantityAdd"--%>
+                                                        <%--                                                   class="col-sm-4 col-form-label">Số lượng kho--%>
+                                                        <%--                                                :</label>--%>
+                                                    <div class="col-sm-8">
+                                                        <input type="hidden"
+                                                               class="form-control"
+
+                                                               value="0"
+                                                               name="available">
+                                                    </div>
+                                                </div>
+
+
+                                            </form>
+                                        </c:when>
+
+                                        <c:otherwise>
+                                            <form action="${pageContext.request.contextPath}/insert-product"
+                                                  method="post" id="formAdd">
+                                                <div class="form-group row">
+                                                    <label for="nameAdd"
+                                                           class="col-sm-4 col-form-label">Tên sản phẩm
+                                                        :</label>
+                                                    <div class="col-sm-8">
+                                                        <input type="text" class="form-control" id="nameAdd" name="name">
+                                                    </div>
+                                                </div>
+                                                <div class="form-group">
+                                                    <label for="cateidlbAdd">Loại sản phẩm :</label>
+
+                                                    <select id="cateidlbAdd" multiple class="form-control"
+                                                            name="subcategory">
+
+                                                        <c:forEach items="${listCategory}" var="cate">
+                                                            <option value="${cate.getCategoryId()}"
+                                                            >
+                                                                    ${cate.getName()}
+                                                            </option>
+
+                                                        </c:forEach>
+
+                                                    </select>
+                                                </div>
+                                                <div class="form-group row">
+                                                    <label for="genderAdd"
+                                                           class="col-sm-4 col-form-label">Đổi tượng:</label>
+                                                    <div class="col-sm-8">
+                                                        <select class="form-control" id="genderAdd" name="gender">
+                                                            <option value="0">Nam</option>
+                                                            <option value="1">Nữ</option>
+                                                            <option value="2">Cả hai</option>
+                                                        </select>
+
+                                                    </div>
+                                                </div>
+
+                                                <div class="form-group row">
+                                                    <label for="priceAdd"
+                                                           class="col-sm-4 col-form-label">Đơn giá
+                                                        :</label>
+                                                    <div class="col-sm-8">
+                                                        <input type="number"
+                                                               class="form-control"
+                                                               id="priceAdd"
+                                                               value=""
+                                                               min="0"
+                                                               onkeypress="return (event.charCode == 8 || event.charCode == 0) ? null : event.charCode >= 48 && event.charCode <= 57"
+                                                               name="unitprice">
+                                                    </div>
+                                                </div>
+                                                <div class="form-group row">
+                                                    <label for="deslb"
+                                                           class="col-sm-4 col-form-label">Mô tả sản phẩm
+                                                        :</label>
+                                                    <div class="col-sm-8">
+                                                        <input type="hidden"
+                                                               class="form-control"
+                                                               id="addProdip"
+                                                               value=""
+                                                               name="description">
+
+
+                                                        <textarea class="form-control"
+                                                                  id="addProd"
+                                                                  rows="3" placeholder="What's up?"
+                                                                  onkeyup="myFunction('addProdip','addProd')"
+                                                        > </textarea>
+                                                    </div>
+                                                </div>
+                                                <div class="form-group row">
+                                                    <label for="imgPathAdd"
+                                                           class="col-sm-4 col-form-label">Link ảnh
+                                                        :</label>
+                                                    <div class="col-sm-8">
+                                                        <input type="file" class="form-control-file" id="imgPath" name="img">
+                                                        <input type="hidden" id="imgPathAdd">
+                                                    </div>
+                                                </div>
+                                                <div class="form-group row">
+                                                        <%--                                            <label for="quantityAdd"--%>
+                                                        <%--                                                   class="col-sm-4 col-form-label">Số lượng kho--%>
+                                                        <%--                                                :</label>--%>
+                                                    <div class="col-sm-8">
+                                                        <input type="hidden"
+                                                               class="form-control"
+                                                               id="quantityAdd"
+                                                               value="0"
+                                                               name="available">
+                                                    </div>
+                                                </div>
+
+
+                                            </form>
+                                        </c:otherwise>
+                                    </c:choose>
+
+                                    <div class="text-center">
+                                        <c:if test="${(thongbao == 'error') && (from=='insert')}">
+                                            <p style="color: red;">${errorDescription}</p>
+                                        </c:if>
+                                    </div>
                                 </div>
                                 <!-- Modal footer -->
                                 <div class="modal-footer">
+
                                     <button type="submit" class="btn btn-success" id="btnThemSP" form="formAdd">
                                         Thêm sản phẩm
                                     </button>
@@ -396,7 +476,7 @@ You can't access this page if you use link-url and not login -->
                                                 </div>
                                                 <button type="button" class="btn btn-primary" title="Edit"
                                                         data-toggle="modal"
-                                                        data-target="#productedit${row.productId}"><i
+                                                        data-target="#productedit${row.productId}" id="btnShow${row.productId}"><i
                                                         class="fa fa-edit"></i></button>
                                                 <div class="modal fade" id="productedit${row.productId}">
                                                     <div class="modal-dialog">
@@ -556,6 +636,11 @@ You can't access this page if you use link-url and not login -->
                                                                                    value="${row.getAvailable()}"
                                                                                    name="available">
                                                                         </div>
+                                                                    </div>
+                                                                    <div class="text-center p-3">
+                                                                        <c:if test="${(thongbao == 'error') && (from=='update') && (row.productId == productid)}">
+                                                                            <p style="color: red;">${errorDescription}</p>
+                                                                        </c:if>
                                                                     </div>
                                                                 </form>
 
@@ -812,7 +897,7 @@ You can't access this page if you use link-url and not login -->
                                                 </div>
                                                 <button type="button" class="btn btn-primary" title="Chỉnh sửa"
                                                         data-toggle="modal"
-                                                        data-target="#productedit${row.productId}"><i
+                                                        data-target="#productedit${row.productId}" "><i
                                                         class="fa fa-edit"></i></button>
                                                 <div class="modal fade" id="productedit${row.productId}">
                                                     <div class="modal-dialog">
@@ -969,6 +1054,7 @@ You can't access this page if you use link-url and not login -->
                                                                                    name="available">
                                                                         </div>
                                                                     </div>
+
                                                                 </form>
 
 
@@ -1164,7 +1250,19 @@ You can't access this page if you use link-url and not login -->
 
     <script
             src="<%=request.getContextPath()%>/Views/Admin/js/admin-product.js"></script>
-
+<%--        Export file--%>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.0/jquery.min.js"></script>
+        <script type="text/javascript" src="https://cdn.datatables.net/r/dt/jq-2.1.4,jszip-2.5.0,pdfmake-0.1.18,dt-1.10.9,af-2.0.0,b-1.0.3,b-colvis-1.0.3,b-html5-1.0.3,b-print-1.0.3,se-1.0.1/datatables.min.js"></script>
+        <script type="text/javascript" >
+            $(document).ready(function() {
+                $('#dataTable').DataTable( {
+                    dom: 'lBfrtip',
+                    buttons: [
+                        'excel',
+                    ],
+                } );
+            } );
+        </script>
     <!-- Page level custom scripts -->
 
         <script>
@@ -1176,5 +1274,42 @@ You can't access this page if you use link-url and not login -->
                 }).format(parseInt(listGia[i].innerHTML));
             }
         </script>
+
+        <c:if test="${from == 'insert'}">
+        <c:if test="${(thongbao == 'true') && (from=='insert')}">
+        <script type="text/javascript">
+            alert('Thêm: Thành công!!!');
+        </script>
+        </c:if>
+        <c:if test="${(thongbao == 'error') && (from=='insert')}">
+        <script type="text/javascript">
+            document.getElementById("BtnShowModalAddProduct").click();
+
+        </script>
+        </c:if>
+
+        <c:if test="${(thongbao == 'input') && (from=='insert')}">
+        <script type="text/javascript">
+            alert('Thêm thất bại : Lỗi nhập liệu!!!');
+        </script>
+        </c:if>
+        </c:if>
+        <c:if test="${from == 'update'}">
+        <c:if test="${(thongbao == 'true')}">
+        <script type="text/javascript">
+            alert('Cập nhật: Thành Công!!!');
+        </script>
+        </c:if>
+        <c:if test="${(thongbao == 'error') }">
+        <script type="text/javascript">
+            alert('Cập nhật: Thất Bại');
+        </script>
+        </c:if>
+        <c:if test="${(thongbao == 'input')}">
+        <script type="text/javascript">
+            alert('Cập nhật: input not true');
+        </script>
+        </c:if>
+        </c:if>
 </body>
 </html>

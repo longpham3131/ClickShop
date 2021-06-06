@@ -39,7 +39,7 @@ public class insertAccount extends HttpServlet {
             throws ServletException, IOException {
         HttpSession session = request.getSession();
         if (Objects.equals((String) session.getAttribute("Check_Authentic_Final_Using"), "Administrator") == true) {
-            String email = request.getParameter("email");
+            String email = request.getParameter("email").trim();
             String firstname = request.getParameter("firstname");
             String lastname = request.getParameter("lastname");
             String phone = request.getParameter("phone");
@@ -47,23 +47,56 @@ public class insertAccount extends HttpServlet {
             String gender = request.getParameter("gender");
             String Bday = request.getParameter("Bday");
             String role = request.getParameter("role");
+
+            String emailError = "";
+            String firstnameError = "";
+            String lastnameError = "";
+            String phoneError = "";
+            String addressError = "";
+            String genderError = "";
+            String BdayError = "";
+            String roleError = "";
             String tb = "";  // thong bao
+            String errorDescription = "";
             if (tb == "") {
                 queryDAO qD = new queryDAO();
                 try {
                     if (qD.insertAccount(email, firstname, lastname,
                             phone, address, gender, Bday, role))
                         tb = "true";
-                    else
+                    else{
                         tb = "error";
+                        emailError = email;
+                        firstnameError = firstname;
+                        lastnameError = lastname;
+                        phoneError = phone;
+                         addressError = address;
+                         genderError = gender;
+                         BdayError = Bday;
+                         roleError = role;
+                        errorDescription = "Email đã tồn tại";
+                    }
+
+
                 } catch (Exception e) {
                     System.out.print(e);
                 }
             }
-            if (session == null)
-                response.sendRedirect("Views/Admin/login.jsp");
-            if (tb == "error")
-                request.setAttribute("from", "insert");
+//            if (session == null){
+//                response.sendRedirect("Views/Admin/login.jsp");
+//            }
+
+            request.setAttribute("from", "insert");
+
+            request.setAttribute("emailError", emailError);
+            request.setAttribute("firstnameError", firstnameError);
+            request.setAttribute("lastnameError", lastnameError);
+            request.setAttribute("phoneError", phoneError);
+            request.setAttribute("addressError", addressError);
+            request.setAttribute("genderError", genderError);
+            request.setAttribute("BdayError", BdayError);
+            request.setAttribute("roleError", roleError);
+            request.setAttribute("errorDescription", errorDescription);
             request.setAttribute("thongbao", tb);
             fillAllAccount a = new fillAllAccount();
             a.doPost(request, response);

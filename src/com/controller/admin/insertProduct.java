@@ -41,7 +41,7 @@ public class insertProduct extends HttpServlet {
 
 			String productid = request.getParameter("productid");
 			String subcategory = request.getParameter("subcategory");
-			String name = request.getParameter("name");
+			String name = request.getParameter("name").trim();
 			int unitprice = Integer.parseInt(request.getParameter("unitprice"));
 			String gender = request.getParameter("gender");
 			String description = request.getParameter("description");
@@ -49,8 +49,19 @@ public class insertProduct extends HttpServlet {
 			String img = "/image_product/" + request.getParameter("img");
 
 
+
 			// System.out.println(DateTimeNow);
 			String tb = "";  // thong bao
+			String productidError = "";
+			String subcategoryError = "";
+			String nameError = "";
+			int unitpriceError = -1;
+			String genderError = "";
+			String descriptionError = "";
+			String availableError = "";
+			String imgError = "/image_product/" + "";
+			//
+			String errorDescription = "";
 			if (subcategory == "" || name == "" || unitprice < 0 || description == "" || gender == "" || available == "")
 				tb = "input";
 			String url = "Views/Admin/container/product.jsp";
@@ -63,12 +74,30 @@ public class insertProduct extends HttpServlet {
 						tb = "true";
 					else
 						tb = "error";
+						// nếu lỗi thì trả về data
+						nameError = name;
+						subcategoryError = subcategory;
+						unitpriceError = unitprice;
+						genderError = gender;
+						descriptionError = description;
+						availableError = available;
+						errorDescription = "Tên sản phẩm bị trùng";
 				} catch (Exception e) {
 					System.out.print(e);
+					tb = "duplicate";
 				}
 			}
 			request.setAttribute("from", "insert");
 			request.setAttribute("thongbao", tb);
+
+			// Data Error
+			request.setAttribute("nameError", nameError);
+			request.setAttribute("subcategoryError", subcategoryError);
+			request.setAttribute("unitpriceError", unitpriceError);
+			request.setAttribute("genderError", genderError);
+			request.setAttribute("descriptionError", descriptionError);
+			request.setAttribute("availableError", availableError);
+			request.setAttribute("errorDescription", errorDescription);
 			fillAllProduct a = new fillAllProduct();
 			a.doPost(request, response);
 		} else {

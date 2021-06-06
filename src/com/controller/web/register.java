@@ -43,6 +43,7 @@ public class register extends HttpServlet {
         System.out.print(email+pass+firstname+lastname+ Bday+gender);
         String er ="-1";
         String tb = "";
+        String errorDescription = "";
 
         if(phone == null || phone=="")
             er = "phone";
@@ -61,6 +62,7 @@ public class register extends HttpServlet {
                     tb = "true";
                 else
                     tb = "loi";
+                errorDescription = "Email đã tồn tại";
             } catch (Exception e) {
                 System.out.print(e);
             }
@@ -76,6 +78,7 @@ public class register extends HttpServlet {
             request.setAttribute("phone", phone);
             request.setAttribute("address", address);
             request.setAttribute("gender", gender);
+            request.setAttribute("errorDescription", errorDescription);
         }
         else
             request.setAttribute("id", email);

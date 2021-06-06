@@ -26,7 +26,6 @@ public class queryDAO {
             String sqlExec = "{ Call USP_TaoUser (?,?,?, ?, ?, ?, ?, ?) }";
 //        String sqlCommit = " COMMIT";
             conn = new MyDB().getConnection();
-            conn.setAutoCommit(false);
             clmt = conn.prepareCall(sqlExec);
             //   System.out.println("-++++++++++++++0+++++++++++++-");
             clmt.setString(1, email);
@@ -40,7 +39,7 @@ public class queryDAO {
             // System.out.println("-++++++++++++++1+++++++++++++-");
             clmt.execute();
             // System.out.println("-++++++++++++++2+++++++++++++-");
-            conn.commit();
+
             //  System.out.println("-++++++++++++++3+++++++++++-");
             return true;
         } catch (Exception e) {
@@ -143,7 +142,7 @@ public class queryDAO {
     public boolean resetPass(String email) {  // isAvailable = 0
         try { // delete Role truoc, vi no co khoa ngoai
             //String query2 = "delete from AccountRole where email='" + email + "'";
-            String query2 = "update Account set Password='1'  WHERE Email='" + email + "'";
+            String query2 = "update Account set Password='clickshop123aA@'  WHERE Email='" + email + "'";
             System.out.println(query2);
             conn = new MyDB().getConnection();
             System.out.println(query2);

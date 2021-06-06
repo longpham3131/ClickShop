@@ -46,7 +46,7 @@ public class updateProduct extends HttpServlet {
         if (Objects.equals((String) session.getAttribute("Check_Authentic_Final_Using"), "Administrator") == true) {
             String productid = request.getParameter("productid");
             String subcategory = request.getParameter("subcategory");
-            String name = request.getParameter("name");
+            String name = request.getParameter("name").trim();
             String imgPath = "";
             if (request.getParameter("img") == "") {
                 imgPath = request.getParameter("imgPathTempt");
@@ -62,6 +62,7 @@ public class updateProduct extends HttpServlet {
                 tb = "input";
             String url = "Views/Admin/container/product.jsp";
             String kq = "1";
+            String errorDescription = "";
             if (tb == "") {
                 queryDAO qD = new queryDAO();
                 try {
@@ -69,6 +70,7 @@ public class updateProduct extends HttpServlet {
                         tb = "true";
                     else
                         tb = "error";
+                        errorDescription = "Tên sản phẩm đã tồn tại";
                 } catch (Exception e) {
                     System.out.print(e);
                 }
@@ -76,8 +78,11 @@ public class updateProduct extends HttpServlet {
             if (session == null)
                 response.sendRedirect("Views/Admin/login.jsp");
 
+
             request.setAttribute("from", "update");
             request.setAttribute("thongbao", tb);
+            request.setAttribute("errorDescription", errorDescription);
+            request.setAttribute("productid", productid);
             fillAllProduct a = new fillAllProduct();
             a.doPost(request, response);
         } else {
