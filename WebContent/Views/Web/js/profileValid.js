@@ -28,7 +28,8 @@ function lNameValidate(){
 
 function addressValidate(){
     var diaChi = getELE("inpAddress").value;
-    if(validation.checkEmpty(diaChi, getELE("tbDiaChi"), "Địa chỉ không được trống !!!")){
+    if(validation.checkEmpty(diaChi, getELE("tbDiaChi"), "Địa chỉ không được trống !!!")
+        && validation.checkWordValid(diaChi, getELE("tbDiaChi"), "Địa chỉ không hợp lệ!!!")){
         return true;
     }
     return  false;

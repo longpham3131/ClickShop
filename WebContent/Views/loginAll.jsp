@@ -262,8 +262,7 @@
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-ho+j7jyWK8fNQe+A12Hb8AhRq26LrZ/JpcUGGOn+Y7RsweNrtN/tE3MoK7ZeZDyx"
         crossorigin="anonymous"></script>
-<!--===============================================================================================-->
-<script src="<%=request.getContextPath()%>/Views/Admin/temple/login-form-v3/Login_v3/vendor/jquery/jquery-3.2.1.min.js"></script>
+
 <!--===============================================================================================-->
 <script src="<%=request.getContextPath()%>/Views/Admin/temple/login-form-v3/Login_v3/vendor/animsition/js/animsition.min.js"></script>
 <!--===============================================================================================-->
