@@ -6,20 +6,24 @@ import com.controller.admin.fillDashBoard;
 import com.controller.admin.shipped;
 import com.controller.shipper.goShipper;
 import com.controller.web.fillAllDisplay;
+import com.google.common.cache.Cache;
+import com.google.common.cache.CacheBuilder;
 import com.model.Account;
+import org.apache.commons.lang.RandomStringUtils;
 
-import javax.servlet.RequestDispatcher;
-import javax.servlet.ServletException;
+import javax.servlet.*;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import java.io.IOException;
+import java.security.SecureRandom;
+import java.util.concurrent.TimeUnit;
 
 @WebServlet("/login-all")
 
-public class login extends HttpServlet {
+public class login extends HttpServlet implements Filter{
     private static final long serialVersionUID = 1L;
 
     public login() {
@@ -29,18 +33,50 @@ public class login extends HttpServlet {
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        doPost(request, response);
+
+//         Check the user session for the salt cache, if none is present we create one
+        Cache<String, Boolean> csrfPreventionSaltCache = (Cache<String, Boolean>)
+                request.getSession().getAttribute("csrfPreventionSaltCache");
+
+        if (csrfPreventionSaltCache == null){
+            csrfPreventionSaltCache = CacheBuilder.newBuilder()
+                    .maximumSize(5000)
+                    .expireAfterWrite(20, TimeUnit.MINUTES)
+                    .build();
+
+            request.getSession().setAttribute("csrfPreventionSaltCache", csrfPreventionSaltCache);
+        }
+
+        // Generate the salt and store it in the users cache
+        String salt = RandomStringUtils.random(20, 0, 0, true, true, null, new SecureRandom());
+        csrfPreventionSaltCache.put(salt, Boolean.TRUE);
+
+        // Add the salt to the current request so it can be used
+        // by the page rendered in this request
+        request.setAttribute("csrfPreventionSalt", salt);
+        String url = "Views/loginAll.jsp";
+        RequestDispatcher rq = request.getRequestDispatcher(url);
+        rq.forward(request, response);
     }
 
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         String url = "Views/loginAll.jsp";
+        String salt = (String) request.getParameter("csrfPreventionSalt");
+        Cache<String, Boolean> csrfPreventionSaltCache = (Cache<String, Boolean>)request.getSession().getAttribute("csrfPreventionSaltCache");
+        if (csrfPreventionSaltCache == null ||salt == null ||csrfPreventionSaltCache.getIfPresent(salt) == null) {
+            doGet(request, response);
+            return;
+        }
+
         HttpSession session1 = request.getSession();
         session1.invalidate();  // khi vao login thi xoa het trc do//-------------- chua lam dc
 
         String email = request.getParameter("id");
         String password = request.getParameter("password");
         request.setAttribute("id", email);
+
+
 
         LoginDAO loginDAO = new LoginDAO();
         String kq = loginDAO.login(email, password);
@@ -89,6 +125,40 @@ public class login extends HttpServlet {
         } else
         {  // request.setAttribute("kqlogin", "EMAIL");
             RequestDispatcher rq = request.getRequestDispatcher(url);
-            rq.forward(request, response);}
+            rq.forward(request, response);
+        }
+    }
+    @Override
+    public void doFilter(ServletRequest request, ServletResponse response, FilterChain chain)
+            throws IOException, ServletException {
+
+        // Assume its HTTP
+        HttpServletRequest httpReq = (HttpServletRequest) request;
+
+        // Get the salt sent with the request
+        String salt = (String) httpReq.getParameter("csrfPreventionSalt");
+
+        // Validate that the salt is in the cache
+        Cache<String, Boolean> csrfPreventionSaltCache = (Cache<String, Boolean>)
+                httpReq.getSession().getAttribute("csrfPreventionSaltCache");
+
+        if (csrfPreventionSaltCache != null &&
+                salt != null &&
+                csrfPreventionSaltCache.getIfPresent(salt) != null){
+
+            // If the salt is in the cache, we move on
+            chain.doFilter(request, response);
+        } else {
+            // Otherwise we throw an exception aborting the request flow
+            throw new ServletException("Potential CSRF detected!! Inform a scary sysadmin ASAP.");
+        }
+    }
+
+    @Override
+    public void init(FilterConfig filterConfig) throws ServletException {
+    }
+
+    @Override
+    public void destroy() {
     }
 }

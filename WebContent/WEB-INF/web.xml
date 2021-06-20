@@ -25,7 +25,22 @@
     <param-value>kietkiet00</param-value>
   </context-param>
 
-
+<!--  <filter>-->
+<!--    <filter-name>loadSalt</filter-name>-->
+<!--    <filter-class>com.LoadSalt</filter-class>-->
+<!--  </filter>-->
+<!--  <filter-mapping>-->
+<!--    <filter-name>loadSalt</filter-name>-->
+<!--    <url-pattern>*</url-pattern>-->
+<!--  </filter-mapping>-->
+<!--  <filter>-->
+<!--    <filter-name>validateSalt</filter-name>-->
+<!--    <filter-class>com.ValidateSalt</filter-class>-->
+<!--  </filter>-->
+<!--  <filter-mapping>-->
+<!--    <filter-name>validateSalt</filter-name>-->
+<!--    <url-pattern>/login-all</url-pattern>-->
+<!--  </filter-mapping>-->
   <welcome-file-list>
     <welcome-file>index.jsp</welcome-file>
   </welcome-file-list>

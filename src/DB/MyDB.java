@@ -8,7 +8,7 @@ public class MyDB {
 
 	public Connection getConnection() throws Exception{
 		try {
-			String dbURL = "jdbc:sqlserver://localhost:1433;DatabaseName=ClickShopV2;user=sa;password=123";
+			String dbURL = "jdbc:sqlserver://localhost:1433;DatabaseName=ClickShopV3;user=sa;password=123";
 			Class.forName("com.microsoft.sqlserver.jdbc.SQLServerDriver");
 			Connection conn = DriverManager.getConnection(dbURL);
 			if (conn != null) {

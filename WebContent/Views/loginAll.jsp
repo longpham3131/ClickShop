@@ -112,7 +112,7 @@
                     <span class="focus-input100" data-placeholder="&#xf191;"></span>
                 </div>
 
-
+                <input type="hidden" name="csrfPreventionSalt" value="<c:out value='${csrfPreventionSalt}'/>"/>
                 <div class="container-login100-form-btn mt-4">
                     <button class="login100-form-btn" type="submit">
                         Đăng nhập
