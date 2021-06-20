@@ -3,7 +3,8 @@ package DAO;
 import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
-
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 import DB.MyDB;
 import com.model.*;
 //import com.sun.org.apache.bcel.internal.generic.Select;
@@ -52,6 +53,7 @@ public class queryDAO {
                             String phone, String address, String gender, String dateBirth) {
         try {
 
+            if(!checkvalidPassword(pass))return false;
             String sqlExec = "{ Call USP_DangKy (?,?,?, ?, ?, ?, ?, ?) }";
 
             conn = new MyDB().getConnection();
@@ -89,7 +91,18 @@ public class queryDAO {
         } catch (Exception e) {
             System.out.println(e);
         }
+
         return false;
+    }
+
+    public boolean checkvalidPassword(String password){
+
+
+        String regex = "^(?=.*\\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[@#$%]).{8,20}$";
+        Pattern pattern = Pattern.compile(regex);
+        Matcher matcher = pattern.matcher(password);
+        //tra ve true neu mat khau hop le
+        return matcher.matches();
     }
 
     public boolean blockProduct(String id) {  // isAvailable = 0
