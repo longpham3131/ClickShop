@@ -50,6 +50,22 @@
     <location>/Views/error.jsp</location>
   </error-page>
   <error-page>
+    <error-code>501</error-code>
+    <location>/Views/error.jsp</location>
+  </error-page>
+  <error-page>
+    <error-code>503</error-code>
+    <location>/Views/error.jsp</location>
+  </error-page>
+  <error-page>
+    <error-code>504</error-code>
+    <location>/Views/error.jsp</location>
+  </error-page>
+  <error-page>
+    <error-code>505</error-code>
+    <location>/Views/error.jsp</location>
+  </error-page>
+  <error-page>
     <error-code>500</error-code>
     <location>/Views/error.jsp</location>
   </error-page>

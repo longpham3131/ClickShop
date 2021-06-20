@@ -81,12 +81,12 @@ public class queryDAO {
     public boolean deleteAccount(String email) {  // isAvailable = 0
         try {
 
-            String query2 = "update Account set isAvailable='0'  WHERE Email='" + email + "'";
-            System.out.println(query2);
-            conn = new MyDB().getConnection();
-            System.out.println(query2);
+            String query2 = "update Account set isAvailable='0'  WHERE Email=?";
+            conn = new  MyDB().getConnection(); // sai o day
             ps = conn.prepareStatement(query2);
+            ps.setString(1, email);
             ps.executeUpdate();
+
             return true;
         } catch (Exception e) {
             System.out.println(e);
@@ -108,11 +108,10 @@ public class queryDAO {
     public boolean blockProduct(String id) {  // isAvailable = 0
         try { // delete Role truoc, vi no co khoa ngoai
             //String query2 = "delete from AccountRole where email='" + email + "'";
-            String query2 = "update Product set Available='0'  WHERE ProductId='" + id + "'";
-            System.out.println(query2);
-            conn = new MyDB().getConnection();
-            System.out.println(query2);
+            String query2 = "update Product set Available='0'  WHERE ProductId=?";
+            conn = new  MyDB().getConnection(); // sai o day
             ps = conn.prepareStatement(query2);
+            ps.setString(1, id);
             ps.executeUpdate();
             return true;
         } catch (Exception e) {
@@ -124,11 +123,10 @@ public class queryDAO {
     public boolean unBlockAccount(String email) {  // isAvailable = 0
         try {
 
-            String query2 = "update Account set isAvailable='1'  WHERE Email='" + email + "'";
-            System.out.println(query2);
-            conn = new MyDB().getConnection();
-            System.out.println(query2);
+            String query2 = "update Account set isAvailable='1'  WHERE Email=?";
+            conn = new  MyDB().getConnection(); // sai o day
             ps = conn.prepareStatement(query2);
+            ps.setString(1, email);
             ps.executeUpdate();
             return true;
         } catch (Exception e) {
@@ -139,11 +137,10 @@ public class queryDAO {
 
     public boolean unBlockProduct(String id) {  // isAvailable = 0
         try {
-            String query2 = "update Product set Available='1'  WHERE ProductId='" + id + "'";
-            System.out.println(query2);
-            conn = new MyDB().getConnection();
-            System.out.println(query2);
+            String query2 = "update Product set Available='1'  WHERE ProductId=?";
+            conn = new  MyDB().getConnection(); // sai o day
             ps = conn.prepareStatement(query2);
+            ps.setString(1, id);
             ps.executeUpdate();
             return true;
         } catch (Exception e) {
@@ -155,11 +152,10 @@ public class queryDAO {
     public boolean resetPass(String email) {  // isAvailable = 0
         try { // delete Role truoc, vi no co khoa ngoai
             //String query2 = "delete from AccountRole where email='" + email + "'";
-            String query2 = "update Account set Password='clickshop123aA@'  WHERE Email='" + email + "'";
-            System.out.println(query2);
-            conn = new MyDB().getConnection();
-            System.out.println(query2);
+            String query2 = "update Account set Password='clickshop123aA@'  WHERE Email=?";
+            conn = new  MyDB().getConnection(); // sai o day
             ps = conn.prepareStatement(query2);
+            ps.setString(1, email);
             ps.executeUpdate();
             return true;
         } catch (Exception e) {
@@ -219,12 +215,12 @@ public class queryDAO {
     }
 
     public boolean productIDExists(String id) {
-        String query = "select * from Product where ProductId='" + id + "'";
+        String query = "select * from Product where ProductId=?";
         try {
-            conn = new MyDB().getConnection();
+            conn = new  MyDB().getConnection(); // sai o day
             ps = conn.prepareStatement(query);
+            ps.setString(1, id);
             rs = ps.executeQuery();
-
             if (rs.next()) {
                 return true; // co ton tai email nay trong dbo.Account
             }
@@ -279,12 +275,12 @@ public class queryDAO {
     public List<Display> filterSanpham(String name) {
         String query = "SELECT Product.ProductId, Product.Name,Product.UnitPrice , Image.ImagePath, Product.Description, Product.SubCategoryId , SubCategory.CategoryId " +
                 "FROM dbo.Product ,dbo.[Image],dbo.SubCategory " +
-                "WHERE Product.ProductId = Image.ProductId AND Product.SubCategoryId = SubCategory.SubCategoryId AND SubCategory.Name = '" + name + "'";
+                "WHERE Product.ProductId = Image.ProductId AND Product.SubCategoryId = SubCategory.SubCategoryId AND SubCategory.Name =?";
         List<Display> listLoc = new ArrayList<Display>();
         try {
-
-            conn = new MyDB().getConnection();
+            conn = new  MyDB().getConnection(); // sai o day
             ps = conn.prepareStatement(query);
+            ps.setString(1, name);
             rs = ps.executeQuery();
             while (rs.next()) {
                 listLoc.add(new Display(rs.getString(1), rs.getString(2), rs.getString(3), rs.getString(4),
@@ -298,13 +294,13 @@ public class queryDAO {
     public List<Display> filterSapxep(String name,String type) {
         String query = "SELECT Product.ProductId, Product.Name,Product.UnitPrice , Image.ImagePath, Product.Description, Product.SubCategoryId , SubCategory.CategoryId " +
                 "FROM dbo.Product ,dbo.[Image],dbo.SubCategory " +
-                "WHERE Product.ProductId = Image.ProductId AND Product.SubCategoryId = SubCategory.SubCategoryId AND SubCategory.Name = '" + name + "'"
+                "WHERE Product.ProductId = Image.ProductId AND Product.SubCategoryId = SubCategory.SubCategoryId AND SubCategory.Name =?"
                 +"ORDER BY UnitPrice " + type;
         List<Display> listSapxep = new ArrayList<Display>();
         try {
-
-            conn = new MyDB().getConnection();
+            conn = new  MyDB().getConnection(); // sai o day
             ps = conn.prepareStatement(query);
+            ps.setString(1, name);
             rs = ps.executeQuery();
             while (rs.next()) {
                 listSapxep.add(new Display(rs.getString(1), rs.getString(2), rs.getString(3), rs.getString(4),
@@ -440,11 +436,14 @@ public class queryDAO {
     }
 
     public String getProductSizeId(String productId, String name, String available) {
-        String query = "Select pz.ProductSizeId,pz.Size,pz.Available  from ProductSize pz where ProductID =" + productId + "  and Size ='" + name + "' and Available = " + available;
+        String query = "Select pz.ProductSizeId,pz.Size,pz.Available  from ProductSize pz where ProductID =? and Size =? and Available = ?";
         String data = "";
         try {
-            conn = new MyDB().getConnection();
+            conn = new  MyDB().getConnection(); // sai o day
             ps = conn.prepareStatement(query);
+            ps.setString(1, productId);
+            ps.setString(2, name);
+            ps.setString(3, available);
             rs = ps.executeQuery();
             while (rs.next()) {
                 data = rs.getString(1);
@@ -503,9 +502,9 @@ public class queryDAO {
     public boolean deleteProductSize(String productsizeid) {
         try {
             String query = "delete from ProductSize where ProductSizeId =" + productsizeid;
-            conn = new MyDB().getConnection();
-            System.out.println(query);
+            conn = new  MyDB().getConnection(); // sai o day
             ps = conn.prepareStatement(query);
+            ps.setString(1, productsizeid);
             ps.executeUpdate();
 
             return true;
@@ -519,10 +518,10 @@ public class queryDAO {
         List<ProductSize> listprodsz = new ArrayList<ProductSize>();
         String query = "select * from Productsize where ProductID =" + productid;
         try {
-
-            Statement stmt = null;
-            stmt = conn.createStatement();
-            rs = stmt.executeQuery(query);
+            conn = new  MyDB().getConnection(); // sai o day
+            ps = conn.prepareStatement(query);
+            ps.setString(1, productid);
+            rs = ps.executeQuery();
             while (rs.next()) {
 
                 listprodsz.add(new ProductSize(rs.getString(1).trim(), rs.getString(3).trim(), rs.getString(4).trim()));
@@ -556,25 +555,26 @@ public class queryDAO {
         try { // delete Role truoc, vi no co khoa ngoai
             String query2 = "delete from PriceHistory where productid='" + productid + "'";
             conn = new MyDB().getConnection();
-            System.out.println(query2);
             ps = conn.prepareStatement(query2);
+            ps.setString(1, productid);
             ps.executeUpdate();
 
             String query3 = "delete from Image where productid='" + productid + "'";
             conn = new MyDB().getConnection();
-            System.out.println(query3);
             ps = conn.prepareStatement(query3);
+            ps.setString(1, productid);
             ps.executeUpdate();
 
             String query4 = "delete from Comment where productid='" + productid + "'";
             conn = new MyDB().getConnection();
-            System.out.println(query4);
             ps = conn.prepareStatement(query4);
+            ps.setString(1, productid);
             ps.executeUpdate();
 
             String query = "delete from Product where productid='" + productid + "'";
             conn = new MyDB().getConnection();
             ps = conn.prepareStatement(query);
+            ps.setString(1, productid);
             ps.executeUpdate();
 
             return true;

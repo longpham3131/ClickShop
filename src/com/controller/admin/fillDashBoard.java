@@ -47,7 +47,7 @@ public class fillDashBoard extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
         HttpSession session = request.getSession();
-        if (Objects.equals((String) session.getAttribute("Check_Authentic_Final_Using"), "Administrator") == true){
+        if (Objects.equals((String) session.getAttribute("Check_Authentic_Final_Using"), "Administrator")){
             RequestDispatcher rq = request.getRequestDispatcher("Views/Admin/container/home.jsp");
             rq.forward(request, response);
         }

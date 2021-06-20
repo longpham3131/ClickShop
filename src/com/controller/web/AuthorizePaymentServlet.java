@@ -12,7 +12,7 @@ import javax.servlet.http.*;
 
 import DAO.queryDAO;
 import com.paypal.base.rest.PayPalRESTException;
-import javafx.util.StringConverter;
+
 
 @WebServlet("/authorize-payment")
 public class AuthorizePaymentServlet extends HttpServlet {

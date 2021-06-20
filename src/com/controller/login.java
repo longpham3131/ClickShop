@@ -70,7 +70,7 @@ public class login extends HttpServlet implements Filter{
         }
 
         HttpSession session1 = request.getSession();
-        session1.invalidate();  // khi vao login thi xoa het trc do//-------------- chua lam dc
+        session1.invalidate();
 
         String email = request.getParameter("id");
         String password = request.getParameter("password");
