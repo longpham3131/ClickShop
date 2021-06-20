@@ -64,9 +64,15 @@ function Validation(){
             return false;
         }
     }
-    this.checkLimit = function(inputVal, spanELE, message, min, max){
+    this.checkWordValid = function(inputVal, spanELE, message){
 
-        if(inputVal >= min && inputVal <= max){
+        // RegExp: đối tượng tạo sẵn của JS giúp chuyển từ kiểu chuỗi (string) sang kiểu RegExp (/^ ... $/)
+        // var word = new RegExp("^[A-Za-z0-9_]+$")
+        var wordPattern = /^[A-Za-z0-9_]+$/;
+
+        //.test(): phương thức của RegExp giúp so sánh giá trị có trùng với biểu thức hay không
+        if(inputVal.match(wordPattern)){
+            // hợp lệ
             spanELE.style.cssText = "display: none;"
             return true;
         }
